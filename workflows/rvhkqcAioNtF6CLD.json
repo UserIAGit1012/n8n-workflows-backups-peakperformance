@@ -1,0 +1,125 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-07T16:20:21.330Z",
+  "id": "rvhkqcAioNtF6CLD",
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://wsapi.peak.botfai.com.br/label/findLabels/teste_tag",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "dcd986bc-7c97-4e25-9e72-2cddcddf1d06",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://wsapi.peak.botfai.com.br/label/handleLabel/teste_tag",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "5547999830536"
+            },
+            {
+              "name": "labelId",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "action",
+              "value": "add"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "eee5bb7e-228a-4e1b-a931-8d17235737e4",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        0
+      ],
+      "id": "e6aeba21-2da5-4df1-b09d-5d873068d469",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-07T16:20:21.330Z",
+  "versionId": "023a065c-19ce-436b-b891-b55b8048dbf3"
+}
