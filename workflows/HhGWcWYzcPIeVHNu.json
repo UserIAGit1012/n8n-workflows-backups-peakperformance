@@ -1,0 +1,1615 @@
+{
+  "active": true,
+  "connections": {
+    "BuscaUsuer": {
+      "main": [
+        [
+          {
+            "node": "CreatUser?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CriarUsuario": {
+      "main": [
+        [
+          {
+            "node": "AgregaDados",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AgregaDadosRD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VemDoTrafego?": {
+      "main": [
+        [
+          {
+            "node": "BuscaAds",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CriarUsuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MensagemHumano?": {
+      "main": [
+        [
+          {
+            "node": "BlockConversa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "VerificaBloqueio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RegistraAds": {
+      "main": [
+        [
+          {
+            "node": "CriarUsuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avançar": {
+      "main": [
+        [
+          {
+            "node": "AgregaDados",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "BuscaAds": {
+      "main": [
+        [
+          {
+            "node": "CriarAds?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CriarAds?": {
+      "main": [
+        [
+          {
+            "node": "RegistraAds",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CriarUsuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IdentificaExpert": {
+      "main": [
+        [
+          {
+            "node": "VemDoTrafego?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgregaDados": {
+      "main": [
+        [
+          {
+            "node": "DadosAgragados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizacao": {
+      "main": [
+        [
+          {
+            "node": "MensagemHumano?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consumidor": {
+      "main": [
+        [
+          {
+            "node": "ComandoExcluir?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VerificaBloqueio": {
+      "main": [
+        [
+          {
+            "node": "ConversaBloqueada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConversaBloqueada?": {
+      "main": [
+        [
+          {
+            "node": "VerificaTexto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "🚫Fim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DadosAgragados": {
+      "main": [
+        [
+          {
+            "node": "EnviaBuffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ResetaDadosMemory": {
+      "main": [
+        [
+          {
+            "node": "LimpaDadosAudios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ResetaDadosBanco": {
+      "main": [
+        []
+      ]
+    },
+    "ComandoExcluir?": {
+      "main": [
+        [
+          {
+            "node": "ResetaDadosMemory",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ResetaDadosBanco",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LimpaDadosAudios": {
+      "main": [
+        [
+          {
+            "node": "ResetaDadosMemory1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ResetaDadosMemory1": {
+      "main": [
+        [
+          {
+            "node": "ResetaDadosMSG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LiberaAtendimento": {
+      "main": [
+        [
+          {
+            "node": "BuscaUsuer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VerificaTexto": {
+      "main": [
+        [
+          {
+            "node": "LiberaAtendimento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "VerificaLiberação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AtendimentoLiberado?": {
+      "main": [
+        [
+          {
+            "node": "BuscaUsuer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "VerificaLiberação": {
+      "main": [
+        [
+          {
+            "node": "AtendimentoLiberado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatUser?": {
+      "main": [
+        [
+          {
+            "node": "IdentificaExpert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Avançar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgregaDadosRD": {
+      "main": [
+        [
+          {
+            "node": "RegitraRD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-03T00:31:10.779Z",
+  "id": "HhGWcWYzcPIeVHNu",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "2️⃣ Processos Queue Buffer",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# Fluxo: Processos Buffer\n\nEste fluxo tem como objetivo principal receber dados de mensagens (provavelmente de uma plataforma de chat como WhatsApp via EvoCloud), processá-los, normalizá-los, interagir com um banco de dados para buscar ou criar registros de usuários e anúncios, gerenciar o bloqueio de conversas para evitar loops ou interações indesejadas, e por fim, encaminhar os dados processados para outro fluxo.\n\n## 0. Entrada de Dados e Enfileiramento Inicial\n\n*   **Node:** EvoCloud\n    *   **Descrição:** Recebe dados via webhook de uma fonte externa (presumivelmente a plataforma EvoCloud) quando um evento ocorre, como o recebimento de uma nova mensagem.\n*   **Node:** EnviaConsumidor\n    *   **Descrição:** Envia os dados recebidos pelo webhook para uma fila do RabbitMQ chamada 'teste'. Isso desacopla o recebimento da mensagem do seu processamento.\n    *   **Observação:** A Sticky Note \"Configurar nome da fila do Rabbit\" (Sticky Note1) está associada a este passo, indicando que o nome da fila 'teste' é configurável.\n*   **Node:** NoOp.\n    *   **Descrição:** Nó de operação nula, usado aqui provavelmente para indicar o fim bem-sucedido do envio para a fila, sem realizar nenhuma ação adicional nesta ramificação.\n\n## 1. Consumo e Normalização dos Dados da Mensagem\n\nEsta seção é delimitada pela Sticky Note \"FLUXO DE NORMALIZAÇÃO\" (Sticky Note6) e pelas notas numéricas (#0, #1).\n\n*   **Node:** Consumidor\n    *   **Descrição:** Escuta e consome mensagens da fila 'teste' do RabbitMQ. Quando uma nova mensagem chega à fila, este nó a captura e inicia o processamento subsequente. O reconhecimento da mensagem (acknowledge) ocorre apenas se o fluxo for executado com sucesso.\n    *   **Observação:** A Sticky Note \"Configurar nome da fila do Rabbit\" (Sticky Note4) reforça a necessidade de configuração do nome da fila.\n*   **Node:** Normalizacao\n    *   **Descrição:** Reestrutura e padroniza os dados recebidos do nó 'Consumidor'. Extrai e organiza informações cruciais da mensagem, tais como:\n        *   ID da mensagem, ID do chat.\n        *   Tipo de conteúdo (texto, áudio, imagem) e o próprio conteúdo.\n        *   Timestamp da mensagem.\n        *   URL do conteúdo (para mídias).\n        *   Evento da mensagem (se é 'incoming' - recebida do usuário, ou 'outcoming' - enviada pelo sistema/IA).\n        *   Detalhes da instância da EvoCloud (nome, apikey, URL do servidor).\n        *   Informações de anúncios (ads), se presentes (ID do anúncio, origem, tipo de mídia, URL, fonte).\n        *   Dados do usuário (telefone formatado, nome, sessionId único, e o primeiro nome do influencer extraído do nome da instância).\n    *   **Observação:** A Sticky Note \"DOCUMENTAÇÃO\" (Sticky Note5) detalha que o campo `dados.influencer` é extraído do primeiro nome da instância na Evolution e que `message.event` é usado para identificar se a mensagem é de um humano ou IA para controle de atendimento.\n\n## 2. Controle de Fluxo e Bloqueio de Conversa\n\nEsta seção é delimitada pelas notas numéricas (#1, #3).\n\n*   **Node:** MensagemHumano?\n    *   **Descrição:** Avalia o campo `message.event` (normalizado anteriormente).\n        *   Se a mensagem for 'outcoming' (enviada pelo sistema/IA), o fluxo é direcionado para `BlockConversa`.\n        *   Se a mensagem for 'incoming' (enviada pelo usuário), o fluxo é direcionado para `VerificaBloqueio`.\n*   **Node:** BlockConversa\n    *   **Descrição:** Registra no Redis uma chave (composta pelo `sessionId` da conversa e o sufixo `_block`) com o valor \"true\". Isso serve para marcar a conversa como \"atendida\" ou \"bloqueada\" temporariamente, provavelmente para evitar que a IA responda a si mesma ou entre em loop.\n*   **Node:** VerificaBloqueio\n    *   **Descrição:** Consulta o Redis para verificar se existe uma chave de bloqueio (`sessionId_block`) para a conversa atual.\n*   **Node:** ConversaBloqueada?\n    *   **Descrição:** Decide o próximo passo com base no resultado da consulta ao Redis.\n        *   Se a chave de bloqueio não existir (resultado vazio, indicando que a conversa pode prosseguir), o fluxo segue para `BuscaUsuer`.\n        *   Se a chave de bloqueio existir com valor \"true\" (conversa bloqueada), o fluxo é encerrado no nó `🚫Fim`.\n*   **Node:** 🚫Fim\n    *   **Descrição:** Nó de operação nula que serve como ponto de parada do fluxo caso a conversa esteja bloqueada.\n\n## 3. Processamento de Usuário e Anúncios\n\nEsta seção é delimitada pelas notas numéricas (#4, #5, #6).\n\n*   **Node:** BuscaUsuer\n    *   **Descrição:** Busca um usuário na tabela 'leads' do banco de dados Supabase, utilizando o número de telefone extraído e normalizado da mensagem. Tenta novamente em caso de falha.\n*   **Node:** CriarUsuario?\n    *   **Descrição:** Verifica se a busca anterior no nó `BuscaUsuer` retornou algum resultado.\n        *   Se nenhum usuário foi encontrado (resultado vazio), o fluxo segue para `IdentificaExpert` (para eventualmente criar o usuário).\n        *   Se um usuário foi encontrado, o fluxo segue para o nó `Avançar`.\n*   **Node:** Avançar\n    *   **Descrição:** Nó de operação nula, indica que o usuário já existe e o fluxo pode prosseguir para a agregação de dados sem criar um novo usuário.\n*   **Node:** IdentificaExpert\n    *   **Descrição:** Executa uma consulta SQL no banco de dados Postgres para buscar informações do 'influencer' (expert) relacionado à mensagem, usando o nome do influencer normalizado.\n*   **Node:** VemDoTrafego?\n    *   **Descrição:** Verifica se a mensagem original continha informações de tráfego pago (anúncios), baseado na existência do campo `ads.fonte` (normalizado anteriormente).\n        *   Se houver dados de tráfego (`ads.fonte` existe), o fluxo segue para `BuscaAds`.\n        *   Caso contrário (não veio de tráfego), o fluxo segue diretamente para `CriarUsuario`.\n*   **Node:** BuscaAds\n    *   **Descrição:** Busca na tabela 'anuncio_ads' do Supabase se já existe um registro para o ID do anúncio (`ads.anuncio_id`) extraído da mensagem. Tenta novamente em caso de falha.\n*   **Node:** CriarAds?\n    *   **Descrição:** Verifica se a busca anterior no nó `BuscaAds` retornou algum resultado.\n        *   Se nenhum anúncio foi encontrado (resultado vazio), o fluxo segue para `RegistraAds`.\n        *   Se o anúncio já existir, o fluxo segue diretamente para `CriarUsuario`.\n*   **Node:** RegistraAds\n    *   **Descrição:** Insere um novo registro na tabela 'anuncio_ads' do Supabase com os detalhes do anúncio (ID do anúncio, ID do influencer, plataforma, tipo de mídia, URL).\n*   **Node:** CriarUsuario\n    *   **Descrição:** Insere um novo registro de usuário na tabela 'leads' do Supabase. Os dados inseridos incluem nome, data de criação, número de telefone, estágio no funil de vendas (definido como '1'), ID do influencer, sessionId e ID do anúncio (se aplicável). Este nó é configurado para executar apenas uma vez, mesmo que receba múltiplos itens.\n\n## 4. Agregação Final e Envio para Outro Fluxo\n\nEsta seção é delimitada pela nota numérica (#7).\n\n*   **Node:** AgregaDados\n    *   **Descrição:** Mescla os dados provenientes de diferentes ramificações do fluxo. Recebe dados da criação/identificação do usuário e do processamento de anúncios.\n*   **Node:** DadosAgragados\n    *   **Descrição:** Utiliza um nó de Código (JavaScript) para mesclar os dados normalizados pelo nó 'Normalizacao' com os dados que chegam a este ponto do fluxo (que podem incluir informações do usuário e do anúncio do banco de dados). Isso garante que o payload final contenha um conjunto completo de informações.\n*   **Node:** EnviaBuffer\n    *   **Descrição:** Executa um outro fluxo n8n (identificado como 'buffer'), passando os dados completamente agregados e processados como entrada para esse novo fluxo.\n\n## Notas Gerais e Observações\n\n*   **Sticky Notes Numéricas (#0 a #7):** Parecem ser marcadores visuais para organizar e numerar as etapas do fluxo no canvas do n8n, ajudando na sua compreensão visual.\n*   **Manuseio de Dados de Anúncios:** O fluxo possui uma lógica específica para identificar se a mensagem é originada de um anúncio e, em caso afirmativo, registrar ou buscar informações desse anúncio.\n*   **Interação com Múltiplos Bancos:** O fluxo utiliza Supabase (provavelmente Postgres) para armazenar leads e anúncios, e também um nó Postgres direto para identificar o \"expert\".\n*   **Uso de Redis:** O Redis é empregado para um mecanismo de controle de conversas, prevenindo processamento repetido ou indesejado para mensagens do sistema.",
+        "height": 2740,
+        "width": 1220,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -500,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "9ff2df80-1bfe-4561-81a6-f0317cd19ad2",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "sessionId",
+              "keyValue": "={{ $('Normalizacao').item.json.dados.sessionId }}"
+            }
+          ]
+        }
+      },
+      "id": "996aaff8-8549-44c2-a419-590cd239c437",
+      "name": "BuscaUsuer",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        1000
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Normalizacao').item.json.dados.nome }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now.toISO() }}"
+            },
+            {
+              "fieldId": "numero_telefone",
+              "fieldValue": "={{ $('Normalizacao').item.json.dados.telefone_usuario }}"
+            },
+            {
+              "fieldId": "sales_funnel_stage_id",
+              "fieldValue": "1"
+            },
+            {
+              "fieldId": "influencer_account_id",
+              "fieldValue": "={{ $('IdentificaExpert').item.json.id }}"
+            },
+            {
+              "fieldId": "sessionId",
+              "fieldValue": "={{ $('Normalizacao').item.json.dados.sessionId }}"
+            },
+            {
+              "fieldId": "ad_id",
+              "fieldValue": "={{ $('Normalizacao').item.json.ads.anuncio_id }}"
+            }
+          ]
+        }
+      },
+      "id": "1b3d50ec-a45d-4299-bb71-7225ad26d7bc",
+      "name": "CriarUsuario",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1000
+      ],
+      "executeOnce": true,
+      "notesInFlow": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "720ec61b-946a-4c8a-b434-fb0b4c62e387",
+              "leftValue": "={{ $('Normalizacao').item.json.ads.fonte }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3220,
+        980
+      ],
+      "id": "3ef3f8fe-da27-43c5-bd57-f8b6e5f31add",
+      "name": "VemDoTrafego?"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.event }}",
+                    "rightValue": "outcoming",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "dedff56d-cb99-468f-b755-f0bbe66fe4a5"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "outcoming"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "d7b42536-638f-4128-b51b-6aa913e9d9bc",
+                    "leftValue": "={{ $json.message.event }}",
+                    "rightValue": "incoming",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "incoming"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d2c34002-f186-404e-8bcc-29a48d5b99da",
+      "name": "MensagemHumano?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1420,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "tableId": "anuncio_ads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ad_id",
+              "fieldValue": "={{ $('Normalizacao').item.json.ads.anuncio_id }}"
+            },
+            {
+              "fieldId": "influencer_id",
+              "fieldValue": "={{ $('IdentificaExpert').item.json.id }}"
+            },
+            {
+              "fieldId": "plataforma_anuncio",
+              "fieldValue": "={{ $('Normalizacao').item.json.ads.origem }}"
+            },
+            {
+              "fieldId": "midia_type",
+              "fieldValue": "={{ $('Normalizacao').item.json.ads.tipo_arquivo }}"
+            },
+            {
+              "fieldId": "url_anuncio",
+              "fieldValue": "={{ $('Normalizacao').item.json.ads.url_anuncio }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3740,
+        860
+      ],
+      "id": "b9de469c-39d8-4704-b203-112f015c5654",
+      "name": "RegistraAds",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        1260
+      ],
+      "id": "3a74b49a-2db2-46e0-a8a6-7379ef7ee260",
+      "name": "Avançar"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "anuncio_ads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "ad_id",
+              "keyValue": "={{ $('Normalizacao').item.json.ads.anuncio_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        860
+      ],
+      "id": "6db9c075-3533-4c51-ab08-0801a2907967",
+      "name": "BuscaAds",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb1b4e6d-a744-4ad3-b5ac-4b4846f858fa",
+              "leftValue": "={{ $json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "0d0fd5a6-558f-4316-ab9d-82635bd6f8b5",
+              "leftValue": "={{ $('Normalizacao').item.json.ads.anuncio_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3540,
+        860
+      ],
+      "id": "9891c389-0611-478c-8303-d896b3d4a1c8",
+      "name": "CriarAds?"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM influencers\nWHERE nome ILIKE '%{{ $('Normalizacao').item.json.dados.influencer }}%';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3040,
+        980
+      ],
+      "id": "ad337ca3-3194-4ca8-a5a5-14b81b86724d",
+      "name": "IdentificaExpert",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "58ca6128-2944-4873-bc12-1fad7987aaa6",
+      "name": "AgregaDados",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4100,
+        1240
+      ],
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f16b1bf-1a3e-4029-8d7a-1bccb919ee43",
+              "name": "message.message_id",
+              "value": "={{ $('Consumidor').item.json.body.data.key.id || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "11800d83-ecca-4f9c-a878-a2419db0c8e9",
+              "name": "message.chat_id",
+              "value": "={{ $('Consumidor').item.json.body.data.key.remoteJid || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "c33f9527-e661-49e5-8e5e-64f3b430928a",
+              "name": "message.content_type",
+              "value": "={{ $('Consumidor').item.json.body.data.message.extendedTextMessage ? 'text' : '' }}{{ $('Consumidor').item.json.body.data.message.conversation ? 'text' : '' }}{{ $('Consumidor').item.json.body.data.message.audioMessage ? 'audio' : '' }}{{ $('Consumidor').item.json.body.data.message.imageMessage ? 'image' : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "06eba1c9-cff0-4f68-b6da-6bb0092466b7",
+              "name": "message.content",
+              "value": "={{ $('Consumidor').item.json.body.data.message.extendedTextMessage?.text || '' }}{{ $('Consumidor').item.json.body.data.message.imageMessage?.caption || '' }}{{ $('Consumidor').item.json.body.data.message.conversation || '' }}{{  $('Consumidor').item.json.body.data.message.ephemeralMessage?.message?.extendedTextMessage?.text || ''}}\n",
+              "type": "string"
+            },
+            {
+              "id": "b97f1af3-5361-46fc-9303-d644921231d8",
+              "name": "message.timestamp",
+              "value": "={{ $('Consumidor').item.json.body.data.messageTimestamp.toDateTime('s').toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "dc3dc59c-90a3-4a45-bea2-de092c91083b",
+              "name": "message.content_url",
+              "value": "={{ $('Consumidor').item.json.body.data.message.audioMessage?.url || '' }}{{ $('Consumidor').item.json.body.data.message.imageMessage?.url || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "8b01a818-a456-476e-bace-adefe2f04eb4",
+              "name": "message.event",
+              "value": "={{ $('Consumidor').item.json.body.data.key.fromMe ? 'outcoming' : 'incoming' }}",
+              "type": "string"
+            },
+            {
+              "id": "b2f1f6b5-292f-4695-9e41-be200c6d7053",
+              "name": "instance.name",
+              "value": "={{ $('Consumidor').item.json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "572fcce5-8a26-4e8f-a48a-ef0bee569dcd",
+              "name": "instance.apikey",
+              "value": "={{ $('Consumidor').item.json.body.apikey }}",
+              "type": "string"
+            },
+            {
+              "id": "e90043db-657b-461c-b040-2d6089abfbdb",
+              "name": "instance.server_url",
+              "value": "={{ $('Consumidor').item.json.body.server_url }}",
+              "type": "string"
+            },
+            {
+              "id": "662d1533-60c2-45b9-8ec8-2bb4a75d02e0",
+              "name": "ads.anuncio_id",
+              "value": "={{ $('Consumidor').item.json.body.data.contextInfo.externalAdReply.sourceId || null }}",
+              "type": "string"
+            },
+            {
+              "id": "5a396188-ca62-445f-8d36-8178c7a51595",
+              "name": "ads.origem",
+              "value": "={{ $('Consumidor').item.json.body.data.contextInfo.entryPointConversionApp || null }}",
+              "type": "string"
+            },
+            {
+              "id": "52b66c72-71d6-4594-bbc6-1418553dc03d",
+              "name": "ads.tipo_arquivo",
+              "value": "={{ $('Consumidor').item.json.body.data.contextInfo.externalAdReply.mediaType || null }}",
+              "type": "string"
+            },
+            {
+              "id": "bceb9d18-6b58-4176-a6a9-20b586fd65b1",
+              "name": "ads.url_anuncio",
+              "value": "={{ $('Consumidor').item.json.body.data.contextInfo.externalAdReply.mediaUrl || null }}",
+              "type": "string"
+            },
+            {
+              "id": "c3c66308-df8f-4157-910f-b36c5a68648d",
+              "name": "ads.fonte",
+              "value": "={{ $('Consumidor').item.json.body.data.contextInfo.conversionSource || $json.body.data.contextInfo.externalAdReply.sourceType || null }}",
+              "type": "string"
+            },
+            {
+              "id": "cedfa145-dc75-4104-a344-c0e4141413be",
+              "name": "dados.telefone_usuario",
+              "value": "={{ $('Consumidor').item.json.body.data.key.remoteJid.replace(/\\D/g, '') }}",
+              "type": "string"
+            },
+            {
+              "id": "ca338446-7943-421c-87b4-c15bb3afecae",
+              "name": "dados.nome",
+              "value": "={{ $('Consumidor').item.json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "f272f52c-99dc-411a-b20d-e2cdc67eee7f",
+              "name": "dados.sessionId",
+              "value": "={{ $('Consumidor').item.json.body.data.key.remoteJid }}@{{ $('Consumidor').item.json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "351924f9-7935-49b1-b8fb-8a30ba214c9b",
+              "name": "dados.influencer",
+              "value": "={{ $('Consumidor').item.json.body.instance.replace(/_.*/, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a4831cb-9a77-4e71-8331-2850021bae2b",
+      "name": "Normalizacao",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "teste",
+        "options": {
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": true,
+          "onlyContent": true
+        }
+      },
+      "id": "9e83abbf-4f1c-42fb-b9fe-226904abfda1",
+      "name": "Consumidor",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        840,
+        1220
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "FUtNv1kFTrj08Qcr",
+          "name": "RabbitMQ peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# FLUXO DE NORMALIZAÇÃO",
+        "height": 720,
+        "width": 3800,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        820,
+        820
+      ],
+      "typeVersion": 1,
+      "id": "4f3905a5-4c01-46f2-b8c6-de1e01530acf",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 580,
+        "width": 1440,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2620,
+        820
+      ],
+      "typeVersion": 1,
+      "id": "e21224b0-5af5-440f-8985-a9ed60abbe3c",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "# 2",
+        "height": 620,
+        "width": 640,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1220,
+        920
+      ],
+      "typeVersion": 1,
+      "id": "3e8518ec-8365-47ce-b565-86acba0e7cc9",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "# 4",
+        "height": 220,
+        "width": 560,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4060,
+        1200
+      ],
+      "typeVersion": 1,
+      "id": "731b7088-dcd7-4449-98f6-ab7e86d44457",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "# 1",
+        "height": 400,
+        "width": 390,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        820,
+        1080
+      ],
+      "typeVersion": 1,
+      "id": "8461240e-bf26-4327-b185-d2816cc51734",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "={{ $json.dados.sessionId }}_block",
+        "options": {}
+      },
+      "id": "c412e6c7-bd70-4753-8c56-f0141453c1b5",
+      "name": "VerificaBloqueio",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        1320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "1ed604d9-599b-453c-9667-f0d243ebd80b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "avançar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "3ef0e01c-cc14-4663-bb4d-2905b350c3ab",
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "parar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "892aeb4f-c08c-4337-a41e-ffd6032521ac",
+      "name": "ConversaBloqueada?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1880,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $json.dados.sessionId }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "f06f1da2-f255-44f0-b53f-3100823cef6b",
+      "name": "BlockConversa",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        1140
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        1400
+      ],
+      "id": "96443c85-b0d2-4cf1-8ce3-0ab12a5e8905",
+      "name": "🚫Fim"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Captura o JSON gerado pelo nó \"Normalizacao\"\nconst dadosNormalizacao = $node[\"Normalizacao\"].json;\n\n// Captura o JSON que entrou neste nó (ou seja, o input original)\nconst dadosEntrada = $input.item.json;\n\n// Mescla os dois objetos (se houver chaves iguais, os valores de dadosNormalizacao sobrescrevem)\n// Assim, \"todosDados\" vai conter TUDO do input original + tudo que vier de \"Normalizacao\"\nconst todosDados = {\n  ...dadosEntrada,\n  ...dadosNormalizacao,\n};\n\n// Retorna um item cujo JSON é esse objeto mesclado\nreturn { json: todosDados };\n"
+      },
+      "id": "1bde363d-b446-48df-8df7-be458461f579",
+      "name": "DadosAgragados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4260,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ijswlSTMPDJfi4gD",
+          "mode": "list",
+          "cachedResultName": "buffer"
+        },
+        "options": {}
+      },
+      "id": "44da8d83-fd3a-4157-91e6-7cba001fbee0",
+      "name": "EnviaBuffer",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        4440,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n# 2",
+        "height": 240,
+        "width": 420,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1860,
+        1300
+      ],
+      "typeVersion": 1,
+      "id": "74f5188a-3d65-459a-b94c-09bc13b4c1f2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.body.server_url }}/message/sendText/{{ $json.body.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $json.body.apikey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.body.data.key.remoteJid }}"
+            },
+            {
+              "name": "text",
+              "value": "=🔄 Dados resetados com sucesso! \n\n🧠Pode testar novamente — tudo foi zerado e está pronto pra um novo teste"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0a8177b-9b43-45d5-9b07-110e8136881a",
+      "name": "ResetaDadosMSG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1380,
+        1800
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $json.body.data.key.remoteJid }}@{{ $json.body.instance }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        880,
+        1640
+      ],
+      "id": "1fcebdc9-d101-4f5d-a5b3-61487305e05d",
+      "name": "ResetaDadosMemory",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero_telefone",
+              "condition": "eq",
+              "keyValue": "={{ $json.body.data.key.remoteJid.replace(/\\D/g, '') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        880,
+        1800
+      ],
+      "id": "d5b4d24b-c2e1-4a49-ad09-31cd6bfab0e7",
+      "name": "ResetaDadosBanco",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## RESET PARA TESTES",
+        "height": 360,
+        "width": 680
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        1580
+      ],
+      "typeVersion": 1,
+      "id": "3632b395-7755-4a46-99c5-fbd22303a8c9",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2c667bd0-d524-41d9-b0fe-a325134783c7",
+              "leftValue": "={{ $json.body.data.message.conversation }}",
+              "rightValue": "//excluir//",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1020,
+        1220
+      ],
+      "id": "254af988-dc5b-4d08-99ae-2bee0e1474d7",
+      "name": "ComandoExcluir?"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $json.body.data.key.remoteJid }}@{{ $json.body.instance }}_block_audio"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1640
+      ],
+      "id": "f8f59ef4-02f2-46d4-961a-2ce0b8272575",
+      "name": "LimpaDadosAudios",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $json.body.data.key.remoteJid }}@{{ $json.body.instance }}_block"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        1640
+      ],
+      "id": "09f41623-e273-467c-bd6a-67615d0631c8",
+      "name": "ResetaDadosMemory1",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=liberados:{{ $('Consumidor').item.json.body.data.key.remoteJid }}_ok",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "7f5afe63-8ac1-49f5-aaa4-b70dede45515",
+      "name": "LiberaAtendimento",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        1000
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8347a5d2-1c02-4680-9944-d3d5a273dc7d",
+              "leftValue": "={{ $('Consumidor').item.json.body.data.message.extendedTextMessage?.text || '' }}{{ $('Consumidor').item.json.body.data.message.imageMessage?.caption || '' }}{{ $('Consumidor').item.json.body.data.message.conversation || '' }}{{  $('Consumidor').item.json.body.data.message.ephemeralMessage?.message?.extendedTextMessage?.text || ''}}",
+              "rightValue": "tenho interesse",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "8790b32b-d869-4ce0-b87d-cb8c75210102",
+              "leftValue": "={{ $('Consumidor').item.json.body.data.message.extendedTextMessage?.text || '' }}{{ $('Consumidor').item.json.body.data.message.imageMessage?.caption || '' }}{{ $('Consumidor').item.json.body.data.message.conversation || '' }}{{  $('Consumidor').item.json.body.data.message.ephemeralMessage?.message?.extendedTextMessage?.text || ''}}",
+              "rightValue": "Tenho interesse",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2040,
+        1100
+      ],
+      "id": "3850fa7a-452c-40ec-bf7e-ab631e8beb07",
+      "name": "VerificaTexto"
+    },
+    {
+      "parameters": {
+        "content": "## Aqui vai verificar condicionalmente se pode ou nao passar para o buffer\n",
+        "height": 460,
+        "width": 580,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1980,
+        860
+      ],
+      "typeVersion": 1,
+      "id": "f9f2b9ea-744b-4959-93ee-6da4f05d5817",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b5b3d2cb-67c2-4363-8770-fa3a4a0c926b",
+              "leftValue": "={{ $json.block }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2420,
+        1180
+      ],
+      "id": "8ea8c153-eaa2-4393-9454-8d4ceb1b12ef",
+      "name": "AtendimentoLiberado?"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "=liberados:{{ $('Consumidor').item.json.body.data.key.remoteJid }}_ok",
+        "options": {}
+      },
+      "id": "01fae719-6615-4630-afd2-66e1005bdccf",
+      "name": "VerificaLiberação",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        1180
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        1580
+      ],
+      "id": "7b1262c6-0fcb-4bab-bca0-e85cfc0ad3e0",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4a0a94b5-6685-4cdc-bc33-c16e58a28f95",
+              "leftValue": "={{ $json }}",
+              "rightValue": "pending",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ad59b26f-05e9-4da0-925c-38e30284e394",
+      "name": "CreatUser?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2840,
+        1000
+      ],
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Yl5CuwqjYHUJJM2k",
+          "mode": "list",
+          "cachedResultName": "GerirUserRD"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        4260,
+        1000
+      ],
+      "id": "7956aa0a-bba1-4389-87ef-6c54bbf54893",
+      "name": "RegitraRD"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// 1. Captura o JSON do node \"criar usuário\"\nconst dadosCriarUsuario = $input.item.json;\n\n// 2. Pega só o campo 'nome' do node \"IdentificaExpert\"\nconst nomeExpert = $node[\"IdentificaExpert\"].json.nome;\n\n// 3. Mescla tudo num único objeto:\n//    – todos os campos de 'dadosCriarUsuario'\n//    – adiciona uma nova propriedade 'nomeExpert' com o valor capturado\nconst todosDados = {\n  ...dadosCriarUsuario,\n  nomeExpert\n};\n\n// 4. Retorna o item com o JSON mesclado\nreturn { json: todosDados };\n"
+      },
+      "id": "96cd221b-cc05-4a60-8377-422f93391e9e",
+      "name": "AgregaDadosRD",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4100,
+        1000
+      ]
+    }
+  ],
+  "pinData": {
+    "Consumidor": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.7.5",
+            "content-length": "1123",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "5.161.61.123",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "5.161.61.123"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "Giga_teste",
+            "data": {
+              "key": {
+                "remoteJid": "554799830536@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0E09E1F67BE8901E8D6"
+              },
+              "pushName": "Gabriel A. Zavatini",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "QebvEDL6HsQSBQ==",
+                    "senderTimestamp": "1750767876",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "Du2TuS28SDMa+g==",
+                    "recipientTimestamp": "1750999987"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "6jiMAPW5jz0f2uMDv7igvJdW3EoUQruEJ/758m9op0M="
+                },
+                "conversation": "//excluir//"
+              },
+              "contextInfo": {
+                "expiration": 7776000,
+                "ephemeralSettingTimestamp": "1750392108",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "ACCOUNT_SETTING",
+                  "initiatedByMe": true
+                }
+              },
+              "messageType": "extendedTextMessage",
+              "messageTimestamp": 1751000319,
+              "instanceId": "5c823bb6-daff-4c99-8fcf-91b810d11253",
+              "source": "web"
+            },
+            "destination": "https://webhook.peak.botfai.com.br/webhook/webhook-teste1212",
+            "date_time": "2025-06-27T01:58:39.208Z",
+            "sender": "554789294457@s.whatsapp.net",
+            "server_url": "https://wsapi.peak.botfai.com.br",
+            "apikey": "6BD92F00B3E2-4BA5-B2BE-DB79174258ED"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/webhook-teste1212",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-17T10:35:43.379Z",
+  "versionId": "d6d67488-bd53-4a0c-8343-eec1f5ae3bd1"
+}
