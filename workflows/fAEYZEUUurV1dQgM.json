@@ -1,0 +1,686 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "busca dados e atualiza no bd",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Masculino": {
+      "main": [
+        [
+          {
+            "node": "converte audio 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "envia audio - chatwoot": {
+      "main": [
+        [
+          {
+            "node": "insrir infos do audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "envia audio - chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "converte audio 1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "converte audio 2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "concatena audios": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca audio para concatenar": {
+      "main": [
+        [
+          {
+            "node": "converte audio 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica genero": {
+      "main": [
+        [
+          {
+            "node": "Gera audio - Masculino",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "busca audio para concatenar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca audio para concatenar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gera audio - Feminino",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca audio para concatenar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gera audio - Masculino",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Feminino": {
+      "main": [
+        [
+          {
+            "node": "converte audio 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "concatena audios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados e atualiza no bd": {
+      "main": [
+        [
+          {
+            "node": "seguir prox. etapa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "verifica genero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados e atualiza no bd1": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-19T15:27:00.570Z",
+  "id": "fAEYZEUUurV1dQgM",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "1. Identificação_tenente",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -900,
+        300
+      ],
+      "id": "2cee3218-a726-448c-a1a6-2ae14b0f1e0c",
+      "name": "Workflow Input Trigger",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $json.elevenlabs.id_voz_expert }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $json.elevenlabs.apkikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"Então {{ $('normalizacao').item.json.usuario[\"nome\"] }}....\",\n\"voice_settings\": {\n    \"stability\": 0.2,\n    \"similarity_boost\": 1.0,\n    \"style\": 0.04,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "5c6fcf75-4bbc-48dc-af60-29ac1007a4ba",
+      "name": "Gera audio - Masculino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1460,
+        -80
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('normalizacao').first().json.dados.session_id }}",
+        "messageData": "={\"type\":\"ai\",\"data\":{\"content\":\"<audio>E eu me sinto lisonjeado de você estar querendo fazer parte do Team Gorila, mas pra prosseguir, me fala  um pouco do seu objetivo, por favor</audio>\",\"tool_calls\":[],\"invalid_tool_calls\":[],\"additional_kwargs\":{},\"response_metadata\":{}}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        100
+      ],
+      "id": "a1d78f11-4225-42ef-a25b-73bf7767463e",
+      "name": "insrir infos do audio",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').first().json.chat.url }}/api/v1/accounts/{{ $('normalizacao').first().json.dados.account_influencer_id }}/conversations/{{ $('normalizacao').first().json.dados.conversation_Id }}/messages ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').first().json.chat.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2360,
+        100
+      ],
+      "id": "f10ac5e5-bb87-4d65-bbf9-256c298cbc93",
+      "name": "envia audio - chatwoot",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "binary.data.data",
+        "options": {
+          "fileName": "audio-concatenado"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2180,
+        100
+      ],
+      "id": "3d9d461e-cc72-4fc6-b0ad-4b52a1a71b11",
+      "name": "Convert to File",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data1';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;\n"
+      },
+      "id": "c2917ac9-8bac-465b-8507-df7e109decbe",
+      "name": "converte audio 1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1660,
+        0
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Nova extensão do arquivo\nconst newExtension = 'mpga';\n\n// Atualiza a extensão do arquivo\nitems[0].binary[binaryPropertyName].fileExtension = newExtension;\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data2';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;"
+      },
+      "id": "d3959ab0-01e0-4362-a1cc-f7abdaff61ee",
+      "name": "converte audio 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1660,
+        240
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName1 = 'data';\nconst binaryPropertyName2 = 'data';\n\n// Verifica se há pelo menos dois itens\nif (items.length < 2) {\n    throw new Error('Esperado pelo menos dois itens com arquivos binários.');\n}\n\n// Obtém os dados binários do primeiro e do segundo item\nconst audio1 = items[0].binary[binaryPropertyName1].data;\nconst audio2 = items[1].binary[binaryPropertyName2].data;\n\n// Concatena os dados binários\nconst concatenatedBuffer = Buffer.concat([\n    Buffer.from(audio1, 'base64'),\n    Buffer.from(audio2, 'base64')\n]);\n\n// Define o nome do arquivo concatenado\nconst newName = 'concatenated_audio.mp3';\n\n// Retorna o novo arquivo binário concatenado\nreturn {\n    binary: {\n        data: {\n            data: concatenatedBuffer.toString('base64'),\n            fileName: newName,\n            mimeType: 'audio/mpeg'\n        }\n    }\n};"
+      },
+      "id": "b1ca00ca-d510-4256-a662-fd08d970a670",
+      "name": "concatena audios",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        100
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "={{ $('normalizacao').item.json.s3.file_key }}"
+      },
+      "id": "84c0622e-a601-4a47-8e84-8540c9a58ca9",
+      "name": "busca audio para concatenar",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.usuario.genero }}",
+                    "rightValue": "=masculino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "fb521ef0-a030-4eb3-bc4f-5960651666bf"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Masculino"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "20dadd11-389f-422a-a826-a7a2b18919af",
+                    "leftValue": "={{ $json.usuario.genero }}",
+                    "rightValue": "=feminino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Feminino"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1180,
+        80
+      ],
+      "id": "952d9ad1-967b-494f-a252-c1fcfffa7e93",
+      "name": "verifica genero",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $json.elevenlabs.id_voz_expert }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $json.elevenlabs.apkikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"Então {{ $('normalizacao').item.json.usuario[\"nome\"] }}....\",\n\"voice_settings\": {\n    \"stability\": 0.2,\n    \"similarity_boost\": 1.0,\n    \"style\": 0.04,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "6f68e3f6-b685-48a4-ac2b-cfe9a79fa568",
+      "name": "Gera audio - Feminino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1460,
+        80
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1840,
+        100
+      ],
+      "id": "01752d30-7123-4d10-89c2-6ec6bc333d86",
+      "name": "Merge",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH upsert_lead AS (\n  INSERT INTO public.leads (\n    contact_id,\n    nome,\n    idade,\n    genero,\n    influencer_account_id,\n    sales_funnel_stage_id\n  )\n  VALUES (\n    {{ $json.chatwoot.contact_id }},\n    '{{ $json.query.name }}',\n    {{ $json.query.age }},\n    '{{ $json.query.gender }}',\n    {{ $json.account_id }},\n    2\n  )\n  ON CONFLICT (contact_id) DO UPDATE SET\n    nome                  = EXCLUDED.nome,\n    idade                 = EXCLUDED.idade,\n    genero                = EXCLUDED.genero,\n    influencer_account_id = EXCLUDED.influencer_account_id,\n    sales_funnel_stage_id = EXCLUDED.sales_funnel_stage_id\n  RETURNING *\n)\nSELECT\n  json_build_object(\n    'lead',          row_to_json(ul),\n    'expert_voices', (\n      SELECT coalesce(json_agg(row_to_json(ev)), '[]')\n      FROM public.expert_voices ev\n      WHERE ev.expert_id   = {{ $json.account_id }}\n        AND ev.etapa_audio = 2\n    )\n  ) AS result\nFROM upsert_lead ul;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -700,
+        300
+      ],
+      "id": "b87b792d-298d-4c49-a9c1-1a72a33a77e8",
+      "name": "busca dados e atualiza no bd",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de1fa37d-7f28-466b-8b6e-f74de87e69d7",
+              "name": "usuario.nome",
+              "value": "={{ $json.result.lead.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "7154e449-4cb5-4e98-b164-42f8c466808c",
+              "name": "usuario.idade",
+              "value": "={{ $json.result.lead.idade }}",
+              "type": "string"
+            },
+            {
+              "id": "f2db491c-2831-4253-bedd-31cee0248185",
+              "name": "dados.session_id",
+              "value": "={{ $json.result.lead.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "cd8263d9-9816-4a7b-aac3-ff82a02beaa4",
+              "name": "dados.account_influencer_id",
+              "value": "={{ $json.result.lead.influencer_account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "039c6aab-f06f-4e4c-8b23-2f1a7775ffff",
+              "name": "dados.conversation_Id",
+              "value": "={{ $json.result.lead.conversationId }}",
+              "type": "string"
+            },
+            {
+              "id": "509713a9-8802-4a68-a1e9-c704d526de30",
+              "name": "dados.contact_id",
+              "value": "={{ $json.result.lead.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "67b0689e-1657-4e7f-b3d8-fc1e330bfa27",
+              "name": "chat.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "19ac11e7-db5f-4c8d-9c55-fe2e5b76ccca",
+              "name": "chat.apikey",
+              "value": "ULkuNbNYpcctAj4LEcXLWUYq",
+              "type": "string"
+            },
+            {
+              "id": "17a4d83d-04de-4193-8aa7-6a489077dfd6",
+              "name": "usuario.genero",
+              "value": "={{ $json.result.lead.genero }}",
+              "type": "string"
+            },
+            {
+              "id": "33db70dc-83da-44f5-af48-8635ba481ecf",
+              "name": "elevenlabs.id_voz_expert",
+              "value": "={{ $json.result.expert_voices[0].id_voice }}",
+              "type": "string"
+            },
+            {
+              "id": "6a5f7ee1-2ea7-45e9-b35a-3c85574a8abb",
+              "name": "elevenlabs.apkikey",
+              "value": "sk_8035202574f3eb1a9c24a4cba0404a8365220767f3f2a6c3",
+              "type": "string"
+            },
+            {
+              "id": "9b822179-5aab-43e2-82f2-5aa38f532e23",
+              "name": "s3.file_key",
+              "value": "={{ $json.result.expert_voices[0].file_key_s3 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1000,
+        80
+      ],
+      "id": "d7b4963a-496c-4c58-813d-bd90dd876f61",
+      "name": "normalizacao",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "874423ee-6281-4792-97d4-2f0185fe60a6",
+              "name": "etapa",
+              "value": "etapa 1 finalizada, seguir para etapa 2",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -500,
+        300
+      ],
+      "id": "3300ab43-9cf0-4713-a22c-edfabf08fa96",
+      "name": "seguir prox. etapa"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH upsert_lead AS (\n  INSERT INTO public.leads (\n    contact_id,\n    nome,\n    idade,\n    genero,\n    influencer_account_id,\n    sales_funnel_stage_id\n  )\n  VALUES (\n    {{ $json.chatwoot.contact_id }},\n    '{{ $json.query.name }}',\n    {{ $json.query.age }},\n    '{{ $json.query.gender }}',\n    {{ $json.account_id }},\n    2\n  )\n  ON CONFLICT (contact_id) DO UPDATE SET\n    nome                  = EXCLUDED.nome,\n    idade                 = EXCLUDED.idade,\n    genero                = EXCLUDED.genero,\n    influencer_account_id = EXCLUDED.influencer_account_id,\n    sales_funnel_stage_id = EXCLUDED.sales_funnel_stage_id\n  RETURNING *\n)\nSELECT\n  json_build_object(\n    'lead',          row_to_json(ul),\n    'expert_voices', (\n      SELECT coalesce(json_agg(row_to_json(ev)), '[]')\n      FROM public.expert_voices ev\n      WHERE ev.expert_id   = {{ $json.account_id }}\n        AND ev.etapa_audio = 2\n    )\n  ) AS result\nFROM upsert_lead ul;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        820,
+        80
+      ],
+      "id": "7149adc6-98af-44e4-91e7-88b1e58b8fae",
+      "name": "busca dados e atualiza no bd1",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Workflow Input Trigger": [
+      {
+        "json": {
+          "query": {
+            "name": "gabriel",
+            "age": 30,
+            "gender": "masculino"
+          },
+          "session_id": "90d3c2b5-ea7d-4ca9-8987-c1b83385b7e6",
+          "account_id": "29",
+          "conversation_id": "8460",
+          "chatwoot": {
+            "contact_id": "195591"
+          },
+          "id_voz": "990OUN1FyPoM6E41S4sv"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-19T15:27:00.570Z",
+  "versionId": "5f243d79-0329-4dac-bdbc-fa18c86f8032"
+}
