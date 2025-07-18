@@ -1,0 +1,623 @@
+{
+  "active": false,
+  "connections": {
+    "envia audio - chatwoot": {
+      "main": [
+        []
+      ]
+    },
+    "busca audio para concatenar": {
+      "main": [
+        [
+          {
+            "node": "envia audio - chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "busca audio para concatenar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Block Chat Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados e atualiza no bd1": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "busca audio para concatenar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca audio para concatenar1": {
+      "main": [
+        [
+          {
+            "node": "Formata o Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encaminha Audio": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata o Audio": {
+      "main": [
+        [
+          {
+            "node": "Encaminha Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "Get Block Chat Id": {
+      "main": [
+        [
+          {
+            "node": "Switch Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Block": {
+      "main": [
+        [
+          {
+            "node": "Block AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "Block AI": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-05-15T07:21:05.554Z",
+  "id": "BcwN0E7uU6KWmg1O",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "2.send_audio_explication",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').first().json.chat.url }}/api/v1/accounts/{{ $('normalizacao').first().json.dados.account_influencer_id }}/conversations/{{ $('normalizacao').first().json.dados.conversation_Id }}/messages ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').first().json.chat.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -740,
+        -280
+      ],
+      "id": "384f4396-c0af-4bc3-a84d-9b5563129cef",
+      "name": "envia audio - chatwoot",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "audio-brandao-explicandoconsul.mp3"
+      },
+      "id": "620ee3b2-b934-44dd-91cd-289828fe5450",
+      "name": "busca audio para concatenar",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        -280
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f2db491c-2831-4253-bedd-31cee0248185",
+              "name": "dados.session_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "cd8263d9-9816-4a7b-aac3-ff82a02beaa4",
+              "name": "dados.account_influencer_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "039c6aab-f06f-4e4c-8b23-2f1a7775ffff",
+              "name": "dados.conversation_Id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "509713a9-8802-4a68-a1e9-c704d526de30",
+              "name": "dados.contact_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.chatwoot.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "67b0689e-1657-4e7f-b3d8-fc1e330bfa27",
+              "name": "chat.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "19ac11e7-db5f-4c8d-9c55-fe2e5b76ccca",
+              "name": "chat.apikey",
+              "value": "ULkuNbNYpcctAj4LEcXLWUYq",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1180,
+        -280
+      ],
+      "id": "5e83480e-6a25-4b77-bbac-7245a7accbea",
+      "name": "normalizacao",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2400,
+        180
+      ],
+      "id": "6b6a1921-5a0a-46d9-80dd-0ac63d3ee80a",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH updated_lead AS (\n  UPDATE public.leads\n  SET    sales_funnel_stage_id = 3\n  WHERE  contact_id = {{ $json.chatwoot.contact_id }}\n  RETURNING *\n)\nSELECT\n  row_to_json(ul) AS lead\nFROM updated_lead ul;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1380,
+        -280
+      ],
+      "id": "08a87b8e-7b0f-4a44-9e68-ae3aa48e1123",
+      "name": "busca dados e atualiza no bd1",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0d45799e-e7fc-42c4-91b6-a437ca9515be",
+              "name": "content",
+              "value": "agora faça esse conclusao: [nome], posso contar com teu comprometimento, para aguardarmos a resposta do usuario ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -860,
+        180
+      ],
+      "id": "d40ce402-737e-4b2c-8ce2-a097a1263a60",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1060,
+        180
+      ],
+      "id": "7f77128f-0adc-4375-9910-5567199fda19",
+      "name": "Wait",
+      "webhookId": "d7a6111e-fb8a-4fdc-9c35-2e3f0b686620"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1800,
+        180
+      ],
+      "id": "0b991853-6ec0-47f5-9472-58cd552b7804",
+      "name": "Wait1",
+      "webhookId": "cea79799-9ab1-44c0-a975-d427cee84332"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "audio-brandao-explicandoconsul.mp3"
+      },
+      "id": "41a7c840-a041-4ed4-bfd3-38b81230dc54",
+      "name": "busca audio para concatenar1",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        180
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('When Executed by Another Workflow').first().json.url }}/message/sendWhatsAppAudio/{{ $('When Executed by Another Workflow').first().json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('When Executed by Another Workflow').first().json.remojid }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1240,
+        180
+      ],
+      "id": "830dcb09-aebf-4a61-a363-038762c50b78",
+      "name": "Encaminha Audio"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        180
+      ],
+      "id": "c2d1384f-0612-4979-9139-c8e0f9bf2f70",
+      "name": "Formata o Audio"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "={{ $json.remojid }}_block_audio",
+        "options": {}
+      },
+      "id": "dc036031-8c17-4a5d-a370-1a5a0bef898a",
+      "name": "Get Block Chat Id",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2200,
+        180
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA PODE RESPONDER"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "3ef0e01c-cc14-4663-bb4d-2905b350c3ab",
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA NAO PODE RESPONDER"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c8c4c00-60a5-490e-911c-110d5adad4d2",
+      "name": "Switch Block",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -2020,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('When Executed by Another Workflow').item.json.remojid }}_block_audio",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "0df2757a-2f9c-472f-a7f7-08d7f6a79a70",
+      "name": "Block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1800,
+        0
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e81df8b4-df96-4c16-aa3c-a919e295beda",
+              "name": "content",
+              "value": "acionar tool solicitacao_fotos",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1840,
+        400
+      ],
+      "id": "a95922df-299e-4cb1-84d8-bd92169d1359",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "554799830536@s.whatsapp.net_block_audio"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        400
+      ],
+      "id": "70ef53cb-050a-4d8b-b596-553a2f5ad090",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": "Áudio explicativo da consultoria",
+          "remojid": "554799830536@s.whatsapp.net",
+          "api": "880B9B1A7576-4A18-92BE-E37480559050",
+          "url": "https://wsapi.peak.botfai.com.br",
+          "instance": "teste_01"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-28T00:24:05.761Z",
+  "versionId": "36a9ae9b-9fbe-4c25-a3dd-929d9c95fd61"
+}
