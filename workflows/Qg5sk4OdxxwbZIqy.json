@@ -1,0 +1,1106 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normaliza dados recebidos1": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Gera audio - Masculino",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "S33",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gera audio - Feminino",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "S33",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gera audio - Masculino",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "S33",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Feminino": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Masculino": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S33": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Envia Audio1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Audio1": {
+      "main": [
+        [
+          {
+            "node": "insrir infos do audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T13:02:48.463Z",
+  "id": "Qg5sk4OdxxwbZIqy",
+  "meta": null,
+  "name": "_____2__KAIROS__2CT___audio_inicial",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "af93fb2d-d0d6-4e45-9e4b-f37f27e8d941",
+        "responseMode": "lastNode",
+        "responseData": "noData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        140,
+        0
+      ],
+      "id": "20adee0d-e6ff-4830-91f5-b5a334ef8c64",
+      "name": "Webhook",
+      "webhookId": "af93fb2d-d0d6-4e45-9e4b-f37f27e8d941",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f7f791d-f8d6-4093-9f0a-93def6ab3678",
+              "name": "usuario.numero_contato",
+              "value": "={{ $json.body.sessionId.split('@')[0] }}",
+              "type": "number"
+            },
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "630d1c93-9e26-41af-aa83-96f8286686c2",
+              "name": "usuario.objetivo",
+              "value": "={{ $json.body.objetivo }}",
+              "type": "string"
+            },
+            {
+              "id": "8b74e090-907a-4834-b17b-5c39e5646db9",
+              "name": "nome",
+              "value": "={{ $json.firstName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        420
+      ],
+      "id": "da8b9804-a3f0-430f-a733-a440ab674d4a",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "gorila_dados_users",
+          "mode": "list",
+          "cachedResultName": "gorila_dados_users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $json.usuario.numero_contato }}",
+            "objetivo": "={{ $json.usuario.objetivo }}",
+            "etapa_ia": "3coleta_fotos"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        560,
+        180
+      ],
+      "id": "81da472a-d309-42ab-b00e-fccf0625cf5e",
+      "name": "inserir infos no bd",
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -440,
+        420
+      ],
+      "id": "7c34bc26-5298-4cbd-a3d2-48c276af8855",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f7f791d-f8d6-4093-9f0a-93def6ab3678",
+              "name": "usuario.numero_contato",
+              "value": "={{ $('Postgres').item.json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "b42505e4-073b-48af-864b-3e21d467f4cb",
+              "name": "usuario.idade",
+              "value": "={{ $('Postgres').item.json.idade }}",
+              "type": "string"
+            },
+            {
+              "id": "86cd376e-8386-493a-9ac4-421f4f289382",
+              "name": "usuario.nome",
+              "value": "={{ $('normaliza dados recebidos').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $('normaliza dados recebidos').item.json.redis.sessionID }}",
+              "type": "string"
+            },
+            {
+              "id": "ba3de88a-db1c-4710-b17a-619a1ae84f01",
+              "name": "genero",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "459bf444-8f77-481b-8b2d-605b85adc6fc",
+              "name": "url-evolution",
+              "value": "https://wsapi.peak.botfai.com.br",
+              "type": "string"
+            },
+            {
+              "id": "0fdbb25a-1a89-4bdf-be92-7fa89bd11b44",
+              "name": "apikey-evolution",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "1877cb4a-38a6-45b8-a0d7-1ed06016e94e",
+              "name": "instancia",
+              "value": "Gorila_4157",
+              "type": "string"
+            },
+            {
+              "id": "e28a7807-1c0c-4fd3-a367-cede62be963a",
+              "name": "apikey-eleven-labs",
+              "value": "sk_8035202574f3eb1a9c24a4cba0404a8365220767f3f2a6c3",
+              "type": "string"
+            },
+            {
+              "id": "4fdcf053-74b4-4592-ad42-ec48cb508ef7",
+              "name": "id-voz-gorila",
+              "value": "990OUN1FyPoM6E41S4sv",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        420
+      ],
+      "id": "2a4cb893-aeb8-4f95-819e-4705a957fdc4",
+      "name": "normaliza dados recebidos1"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $json.usuario.numero_contato }}",
+            "genero": "={{ $('OpenAI').item.json.message.content }}"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "genero",
+              "displayName": "genero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1260,
+        240
+      ],
+      "id": "da080a13-f187-4571-aa7b-649fe29a0e1c",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('normaliza dados recebidos1').item.json['id-voz-gorila'] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('normaliza dados recebidos1').item.json['apikey-eleven-labs'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"..então\",\n\"voice_settings\": {\n    \"stability\": 0.4,\n    \"similarity_boost\": 0.9,\n    \"style\": 0.6,\n    \"use_speaker_boost\": false\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "eccde9b4-8dc4-4b1b-a7aa-0c4e7eadefd8",
+      "name": "Gera audio - Feminino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1720,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('normaliza dados recebidos1').item.json['id-voz-gorila'] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('normaliza dados recebidos1').item.json['apikey-eleven-labs'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \" Então, {{ $('normaliza dados recebidos1').item.json.usuario.nome }} ...\",\n\"voice_settings\": {\n    \"stability\": 0.4,\n    \"similarity_boost\": 1.0,\n    \"style\": 0.6,\n    \"use_speaker_boost\": false\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "06ccb938-8085-454e-9608-8d6d9cb87fd5",
+      "name": "Gera audio - Masculino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1720,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.genero }}",
+                    "rightValue": "Masculino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Masculino"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "20dadd11-389f-422a-a826-a7a2b18919af",
+                    "leftValue": "={{ $json.genero }}",
+                    "rightValue": "Feminino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Feminino"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1400,
+        420
+      ],
+      "id": "d8577c66-bbd8-4e65-ae2e-57a6489edebd",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=voce deve definir se o nome = {{ $json.nome }}\né masculino ou feminino. \n\nRespondendo apenas com \nMasculino/Feminino/Indefinido \n\nE NADA MAIS ",
+              "role": "assistant"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        780,
+        420
+      ],
+      "id": "b6db2a0a-57fb-49ad-86a0-6cb8fbafe109",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2200,
+        480
+      ],
+      "id": "f3bb0c24-fb5d-4eaa-8648-573dea0bf295",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "bucketName": "botfai-codefai",
+        "fileKey": "0423.MP3"
+      },
+      "id": "bc921471-b526-4106-b974-a44f73f4bed1",
+      "name": "S33",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        640
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Qf1fEVOZkjSjJlhh",
+          "name": "Backblaze-Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "USAR O BASE64\n\nOU\n\nSALVE O AUDIO EM UM STORAGE PARA OBTER O LINK\n\n",
+        "height": 336.2781232901988
+      },
+      "id": "baf413ae-8c2f-4b0b-bdd9-9e6c82756213",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "content": "AUDIO PARA CONCATENAR",
+        "height": 336.2781232901988
+      },
+      "id": "4a06f3f9-6864-4b12-8181-44d71f6419aa",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Alterar ID DO AUDIO ELEVENLABS\nAPI\nTEXTO PARA GERAR O AUDIO",
+        "height": 696,
+        "width": 250
+      },
+      "id": "640521df-190f-4d68-9da3-5857d88c784a",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Nova extensão do arquivo\nconst newExtension = 'mpga';\n\n// Atualiza a extensão do arquivo\nitems[0].binary[binaryPropertyName].fileExtension = newExtension;\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data2';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;"
+      },
+      "id": "f7d63c10-4eac-48ff-9d39-3b70e63da189",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data1';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;\n"
+      },
+      "id": "4b950cdb-7296-4e78-8fba-6d729fcf565e",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1960,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName1 = 'data';\nconst binaryPropertyName2 = 'data';\n\n// Verifica se há pelo menos dois itens\nif (items.length < 2) {\n    throw new Error('Esperado pelo menos dois itens com arquivos binários.');\n}\n\n// Obtém os dados binários do primeiro e do segundo item\nconst audio1 = items[0].binary[binaryPropertyName1].data;\nconst audio2 = items[1].binary[binaryPropertyName2].data;\n\n// Concatena os dados binários\nconst concatenatedBuffer = Buffer.concat([\n    Buffer.from(audio1, 'base64'),\n    Buffer.from(audio2, 'base64')\n]);\n\n// Define o nome do arquivo concatenado\nconst newName = 'concatenated_audio.mp3';\n\n// Retorna o novo arquivo binário concatenado\nreturn {\n    binary: {\n        data: {\n            data: concatenatedBuffer.toString('base64'),\n            fileName: newName,\n            mimeType: 'audio/mpeg'\n        }\n    }\n};"
+      },
+      "id": "4a4adb5f-1ed9-48f8-9544-8ceacfd15fc4",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $json.numero_somente }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        540,
+        420
+      ],
+      "id": "7cc7b75c-d533-4a22-a410-a04613a602a2",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos1').first().json['url-evolution'] }}/message/sendWhatsAppAudio/{{ $('normaliza dados recebidos1').first().json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos1').first().json['apikey-evolution'] }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normaliza dados recebidos1').first().json.usuario.numero_contato }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.binary.data.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 8000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce83716e-551c-4b4a-b5d7-727580815df4",
+      "name": "Envia Audio1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2540,
+        480
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('normaliza dados recebidos1').first().json.redis.sessionID }}",
+        "messageData": "={\"type\":\"ai\",\"data\":{\"content\":\"<audio>E eu me sinto lisonjeado de você estar querendo fazer parte do Team Gorila, mas pra prosseguir, me fala  um pouco do seu objetivo, por favor<audio>\",\"tool_calls\":[],\"invalid_tool_calls\":[],\"additional_kwargs\":{},\"response_metadata\":{}}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2700,
+        480
+      ],
+      "id": "fb414360-b22a-4daa-9a9b-e651bf10a1cb",
+      "name": "insrir infos do audio",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém todos os items de entrada\nconst items = $input.all();\n\n// Processa cada item para extrair só o número antes do \"@\"\nconst output = items.map(item => {\n  // Acessa o sessionID dentro de redis\n  const sessionId = item.json.redis?.sessionID;       // ex: \"5517992749450@s.whatsapp.net\"\n  // Se não existir, mantém como vazio\n  const numero = sessionId ? sessionId.split('@')[0] : '';\n\n  return {\n    json: {\n      ...item.json,\n      numero_somente: numero                            // adiciona o campo com o número puro\n    }\n  };\n});\n\n// Retorna o array de items com o novo campo \"numero_somente\"\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        420
+      ],
+      "id": "d6e69136-aee2-4ef0-b77e-e9b1d0d52464",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega todos os itens atuais do fluxo\nconst items = $input.all();\n\nconst output = items.map(item => {\n  // Obtém o nome completo (string) ou vazio se não existir\n  const fullName = item.json.query?.name || '';\n  // Separa por espaços e pega o primeiro elemento\n  const firstName = fullName.split(' ')[0];\n  \n  return {\n    json: {\n      ...item.json,\n      firstName // adiciona um novo campo com apenas o primeiro nome\n    }\n  };\n});\n\n// Retorna o array de itens com o campo firstName\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        420
+      ],
+      "id": "70e1c77e-8cf3-4c6d-bfe5-345f9514daa6",
+      "name": "Code4"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.botfai.com.br",
+            "user-agent": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
+            "content-length": "94",
+            "accept": "*/*",
+            "accept-encoding": "gzip,deflate",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "45272b4d5a84",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sessionId": "554799830536@s.whatsapp.net",
+            "objetivo": "crescer mais com treinos e hormônios"
+          },
+          "webhookUrl": "https://webhook.botfai.com.br/webhook/af93fb2d-d0d6-4e45-9e4b-f37f27e8d941",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": {
+            "name": "monica Ribeiro costa"
+          },
+          "session_id": "5517992749450@s.whatsapp.net"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-28T10:40:37.746Z",
+  "versionId": "b490bc46-88fe-4611-80ff-a0f1f58119d6"
+}
