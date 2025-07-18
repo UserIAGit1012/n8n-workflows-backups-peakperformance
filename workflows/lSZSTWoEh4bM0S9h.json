@@ -1,0 +1,78 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Criar contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-20T11:40:39.743Z",
+  "id": "lSZSTWoEh4bM0S9h",
+  "meta": null,
+  "name": "RD- Station Criar lead",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3ac565f8-27cf-4a77-bcb8-bf81dbda0808",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://crm.rdstation.com/api/v1/deals",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "6855494397aa21001414450f"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"deal\": {\n    \"deal_stage_id\": \"6841f78109d5c6001ba2295e\",\n    \"name\": \"Enzo- Consultoria giga\"\n  },\n  \"contacts\": [\n    {\n      \"name\": \"Enzo-teste2\",\n      \"phones\": [\n        {\n          \"phone\": \"5517992749450\",\n          \"type\": \"cellphone\"\n        }\n      ]\n    }\n  ],\n  \"deal_products\": [\n    {\n      \"description\": \"Consultoria Giga\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        0
+      ],
+      "id": "6c89bedd-052b-4558-a7b3-ce72ffa895cc",
+      "name": "Criar contato"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-20T16:33:02.016Z",
+  "versionId": "c2564ac0-5695-46f5-9973-d26cda5beb2e"
+}
