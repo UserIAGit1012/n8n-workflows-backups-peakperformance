@@ -1,0 +1,1811 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "msg rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "proximo rmkt2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S3": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "concatena os audios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - expert1": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verfi. qtadade rmkt2": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoo ()",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ultimo contato +24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica chave de repeticao2": {
+      "main": [
+        [
+          {
+            "node": "verfi. qtadade rmkt2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "primeira normalizacao2": {
+      "main": [
+        [
+          {
+            "node": "verifica chave de repeticao2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RMKT - link-enviado": {
+      "main": [
+        [
+          {
+            "node": "busca tags no chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (#fup-pagamento-3)": {
+      "main": [
+        [
+          {
+            "node": "adc +1 rmk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (#fup-pagamento-1)": {
+      "main": [
+        [
+          {
+            "node": "aguarda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (#fup-pagamento-2)": {
+      "main": [
+        [
+          {
+            "node": "aguarda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca tags finais": {
+      "main": [
+        [
+          {
+            "node": "verifica tag +24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "loop tags finais": {
+      "main": [
+        [],
+        [
+          {
+            "node": "dados normalizado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dados normalizado": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot (link-expirado)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica 2o rmkt +12h": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "verifica 3o rmkt +24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica 3o rmkt +24h": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca dados do usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados do usuario": {
+      "main": [
+        [
+          {
+            "node": "expert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "expert": {
+      "main": [
+        [
+          {
+            "node": "verifica 3 rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica 3 rmkt": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca tags no chatwoot": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "primeira normalizacao2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "concatena os audios": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "envia audio - chatwoot": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot (#fup-pagamento-3)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "envia audio - chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificar o fup": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot (#fup-pagamento-1)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ajustas tag chatwoot (#fup-pagamento-2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (link-expirado)": {
+      "main": [
+        [
+          {
+            "node": "loop tags finais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "adc +1 rmk": {
+      "main": [
+        [
+          {
+            "node": "proximo rmkt2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aguarda": {
+      "main": [
+        [
+          {
+            "node": "adc +1 rmk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica tag +24h": {
+      "main": [
+        [
+          {
+            "node": "loop tags finais",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "ajustas tag chatwoo ()": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aguarda1": {
+      "main": [
+        [
+          {
+            "node": "verificar o fup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg rmkt": {
+      "main": [
+        [
+          {
+            "node": "aguarda1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Gera audio - expert1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "S3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RMKT - verifica tag follow-up-pagamento-3": {
+      "main": [
+        [
+          {
+            "node": "busca tags finais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ultimo contato +24h": {
+      "main": [
+        [
+          {
+            "node": "verifica 2o rmkt +12h",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-24T13:26:47.267Z",
+  "id": "Yqiy6AjkZIrKy8mD",
+  "meta": null,
+  "name": "🔁🔗[3] RMKT | QUENTE | #link-enviado",
+  "nodes": [
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é um assistente de marketing que cria mensagens de reengajamento personalizadas para usuários que receberam um link de pagamento mas ainda não confirmaram o pagamento.\n\nEntrada:\n- Influencer: {{ $json.expert }}\n- Quantidade de remarketing: {{ $json.contador_rmkt }}\n- Nome do usuário: {{ $('busca dados do usuario').item.json.name }}\n- Gênero do usuário: {{ $('busca dados do usuario').item.json.custom_attributes.genero }}\n(valores possíveis: \"M\" ou \"F\")\n\nRegras:\n\nSe contador_rmkt == 1 , use: \"Ei [nome], só verificando se conseguiu acessar o link de pagamento que te enviei. Alguma dificuldade com o processo?\"\n\nSe contador_rmkt == 2 ), use: \"[Nome], só lembrando que o link de pagamento tem validade de [horas_validade] horas. Após esse período, precisarei gerar um novo e as condições podem ser diferentes. Alguma dúvida para finalizarmos hoje?\"\n\n– Adapte os pronomes conforme o gênero:\n\nMasculino (“M”): “conseguiu acessar”, “dificuldade com o processo?”, etc.\n\nFeminino (“F”): “conseguiu acessar”, “dificuldade com o processo?”, etc. (frases já estão neutras, mas ajuste caso precise personalizar ainda mais)\n\n– Responda apenas com a mensagem final.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "13d73f23-5cb0-4c02-afb1-81f3c286de25",
+      "name": "OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        -240,
+        740
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        780
+      ],
+      "id": "1d011b83-675e-4e64-a489-167c2d80d0ce",
+      "name": "proximo rmkt2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data0';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;\n"
+      },
+      "id": "a348c171-89cc-4e38-b879-c725ee5f64c4",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        180,
+        0
+      ],
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "bucketName": "botfai-codefai",
+        "fileKey": "={{ $json.nome_arquivo }}"
+      },
+      "id": "e1d4b83d-20ce-43c8-b9ec-5c9f441ccd5a",
+      "name": "S3",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        0,
+        180
+      ],
+      "credentials": {
+        "s3": {
+          "id": "Qf1fEVOZkjSjJlhh",
+          "name": "Backblaze-Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Nova extensão do arquivo\nconst newExtension = 'mpga';\n\n// Atualiza a extensão do arquivo\nitems[0].binary[binaryPropertyName].fileExtension = newExtension;\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data1';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;"
+      },
+      "id": "9a1db158-1695-4894-8019-4063a3c4e744",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        180,
+        180
+      ],
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        360,
+        80
+      ],
+      "id": "c6b69999-6ba0-4f37-a650-d08ebf506a78",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $json.id_voice }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "=sk_037698b583f1a0a07d33dd84b1e353aa93cd0ced13923322"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"Oi {{ $('busca dados do usuario').item.json.name }}\",\n\"voice_settings\": {\n    \"stability\": 1.0,\n    \"similarity_boost\": 0.23,\n    \"style\": 1.0,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "37cddb98-9a28-4ca1-90bf-bce3ae107ee9",
+      "name": "Gera audio - expert1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a3de925b-f2cd-4dc0-8de3-0fe7a18ee4de",
+              "leftValue": "={{ ($json.rep && $json.rep.toNumber() !== 0) ? $json.rep.toNumber() : 1 }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a998da10-bf03-4f72-8105-ee67d628314b",
+      "name": "verfi. qtadade rmkt2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=rep",
+        "key": "=rmkt:rmkt-link-enviado-quente:{{ $json.chatwoot.conversation_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1480,
+        100
+      ],
+      "id": "a9e3f281-e657-446e-8e11-8fdd13296096",
+      "name": "verifica chave de repeticao2",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "44fb55f7-f826-43e7-a852-e172b4424719",
+              "name": "chatwoot.conversation_id",
+              "value": "={{ $json.display_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7b780b0f-a284-4c98-8584-e8cf770a2119",
+              "name": "chatwoot.contact_id",
+              "value": "={{ $json.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7399a9cc-0c3e-4933-93de-d7b319bdbf7f",
+              "name": "chatwoot.tags",
+              "value": "={{ $json.cached_label_list }}",
+              "type": "string"
+            },
+            {
+              "id": "3874327b-7ef4-4a2a-bfe7-b1a85311d419",
+              "name": "chatwoot.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "e9db23b6-edec-4a32-b307-75e41cd656ab",
+              "name": "chatwoot.api",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1",
+              "type": "string"
+            },
+            {
+              "id": "da400608-12b0-4108-9ead-734f5ce9680d",
+              "name": "chatwoot.account_id",
+              "value": "={{ $json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a650336e-85f5-4691-ab6d-fc81ecdcb6ca",
+              "name": "dados.ultima_atividade",
+              "value": "={{ $json.last_activity_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a81b0a33-60e2-446a-9efe-967c876942a6",
+              "name": "chatwoot.labels",
+              "value": "={{ \n  $json.cached_label_list\n    .split(',')\n    .map(label => `\"${label.trim()}\"`)\n    .join(', ')\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1660,
+        100
+      ],
+      "id": "058df634-3016-4663-bb66-02592df404a6",
+      "name": "primeira normalizacao2"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                2,
+                4,
+                3,
+                1,
+                5,
+                6
+              ],
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "aa4d0a05-2877-4f4d-9537-a6e5c6cf9082",
+      "name": "RMKT - link-enviado",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2340,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [{{ $('primeira normalizacao2').first().json.chatwoot.labels }},\"follow-up-pagamento-3\", \"rmkt-quente\"\n]\n} ",
+        "options": {}
+      },
+      "id": "0f602342-a95b-43a7-8457-f31b39550c60",
+      "name": "ajustas tag chatwoot (#fup-pagamento-3)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [{{ $('primeira normalizacao2').item.json.chatwoot.labels }},\"follow-up-pagamento-1\", \"rmkt-quente\"\n]\n} ",
+        "options": {}
+      },
+      "id": "974ef9c8-fc38-41db-8a5e-e4eb7bf83429",
+      "name": "ajustas tag chatwoot (#fup-pagamento-1)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [{{ $('primeira normalizacao2').item.json.chatwoot.labels }},\"follow-up-pagamento-2\", \"rmkt-quente\"\n]\n} ",
+        "options": {}
+      },
+      "id": "46526f33-a970-4095-8960-994ced930a5a",
+      "name": "ajustas tag chatwoot (#fup-pagamento-2)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM conversations\nWHERE cached_label_list LIKE '%teste%'\nAND cached_label_list NOT LIKE '%rmkt-pausado%'\nLIMIT 3;\n",
+        "options": {}
+      },
+      "id": "69b13844-8c60-435b-a7b1-707396af42dc",
+      "name": "TESTES",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -2140,
+        -240
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# TESTES\n",
+        "height": 260,
+        "width": 400,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2140,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "5b467668-d646-4be9-82e1-ef5bb36f98a3",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "rmkt:rmkt-link-enviado-quente:8454"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1940,
+        -240
+      ],
+      "id": "56e23122-2a2f-4fe3-9146-4b3cb52e6035",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "empresas_sc",
+          "mode": "list",
+          "cachedResultName": "empresas_sc"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "ddd_telefone_1",
+              "value": "554788084688"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1840,
+        -240
+      ],
+      "id": "5935e337-838a-4e86-b30e-a94e93b5d1cd",
+      "name": "Postgres",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "rmkt:rmkt-frio:8454",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2040,
+        -240
+      ],
+      "id": "3bc46c3f-2a09-4790-906a-013421c5f12c",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM conversations\nWHERE cached_label_list LIKE '%follow-up-pagamento-3%'\n",
+        "options": {}
+      },
+      "id": "1e0987f6-7c6d-4587-b6c0-3192682c76f7",
+      "name": "busca tags finais",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -2140,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "cicjfix16kiWOkLl",
+          "name": "db-chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 10,
+        "options": {}
+      },
+      "id": "f81d369e-5ec2-4aa3-9ed4-35fbb25b39ee",
+      "name": "loop tags finais",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1700,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "44fb55f7-f826-43e7-a852-e172b4424719",
+              "name": "chatwoot.conversation_id",
+              "value": "={{ $json.display_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7b780b0f-a284-4c98-8584-e8cf770a2119",
+              "name": "chatwoot.contact_id",
+              "value": "={{ $json.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7399a9cc-0c3e-4933-93de-d7b319bdbf7f",
+              "name": "chatwoot.tags",
+              "value": "={{ $json.cached_label_list }}",
+              "type": "string"
+            },
+            {
+              "id": "3874327b-7ef4-4a2a-bfe7-b1a85311d419",
+              "name": "chatwoot.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "e9db23b6-edec-4a32-b307-75e41cd656ab",
+              "name": "chatwoot.api",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1",
+              "type": "string"
+            },
+            {
+              "id": "da400608-12b0-4108-9ead-734f5ce9680d",
+              "name": "chatwoot.account_id",
+              "value": "={{ $json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a650336e-85f5-4691-ab6d-fc81ecdcb6ca",
+              "name": "dados.ultima_atividade",
+              "value": "={{ $json.last_activity_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a81b0a33-60e2-446a-9efe-967c876942a6",
+              "name": "chatwoot.labels",
+              "value": "={{ \n  $json.cached_label_list\n    .split(',')\n    .map(label => `\"${label.trim()}\"`)\n    .join(', ')\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1440,
+        1060
+      ],
+      "id": "d9371385-c4b4-474a-a561-6327ef22288f",
+      "name": "dados normalizado"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "549e1167-b611-43c1-8f15-4a4d71c31ceb",
+              "leftValue": "={{    (     Date.now()      - new Date($node[\"primeira normalizacao2\"].json.dados.ultima_atividade).getTime()   ) < 12 * 60 * 60 * 1000  }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "fdecafbd-0ddd-4319-b5f0-923d02204336",
+              "leftValue": "={{ $json.rep }}",
+              "rightValue": "2",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        440
+      ],
+      "id": "eb4ff69e-a446-4506-acc8-5244d19a6a71",
+      "name": "verifica 2o rmkt +12h"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "549e1167-b611-43c1-8f15-4a4d71c31ceb",
+              "leftValue": "={{    (     Date.now()      - new Date($node[\"primeira normalizacao2\"].json.dados.ultima_atividade).getTime()   ) < 24 * 60 * 60 * 1000  }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "173d7927-66e1-4507-894c-a44a988abc9f",
+              "leftValue": "={{ $json.rep }}",
+              "rightValue": "3",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        600
+      ],
+      "id": "e623c344-aa34-42a4-9014-6ce7c8b133af",
+      "name": "verifica 3o rmkt +24h"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "contacts",
+          "mode": "list",
+          "cachedResultName": "contacts"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $('primeira normalizacao2').item.json.chatwoot.contact_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -960,
+        620
+      ],
+      "id": "c1829891-4609-4ae0-9a0a-73747c8c5f88",
+      "name": "busca dados do usuario",
+      "credentials": {
+        "postgres": {
+          "id": "cicjfix16kiWOkLl",
+          "name": "db-chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b3f93e7d-4750-451e-b7e3-41cae9571365",
+              "name": "expert.nome",
+              "value": "={{    ({     29: 'conta_teste',     27: 'Vitor Porto',     26: 'Bianchi',     25: 'Karen',     24: 'Pantera',     23: 'Vitor Chaves',     22: 'Edvan',     21: 'Isa',     20: 'Basa',     19: 'Horse',     18: 'Lala',     17: 'Rafael Brandão',     16: 'Johann',     15: 'Zanca',     14: 'Jú Caceres',     13: 'Francielle Mattos',     12: 'Tenente Breno',     11: 'Lucas Pinheiro',     10: 'Pinduca',     9:  'Gorila',     8:  'Rude',     7:  'Gnomo',     6:  'Angela Borges',     5:  'Giga',     4:  'Jorlan',     3:  'Bruno Santos'   })[     $node[\"primeira normalizacao2\"].json.chatwoot.account_id   ] || 'Unknown' }}",
+              "type": "string"
+            },
+            {
+              "id": "3442cdcf-7825-4266-b3de-94f0d5704953",
+              "name": "contador_rmkt",
+              "value": "={{ \n  (\n    parseInt(\n      $('verifica 2o rmkt +12h').first().json.rep || '0', \n      10\n    ) + 1\n  ).toString() \n}}",
+              "type": "string"
+            },
+            {
+              "id": "bce27d37-4c5c-4316-8411-d25eeda9f2e2",
+              "name": "expert.id",
+              "value": "={{ $('primeira normalizacao2').item.json.chatwoot.account_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -760,
+        620
+      ],
+      "id": "9ab29454-342a-4ed0-81a9-9dca4fd94da6",
+      "name": "expert"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contador_rmkt }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "1270b97d-1e87-4cda-b82c-dc3ac7440a38"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "rmkt 3"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -580,
+        620
+      ],
+      "id": "26292d00-008c-4952-a7d5-4a7d0ed40406",
+      "name": "verifica 3 rmkt"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM conversations\nWHERE cached_label_list LIKE '%lead-quente%'\n  AND cached_label_list LIKE '%link-enviado%'\n  AND cached_label_list NOT LIKE '%sem-resposta%'\n  AND cached_label_list NOT LIKE '%rmkt-pausado%'\n  AND cached_label_list NOT LIKE '%follow-up-pagamento-3%';",
+        "options": {}
+      },
+      "id": "4dbdf6e4-d96a-4514-80e5-a728b1c1e24f",
+      "name": "busca tags no chatwoot",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -2120,
+        80
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "cicjfix16kiWOkLl",
+          "name": "db-chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "eee25796-6019-42b1-9dc9-a1964711c3e2",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1900,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Verifica se há pelo menos três itens\nif (items.length < 2) {\n    throw new Error('Esperado pelo menos três itens com arquivos binários.');\n}\n\n// Obtém os dados binários do primeiro, segundo e terceiro item\nconst audio1 = items[0].binary[binaryPropertyName].data;\nconst audio2 = items[1].binary[binaryPropertyName].data;\n\n// Converte cada áudio de base64 para um Buffer e os concatena\nconst concatenatedBuffer = Buffer.concat([\n    Buffer.from(audio1, 'base64'),\n    Buffer.from(audio2, 'base64')\n]);\n\n// Define o nome do arquivo concatenado\nconst newName = 'concatenated_audio.mp3';\n\n// Retorna o novo arquivo binário concatenado\nreturn {\n    binary: {\n        data: {\n            data: concatenatedBuffer.toString('base64'),\n            fileName: newName,\n            mimeType: 'audio/mpeg'\n        }\n    }\n};\n"
+      },
+      "id": "621cc111-c629-49be-8739-913f5471e975",
+      "name": "concatena os audios",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        80
+      ],
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        80
+      ],
+      "id": "a84a341a-8113-44b6-a2ab-e0074bee9671",
+      "name": "envia audio - chatwoot",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "binary.data.data",
+        "options": {
+          "fileName": "audio-concatenado"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        80
+      ],
+      "id": "d960539b-d70f-4cd0-94a0-da2e48ef0d51",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('expert').first().json.contador_rmkt }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "21f6c463-967e-4872-a6ed-ecf2eadce7a9"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "primeiro"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8a21c02d-29c7-44a4-a3b3-774603cd4359",
+                    "leftValue": "={{ $('expert').first().json.contador_rmkt }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "segundo"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        540,
+        740
+      ],
+      "id": "b0e3244f-5b7e-49fc-b522-f38ac7f399e3",
+      "name": "verificar o fup"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('dados normalizado').first().json.chatwoot.url }}/api/v1/accounts/{{ $('dados normalizado').first().json.chatwoot.account_id }}/conversations/{{ $('dados normalizado').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('dados normalizado').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [\"lead-quente\", \"iniciou-atendimento\", \"link-expirado\"\n]\n}",
+        "options": {}
+      },
+      "id": "df194412-e651-480b-a928-b5997d926b4c",
+      "name": "ajustas tag chatwoot (link-expirado)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1220,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=rmkt:rmkt-link-enviado-quente:{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}",
+        "value": "={{ \n  (parseInt(\n     $('verifica chave de repeticao2').first().json.rep || '0'\n     , 10\n  ) + 1).toString() \n}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        440
+      ],
+      "id": "7090f14d-34e4-46a2-bc74-380f7f6c9b84",
+      "name": "adc +1 rmk",
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        440
+      ],
+      "id": "09c39dcc-66c3-49a5-96dc-be3efcaa4df2",
+      "name": "aguarda",
+      "webhookId": "84c0e957-4cc1-4995-a93d-c8075fc95fe1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "549e1167-b611-43c1-8f15-4a4d71c31ceb",
+              "leftValue": "={{ \n  (Date.now() - new Date($json.last_activity_at).getTime()) > 24 * 60 * 60 * 1000 \n}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1960,
+        1060
+      ],
+      "id": "1dce45de-9ec4-4959-88bc-2245842ee429",
+      "name": "verifica tag +24h"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [\n \"lead-quente\",\n \"recebeu-valores\",\n \"rmkt-pausado\",\n \"sem-resposta\"\n]\n}",
+        "options": {}
+      },
+      "id": "45f321de-dde0-4aa8-8eff-c93f7f2106f7",
+      "name": "ajustas tag chatwoo ()",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1060,
+        80
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        740
+      ],
+      "id": "bcea268e-3363-4590-8776-591d21c9fdd5",
+      "name": "aguarda1",
+      "webhookId": "f915a275-890d-4f9f-a9ed-ccf081d71a05"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao2').item.json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao2').item.json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao2').item.json.chatwoot.conversation_id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao2').item.json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $json.message.content }}"
+            },
+            {
+              "name": "message_type",
+              "value": "outgoing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "05246eb9-8df0-4fec-b883-84b3bf33d011",
+      "name": "msg rmkt",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        740
+      ],
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Dentro do seu Function Node no n8n\nreturn items.map(item => {\n  const accountId = parseInt(item.json.expert.id, 10);\n\n  // mapeamento id → { name, id_voice, nomeArquivo }\n  const lookup = {\n    29: {\n       name: 'Giga',\n       id_voice: '0zyjX5Vx7gZMmbWryhqx',\n       nomeArquivo: 'peak audios experts/fabio iga - quente - link.mp3'\n     },\n    27: { name: 'Vitor Porto',      id_voice: 'INSIRA_ID_VOICE_27', nomeArquivo: null },\n    26: { name: 'Bianchi',          id_voice: 'INSIRA_ID_VOICE_26', nomeArquivo: null },\n    25: { name: 'Karen',            id_voice: 'INSIRA_ID_VOICE_25', nomeArquivo: null },\n    24: { name: 'Pantera',          id_voice: 'INSIRA_ID_VOICE_24', nomeArquivo: null },\n    23: { name: 'Vitor Chaves',     id_voice: 'INSIRA_ID_VOICE_23', nomeArquivo: null },\n    22: { name: 'Edvan',            id_voice: 'INSIRA_ID_VOICE_22', nomeArquivo: null },\n    21: { name: 'Isa',              id_voice: 'INSIRA_ID_VOICE_21', nomeArquivo: null },\n    20: { name: 'Basa',             id_voice: 'INSIRA_ID_VOICE_20', nomeArquivo: null },\n    19: { name: 'Horse',            id_voice: 'INSIRA_ID_VOICE_19', nomeArquivo: null },\n    18: { name: 'Lala',             id_voice: 'INSIRA_ID_VOICE_18', nomeArquivo: null },\n    17: { name: 'Rafael Brandão',   id_voice: 'INSIRA_ID_VOICE_17', nomeArquivo: null },\n    16: { name: 'Johann',           id_voice: 'INSIRA_ID_VOICE_16', nomeArquivo: null },\n    15: { name: 'Zanca',            id_voice: 'INSIRA_ID_VOICE_15', nomeArquivo: null },\n    14: { name: 'Jú Caceres',       id_voice: 'INSIRA_ID_VOICE_14', nomeArquivo: null },\n    13: { name: 'Francielle Mattos',id_voice: 'INSIRA_ID_VOICE_13', nomeArquivo: null },\n    12: { name: 'Tenente Breno',    id_voice: 'INSIRA_ID_VOICE_12', nomeArquivo: null },\n    11: { name: 'Lucas Pinheiro',   id_voice: 'INSIRA_ID_VOICE_11', nomeArquivo: null },\n    10: { name: 'Pinduca',          id_voice: 'INSIRA_ID_VOICE_10', nomeArquivo: null },\n     9: { name: 'Gorila',           id_voice: 'INSIRA_ID_VOICE_9',  nomeArquivo: null },\n     8: { name: 'Rude',             id_voice: 'INSIRA_ID_VOICE_8',  nomeArquivo: null },\n     7: { name: 'Gnomo',            id_voice: 'INSIRA_ID_VOICE_7',  nomeArquivo: null },\n     6: { name: 'Angela Borges',    id_voice: 'INSIRA_ID_VOICE_6',  nomeArquivo: null },\n     5: {\n       name: 'Giga',\n       id_voice: '0zyjX5Vx7gZMmbWryhqx',\n       nomeArquivo: 'peak audios experts/fabio giga - morno - fotos.mp3'\n     },\n     4: { name: 'Jorlan',           id_voice: 'INSIRA_ID_VOICE_4',  nomeArquivo: null },\n     3: { name: 'Bruno Santos',     id_voice: 'INSIRA_ID_VOICE_3',  nomeArquivo: null },\n  };\n\n  const info = lookup[accountId] || { name: 'Unknown', id_voice: null, nomeArquivo: null };\n\n  item.json.account_name = info.name;\n  item.json.id_voice     = info.id_voice;\n  item.json.nome_arquivo = info.nomeArquivo;\n\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        100
+      ],
+      "id": "9a653c6b-9b8c-4051-b1ab-d8c823092dab",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "c55afa50-e237-4b6a-ae65-e7cd135f8df8",
+      "name": "RMKT - verifica tag follow-up-pagamento-3",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2320,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "02bb5ee8-1456-4ddc-9cf6-9cb3ed04924e",
+              "leftValue": "={{ \n  (Date.now() \n   - new Date($node[\"primeira normalizacao2\"].json.dados.ultima_atividade).getTime()\n  ) > 4 * 60 * 60 * 1000 \n}}",
+              "rightValue": "={{ DateTime.now().setZone(\"America/Sao_Paulo\").toFormat(\"dd/MM/yyyy\") }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "75cf8c36-902d-447a-927f-bd434f43d4ad",
+      "name": "ultimo contato +24h",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        260
+      ]
+    }
+  ],
+  "pinData": {
+    "RMKT - link-enviado": [
+      {
+        "json": {
+          "timestamp": "2025-03-24T10:00:20.014-03:00",
+          "Readable date": "March 24th 2025, 10:00:20 am",
+          "Readable time": "10:00:20 am",
+          "Day of week": "Monday",
+          "Year": "2025",
+          "Month": "March",
+          "Day of month": "24",
+          "Hour": "10",
+          "Minute": "00",
+          "Second": "20",
+          "Timezone": "America/Sao_Paulo (UTC-03:00)"
+        }
+      }
+    ],
+    "TESTES": [
+      {
+        "json": {
+          "id": 11610,
+          "account_id": 1,
+          "inbox_id": 19,
+          "status": 1,
+          "assignee_id": null,
+          "created_at": "2025-03-13T00:56:10.683Z",
+          "updated_at": "2025-03-10T21:19:49.077Z",
+          "contact_id": "11059",
+          "display_id": 11610,
+          "contact_last_seen_at": "2025-03-13T15:36:00.446Z",
+          "agent_last_seen_at": "2025-03-13T21:19:49.387Z",
+          "additional_attributes": {},
+          "contact_inbox_id": "18044",
+          "uuid": "5685117b-57d0-430a-8a45-9db5c2248814",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:49.073Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": null,
+          "first_reply_created_at": null,
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      },
+      {
+        "json": {
+          "id": 10911,
+          "account_id": 1,
+          "inbox_id": 64,
+          "status": 1,
+          "assignee_id": 2,
+          "created_at": "2025-03-10T22:35:26.226Z",
+          "updated_at": "2025-03-13T21:19:29.414Z",
+          "contact_id": "10100",
+          "display_id": 10911,
+          "contact_last_seen_at": "2025-03-13T17:08:31.042Z",
+          "agent_last_seen_at": "2025-03-10T21:19:29.730Z",
+          "additional_attributes": {
+            "mail_subject": "undefined"
+          },
+          "contact_inbox_id": "16714",
+          "uuid": "acd8d315-42da-4726-8d4f-353689d72103",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:29.409Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": "2025-03-13T17:10:48.394Z",
+          "first_reply_created_at": "2025-03-10T22:35:26.244Z",
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      },
+      {
+        "json": {
+          "id": 11622,
+          "account_id": 1,
+          "inbox_id": 14,
+          "status": 1,
+          "assignee_id": 1,
+          "created_at": "2025-03-13T16:58:01.792Z",
+          "updated_at": "2025-03-13T21:19:39.743Z",
+          "contact_id": "10410",
+          "display_id": 11622,
+          "contact_last_seen_at": null,
+          "agent_last_seen_at": "2025-03-13T21:19:40.232Z",
+          "additional_attributes": {
+            "mail_subject": ""
+          },
+          "contact_inbox_id": "18060",
+          "uuid": "bffe8259-0f48-4832-b511-d84dfad2bcbb",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:39.734Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": "2025-03-13T21:19:40.232Z",
+          "first_reply_created_at": "2025-03-13T16:58:01.803Z",
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      }
+    ],
+    "RMKT - verifica tag follow-up-pagamento-3": [
+      {
+        "json": {
+          "timestamp": "2025-03-24T10:00:20.014-03:00",
+          "Readable date": "March 24th 2025, 10:00:20 am",
+          "Readable time": "10:00:20 am",
+          "Day of week": "Monday",
+          "Year": "2025",
+          "Month": "March",
+          "Day of month": "24",
+          "Hour": "10",
+          "Minute": "00",
+          "Second": "20",
+          "Timezone": "America/Sao_Paulo (UTC-03:00)"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-25T04:45:50.766Z",
+  "versionId": "2a169230-d3e0-4dc6-bf7a-e1e6f242d45a"
+}
