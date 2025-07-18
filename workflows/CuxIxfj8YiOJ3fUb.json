@@ -1,0 +1,30 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-04-24T22:41:13.443Z",
+  "id": "CuxIxfj8YiOJ3fUb",
+  "meta": null,
+  "name": "cria webhook - por contas",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -40
+      ],
+      "id": "a05cf972-d750-4a7e-bbf4-4d5488f068df",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-24T22:41:43.336Z",
+  "versionId": "d4f2b598-2ba5-4428-a4ce-8325993c97ae"
+}
