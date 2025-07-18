@@ -1,0 +1,1377 @@
+{
+  "active": false,
+  "connections": {
+    "Switch Block": {
+      "main": [
+        [
+          {
+            "node": "ConcluirParar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aguarda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioTenente": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioBrandão": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AlternaExpert": {
+      "main": [
+        [
+          {
+            "node": "AudioTenente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioBrandão",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioPantera",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioGiga",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioJorlan",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioGorila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InputTool2": {
+      "main": [
+        [
+          {
+            "node": "VerificaBloq",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        []
+      ]
+    },
+    "converte audio 1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "converte audio 2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "concatena audios": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "concatena audios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GerarAudio": {
+      "main": [
+        [
+          {
+            "node": "converte audio 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BlockTool2": {
+      "main": [
+        [
+          {
+            "node": "AtualizaDados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo": {
+      "main": [
+        [
+          {
+            "node": "EnviaAudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VerificaBloq": {
+      "main": [
+        [
+          {
+            "node": "Switch Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda": {
+      "main": [
+        [
+          {
+            "node": "AlternaExpert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnviaAudio": {
+      "main": [
+        [
+          {
+            "node": "BlockTool2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AtualizaDados": {
+      "main": [
+        [
+          {
+            "node": "RD | GetUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        []
+      ]
+    },
+    "AudioPantera": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioGiga": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioJorlan": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioGorila": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | GetUser": {
+      "main": [
+        [
+          {
+            "node": "RD | ListFunnels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AdjustFunnel": {
+      "main": [
+        [
+          {
+            "node": "RD | CreatDeal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | ListFunnels": {
+      "main": [
+        [
+          {
+            "node": "AdjustFunnel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | CreatDeal": {
+      "main": [
+        [
+          {
+            "node": "ConclusãoTool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo1": {
+      "main": [
+        [
+          {
+            "node": "EnviaAudio1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioBrandão1": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "AudioBrandão1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-04T11:21:35.647Z",
+  "id": "9UvqJ8uHh5ordNng",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SendAudioExplication",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "3ef0e01c-cc14-4663-bb4d-2905b350c3ab",
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Parar"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "5ca81a4a-d104-4e9b-986b-2a03573c3783"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Avançar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "522eefb6-407c-425f-828d-6ad82bac3646",
+      "name": "Switch Block",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        720,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "554799830536@s.whatsapp.net@Tenente_9036_block_audio"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -680
+      ],
+      "id": "4ff913f6-a020-4061-b0d2-cb3b1b815ee6",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Tenente Breno/Tenente Breno - Explicando a Consultoria MASCULINO.ogg"
+      },
+      "id": "bf8e97d8-1f68-4815-a533-be3a70273fe0",
+      "name": "AudioTenente",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Brandão/Explicando-a-consultoria.ogg"
+      },
+      "id": "d4fc72d1-beb6-450a-b0eb-f843150ba41f",
+      "name": "AudioBrandão",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('InputTool2').first().json.message.sessionId }}_block_audio",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "40b95d5c-f79f-4bd2-bb4d-3a24ca224954",
+      "name": "BlockTool2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2540,
+        240
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 12,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "c0256ac9-c50f-4cd3-91f0-da505aec56c7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tenente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "71c1859e-edda-48df-854b-30cfc9376d5a",
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 17,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Brandão"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e85a808a-42dc-42be-9581-88f2e8d47597",
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 24,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pantera"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b078b14f-e727-40ac-b41c-5738fb2bd1a1",
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Giga"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "55296dd5-d958-4c9d-8b25-f2ae4c180390",
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Jorlan"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7511d5fb-5b4d-4eb7-ab78-0a152db243ab",
+                    "leftValue": "={{ $('InputTool2').item.json.influencer.account_id }}",
+                    "rightValue": 9,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Gorila"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1140,
+        120
+      ],
+      "id": "8bf1db4a-ccc1-4f2d-9a5e-3fe952764dcc",
+      "name": "AlternaExpert"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        80
+      ],
+      "id": "09015ed4-d47b-4d7a-817b-a668206e789a",
+      "name": "InputTool2"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "binary.data.data",
+        "options": {
+          "fileName": "audio-concatenado"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        980,
+        -480
+      ],
+      "id": "f110782e-764b-42be-b5be-cc44ff7a3c4c",
+      "name": "Convert to File",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data1';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;\n"
+      },
+      "id": "8a64d798-3b87-4586-aa28-c7faa81a4c81",
+      "name": "converte audio 1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -600
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName = 'data';\n\n// Nova extensão do arquivo\nconst newExtension = 'mpga';\n\n// Atualiza a extensão do arquivo\nitems[0].binary[binaryPropertyName].fileExtension = newExtension;\n\n// Atualiza o mimeType para audio/mpeg, caso necessário\nitems[0].binary[binaryPropertyName].mimeType = 'audio/mpeg';\n\n// Se quiser alterar o nome do arquivo, pode adicionar este código\nconst newName = 'data2';\nitems[0].binary[binaryPropertyName].fileName = newName;\n\nreturn items;"
+      },
+      "id": "51e8bdce-c7bc-46bb-a13b-f836cca7c648",
+      "name": "converte audio 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -380
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryPropertyName1 = 'data';\nconst binaryPropertyName2 = 'data';\n\n// Verifica se há pelo menos dois itens\nif (items.length < 2) {\n    throw new Error('Esperado pelo menos dois itens com arquivos binários.');\n}\n\n// Obtém os dados binários do primeiro e do segundo item\nconst audio1 = items[0].binary[binaryPropertyName1].data;\nconst audio2 = items[1].binary[binaryPropertyName2].data;\n\n// Concatena os dados binários\nconst concatenatedBuffer = Buffer.concat([\n    Buffer.from(audio1, 'base64'),\n    Buffer.from(audio2, 'base64')\n]);\n\n// Define o nome do arquivo concatenado\nconst newName = 'concatenated_audio.mp3';\n\n// Retorna o novo arquivo binário concatenado\nreturn {\n    binary: {\n        data: {\n            data: concatenatedBuffer.toString('base64'),\n            fileName: newName,\n            mimeType: 'audio/mpeg'\n        }\n    }\n};"
+      },
+      "id": "39225c8b-dff2-4581-96d9-630df282cfe2",
+      "name": "concatena audios",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        -480
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        620,
+        -480
+      ],
+      "id": "28ce0c79-ede3-4d4b-82a4-8ccb75d67416",
+      "name": "Merge",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('InputTool2').item.json.influencer.id_voz }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "=sk_8035202574f3eb1a9c24a4cba0404a8365220767f3f2a6c3"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"Opa {{ $('InputTool2').item.json.user.nome }},\",\n\"voice_settings\": {\n    \"stability\": 0.6,\n    \"similarity_boost\": 0.7,\n    \"style\": 0.4,\n    \"use_speaker_boost\": false\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "66d39b74-1296-4af4-809e-1b794a5d558f",
+      "name": "GerarAudio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        -600
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# upgrade\n",
+        "height": 480,
+        "width": 900
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        220,
+        -680
+      ],
+      "typeVersion": 1,
+      "id": "9e50bd19-1015-4fa3-82cc-cf77d9ca292a",
+      "name": "Sticky Note",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        240
+      ],
+      "id": "8160bc36-2f21-476f-85aa-9367ccc1cbf8",
+      "name": "ConverteArquivo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e81df8b4-df96-4c16-aa3c-a919e295beda",
+              "name": "SendAudioExplication_error",
+              "value": "a tool foi acionada de forma errada, em duplicidade, fazer uma pergunta da etapa 3 sobre o envio das fotos. ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        -20
+      ],
+      "id": "fea988fe-42bc-4b42-9d0f-0ba7aded42c6",
+      "name": "ConcluirParar"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "={{ $json.message.sessionId }}_block_audio",
+        "options": {}
+      },
+      "id": "f9326a8f-ee97-4416-96f6-9e85025ff3a5",
+      "name": "VerificaBloq",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        520,
+        80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        180
+      ],
+      "id": "b92a1952-5204-472f-a9e1-d5fa506d8016",
+      "name": "Aguarda",
+      "webhookId": "ce76311e-3931-4e99-b43f-4968cca9de60"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('InputTool2').item.json.instance.server_url }}/message/sendWhatsAppAudio/{{ $('InputTool2').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('InputTool2').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('InputTool2').item.json.message.chat_id }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2380,
+        240
+      ],
+      "id": "ae0d4fb9-e4ec-4d96-97fe-a9ee06364d89",
+      "name": "EnviaAudio",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "contact_id",
+              "condition": "eq",
+              "keyValue": "={{ $('InputTool2').item.json.user.contact_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "sales_funnel_stage_id",
+              "fieldValue": "3"
+            },
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now.toISO() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        240
+      ],
+      "id": "42be3704-331a-4a60-925f-7c9089f71565",
+      "name": "AtualizaDados",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        900,
+        -680
+      ],
+      "id": "9a2fbf6c-905a-4aa9-a3e4-ac63f47adb01",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Pantera/Pantera - Explicando a consultoria.ogg"
+      },
+      "id": "1d320b8f-4ee5-4b71-ac44-02ac77d3595f",
+      "name": "AudioPantera",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e81df8b4-df96-4c16-aa3c-a919e295beda",
+              "name": "SendAudioExplication_completion",
+              "value": "cocnlua agora apenas com a <mensagemFinal_etapa2> E NENHUMA OUTRA MENSAGEM ALEM DA PERMITADA.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3740,
+        240
+      ],
+      "id": "bc699b20-1935-4143-919a-8d9ca5d97ed2",
+      "name": "ConclusãoTool"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Giga/Giga - Explicando a consultoria.mp3"
+      },
+      "id": "c6485e66-baa0-41f3-ae3e-a6439ee96e1d",
+      "name": "AudioGiga",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Jorlan/Jorlan - Explicando a consultoria.ogg"
+      },
+      "id": "ebcbb94f-0b30-4d1a-b54f-aa81e4b32d8c",
+      "name": "AudioJorlan",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Gorila/Gorila - Explicando a consultoria.ogg"
+      },
+      "id": "18394a6a-8d40-438e-9104-e845235a04df",
+      "name": "AudioGorila",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        240
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://crm.rdstation.com/api/v1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.numero_telefone }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2920,
+        240
+      ],
+      "id": "0dcf547a-8d1b-4dab-84c2-a83469115aae",
+      "name": "RD | GetUser",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "l9zn6updNQrYwcbB",
+          "name": "Header Auth account"
+        },
+        "rdStationCrmApi": {
+          "id": "RcjTD7oVzTEDQrOw",
+          "name": "RD Station CRM account"
+        },
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://crm.rdstation.com/api/v1/deals/{{ $('RD | GetUser').item.json.contacts[0].deals[0].id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "deal_stage_id",
+              "value": "={{ $json.deal_stages[1].id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3540,
+        240
+      ],
+      "id": "a0e9599b-aa05-4b18-ae5f-2c9b959fc9f6",
+      "name": "RD | CreatDeal",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Captura o valor de nomeExpert do primeiro item do node \"normalizacao\"\nconst nomeExpert = $('InputTool2').first().json.dados.influencer;\n\n// 2. Normaliza para minúsculas e remove acentuação (opcional)\nconst termo = nomeExpert\n  .normalize(\"NFD\")\n  .replace(/[\\u0300-\\u036f]/g, \"\")\n  .toLowerCase();\n\n// 3. Filtra todos os itens de entrada, mantendo só os que tiverem 'name' contendo o termo\nconst filteredItems = $input\n  .all()\n  .filter(item => {\n    if (typeof item.json.name !== \"string\") return false;\n    const nameField = item.json.name\n      .normalize(\"NFD\")\n      .replace(/[\\u0300-\\u036f]/g, \"\")\n      .toLowerCase();\n    return nameField.includes(termo);\n  });\n\n// 4. Retorna só os itens filtrados\nreturn filteredItems;\n$('normalizacao').first().json.nomeExpert"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3340,
+        240
+      ],
+      "id": "c0f73221-e271-48dd-9983-3e4ef769849c",
+      "name": "AdjustFunnel",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://crm.rdstation.com/api/v1/deal_pipelines",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3140,
+        240
+      ],
+      "id": "02ed2900-107e-4d30-9e09-506a9a31d38e",
+      "name": "RD | ListFunnels",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -600
+      ],
+      "id": "9b2a19ce-ae47-4b3d-af99-75d9400ad207",
+      "name": "ConverteArquivo1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wsapi.peak.botfai.com.br/message/sendWhatsAppAudio/Teste",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=827E2BDA18DE-441C-BD9B-8039BC0A4FCD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "554799830536"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 10000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1720,
+        -600
+      ],
+      "id": "65232c19-4fe6-4487-a0e4-d836ed7ec393",
+      "name": "EnviaAudio1",
+      "retryOnFail": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Brandão/Explicando-a-consultoria.ogg"
+      },
+      "id": "9cf4b797-83be-47c8-a583-7b0fecc1ac8a",
+      "name": "AudioBrandão1",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        -600
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        -600
+      ],
+      "id": "66badbc4-1ab1-4f32-bb55-a27261201e00",
+      "name": "When clicking ‘Test workflow’",
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "InputTool2": [
+      {
+        "json": {
+          "query": "Gabriel",
+          "message": {
+            "chat_id": "554799830536@s.whatsapp.net",
+            "sessionId": "554799830536@s.whatsapp.net@Giga_teste"
+          },
+          "instance": {
+            "name": "Giga_teste",
+            "apikey": "9FE3706A9EA4-49EC-A8F8-BCAB685DCC1F",
+            "server_url": "https://wsapi.peak.botfai.com.br"
+          },
+          "influencer": {
+            "account_id": 5,
+            "id_voz": "null"
+          },
+          "user": {
+            "contact_id": "1176"
+          },
+          "dados": {
+            "influencer": "Giga",
+            "telefone_usuario": "554799830536"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-10T20:48:49.995Z",
+  "versionId": "e62bb338-a1c0-442a-98c5-360f9ea891e0"
+}
