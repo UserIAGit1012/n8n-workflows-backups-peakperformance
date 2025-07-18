@@ -1,0 +1,899 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mandar mensagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mandar mensagem": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar supabase": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Mandar mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mandar mensagem1": {
+      "main": [
+        [
+          {
+            "node": "Buscar supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-17T14:49:53.847Z",
+  "id": "zxA9MNebnEWUFbf9",
+  "meta": null,
+  "name": "Remarketing horse",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 17,
+              "triggerAtMinute": 35
+            }
+          ]
+        }
+      },
+      "id": "6abc29e6-e03d-4bcb-8a24-4749371c94d5",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -4300,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f3be4b01-4e59-40f8-b08e-6b00bf3788f8",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -3200,
+        360
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ec7dc898-3059-45f7-91b7-0751195642fb",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        400,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        620
+      ],
+      "id": "f27f715b-7bec-438c-92f5-72fa68efcb48",
+      "name": "Wait",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dcc9fcde-c25b-4324-ba4c-bdbb444d7d7d",
+              "name": "numero.usuario",
+              "value": "={{ $json.numero }}",
+              "type": "string"
+            },
+            {
+              "id": "5f1b9ae5-ab23-4018-adc7-d45eccb3fa7f",
+              "name": "url-evolution",
+              "value": "https://wsapi.peak.botfai.com.br",
+              "type": "string"
+            },
+            {
+              "id": "8d487b1d-c84b-4782-a84d-09071941d6e7",
+              "name": "apikey-evolution",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "4701b992-2bca-4b4c-834e-9b445e0e5f3b",
+              "name": "instancia",
+              "value": "horse_3956",
+              "type": "string"
+            },
+            {
+              "id": "8d2097e3-b88b-4164-9cfa-c885ee44e177",
+              "name": "recebeu_rmkt",
+              "value": "={{ $json.recebeu_rmkt }}",
+              "type": "string"
+            },
+            {
+              "id": "b4f9695a-2da4-49a7-a09f-6757563f93f4",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3500,
+        360
+      ],
+      "id": "f56ab435-1e44-4c1e-8bd8-d40cbfee6660",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({\n  json: {\n    // mantém todo o JSON original\n    ...item.json,\n    // adiciona o número aleatório como number\n    randomNumber: Math.floor(Math.random() * 5) + 1,\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1100,
+        140
+      ],
+      "id": "71cc5e60-2f27-46f6-8588-9703c116b8e8",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "42c442e1-fdce-4f50-95a6-04143d06d13a"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fb37a57e-98c7-4889-999d-a64a909d45df",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cf5bba66-631a-4ce7-ad69-5521df2df134",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "16810f0c-f27a-48b0-bbe8-0453c7e587cb",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6f1240e1-a8aa-458c-a7fc-12573d365dda",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "5",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -880,
+        20
+      ],
+      "id": "b2e9b48d-baa3-4ac9-8000-328d0aa6bd51",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        0
+      ],
+      "id": "9ad1f5cb-2f8f-466a-9f05-72771cc79423",
+      "name": "Wait1",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 7
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        160
+      ],
+      "id": "d7fb2e88-41fc-482e-ac3a-5ab12f96a837",
+      "name": "Wait2",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        320
+      ],
+      "id": "eb8c8a86-d274-419d-9706-81b6ab6bea30",
+      "name": "Wait3",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 9
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        460
+      ],
+      "id": "d082fd6a-b952-40fc-99bf-a9a44343aa4b",
+      "name": "Wait4",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos').item.json['url-evolution'] }}/message/sendText/{{ $('normaliza dados recebidos').item.json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normaliza dados recebidos').item.json.numero.usuario }}"
+            },
+            {
+              "name": "mediatype",
+              "value": "image"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Basic LLM Chain').item.json.text }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1a32238f-f0c1-4075-8471-fc08d01032da",
+      "name": "Mandar mensagem",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2000,
+        380
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  NUMERO,\n  recebeu_rmkt,\n  id\nFROM\n  \"rmkt_horse\";\n",
+        "options": {}
+      },
+      "id": "2d0fc282-a9d7-46eb-9fb3-334ea661df7d",
+      "name": "Buscar supabase",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -3800,
+        360
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=você tem essa mensagem:  Junho chegou, e com ele vem a chance perfeita pra tirar os planos do papel e dar o primeiro passo. \n\nTreino e dieta sob medida, com acompanhamento profissional e aquele empurrão que você precisava pra voltar ao foco!\n\n💥 E o melhor: com uma condição especial só pra quem iniciar agora no comecinho do mês.\n\nMas ó… Essa condição é só para os 10 primeiros alunos a fecharem. \n\nBora pra cima ? 🚀\n\n\nreescreva ela, sem mudar o sentido, sem alterar muito os jargoes, apenas mudando uma palavra ou outra e me retorne somente a mensagem alterada\n\n\n",
+        "hasOutputParser": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -2360,
+        380
+      ],
+      "id": "301a2275-31c4-4f18-a6b8-0b8eaa67929e",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2500,
+        560
+      ],
+      "id": "6ddfe8ea-6720-4e5e-a894-2a405c2e569a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rmkt_horse",
+          "mode": "list",
+          "cachedResultName": "rmkt_horse"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('normaliza dados recebidos').item.json.id }}",
+            "recebeu_rmkt": "Sim",
+            "numero": "={{ $('Loop Over Items').item.json.numero.usuario }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "recebeu_rmkt",
+              "displayName": "recebeu_rmkt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1560,
+        380
+      ],
+      "id": "d7adc0c7-afff-4bcf-8e89-77b86d9ed218",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c51723db-0b29-4ff8-a816-ad0a1224ea89",
+              "leftValue": "={{ $json.recebeu_rmkt }}",
+              "rightValue": "Sim",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2660,
+        380
+      ],
+      "id": "8173282d-8da3-4e60-a45b-b5ed3505d6a4",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution.sv-02.botfai.com.br/message/sendText/numero2testes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=566aea34-4c49-47f9-ba60-b24da9c6dd84"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=5517992749450"
+            },
+            {
+              "name": "mediatype",
+              "value": "image"
+            },
+            {
+              "name": "text",
+              "value": "=Remarketing Horse iniciado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0cdc72a-b23d-4966-b463-ce4aeba52a5e",
+      "name": "Mandar mensagem1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4080,
+        360
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d24edd07-16a0-47d3-b33d-51bba082632c",
+              "leftValue": "={{ $now.setZone('America/Sao_Paulo').hour < 20 }}",
+              "rightValue": "=2025-05-29T20:00:00",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3000,
+        380
+      ],
+      "id": "7837450d-69f1-4d8b-95ea-03b1e2a44f16",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "errorMessage": "fora de horario"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -2880,
+        220
+      ],
+      "id": "6efd1d06-2176-47ff-b1e7-8bd6a48ff3e9",
+      "name": "Stop and Error"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:30.174Z",
+  "versionId": "4c132dd0-b9df-439c-9d46-c7c68a92c1a6"
+}
