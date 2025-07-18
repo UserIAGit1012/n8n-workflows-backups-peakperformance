@@ -1,0 +1,56 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-06-26T23:47:03.460Z",
+  "id": "OzKojb9mqKrDKm2T",
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "tableName": {
+          "__rl": true,
+          "value": "leads",
+          "mode": "list",
+          "cachedResultName": "leads"
+        },
+        "firesOn": "UPDATE",
+        "additionalFields": {
+          "channelName": "n8n_events"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -140
+      ],
+      "id": "cb019daf-d5a7-4a30-b89f-0d3042c5526d",
+      "name": "Postgres Trigger",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:22.627Z",
+  "versionId": "50984629-5b83-456d-a6fa-b989029c9e53"
+}
