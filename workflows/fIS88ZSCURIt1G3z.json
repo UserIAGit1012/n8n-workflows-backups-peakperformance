@@ -1,0 +1,440 @@
+{
+  "active": false,
+  "connections": {
+    "InputTool01": {
+      "main": [
+        [
+          {
+            "node": "EtapaCorreta?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AttLeads": {
+      "main": [
+        [
+          {
+            "node": "seguir prox. etapa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AlternaExpert": {
+      "main": [
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AttLeads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EtapaCorreta?": {
+      "main": [
+        [
+          {
+            "node": "AlternaExpert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "EtapaErrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-03T00:04:18.419Z",
+  "id": "fIS88ZSCURIt1G3z",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "registerInfos",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "874423ee-6281-4792-97d4-2f0185fe60a6",
+              "name": "registerInfos_completion",
+              "value": "As informações do usuario foram registradas com sucesso, e foi avançado para etapa 2.1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        -420
+      ],
+      "id": "0a643e94-b94a-4aef-8ab0-c600388054ef",
+      "name": "seguir prox. etapa"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1560,
+        -400
+      ],
+      "id": "7fbe0dfe-3b44-4ddd-ac42-02be77f8f0d4",
+      "name": "InputTool01"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "contact_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.contact_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $json.query.name }}"
+            },
+            {
+              "fieldId": "idade",
+              "fieldValue": "={{ $json.query.age }}"
+            },
+            {
+              "fieldId": "genero",
+              "fieldValue": "={{ $json.query.gender }}"
+            },
+            {
+              "fieldId": "sales_funnel_stage_id",
+              "fieldValue": "2"
+            },
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now.toISO() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        -420
+      ],
+      "id": "87c9200e-cdc3-4cde-a10e-94b208c2a088",
+      "name": "AttLeads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "12",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c0256ac9-c50f-4cd3-91f0-da505aec56c7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tenente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "71c1859e-edda-48df-854b-30cfc9376d5a",
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "17",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Brandão"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b639783e-0160-4cef-a3d0-3ecbdc024e3d",
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Jorlan"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b30fa8df-dc44-464d-8b7f-362f3df131ac",
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "24",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pantera"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d4188959-74f3-452e-a2f9-5490a98e85a6",
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "9",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Gorila"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "62af2c54-4467-4947-9158-46d8c060b717",
+                    "leftValue": "={{ $json.influencer_id }}",
+                    "rightValue": "5",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Giga"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1980,
+        -480
+      ],
+      "id": "9ff55b24-5926-4018-bd5f-b2dc9db292d6",
+      "name": "AlternaExpert"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "652bf028-27de-48af-bcfe-3c3d93c8fd3b",
+              "leftValue": "={{ $json.step }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1800,
+        -400
+      ],
+      "id": "3fe58c68-0a3a-48d4-a4cb-947d96cfa1a4",
+      "name": "EtapaCorreta?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "874423ee-6281-4792-97d4-2f0185fe60a6",
+              "name": "content",
+              "value": "=tool acionada na etapa errada, voce deve  revisar a conclusão para enviar ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        -60
+      ],
+      "id": "45ad6f75-3f26-453f-9593-8a9d38033f2d",
+      "name": "EtapaErrada"
+    }
+  ],
+  "pinData": {
+    "InputTool01": [
+      {
+        "json": {
+          "query": {
+            "name": "Gabriel",
+            "age": 30,
+            "gender": "masculino"
+          },
+          "influencer_id": "5",
+          "contact_id": 1172,
+          "step": "1",
+          "dados": {
+            "influencer": "Giga",
+            "telefone_usuario": "554799830536"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-27T05:18:32.396Z",
+  "versionId": "4609bd14-6641-484c-8013-d6620a8ab66f"
+}
