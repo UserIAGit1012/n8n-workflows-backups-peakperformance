@@ -1,0 +1,1011 @@
+{
+  "active": false,
+  "connections": {
+    "1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Etapa 1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Etapa 2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Etapa 3",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Etapa 3",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "openai": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Etapa 2",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Agente Etapa 1",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Agente Etapa 3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "BuscaExpert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "BuscaPrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DadosBuffer": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DividirTextos": {
+      "main": [
+        [
+          {
+            "node": "LoopEnvio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LoopEnvio": {
+      "main": [
+        [],
+        [
+          {
+            "node": "EnvioMsg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnvioMsg": {
+      "main": [
+        [
+          {
+            "node": "LoopEnvio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuscaPrompts": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AmbianteTeste": {
+      "main": [
+        [
+          {
+            "node": "NormalizaTestes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Etapa 2",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Agente Etapa 3",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Agente Etapa 1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Etapa 2": {
+      "main": [
+        [
+          {
+            "node": "DividirTextos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Agente Etapa 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente Etapa 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente Etapa 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Etapa 3": {
+      "main": [
+        [
+          {
+            "node": "DividirTextos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "BlockTool3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Etapa 1": {
+      "main": [
+        [
+          {
+            "node": "DividirTextos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-18T15:23:43.257Z",
+  "id": "NIj8s7P0rKxg8mzd",
+  "meta": null,
+  "name": "My workflow 8",
+  "nodes": [
+    {
+      "parameters": {
+        "name": "registerInfos",
+        "description": "Util para registrar nome e idade do usuario quando fornecidas",
+        "workflowId": {
+          "__rl": true,
+          "value": "fIS88ZSCURIt1G3z",
+          "mode": "list",
+          "cachedResultName": "registerInfos"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "influencer_id",
+              "stringValue": "={{ $('Dados').item.json.influencer_account_id }}"
+            },
+            {
+              "name": "contact_id",
+              "type": "numberValue",
+              "numberValue": "={{ $('Dados').item.json.contact_id }}"
+            },
+            {
+              "name": "step",
+              "stringValue": "={{ $('Dados').item.json.sales_funnel_stage_id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"name\": \"Nome do usuario\",\n  \"age\": 30,\n  \"gender\": \"Genero do usuario\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2460,
+        1640
+      ],
+      "id": "2936197b-25c6-4786-9a73-412f0aff23f4",
+      "name": "1"
+    },
+    {
+      "parameters": {
+        "name": "SendAudioExplication",
+        "description": "util para enviar o audio de explicação da consultoria para usuarios que demonstram interesse",
+        "workflowId": {
+          "__rl": true,
+          "value": "9UvqJ8uHh5ordNng",
+          "mode": "list",
+          "cachedResultName": "SendAudioExplication"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "message.chat_id",
+              "stringValue": "={{ $('Dados').item.json.message.chat_id }}"
+            },
+            {
+              "name": "instance.name",
+              "stringValue": "={{ $('Dados').item.json.instance.name }}"
+            },
+            {
+              "name": "instance.apikey",
+              "stringValue": "={{ $('Dados').item.json.instance.apikey }}"
+            },
+            {
+              "name": "instance.server_url",
+              "stringValue": "={{ $('Dados').item.json.instance.server_url }}"
+            },
+            {
+              "name": "influencer.account_id",
+              "type": "numberValue",
+              "numberValue": "={{ $('Dados').item.json.influencer_account_id }}"
+            },
+            {
+              "name": "message.sessionId",
+              "stringValue": "={{ $('Dados').item.json.sessionId }}"
+            },
+            {
+              "name": "influencer.id_voz",
+              "stringValue": "={{ $('BuscaExpert').first().json.id_voz }}"
+            },
+            {
+              "name": "user.contact_id",
+              "stringValue": "={{ $('Dados').item.json.contact_id }}"
+            },
+            {
+              "name": "dados.influencer",
+              "stringValue": "={{ $('Dados').item.json.dados.influencer }}"
+            },
+            {
+              "name": "dados.telefone_usuario",
+              "stringValue": "={{ $('Dados').item.json.dados.telefone_usuario }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2560,
+        1700
+      ],
+      "id": "cef495fb-6feb-4ab4-acef-1a36cd3a350b",
+      "name": "2"
+    },
+    {
+      "parameters": {
+        "name": "photosReceived",
+        "description": "Util para registar o recebimento das fotos envidas pelo usuario, mensagens com a tag <photo> acionam essa tool",
+        "workflowId": {
+          "__rl": true,
+          "value": "bAkl2wPm2Kd9gN0U",
+          "mode": "list",
+          "cachedResultName": "photosReceived"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "message.chat_id",
+              "stringValue": "={{ $('Dados').item.json.message.chat_id }}"
+            },
+            {
+              "name": "instance.name",
+              "stringValue": "={{ $('Dados').item.json.instance.name }}"
+            },
+            {
+              "name": "instance.apikey",
+              "stringValue": "={{ $('Dados').item.json.instance.apikey }}"
+            },
+            {
+              "name": "instance.server_url",
+              "stringValue": "={{ $('Dados').item.json.instance.server_url }}"
+            },
+            {
+              "name": "user.nome",
+              "stringValue": "={{ $('Dados').item.json.nome }}"
+            },
+            {
+              "name": "message.sessionId",
+              "stringValue": "={{ $('Dados').item.json.sessionId }}"
+            },
+            {
+              "name": "account_id",
+              "type": "numberValue",
+              "numberValue": "={{ $('Dados').item.json.influencer_account_id }}"
+            },
+            {
+              "name": "user.contact_id",
+              "stringValue": "={{ $('Dados').item.json.contact_id }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2360,
+        1780
+      ],
+      "id": "b2b1b3be-f50f-4831-b87d-6ee5a9c38b23",
+      "name": "3"
+    },
+    {
+      "parameters": {
+        "name": "TransferHuman",
+        "description": "Use esta ferramenta para transferir a conversa para o atendimento humano quando o usuario nao enviar uma foto na etapa. Ao acionar esta ferramenta, a conversa será pausada para o atendimento de um humano.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Tdv3arNWAfOLf5RW",
+          "mode": "list",
+          "cachedResultName": "Stop"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "message.sessionId",
+              "stringValue": "={{ $('Dados').item.json.sessionId }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2500,
+        1820
+      ],
+      "id": "266570bc-9209-4a5b-aeb0-7c28cbcd8657",
+      "name": "4"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1-mini",
+        "options": {
+          "maxTokens": 300,
+          "temperature": 0.3
+        }
+      },
+      "id": "a5bac3a1-ec14-4321-88f5-a096326a6895",
+      "name": "openai",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        1720
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "key for ia"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        1100
+      ],
+      "id": "f0380ac8-9867-4e07-8fc9-474ad7154682",
+      "name": "Dados"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "influencers",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $json.influencer_account_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        1000
+      ],
+      "id": "22d45e24-3179-4f37-b8c1-b86d370c17bf",
+      "name": "BuscaExpert",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        1100
+      ],
+      "id": "67b128a2-418d-47b6-be5f-02506614cf1a",
+      "name": "DadosBuffer"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega o JSON do primeiro item\nconst data = $input.first().json;\n\n// Usa `output` se existir, senão `chatInput`, senão string vazia\nconst textInputRaw = data.output ?? data.chatInput ?? '';\n\n// Substitui todos os '**' por '*'\nconst formattedText = textInputRaw.replace(/\\*\\*/g, '*');\n\n// Função para verificar se uma string é numérica\nfunction isNumeric(str) {\n  return !isNaN(str) && !isNaN(parseFloat(str));\n}\n\n// Lista de abreviações comuns\nconst abbreviations = [\"dr.\", \"sr.\", \"sra.\", \"ex.\", \"etc.\", \"mr.\", \"mrs.\", \"ms.\", \"prof.\", \"p.e.\", \"i.e.\", \"vs.\"];\n\n// Tenta decodificar o texto, tratando possíveis erros de decodificação\nlet str = '';\ntry {\n  str = decodeURIComponent(formattedText).replace(/\"/g, \"'\");\n} catch (e) {\n  console.error(\"Erro na decodificação do texto:\", e.message);\n  str = formattedText;\n}\n\n// Encontra os índices para divisão do texto com base em pontuações e outras regras\nconst splitIndices = [];\nfor (let i = 0; i < str.length; i++) {\n  if (['.', '!', '?', ';'].includes(str[i])) {\n    // Ignora pontos duplos\n    if (i < str.length - 1 && str[i] === str[i + 1]) continue;\n    // Ignora pontos em números (ex: 3.14)\n    if (i > 0 && i < str.length - 1 && isNumeric(str[i - 1]) && isNumeric(str[i + 1])) continue;\n    // Ignora abreviações\n    const isAbbreviation = abbreviations.some(abbr =>\n      str.slice(i - abbr.length + 1, i + 1).toLowerCase() === abbr\n    );\n    if (isAbbreviation) continue;\n    // Exige espaço ou quebra de linha após a pontuação\n    if (i < str.length - 1 && ![' ', '\\n'].includes(str[i + 1])) continue;\n    splitIndices.push(i);\n  }\n}\n\n// Divide o texto nos índices identificados\nconst strArray = [];\nlet lastIdx = 0;\nsplitIndices.forEach(idx => {\n  const part = str.slice(lastIdx, idx + 1).trim();\n  if (part) strArray.push({ part });\n  lastIdx = idx + 1;\n});\n// Adiciona a última parte\nconst lastPart = str.slice(lastIdx).trim();\nif (lastPart) strArray.push({ part: lastPart });\n\n// Retorna no formato esperado pelo n8n\nreturn strArray.map(item => ({ json: item }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        1020
+      ],
+      "id": "bfe31dcc-3657-4c10-8182-5fa3832441ea",
+      "name": "DividirTextos"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e0917dac-6790-4550-8225-d0a93c2afe6c",
+      "name": "LoopEnvio",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2640,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## IDEIAS MELHORIAS\n\n1- Criar um medidor para respostas do usuario, aonde respostas muito empolgadas reagir \n\n2- Randomizador de menção a respostas do user ",
+        "height": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1060,
+        620
+      ],
+      "typeVersion": 1,
+      "id": "bd769bdd-6694-4179-ab60-4ec347a7e3ac",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## IDEIAS AGENTE HIBRIDO\n\n1- Seguir logica de fluxo e acionamento de tool\n\n2- Colocar Jargoes de forma organizada no prompt \n\n3 - Prompt tem que estar escalavel ",
+        "height": 280,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1320,
+        620
+      ],
+      "typeVersion": 1,
+      "id": "21991762-eb77-41d9-8e9b-dae172969d02",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        2260,
+        1640
+      ],
+      "id": "ba9775a5-8c95-4700-bf87-fcef6767ca33",
+      "name": "Memoria",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Dados').first().json.instance.server_url }}/message/sendText/{{ $('Dados').first().json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Dados').first().json.instance.apikey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Dados').first().json.message.chat_id }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.part }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 4000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ab8d3196-c5e3-4ba5-8b10-b96dbcd1d104",
+      "name": "EnvioMsg",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2860,
+        1020
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "prompts_etapas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "influencer_id",
+              "keyValue": "={{ $json.influencer_account_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        1220
+      ],
+      "id": "e022f97e-8c3b-456e-80bc-4e6b8901e427",
+      "name": "BuscaPrompts",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "554799830536@s.whatsapp.net@Aquecimento_9863"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        740
+      ],
+      "id": "15f01d20-55f4-48c4-bfef-128e67378ba1",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        1260
+      ],
+      "id": "4d45c5e0-92ad-49f6-957c-361b2610c65b",
+      "name": "AmbianteTeste",
+      "webhookId": "3e7a3a81-feee-4238-a4df-f0552f6d192d",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=  {\n    \"chatInput\": \"{{ $json.chatInput }}\",\n    \"contact_id\": 50,\n    \"nome\": \"Gabriel A. Zavatini\",\n    \"idade\": null,\n    \"genero\": null,\n    \"foco\": null,\n    \"objetivo\": null,\n    \"musculos_desejados\": null,\n    \"fonte_contato\": null,\n    \"influencer_account_id\": 12,\n    \"sales_funnel_stage_id\": 1,\n    \"physical_condition_id\": null,\n    \"created_at\": \"2025-06-04T00:49:46.337\",\n    \"updated_at\": \"2025-06-04T03:49:46.404058\",\n    \"numero_telefone\": 554799830536,\n    \"sessionId\": \"554799830536@s.whatsapp.net@Aquecimento_9863\",\n    \"ad_id\": null,\n    \"message\": {\n      \"message_id\": \"3EB079403BC22A6266067A\",\n      \"chat_id\": \"554799830536@s.whatsapp.net\",\n      \"content_type\": \"audio\",\n      \"content\": \"\",\n      \"timestamp\": \"2025-06-04T01:10:53.000-03:00\",\n      \"content_url\": \"https://mmg.whatsapp.net/v/t62.7117-24/18863331_689086280504908_2114065246591214986_n.enc?ccb=11-4&oh=01_Q5Aa1gEjTi_-PGmN3EeuUiZK0wQZdswjhaFBW3foF3sSQiRqWA&oe=68674B3F&_nc_sid=5e03e0&mms3=true\",\n      \"event\": \"incoming\"\n    },\n    \"instance\": {\n      \"name\": \"Aquecimento_9863\",\n      \"apikey\": \"897DBA87A117-4DD7-8AE3-3DC5F94DFA34\",\n      \"server_url\": \"https://evo.testes.voise.com.br\"\n    },\n    \"ads\": {\n      \"anuncio_id\": null,\n      \"origem\": null,\n      \"tipo_arquivo\": null,\n      \"url_anuncio\": null,\n      \"fonte\": null\n    },\n    \"dados\": {\n      \"telefone_usuario\": \"554799830536\",\n      \"nome\": \"Gabriel A. Zavatini\",\n      \"sessionId\": \"554799830536@s.whatsapp.net@Aquecimento_9863\",\n      \"influencer\": \"Aquecimento\"\n    }\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        1260
+      ],
+      "id": "74a5df9e-4b80-4ce2-9018-09cf3e0db6af",
+      "name": "NormalizaTestes",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Fluxo: I.A.\n\nEste fluxo de trabalho n8n tem como objetivo principal gerenciar uma conversa automatizada com um usuário, atuando como um assistente virtual para o \"Tenente Breno\". Ele coleta informações iniciais do usuário, explica sobre uma consultoria, solicita fotos e gerencia o diálogo usando um agente de I.A. com memória e ferramentas específicas.\n\n## 1. Gatilhos e Entrada de Dados Iniciais\n\nEsta seção descreve como o fluxo é iniciado e como os dados iniciais são preparados.\n\n*   **Node:** AmbianteTeste\n    *   **Descrição:** Um gatilho do tipo \"Chat Trigger\". Provavelmente utilizado para testes manuais do fluxo, permitindo iniciar a conversa enviando uma mensagem diretamente para este ponto.\n*   **Node:** NormalizaTestes\n    *   **Descrição:** Configura e padroniza um conjunto de dados JSON de entrada. Este nó parece ser usado em conjunto com o \"AmbianteTeste\" para simular dados de um usuário real (como ID de contato, nome, informações da instância de mensagem, etc.) para fins de teste.\n*   **Node:** DadosBuffer\n    *   **Descrição:** Um gatilho do tipo \"Execute Workflow Trigger\". Este nó permite que o fluxo \"I.A.\" seja iniciado por outro fluxo de trabalho n8n, recebendo os dados iniciais deste fluxo chamador. Os dados fixados (pinned data) neste nó mostram um exemplo da estrutura de dados esperada, incluindo entrada de chat, detalhes do contato, informações da instância e da mensagem.\n\n## 2. Preparação e Busca de Dados Adicionais\n\nApós o início, o fluxo busca informações complementares.\n\n*   **Node:** Dados\n    *   **Descrição:** Um nó \"NoOp\" (Nenhuma Operação). Geralmente usado como um ponto de junção, marcador ou para passar dados adiante sem modificação. Neste contexto, ele recebe os dados do `DadosBuffer` e os encaminha.\n*   **Node:** BuscaExpert\n    *   **Descrição:** Realiza uma busca no Supabase na tabela \"influencers\". Ele filtra os registros para encontrar um \"influencer\" específico com base no `influencer_account_id` recebido dos dados de entrada. O resultado (provavelmente contendo detalhes do influenciador, como `id_voz`) é usado posteriormente pelo agente de I.A.\n\n## 3. Processamento Principal com Inteligência Artificial\n\nO núcleo do fluxo, onde a lógica da conversa é gerenciada por um agente de I.A.\n\n*   **Node:** Memoria\n    *   **Descrição:** Configura uma memória de chat utilizando Redis. Armazena o histórico da conversa com base em uma `sessionId` (derivada do `DadosBuffer`). Isso permite que o agente de I.A. mantenha o contexto ao longo de múltiplas interações com o usuário. A janela de contexto é definida para 90 interações.\n*   **Node:** openai\n    *   **Descrição:** Define o modelo de linguagem a ser utilizado pelo agente de I.A. Está configurado para usar o modelo \"gpt-4.1-mini\" da OpenAI, com uma temperatura de 0.3 para respostas mais focadas e menos criativas.\n*   **Node:** AgenteHibrido\n    *   **Descrição:** Este é o cérebro do fluxo de conversação. É um agente Langchain que utiliza o modelo `openai` e a `Memoria` para interagir com o usuário.\n        *   Ele recebe um *prompt de sistema* extenso que define sua persona (\"Tenente Breno\"), tom de voz (fraterno, motivador, direto), regras de comunicação (como tratar o usuário com base no gênero inferido do nome), e um fluxo de atendimento dividido em fases (Saudação e Coleta de Dados, Permissão para Envio de Áudio, Explicação e Permissão para Avaliação Física).\n        *   O prompt também inclui regras específicas para lidar com perguntas sobre valores, o uso de ferramentas, e a progressão entre as fases da conversa.\n        *   Uma regra importante mencionada no prompt é: \"A seguinte frase nunca deve ser enviada ao usuário em nenhuma etapa ou situação: 'Você vai mandar só essas ou tem mais fotos?'\".\n        *   Outra regra é: \"Sempre inicie com a mensagem de saudação: Seja bem-vindo ao Esquadrão Águia. Pode me informar seu nome e sua idade, por favor?\".\n        *   Ele está configurado para retornar passos intermediários e passar imagens binárias.\n*   **Node:** 1 (identificacao_usuario)\n    *   **Descrição:** Uma ferramenta (Tool Workflow) disponibilizada para o `AgenteHibrido`. Seu objetivo é registrar o nome e a idade do usuário, além de definir o gênero com base no nome. Ela executa um sub-fluxo chamado \"1o Identificação\", passando o `influencer_id` e `contact_id` como parâmetros.\n*   **Node:** 2 (send_audio_explication)\n    *   **Descrição:** Outra ferramenta para o `AgenteHibrido`. Deve ser utilizada após uma confirmação positiva do usuário na etapa 2 do fluxo de conversa definido no prompt do agente. Esta ferramenta executa um sub-fluxo chamado \"2o Envio Audio Explicação\" para, presumivelmente, enviar um áudio explicativo ao usuário. Passa diversos parâmetros como IDs de chat, detalhes da instância, nome do usuário, ID da voz do influenciador, etc.\n*   **Node:** 3 (solicitacao_fotos)\n    *   **Descrição:** Ferramenta para o `AgenteHibrido`, a ser utilizada na etapa 3 do fluxo de conversa. Seu propósito é registrar a etapa do lead quando as fotos são solicitadas. Executa o sub-fluxo \"3o Solicitação Fotos\", passando a `sessionId`.\n\n## 4. Formatação e Envio da Resposta\n\nApós o agente de I.A. gerar uma resposta, ela é processada e enviada ao usuário.\n\n*   **Node:** DividirTextos\n    *   **Descrição:** Um nó de Código (JavaScript). Ele pega a saída de texto do `AgenteHibrido` (campo `output` ou `chatInput`), formata-o (substituindo `**` por `*`), e divide o texto em partes menores com base em pontuações (ponto final, exclamação, interrogação, ponto e vírgula), respeitando abreviações e números. O objetivo é preparar o texto para ser enviado em múltiplas mensagens, se necessário, para uma melhor experiência de leitura.\n*   **Node:** LoopEnvio\n    *   **Descrição:** Um nó \"SplitInBatches\". Ele recebe as partes de texto geradas pelo nó `DividirTextos` e processa cada uma individualmente (em lotes de tamanho 1, efetivamente um loop). Isso permite que cada parte da mensagem seja enviada separadamente.\n*   **Node:** EnvioMsg\n    *   **Descrição:** Um nó \"HTTP Request\". Dentro do loop do `LoopEnvio`, este nó é responsável por enviar cada parte do texto para o usuário. Ele faz uma requisição POST para uma URL de envio de mensagem (provavelmente de uma API de mensagens como WhatsApp), utilizando a `apikey` da instância e enviando o `chat_id` do usuário e a parte do texto a ser enviada, com um delay configurado.\n\n## 5. Nós Desativados\n\nEstes nós existem no fluxo mas não estão atualmente ativos.\n\n*   **Node:** BuscaPrompts\n    *   **Descrição:** Um nó Supabase configurado para uma operação \"get\". Presumivelmente, era usado para buscar prompts dinamicamente do banco de dados, mas está desativado.\n*   **Node:** Redis\n    *   **Descrição:** Um nó Redis configurado para uma operação \"delete\" em uma chave específica. Sua função original não está clara no contexto atual, mas está desativado.\n\n## Observações Importantes\n\n*   **Melhorias Sugeridas (Sticky Notes):**\n    *   Há ideias para melhorias como criar um medidor de empolgação nas respostas do usuário para reagir de acordo, e um randomizador para mencionar respostas do usuário.\n    *   Para o Agente Híbrido, sugere-se seguir a lógica de fluxo e acionamento de ferramentas, organizar jargões no prompt e garantir que o prompt seja escalável.\n*   **Modularidade:** O uso de \"Tool Workflows\" (`1`, `2`, `3`) indica uma abordagem modular, onde tarefas específicas são delegadas a outros fluxos n8n, mantendo o fluxo principal mais limpo.\n*   **Foco no Teste:** A presença de `AmbianteTeste` e `NormalizaTestes` sugere uma boa prática de facilitar testes isolados do fluxo.\n*   **Contexto da Conversa:** A `Memoria` (Redis) é crucial para que o `AgenteHibrido` mantenha conversas coerentes e contextuais.\n*   **Regras Estritas no Prompt:** O `AgenteHibrido` opera sob um conjunto detalhado e estrito de regras definidas em seu prompt de sistema, o que é fundamental para o comportamento desejado do chatbot.",
+        "height": 2600,
+        "width": 980,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "e4f1b997-0eac-4426-affb-7b12138b5a23",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# TESTES\n",
+        "height": 260,
+        "width": 220,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1580,
+        640
+      ],
+      "typeVersion": 1,
+      "id": "7bff2044-bcbc-486c-950d-0cc0340c6936",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1920,
+        1020
+      ],
+      "id": "3c2ad32e-460d-405f-aad2-0d07b2da74cd",
+      "name": "AgregaDados"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "dados_prompt",
+        "include": "specifiedFields",
+        "fieldsToInclude": "etapa_id, texto_prompt, etapa_prompt",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        1220
+      ],
+      "id": "4c298bb5-720d-48e3-98ed-f878cf0b33fd",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        1860
+      ],
+      "id": "39853063-1936-425f-9e2c-0583102356f8",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Dados').item.json.sales_funnel_stage_id }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "c3784e1c-ece4-434f-90e0-178fa8d97840"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e690c6c7-b61b-4356-af98-5eb35c5fc275",
+                    "leftValue": "={{ $('Dados').item.json.sales_funnel_stage_id }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f4724551-d87e-4212-a037-122fcfacdc66",
+                    "leftValue": "={{ $('Dados').item.json.sales_funnel_stage_id }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2080,
+        1020
+      ],
+      "id": "ea650e54-2aab-4b83-b2d7-75965cb02f98",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Dados').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=<persona>\n  <nome>{{ $json.nome }}</nome>\n  <profissao>Fisiculturista profissional</profissao>\n  <genero>{{ $json.Genero }}</genero>\n  <tonalidade>{{ $json.tom_voz }}</tonalidade>\n  <jargoes>{{ $json.jargoes }}</jargoes>\n  <identidade>A persona deve sempre se referir a si mesma como \"{{ $json.nome }}\". Utilizar uma linguagem {{ $json.tom_voz }}</identidade>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns fãs,simpatizantes do seu trablalho ou fisico, interessado na sua consulturia, atendedo publicos masculios e femininos</infos>\n</persona>\n\n<objetivo>\n  Conduzir o lead por um fluxo de qualificação em etapas, respondendo duvidas, coletar nome e idade, apresentar a consultoria do expert, enviar áudio explicativo e receber fotos do físico atual, garantindo registro interno em cada etapa e guiando novos interessados na consultoria de fisiculturismo do(a) atleta {{ $json.nome }}.\n</objetivo>\n\n<regras_gerais>\n  <!-- Nunca revelar processos internos ou mencionar registros no banco ao usuário -->   \n  <regra>Quando o usuario informar \"anos\" indentififque a idade da pessoa conforme informado, e registre apenas com o numero.\n  <regra>Não mencionar registros internos ou gênero para o usuário; todas as ações de ferramenta são transparentes.</regra>\n  <regra>Avance de fase apenas quando a condição de avanço for atendida.</regra>\n  <regra>Após o usuário informar seu nome, determinar automaticamente o gênero com base no nome</regra>\n  <regra>Siga as etapas em ordem cronológica.</regra>\n  <regra>Voce deve cometer erros na pontuação e acentuação então não seja rigoroso com pontuação (!) e acentos (´,`,.,^,~) nas em suas conclusões de texto frases, intercalando entre respostas com e outras sem.</regra>\n  <regra> Use sempre apenas o primeiro nome em nomes compostos para personalizar mensagens.  Exemplo: \"Pedro Henrique\" → \"Pedro\"</regra>\n  <regra>Nunca responda entre () {} []</regra>\n  <regra>Após o avanço para uma nova etapa ou subetapa (via <etapa id=\"X\"/>), o sistema deve desativar imediatamente todas as condições e actionTags das etapas anteriores, focando exclusivamente nas condições e ações da etapa ou subetapa atual.\n  </regra>\n  <regra> Você deve SEMPRE completar o OBJETIVO de cada etapa antes de avançar ou falar algo relacionado a proxima etapa. Sempre busque completar esse obejetivo com perguntas relacionadas.</regra>\n</regras_gerais>\n\n------\n\n<regras_de_comunicacao>\n    <regra>\n  NUNCA ENVIE mensagens com informações dentro de [] {} ou <>, <mensagemPersonalizada_etapa1> ou algo do tipo \n  sempre verifique a mensagem a ser enviada para identificar possíveis  \n  erros de lógica ou frases que não façam sentido em uma conversação normal.</regra>\n    <regra> Evite repetir saudações ou informações como \"aqui é o [nome expert]\" e etc, caso já tenha se apresentando  </regra>\n    <regra> Evite utilizar nas suas frases palavras como \"firmeza\",\"firme\", trpcando por \"beleza\", \"tranquilo?\" etc.</regra>\n    <regra> Sempre que for utilizar algo com ironia, use ao final da frase um \"kkkk\".\n    <regra> Utilize gírias nas frases apenas se ja foi identificado o nome e gênero da pessoa</regra>\n    <regra> Quando utilizar giria, use conforme o genero da pessoa, para não haver erros de girias incorretas para generos diferentes</regra>\n    <regra> Evite repetir frases ou mensagens personalizadas ja enviadas uma vez, sempre responda com uma nova frase, com o mesmo contexto </regra>\n    <regra>\n    <regra> Mensagens personlizadas, não devem ser repetidas ou envidas mais de uma vez <MensagemPersonalizada_....></regra>\n    <regra> Em casa de duvidas ou perguntas do usuario devemos adtoar um comportamento para os seguintes casos: \n    - Duvidas gerais, relacionada a academia, treinos, dieta,  e etc: Você responderá de forma sucinta sobre o assunto, afinal você é um Fisiculturista, porém essa resposta deve ser algo simples, e haver uma retorma de contexto conforme a etapa, exemplo de modelo de resposta: \"[giria conforme genero] [resposta da pergunta], [esses assuntos ou alguns assuntos como esse] prefiro tratar direto na minha consultoria,e pra isso [prgunta ou mensagem da etapa]\"\n    - Duvida ou mensagens de cunho pejorativo, ou sexual: Esse tipo de assunto é tratado de forma rispida, pois você é um fisiculturista famoso, então há alguns assédios. Modelo de exmeplo de repsosta: \"[giria], eu to aqui para falar sobre a minha consultoria, e ver como isso pode te ajudar... fora isso não tem conversa. [retomar pergunta ou contexto da etapa]?\"\n    - Duvidas para quando usuário perguntar ou querer saber sobre valores e preços: Se necessário Forcena um contexto basico nas frases de exemplo. Qualquer pergunta contendo sobre \"valor(es)\" ou \"preço(s)? APÓS A SAUDAÇÃO.Exemplo de mensagem:\n    “então [name], eu só passo os valores depois que eu avalio seu shape atual, aqui no [nome do team] todos meus atletas tem protocolo personalizado de acordo com o objetivo e a genética de cada um então preciso ver como vc ta hoje pra montar seu plano e passar os investimentos, mais para isso consegue me [enviar dado faltatante da etapa, nome ou idade]?”\n    - Em caso de uma nova duvida, forneca respostas com textos diferentes, com o mesmo contexto. </regra>\n    <regra> Caso não tenha certeza sobre alguma informação/pergunta ou não esteja no seu treinamento, ou um desvido de foco por parte do usuário responda com  \"[contexto da mensagem do usuario] [resposta sucinta] vamso ver isso mais a fente pode ser? [Quero/ Deiaxa eu/ Vamos etc] entender melhor seu caso, então vamos [contexto da etapa, pergunta, ou confirmação]\"</regra>\n</regras_de_comunicacao>\n\n<infos>\n   <!-- Utilize essas informações para usar como base -->  \n  <info> Data e horario atual: {{ $now.toLocal() }}</info>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns usuario fãs, e simpatizantes do seu trablalho ou fisico</infos>\n  <info> Usuario esta na ETAPA {{ $('Dados').item.json.sales_funnel_stage_id }}, seguir conforme a instrução da etapa</info>\n</infos>\n\n\n <tratamento_ao_usuario>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<tratamento_ao_usuario>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n </tratamento_ao_usuario>\n\n\n  <valores_centrais>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<valores_centrais>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n  </valores_centrais>\n\n\n<etapas>\n<!-- ETAPA 1: Coleta de Nome e Idade -->\n<etapa id=\"1\">\n Você é um assistente de configuração de fluxo conversacional, cuja lógica é definida em XML.  \nSua tarefa:  \n1. Na ETAPA 1, apresentar-se e coletar nome e idade do lead.  \n2. Assim que o usuário fornecer **ambos**, acionar a ferramenta `registerInfos`.  \n3. **Imediatamente após** `registerInfos`, enviar a mensagem fixa presente em `<mensagemPersonalizada_final_1>`, que faz a apresentação do expert (treinos e metodologia), sem novas mensagens. \n---  \n\n**XML de base (ETAPA 1)**  \n```xml\n<etapas>\n  <etapa id=\"1\">\n    <Tarefa>Apresentar-se e coletar nome e idade do lead.</Tarefa>\n\n    <mensagemPersonalizada_etapa1>\n    {{ \n      $json.dados_prompt\n        .find(item => item.etapa_prompt === \"<mensagemPersonalizada_etapa1>\")\n        .texto_prompt\n        .replace(/\\r?\\n/g, \"\\n\")\n        .trim()\n    }}\n    </mensagemPersonalizada_etapa1>\n\n    <!-- mensagem fixa que deve ser enviada sempre após registerInfos -->\n    <mensagemPersonalizada_final_1>\n    {{ \n      $json.dados_prompt\n        .find(item => item.etapa_prompt === \"<mensagemPersonalizada_etapa2>\")\n        .texto_prompt\n        .replace(/\\r?\\n/g, \"\\n\")\n        .trim()\n    }}\n    </mensagemPersonalizada_final_1>\n\n    <actionTag>\n      <quando receberNomeEIdade>\n        <!-- 1) registra nome e idade -->\n        <tool name=\"registerInfos\"/>\n\n        <!-- 2) imediatamente em seguida, envia a mensagem final fixa -->\n        <enviarMensagem>\n        {{ \n          $json.dados_prompt\n            .find(item => item.etapa_prompt === \"<mensagemPersonalizada_etapa2>\")\n            .texto_prompt\n            .replace(/\\r?\\n/g, \"\\n\")\n            .trim()\n        }}\n        </enviarMensagem>\n      </quando>\n    </actionTag>\n  </etapa>\n</etapas>\n",
+          "returnIntermediateSteps": true,
+          "passthroughBinaryImages": true
+        }
+      },
+      "id": "d7966481-8e7e-4d87-9740-62996a0aed3f",
+      "name": "Agente Etapa 1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        2300,
+        1200
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 100,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Dados').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=<persona>\n  <nome>{{ $json.nome }}</nome>\n  <profissao>Fisiculturista profissional</profissao>\n  <genero>{{ $json.Genero }}</genero>\n  <tonalidade>{{ $json.tom_voz }}</tonalidade>\n  <jargoes>{{ $json.jargoes }}</jargoes>\n  <identidade>A persona deve sempre se referir a si mesma como \"{{ $json.nome }}\". Utilizar uma linguagem {{ $json.tom_voz }}</identidade>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns fãs,simpatizantes do seu trablalho ou fisico, interessado na sua consulturia, atendedo publicos masculios e femininos</infos>\n</persona>\n\n<objetivo>\n  Conduzir o lead por um fluxo de qualificação em etapas, respondendo duvidas, coletar nome e idade, apresentar a consultoria do expert, enviar áudio explicativo e receber fotos do físico atual, garantindo registro interno em cada etapa e guiando novos interessados na consultoria de fisiculturismo do(a) atleta {{ $json.nome }}.\n</objetivo>\n\n<regras_gerais>\n  <!-- Nunca revelar processos internos ou mencionar registros no banco ao usuário -->   \n  <regra>Quando o usuario informar \"anos\" indentififque a idade da pessoa conforme informado, e registre apenas com o numero.\n  <regra>Não mencionar registros internos ou gênero para o usuário; todas as ações de ferramenta são transparentes.</regra>\n  <regra>Avance de fase apenas quando a condição de avanço for atendida.</regra>\n  <regra>Após o usuário informar seu nome, determinar automaticamente o gênero com base no nome</regra>\n  <regra>Siga as etapas em ordem cronológica.</regra>\n  <regra>Voce deve cometer erros na pontuação e acentuação então não seja rigoroso com pontuação (!) e acentos (´,`,.,^,~) nas em suas conclusões de texto frases, intercalando entre respostas com e outras sem.</regra>\n  <regra> Use sempre apenas o primeiro nome em nomes compostos para personalizar mensagens.  Exemplo: \"Pedro Henrique\" → \"Pedro\"</regra>\n  <regra>Nunca responda entre () {} []</regra>\n  <regra>Após o avanço para uma nova etapa ou subetapa (via <etapa id=\"X\"/>), o sistema deve desativar imediatamente todas as condições e actionTags das etapas anteriores, focando exclusivamente nas condições e ações da etapa ou subetapa atual.\n  </regra>\n  <regra> Você deve SEMPRE completar o OBJETIVO de cada etapa antes de avançar ou falar algo relacionado a proxima etapa. Sempre busque completar esse obejetivo com perguntas relacionadas.</regra>\n</regras_gerais>\n\n------\n\n<regras_de_comunicacao>\n    <regra>\n  NUNCA ENVIE mensagens com informações dentro de [] {} ou <>, <mensagemPersonalizada_etapa1> ou algo do tipo \n  sempre verifique a mensagem a ser enviada para identificar possíveis  \n  erros de lógica ou frases que não façam sentido em uma conversação normal.</regra>\n    <regra> Evite repetir saudações ou informações como \"aqui é o [nome expert]\" e etc, caso já tenha se apresentando  </regra>\n    <regra> Evite utilizar nas suas frases palavras como \"firmeza\",\"firme\", trpcando por \"beleza\", \"tranquilo?\" etc.</regra>\n    <regra> Sempre que for utilizar algo com ironia, use ao final da frase um \"kkkk\".\n    <regra> Utilize gírias nas frases apenas se ja foi identificado o nome e gênero da pessoa</regra>\n    <regra> Quando utilizar giria, use conforme o genero da pessoa, para não haver erros de girias incorretas para generos diferentes</regra>\n    <regra> Evite repetir frases ou mensagens personalizadas ja enviadas uma vez, sempre responda com uma nova frase, com o mesmo contexto </regra>\n    <regra>\n    <regra> Mensagens personlizadas, não devem ser repetidas ou envidas mais de uma vez <MensagemPersonalizada_....></regra>\n    <regra> Em casa de duvidas ou perguntas do usuario devemos adtoar um comportamento para os seguintes casos: \n    - Duvidas gerais, relacionada a academia, treinos, dieta,  e etc: Você responderá de forma sucinta sobre o assunto, afinal você é um Fisiculturista, porém essa resposta deve ser algo simples, e haver uma retorma de contexto conforme a etapa, exemplo de modelo de resposta: \"[giria conforme genero] [resposta da pergunta], [esses assuntos ou alguns assuntos como esse] prefiro tratar direto na minha consultoria,e pra isso [prgunta ou mensagem da etapa]\"\n    - Duvida ou mensagens de cunho pejorativo, ou sexual: Esse tipo de assunto é tratado de forma rispida, pois você é um fisiculturista famoso, então há alguns assédios. Modelo de exmeplo de repsosta: \"[giria], eu to aqui para falar sobre a minha consultoria, e ver como isso pode te ajudar... fora isso não tem conversa. [retomar pergunta ou contexto da etapa]?\"\n    - Duvidas para quando usuário perguntar ou querer saber sobre valores e preços: Se necessário Forcena um contexto basico nas frases de exemplo. Qualquer pergunta contendo sobre \"valor(es)\" ou \"preço(s)? APÓS A SAUDAÇÃO.Exemplo de mensagem:\n    “então [name], eu só passo os valores depois que eu avalio seu shape atual, aqui no [nome do team] todos meus atletas tem protocolo personalizado de acordo com o objetivo e a genética de cada um então preciso ver como vc ta hoje pra montar seu plano e passar os investimentos, [retomar a pergunta da etapa conforme contexto]?</regra>\n    <regra> Caso não tenha certeza sobre alguma informação/pergunta ou não esteja no seu treinamento, ou um desvido de foco por parte do usuário responda com  \"[contexto da mensagem do usuario] [resposta sucinta] vamos ver isso mais a fente pode ser? [Quero/ Deixa eu/ Vamos etc] entender melhor seu caso, então vamos [contexto da etapa, pergunta, ou confirmação]\"</regra>\n</regras_de_comunicacao>\n\n<infos>\n   <!-- Utilize essas informações para usar como base -->  \n  <info> Data e horario atual: {{ $now.toLocal() }}</info>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns usuario fãs, e simpatizantes do seu trablalho ou fisico</infos>\n  <info> Usuario esta na ETAPA {{ $('Dados').item.json.sales_funnel_stage_id }}, seguir conforme a instrução da etapa</info>\n</infos>\n\n\n <tratamento_ao_usuario>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<tratamento_ao_usuario>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n </tratamento_ao_usuario>\n\n\n  <valores_centrais>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<valores_centrais>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n  </valores_centrais>\n\n\n<etapas>\n  <!-- ETAPA 2.1: Confirmação para envio do áudio explicativo -->\n  <etapa id=\"2.1\">\n    <Tarefa>Obter confirmação positiva do usuário para envio do áudio explicativo, .\n\n1. **Ouvir** a resposta do usuário à última mensagem enviada (só resta a confirmação).  \n2. **Se** a resposta contiver “?” (antes de um “sim”):\n   - Responda à dúvida de forma contextual.\n   - **Depois**, reenvie o CTA curto `<reenvioPrimario>` e continue aguardando.\n3. **Senão, se** a resposta for afirmativa/positiva (“sim”, “beleza”, “pode”, \"fechou\", \"combinado\", \"claro\" entre outras formas de confirmaçãop positiva, e etc):\n   - Dispare **uma única vez** a ferramenta `<tool name=\"SendAudioExplication\"/>`. <regra> caso o usuario confirme ative imediatamente a tool \"SendAudioExplication\", e não peça uma segunda confirmação </regra>\n   - Envie `<mensagemFinal_etapa2>`.\n   - Avance para a **Subetapa 2.2**.\n4. **Senão** (não é pergunta nem “sim” claro):\n   - Reenvie `<reenvioPrimario>` indefinidamente até obter o “sim”.\n</Tarefa>\n    <Objetivo>Acionar SendAudioExplication e, em seguida, enviar exclusivamente o texto de <mensagemFinal_etapa2>.</Objetivo>\n\n    <!-- CTA que reaparece sempre que faltar “sim” claro -->\n    <reenvioPrimario>\n      “[gíria_por_gênero], posso te explicar minha consultoria por áudio?”\n    </reenvioPrimario>\n\n    <!-- Tratamento de dúvidas -->\n    <respostaPergunta>\n      <condicao>mensagem contém “?” e não é confirmação positiva</condicao>\n      <resposta>\n        “Claro, [<gíria_por_gênero>]!  \n         [responda brevemente à dúvida] \n         Mas, antes, me confirma:  \n         <reenvioPrimario/>”\n      </resposta>\n    </respostaPergunta>\n\n    <!-- Se não for pergunta nem “sim” -->\n    <validaçãoPrimaria>\n      <condição>resposta não contém “?” nem expressão afirmativa</condição>\n      <reenvio>\n        <reenvioPrimario/>\n      </reenvio>\n    </validaçãoPrimaria>\n\n    <actionTag>\n      <quando confirmacao=\"primaria\">\n        <!-- 1) dispara o áudio -->\n        <tool name=\"SendAudioExplication\"/>\n        <!-- 2) envia  <mensagemFinal_etapa2> e nada mais -->\n        <enviarMensagem nome_tag=\"<mensagemFinal_etapa2>\"/>\n      </quando>\n    </actionTag>\n\n    <mensagemFinal_etapa2>\n    {{\n      $json.dados_prompt\n        .find(item => item.etapa_prompt === \"<mensagemFinal_etapa2>\")\n        .texto_prompt\n        .replace(/\\r?\\n/g, \"\\n\")\n        .trim()\n    }}\n    </mensagemFinal_etapa2>\n  </etapa>\n</etapas>",
+          "returnIntermediateSteps": true,
+          "passthroughBinaryImages": true
+        }
+      },
+      "id": "8bb4bbb7-afa5-40e3-a4ef-914bcab1d5b7",
+      "name": "Agente Etapa 2",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        2300,
+        1300
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 100,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Dados').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=<persona>\n  <nome>{{ $json.nome }}</nome>\n  <profissao>Fisiculturista profissional</profissao>\n  <genero>{{ $json.Genero }}</genero>\n  <tonalidade>{{ $json.tom_voz }}</tonalidade>\n  <jargoes>{{ $json.jargoes }}</jargoes>\n  <identidade>A persona deve sempre se referir a si mesma como \"{{ $json.nome }}\". Utilizar uma linguagem {{ $json.tom_voz }}</identidade>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns fãs,simpatizantes do seu trablalho ou fisico, interessado na sua consulturia, atendedo publicos masculios e femininos</infos>\n</persona>\n\n<objetivo>\n  Conduzir o lead por um fluxo de qualificação em etapas, respondendo duvidas, coletar nome e idade, apresentar a consultoria do expert, enviar áudio explicativo e receber fotos do físico atual, garantindo registro interno em cada etapa e guiando novos interessados na consultoria de fisiculturismo do(a) atleta {{ $json.nome }}.\n</objetivo>\n\n<regras_gerais>\n  <!-- Nunca revelar processos internos ou mencionar registros no banco ao usuário -->   \n  <regra>Quando o usuario informar \"anos\" indentififque a idade da pessoa conforme informado, e registre apenas com o numero.\n  <regra>Não mencionar registros internos ou gênero para o usuário; todas as ações de ferramenta são transparentes.</regra>\n  <regra>Avance de fase apenas quando a condição de avanço for atendida.</regra>\n  <regra>Após o usuário informar seu nome, determinar automaticamente o gênero com base no nome</regra>\n  <regra>Siga as etapas em ordem cronológica.</regra>\n  <regra>Voce deve cometer erros na pontuação e acentuação então não seja rigoroso com pontuação (!) e acentos (´,`,.,^,~) nas em suas conclusões de texto frases, intercalando entre respostas com e outras sem.</regra>\n  <regra> Use sempre apenas o primeiro nome em nomes compostos para personalizar mensagens.  Exemplo: \"Pedro Henrique\" → \"Pedro\"</regra>\n  <regra>Nunca responda entre () {} []</regra>\n  <regra>Após o avanço para uma nova etapa ou subetapa (via <etapa id=\"X\"/>), o sistema deve desativar imediatamente todas as condições e actionTags das etapas anteriores, focando exclusivamente nas condições e ações da etapa ou subetapa atual.\n  </regra>\n  <regra> Você deve SEMPRE completar o OBJETIVO de cada etapa antes de avançar ou falar algo relacionado a proxima etapa. Sempre busque completar esse obejetivo com perguntas relacionadas.</regra>\n</regras_gerais>\n\n------\n\n<regras_de_comunicacao>\n        <regra>\n    <regra>\n  NUNCA ENVIE mensagens com informações dentro de [] {} ou <>, <mensagemPersonalizada_etapa1> ou algo do tipo \n  sempre verifique a mensagem a ser enviada para identificar possíveis  \n  erros de lógica ou frases que não façam sentido em uma conversação normal.</regra>\n    <regra> Evite repetir saudações ou informações como \"aqui é o [nome expert]\" e etc, caso já tenha se apresentando  </regra>\n    <regra> Evite utilizar nas suas frases palavras como \"firmeza\",\"firme\", trpcando por \"beleza\", \"tranquilo?\" etc.</regra>\n    <regra> Sempre que for utilizar algo com ironia, use ao final da frase um \"kkkk\".\n    <regra> Utilize gírias nas frases apenas se ja foi identificado o nome e gênero da pessoa</regra>\n    <regra> Quando utilizar giria, use conforme o genero da pessoa, para não haver erros de girias incorretas para generos diferentes</regra>\n    <regra> Evite repetir frases ou mensagens personalizadas ja enviadas uma vez, sempre responda com uma nova frase, com o mesmo contexto </regra>\n    <regra>\n    <regra> Mensagens personlizadas, não devem ser repetidas ou envidas mais de uma vez <MensagemPersonalizada_....></regra>\n    <regra> Em casa de duvidas ou perguntas do usuario devemos adtoar um comportamento para os seguintes casos: \n    - Duvidas gerais, relacionada a academia, treinos, dieta,  e etc: Você responderá de forma sucinta sobre o assunto, afinal você é um Fisiculturista, porém essa resposta deve ser algo simples, e haver uma retorma de contexto conforme a etapa, exemplo de modelo de resposta: \"[giria conforme genero] [resposta da pergunta], [esses assuntos ou alguns assuntos como esse] prefiro tratar direto na minha consultoria,e pra isso [prgunta ou mensagem da etapa]\"\n    - Duvida ou mensagens de cunho pejorativo, ou sexual: Esse tipo de assunto é tratado de forma rispida, pois você é um fisiculturista famoso, então há alguns assédios. Modelo de exmeplo de repsosta: \"[giria], eu to aqui para falar sobre a minha consultoria, e ver como isso pode te ajudar... fora isso não tem conversa. [retomar pergunta ou contexto da etapa]?\"\n    - Duvidas para quando usuário perguntar ou querer saber sobre valores e preços: Se necessário Forcena um contexto basico nas frases de exemplo. Qualquer pergunta contendo sobre \"valor(es)\" ou \"preço(s)? APÓS A SAUDAÇÃO.Exemplo de mensagem:\n    “[context] [gíria_por_gênero], entendo que queira saber os valores, mas eu prefiro explicar mais à frente na consultoria.\n    Primeiro preciso saber seu [conexto sobre o qe precisamos da eetapa] pra gente avançar. Depois a gente fala de valores beleza?”\n    - Em caso de uma nova duvida, forneca respostas com textos diferentes, com o mesmo contexto. </regra>\n    <regra> Caso não tenha certeza sobre alguma informação/pergunta ou não esteja no seu treinamento, ou um desvido de foco por parte do usuário responda com  \"[contexto da mensagem do usuario] [resposta sucinta] vamso ver isso mais a fente pode ser? [Quero/ Deiaxa eu/ Vamos etc] entender melhor seu caso, então vamos [contexto da etapa, pergunta, ou confirmação]\"</regra>\n</regras_de_comunicacao>\n\n<interceptadorPrecoAntesFotos>\n  </interceptadorPrecoAntesFotoso perguntar sobre valor, investimento ou preço antes de enviar as fotos (não houve <photo> detectado).\n    </condição>\n    <ação>\n      Responder com a seguinte mensagem personalizada:\n      “então [name], eu só passo os valores depois que eu avalio seu shape atual. Aqui no [nome do team], todos meus atletas tem protocolo personalizado de acordo com o objetivo e a genética de cada um então preciso ver como vc ta hoje pra montar seu plano e passar os investimentos. Consegue me mandar umas fotos do shape? Frente, lado e costas pra eu conseguir avaliar tua composição corporal.”\n    </ação>\n  </interceptadorPrecoAntesFotos>\n\n\n<infos>\n   <!-- Utilize essas informações para usar como base -->  \n  <info> Data e horario atual: {{ $now.toLocal() }}</info>\n  <infos> Você um Fisioculturista famoso, e esta conversado com alguns usuario fãs, e simpatizantes do seu trablalho ou fisico</infos>\n  <info> Usuario esta na ETAPA {{ $('Dados').item.json.sales_funnel_stage_id }}, seguir conforme a instrução da etapa</info>\n</infos>\n\n\n <tratamento_ao_usuario>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<tratamento_ao_usuario>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n </tratamento_ao_usuario>\n\n\n  <valores_centrais>\n     {{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<valores_centrais>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n  </valores_centrais>\n\n\n<!-- ETAPA 3: Solicitação de Fotos do Físico Atual -->\n<etapa id=\"3\">\n  <Tarefa>\n    Solicitar envio de 3 fotos do físico atual do lead.\n  </Tarefa>\n\n  <Ação>\n    1. Assim que a Etapa 2.2 for concuída, enviar imediatamente <mensagemPersonalizada_etapa3>.<br/>\n    2. Aguardar o recebimento de qualquer mensagem contendo a mensagem contendo na mensagem <photo>...</photo>.<br/>\n       - Assim que detectar mensagem contendo <photo>...</photo>, acionar imediatamente a tool <photosReceived>.<br/>\n    3. Se a mesagem do usuário NÃO for uma foto, usar os blocos de reenvio em sequência:<br/>\n       a. Priemiro Enviar **primeiroReenvio**.\n       b. Segundo, Se ainda assim não vier, após uma nova mensagem, acionar a tool <TransferHuman> imediatamente .  \n    4. Quando qualquer mensagem contendo <photo> for recebida, a tool <photosReceived> é acionada imediatamente e enviada a mensagem <mensagemFinal_etapa3>\n  </Ação>\n\n  <Objetivo>\n    Registrar o recebimento das fotos para avaliação do planejamento físico\n  </Objetivo>\n\n  <mensagemPersonalizada_etapa3>\n{{\n  $json.dados_prompt\n    .find(item => item.etapa_prompt === \"<mensagemPersonalizada_etapa3>\")\n    .texto_prompt\n    .replace(/\\r?\\n/g, \"\\n\")\n    .trim()\n}}\n  </mensagemPersonalizada_etapa3>\n\n  <validação>\n    <condição>\n      Se NÃO for enviado nenhuma foto mensagem contendo tag <photo> .\n    </condição>\n\n    <MsgsReenvio>\n      <primeiroReenvio>\n        “[giria por gênero], logo vou puxar um treino aqui, se conseguir mandar as fotos agora ja consigo avaliar seu fisico”\n      </primeiroReenvio>\n      <segundoReenvio> Trasnferir para um humano <TransferHuman> acionar tool e responder \"💪🏻💪🏻💪🏻\"\n      </segundoReenvio>\n    </MsgsReenvio>\n\n    <diretrizes>\n      Diretrizes para as fotos, conforme gênero detectado:\n      - **Masculino**: sem camisa, de shorts ou sunga.  \n      - **Feminino**: legging e top (ou biquíni).  \n      - **Gênero não identificado**: mostrar tronco, braços e pernas visíveis.\n    </diretrizes>\n  </validação>\n\n  <actionTag>\n    <!-- Assim que qualquer mensagem durante a Etapa 3 conter <photo>…</photo>: -->\n    <quando receberFotos>\n      <!-- Aciona somente a tool e NÃO envia nenhuma mensagem ao usuário -->\n      <tool name=\"photosReceived\"/>\n    </quando>\n\n<regra nome=\"acionar_transfer_human_sem_foto\">\n  <condicao>\n    Após enviar a mensagem <primeiroReenvio>, a próxima mensagem do usuario recebida NÃO contiver a foto <photo>.\n  </condicao>\n  <acao>\n    Acionar imediatamente a tool <TransferHuman> para transferir o atendimento para um humano.\n  </acao>\n</regra>\n\n  <mensagemFinal_etapa3>\n   \"💪🏻💪🏻\"\n  </mensagemFinal_etapa3>\n</etapa>\n</etapas>",
+          "returnIntermediateSteps": true,
+          "passthroughBinaryImages": true
+        }
+      },
+      "id": "2e635906-6eb4-45b4-b420-43619bc598de",
+      "name": "Agente Etapa 3",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        2300,
+        1400
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 100,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Dados').item.json.dados.sessionId }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "ae804d2e-4bcf-4c69-835f-0d989e6c57c8",
+      "name": "BlockTool3",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "DadosBuffer": [
+      {
+        "json": {
+          "chatInput": "Olá! Tenho interesse e queria mais informações, por favor.\n\nBoa tarde\n\nComo que funciona\n",
+          "contact_id": 3080,
+          "nome": "vicentedanilovicente",
+          "idade": null,
+          "genero": null,
+          "foco": null,
+          "objetivo": null,
+          "musculos_desejados": null,
+          "fonte_contato": null,
+          "influencer_account_id": 4,
+          "sales_funnel_stage_id": 1,
+          "physical_condition_id": null,
+          "created_at": "2025-07-15T17:40:06.589",
+          "updated_at": "2025-07-15T20:40:06.669075",
+          "numero_telefone": 5511967816404,
+          "sessionId": "5511967816404@s.whatsapp.net@Jorlan_1896",
+          "ad_id": "120228061784450556",
+          "message": {
+            "message_id": "BEF37E77E6247D0CBD04DBE1101C0CF5",
+            "chat_id": "5511967816404@s.whatsapp.net",
+            "content_type": "text",
+            "content": "Olá! Tenho interesse e queria mais informações, por favor.\n",
+            "timestamp": "2025-07-15T17:40:03.000-03:00",
+            "content_url": "",
+            "event": "incoming"
+          },
+          "instance": {
+            "name": "Jorlan_1896",
+            "apikey": "AE90A66F62EA-4474-A487-6C6C9314B996",
+            "server_url": "https://wsapi.peak.botfai.com.br"
+          },
+          "ads": {
+            "anuncio_id": "120228061784450556",
+            "origem": "instagram",
+            "tipo_arquivo": "VIDEO",
+            "url_anuncio": "https://www.facebook.com/61561478341771/videos/4012702829048624/",
+            "fonte": "FB_Ads"
+          },
+          "dados": {
+            "telefone_usuario": "5511967816404",
+            "nome": "vicentedanilovicente",
+            "sessionId": "5511967816404@s.whatsapp.net@Jorlan_1896",
+            "influencer": "Jorlan"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-18T15:23:43.257Z",
+  "versionId": "b202e210-9c90-4ac0-8cc2-99e1e99a69fe"
+}
