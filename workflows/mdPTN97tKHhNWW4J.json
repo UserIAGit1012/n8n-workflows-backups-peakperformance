@@ -1,0 +1,828 @@
+{
+  "active": false,
+  "connections": {
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Masculino": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - Feminino": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Gera audio - Masculino",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gera audio - Feminino",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gera audio - sem genero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Envia Audio1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Evolution - envia msg whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gera audio - sem genero": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution - envia msg whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Simula primeira pergunta flowise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simula primeira pergunta flowise": {
+      "main": [
+        [
+          {
+            "node": "responde com nome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responde com nome": {
+      "main": [
+        [
+          {
+            "node": "cadastrar bd",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-08T11:41:32.537Z",
+  "id": "mdPTN97tKHhNWW4J",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Bruno santos] 🎧Audio Abordagem | Instagram ➡️ Whatsapp",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ba3de88a-db1c-4710-b17a-619a1ae84f01",
+              "name": "genero",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "a9760d64-5cce-4a52-a435-9d952e8379ee",
+              "name": "numero",
+              "value": "={{ $('Webhook').item.json.body.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "576f7010-98e0-4be8-949b-4410330fc5e3",
+              "name": "nome",
+              "value": "={{ $('Webhook').item.json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "368e952b-73e8-4dad-bf8c-872cf4b34e66",
+              "name": "url-evolution",
+              "value": "https://wsapi.peak.botfai.com.br",
+              "type": "string"
+            },
+            {
+              "id": "24a935ba-8aad-45e6-b42d-55019f4752bd",
+              "name": "apikey-evolution",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "d863f7c9-d8a5-438b-a133-4debe4f05c9e",
+              "name": "instancia",
+              "value": "brunosantos_5511942392628",
+              "type": "string"
+            },
+            {
+              "id": "945de512-696c-4908-a1ec-6e10362f4c12",
+              "name": "apikey-eleven-labs",
+              "value": "sk_8035202574f3eb1a9c24a4cba0404a8365220767f3f2a6c3",
+              "type": "string"
+            },
+            {
+              "id": "b68a0312-a680-4611-b1cd-b65874556082",
+              "name": "id-voz",
+              "value": "spffGo5L2HrvYErP7J90",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -400,
+        360
+      ],
+      "id": "1475a95d-b0a8-4617-b38f-ce2d5eddb7ec",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos').item.json['url-evolution'] }}/message/sendWhatsAppAudio/{{ $('normaliza dados recebidos').item.json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normaliza dados recebidos').item.json.numero }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "21439daf-8cb3-4c72-a790-6cede52f605e",
+      "name": "Envia Audio1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        220
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "Alterar ID DO AUDIO ELEVENLABS\nAPI\nTEXTO PARA GERAR O AUDIO",
+        "height": 523,
+        "width": 220
+      },
+      "id": "5fa05f93-1592-4e2f-97a8-46a18bf239c9",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 236,
+        "width": 220
+      },
+      "id": "638fb60a-1645-4944-9973-860c008f8b75",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('normaliza dados recebidos').item.json[\"id-voz\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-eleven-labs'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"faala {{ $('Webhook').item.json.body.name }},, tava falando com você no direct agora.\",\n\"voice_settings\": {\n    \"stability\": 0.6,\n    \"similarity_boost\": 1.0,\n    \"style\": 0.5,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "51901ce7-b59d-4724-a1dd-daabdef07757",
+      "name": "Gera audio - Masculino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('normaliza dados recebidos').item.json[\"id-voz\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-eleven-labs'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"Oi, {{ $('normaliza dados recebidos').item.json.nome }}  tudo bem?..então\",\n\"voice_settings\": {\n    \"stability\": 0.6,\n    \"similarity_boost\": 0.9,\n    \"style\": 0.5,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "fb8ba1a7-cc06-453b-9bc8-98b5e8f79711",
+      "name": "Gera audio - Feminino",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=voce deve definir se o nome = {{ $json.body.name }}\né masculino ou feminino. \n\nRepondendo apenas com \nMasculino/feminino/indefinido \n\nE NADA MAIS ",
+              "role": "assistant"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        -740,
+        360
+      ],
+      "id": "43eab71f-c21b-4dc3-abfc-ed74fd6bbbcd",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.genero }}",
+                    "rightValue": "Masculino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Masculino"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "20dadd11-389f-422a-a826-a7a2b18919af",
+                    "leftValue": "={{ $json.genero }}",
+                    "rightValue": "Feminino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Feminino"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -180,
+        360
+      ],
+      "id": "29bf250e-7db9-41f7-9671-93d1a8f491af",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dedd9913-ead6-44fe-866b-08a3fce44abf",
+        "responseMode": "lastNode",
+        "responseData": "noData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -960,
+        360
+      ],
+      "id": "fdfeda7c-7ff1-4a06-900f-905530a7cf12",
+      "name": "Webhook",
+      "webhookId": "dedd9913-ead6-44fe-866b-08a3fce44abf"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        320,
+        360
+      ],
+      "id": "04b9307a-3eba-482d-9f46-d1b144ecba33",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.elevenlabs.io/v1/text-to-speech/{{ $('normaliza dados recebidos').item.json[\"id-voz\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-eleven-labs'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"faala {{ $('Webhook').item.json.body.name }},, tava falando com você no direct agora\",\n\"voice_settings\": {\n    \"stability\": 0.6,\n    \"similarity_boost\": 1.0,\n    \"style\": 0.5,\n    \"use_speaker_boost\": true\n  },\n  \"model_id\": \"eleven_multilingual_v2\"\n}",
+        "options": {}
+      },
+      "id": "f79ae46e-86ee-44bc-9698-d6ff73dc248e",
+      "name": "Gera audio - sem genero",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos').item.json['url-evolution'] }}/message/sendText/{{ $('normaliza dados recebidos').item.json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normaliza dados recebidos').item.json.numero }}"
+            },
+            {
+              "name": "text",
+              "value": "E me conta sua idade, por favor 💪🏼"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2200 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "974a5d7b-a5eb-4bec-ac4c-475bf3c9744f",
+      "name": "Evolution - envia msg whatsapp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        520,
+        420
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.key.remoteJid }}_gorila",
+        "messageData": "={\"type\":\"ai\",\"data\":{\"content\":\"Olá Gorila aqui, me informa seu nome e sua idade?\",\"tool_calls\":[],\"invalid_tool_calls\":[],\"additional_kwargs\":{},\"response_metadata\":{}}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        760,
+        420
+      ],
+      "id": "1a4fdc33-f37f-402a-bb18-3e425b9dc30b",
+      "name": "Simula primeira pergunta flowise",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.key.remoteJid }}_gorila",
+        "messageData": "={\"type\": \"human\",\"data\": {\"content\": \"Me chamo {{ $('normaliza dados recebidos').item.json.nome }}\",\"additional_kwargs\": {},\"response_metadata\": {}}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        980,
+        420
+      ],
+      "id": "817a388f-b871-4e11-ba5e-e927db20248d",
+      "name": "responde com nome",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "gorila_dados_users",
+          "mode": "list",
+          "cachedResultName": "gorila_dados_users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('normaliza dados recebidos').item.json.numero }}",
+            "nome": "={{ $('normaliza dados recebidos').item.json.nome }}",
+            "ia_atendimento": "Kairos IA",
+            "etapa_ia": "1a etapa"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1180,
+        420
+      ],
+      "id": "55710697-bbc6-45e7-a900-037ccb9ec449",
+      "name": "cadastrar bd",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "=POST",
+        "url": "https://wsapi.peak.botfai.com.br/message/sendText/gorila_5511950004157",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=l6v7CBnNIRo041fLlwlvmAXCcPlc"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "5517992749450"
+            },
+            {
+              "name": "text",
+              "value": "E me conta sua idade, por favor 💪🏼"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2200 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "069154bd-bf43-4cb5-ad50-9a40f212b260",
+      "name": "Evolution - envia msg whatsapp1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1160,
+        180
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+            "content-length": "56",
+            "content-type": "application/json",
+            "x-forwarded-for": "108.61.185.7",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "108.61.185.7",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "telefone": "5517992749450",
+            "name": "enzo"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/f5962ef1-d1f8-48e4-8f69-65fd3879faed",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:33.232Z",
+  "versionId": "95d5c1b3-f41d-42fd-9aff-2bf8b31520a2"
+}
