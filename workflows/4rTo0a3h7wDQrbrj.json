@@ -1,0 +1,396 @@
+{
+  "active": false,
+  "connections": {
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Envia Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Audio": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Evolution - envia msg whatsapp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T13:08:15.988Z",
+  "id": "4rTo0a3h7wDQrbrj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "_____9__ZEPHYR__ETAPA_6___audio_final",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "25d2c87c-624a-430b-a80d-f615bdd91291",
+              "name": "=user.telefone",
+              "value": "={{ $json.numero_somente }}",
+              "type": "number"
+            },
+            {
+              "id": "429bd49d-4aa6-4a45-b15b-55d2744339b5",
+              "name": "url-evolution",
+              "value": "https://wsapi.peak.botfai.com.br",
+              "type": "string"
+            },
+            {
+              "id": "a8ab6e14-f5e3-4eea-90f1-995224408b41",
+              "name": "apikey-evolution",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "522ee4df-57d3-4366-80dc-294fb1798662",
+              "name": "instancia",
+              "value": "Gorila_4157",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "id": "d0c78749-6cdf-442a-9584-3e711e42fd80",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json['url-evolution'] }}/message/sendWhatsAppAudio/{{ $json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $json['apikey-evolution'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.redis.sessionID.replace('_gorila', '') }}"
+            },
+            {
+              "name": "audio",
+              "value": "https://meu-balde-voise.s3.us-east-005.backblazeb2.com/FINAL+-+GORILA+AUDIO.ogg"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 10000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b34959cf-dfc0-4a86-a5e4-9ff84afbd740",
+      "name": "Envia Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('normaliza dados recebidos').first().json.user.telefone }}",
+            "ia_atendimento": "Concluído",
+            "etapa_ia": "Atendimento Humano "
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "genero",
+              "displayName": "genero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        820,
+        0
+      ],
+      "id": "ab6f3615-1ac5-45ac-9b76-72ea4fd71f67",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution.botfai.com.br/message/sendText/gorila3",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "6e671692-3eb3-46e1-8c38-edb1a1487e3e"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=5547999830536"
+            },
+            {
+              "name": "text",
+              "value": "=💡 Informação do Lead Validada!\n\nO lead {{ $json.nome }} (📞{{ $json.telefone }} ) passou por todos os processos de validação e está aguardando atendimento.\n\n🎯 Objetivo: {{ $json.objetivo }}\n🏋️ Tipo de Físico: {{ $json.tipo_de_fisico }}\n🕒 Última Interação: {{ $json.ultima_msg }}\n\n📌 Agora é com você! Entre em contato e finalize o atendimento com excelência. 🚀"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "02ca4cba-fb78-41f2-b5b9-3a88e5a1488c",
+      "name": "Evolution - envia msg whatsapp1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1080,
+        0
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -320,
+        0
+      ],
+      "id": "5edb6d7f-aae6-439f-b09b-e6a670cc5454",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém todos os items de entrada\nconst items = $input.all();\n\n// Processa cada item para extrair só o número antes do \"@\"\nconst output = items.map(item => {\n  const sessionId = item.json.session_id;           // ex: \"5517992749450@s.whatsapp.net\"\n  const numero = sessionId.split('@')[0];           // pega tudo antes do \"@\"\n  \n  return {\n    json: {\n      ...item.json,\n      numero_somente: numero                        // adiciona o campo com o número puro\n    }\n  };\n});\n\n// Retorna o array de items com o novo campo \"numero_somente\"\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "75d62aad-7b24-4d38-898c-ebcc26c058b0",
+      "name": "Code"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": {
+            "Etapa_do_fluxo": "6"
+          },
+          "session_id": "5517992749450@s.whatsapp.net"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-26T15:17:06.775Z",
+  "versionId": "e5ce0852-b56f-474a-b8fc-e745fae3228f"
+}
