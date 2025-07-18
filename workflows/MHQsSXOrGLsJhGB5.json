@@ -1,0 +1,55 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2025-07-01T14:12:38.965Z",
+  "id": "MHQsSXOrGLsJhGB5",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "tableName": {
+          "__rl": true,
+          "value": "Instance",
+          "mode": "list",
+          "cachedResultName": "Instance"
+        },
+        "firesOn": "UPDATE",
+        "additionalFields": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTrigger",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -60
+      ],
+      "id": "32240897-69d0-46f5-9613-7f9276dc90fe",
+      "name": "Postgres Trigger",
+      "credentials": {
+        "postgres": {
+          "id": "9IbqHieHNYk2wmSm",
+          "name": "PG | Evolution"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-01T14:13:09.605Z",
+  "versionId": "db090355-c63b-4cd6-8939-b83430ec63a7"
+}
