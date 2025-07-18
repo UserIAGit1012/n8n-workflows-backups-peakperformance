@@ -1,0 +1,1235 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Buscar supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Imagem1": {
+      "main": [
+        []
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar supabase": {
+      "main": [
+        []
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        []
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "S3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        []
+      ]
+    },
+    "Mandar mensagem2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Buscar supabase4": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S3": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mandar audio": {
+      "main": [
+        [
+          {
+            "node": "Mandar mensagem2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Mandar audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-13T18:44:12.441Z",
+  "id": "MsbU7Os534b8ToIN",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Disparardor ruim johann🚫",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8,
+              "triggerAtMinute": 10
+            }
+          ]
+        }
+      },
+      "id": "e610012b-a6b3-42bb-8a1d-f310ad9f22c9",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1620,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f8ff6ead-2675-4e2a-a0d0-9b74ca47f39e",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -980,
+        -120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b1a90738-8c4c-40a4-99bc-bc9b6646d69d",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 50
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        260
+      ],
+      "id": "455ee47c-5a38-41c5-ab61-ccdab5145ee8",
+      "name": "Wait",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos').item.json['url-evolution'] }}/message/sendMedia/{{ $('normaliza dados recebidos').item.json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Postgres').item.json.telefone }}"
+            },
+            {
+              "name": "mediatype",
+              "value": "image"
+            },
+            {
+              "name": "media",
+              "value": "https://meu-balde-voise.s3.us-east-005.backblazeb2.com/GORILA+-+FISICOS/MASCULINO/TREINADO+QUER+GANHAR+MASSA+MUSCULAR.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8a05c4b-ce65-4ceb-b4c4-648c925e6518",
+      "name": "Envia Imagem1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -500,
+        -940
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dcc9fcde-c25b-4324-ba4c-bdbb444d7d7d",
+              "name": "numero.usuario",
+              "value": "={{ $json.numero }}",
+              "type": "string"
+            },
+            {
+              "id": "5f1b9ae5-ab23-4018-adc7-d45eccb3fa7f",
+              "name": "url-evolution",
+              "value": "https://wsapi.peak.botfai.com.br",
+              "type": "string"
+            },
+            {
+              "id": "8d487b1d-c84b-4782-a84d-09071941d6e7",
+              "name": "apikey-evolution",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "4701b992-2bca-4b4c-834e-9b445e0e5f3b",
+              "name": "instancia",
+              "value": "johan_8245",
+              "type": "string"
+            },
+            {
+              "id": "d56419c6-f527-4f48-a803-9a887d0581b7",
+              "name": "recebeu_rmkt",
+              "value": "={{ $json.recebeu_rmkt }}",
+              "type": "string"
+            },
+            {
+              "id": "375d1bd9-fad5-4a92-a9f9-90f6d67c2ed3",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1200,
+        -120
+      ],
+      "id": "cc039818-6e49-4b20-adaa-5b13a8b95d7e",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({\n  json: {\n    // mantém todo o JSON original\n    ...item.json,\n    // adiciona o número aleatório como number\n    randomNumber: Math.floor(Math.random() * 5) + 1,\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        -120
+      ],
+      "id": "9f00aa3e-b011-4e13-8ebe-5b902147c7a5",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "42c442e1-fdce-4f50-95a6-04143d06d13a"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fb37a57e-98c7-4889-999d-a64a909d45df",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cf5bba66-631a-4ce7-ad69-5521df2df134",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "16810f0c-f27a-48b0-bbe8-0453c7e587cb",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6f1240e1-a8aa-458c-a7fc-12573d365dda",
+                    "leftValue": "={{ $json.randomNumber.toString() }}",
+                    "rightValue": "5",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        780,
+        -160
+      ],
+      "id": "7b3c697c-5ef8-4379-b3e8-16f27f1dbf66",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        -420
+      ],
+      "id": "653267f0-9bb3-4cf6-b67f-a357df34d171",
+      "name": "Wait1",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        -260
+      ],
+      "id": "5130ac72-ab47-44bc-b04c-8913f7224dcb",
+      "name": "Wait2",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 45
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1060,
+        -80
+      ],
+      "id": "79ad6e04-4992-4c5d-98f1-b6d0579a28ec",
+      "name": "Wait3",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        80
+      ],
+      "id": "3795b52f-17bd-4ee7-9e94-aa7571ec7216",
+      "name": "Wait4",
+      "webhookId": "4a567db2-6019-4917-bcf0-b494bdbc88be"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  numero,\n  recebeu_rmkt,\n  id\nFROM\n  \"rmkt-johann\"\nWHERE\n  recebeu_rmkt IS NULL",
+        "options": {}
+      },
+      "id": "2406893b-ecdc-4511-b520-ee7b1c96c6cc",
+      "name": "Buscar supabase",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -2420,
+        400
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "você tem essa mensagem: E aí, tudo bem?\n\n\nreescreva ela, sem mudar o sentido, sem alterar muito os jargoes, apenas mudando uma palavra ou outra e me retorne somente a mensagem alterada",
+        "hasOutputParser": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        -2580,
+        240
+      ],
+      "id": "26ff2f0c-741c-4501-bf22-7b224e81398d",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2120,
+        480
+      ],
+      "id": "c9a117bb-7fef-4833-bffd-ab368a1b9e7f",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rmkt-johann",
+          "mode": "list",
+          "cachedResultName": "rmkt-johann"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "numero": "={{ $('Loop Over Items').item.json.numero.usuario }}",
+            "recebeu_rmkt": "Sim",
+            "id": "={{ $('normaliza dados recebidos').item.json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "recebeu_rmkt",
+              "displayName": "recebeu_rmkt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -2320,
+        480
+      ],
+      "id": "a44ad70e-cb4d-4bc8-9f44-00e9eaebda5a",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d24edd07-16a0-47d3-b33d-51bba082632c",
+              "leftValue": "={{ $now.setZone('America/Sao_Paulo').hour < 20 }}",
+              "rightValue": "=2025-05-29T20:00:00",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -740,
+        -100
+      ],
+      "id": "ca8551bc-b144-447c-8cc0-21dcb818183e",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "errorMessage": "fora de horario"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        -340
+      ],
+      "id": "8d0dd822-7cbc-4ce9-bd1e-aea90b036f82",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1X6yYinENWyFddKF5xlsUNFDVWN-2sYR6DQoOf4O6wIw",
+          "mode": "list",
+          "cachedResultName": "Johan",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1X6yYinENWyFddKF5xlsUNFDVWN-2sYR6DQoOf4O6wIw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1X6yYinENWyFddKF5xlsUNFDVWN-2sYR6DQoOf4O6wIw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -2560,
+        -620
+      ],
+      "id": "8867a588-db45-488f-9762-d46f7ccdc276",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DQmnZc7Y4yFtfH6k",
+          "name": "[suporte@botfai] google sheet"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normaliza dados recebidos').item.json['url-evolution'] }}/message/sendText/{{ $('normaliza dados recebidos').item.json.instancia }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop Over Items').item.json.numero.usuario }}"
+            },
+            {
+              "name": "mediatype",
+              "value": "image"
+            },
+            {
+              "name": "text",
+              "value": "=Então como um pedido de desculpas eu vou deixar aqui em baixo o cupom e o link da minha imersão, lembrando que só tenho 27 vagas restantes\n\nCupom: 250IMERSJOHANN\n\nCompras no site: https://johannschatz.com/evento-johann/"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 3000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bc2c6e1f-b485-46f2-accd-f3300cb3c9cf",
+      "name": "Mandar mensagem2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        180,
+        -120
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2540,
+        -80
+      ],
+      "id": "e33e4124-92ae-41c3-bdb5-81fa0e353705",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  numero,\n  recebeu_rmkt,\n  id\nFROM\n  \"rmkt_tenentebreno\";\n",
+        "options": {}
+      },
+      "id": "71382944-57d2-4181-b73b-2bf37e203256",
+      "name": "Buscar supabase2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -20,
+        100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  numero,\n  recebeu_rmkt,\n  id\nFROM\n  \"rmkt_tenentebreno\";\n",
+        "options": {}
+      },
+      "id": "9be0d036-53e0-466c-902d-1e0cda5dc562",
+      "name": "Buscar supabase3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        160,
+        220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  numero,\n  recebeu_rmkt,\n  id\nFROM\n  \"rmkt-johann\";\n",
+        "options": {}
+      },
+      "id": "80219c80-70e9-4cd3-a23e-b51584790175",
+      "name": "Buscar supabase4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -1380,
+        -120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rmkt_tenentebreno",
+          "mode": "list",
+          "cachedResultName": "rmkt_tenentebreno"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "numero": "={{ $('Loop Over Items').item.json.numero.usuario }}",
+            "id": "={{ $('normaliza dados recebidos').item.json.id }}",
+            "recebeu_rmkt": "Sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "recebeu_rmkt",
+              "displayName": "recebeu_rmkt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1020,
+        -440
+      ],
+      "id": "aee82fe5-8279-4a42-8d6e-23651c9d694e",
+      "name": "Postgres2",
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rmkt-johann",
+          "mode": "list",
+          "cachedResultName": "rmkt-johann"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "numero": "={{ $('Loop Over Items').item.json.numero.usuario }}",
+            "id": "={{ $('normaliza dados recebidos').item.json.id }}",
+            "recebeu_rmkt": "Sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "recebeu_rmkt",
+              "displayName": "recebeu_rmkt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        380,
+        -120
+      ],
+      "id": "6b0b2c44-b45a-4d64-9e15-723a45a5b1f5",
+      "name": "Postgres3",
+      "credentials": {
+        "postgres": {
+          "id": "lAXuYazfiYgbUaPB",
+          "name": "Supabase I Remarketing"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/johann/WhatsApp Audio 2025-06-27 at 13.46.17.ogg"
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        -120
+      ],
+      "id": "ba393c44-07a7-4050-a3bb-20c6fc4b6afc",
+      "name": "S3",
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wsapi.peak.botfai.com.br/message/sendWhatsAppAudio/johan_8245",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normaliza dados recebidos').item.json['apikey-evolution'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop Over Items').item.json.numero.usuario }}"
+            },
+            {
+              "name": "mediatype",
+              "value": "image"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 3000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f4b94bf0-9e3f-40a7-882a-fe491f2df6f6",
+      "name": "Mandar audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        -120
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -120
+      ],
+      "id": "25ec4cb5-617a-478c-92e9-325eecdb8df8",
+      "name": "Extract from File"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:19.405Z",
+  "versionId": "c8cbed2f-be3b-45c1-9469-fd0cc965018b"
+}
