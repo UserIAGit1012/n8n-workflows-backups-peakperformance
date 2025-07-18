@@ -1,0 +1,1621 @@
+{
+  "active": true,
+  "connections": {
+    "Normalizacao": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Audio Pix expirado5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Audio Pix expirado2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Audio Pix expirado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar audio pix expirado": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo": {
+      "main": [
+        [
+          {
+            "node": "Audio Pix expirado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo1": {
+      "main": [
+        [
+          {
+            "node": "Audio Compra aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar audio Compra aprovada": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo2": {
+      "main": [
+        [
+          {
+            "node": "Audio Carrinho abandonado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar audio Carrinho abandonado": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo3": {
+      "main": [
+        [
+          {
+            "node": "Audio Carrinho abandonado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar audio Carrinho abandonado1": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Pix expirado": {
+      "main": [
+        [
+          {
+            "node": "texto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConverteArquivo4": {
+      "main": [
+        [
+          {
+            "node": "Audio Carrinho abandonado2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar audio Carrinho abandonado2": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Carrinho abandonado2": {
+      "main": [
+        [
+          {
+            "node": "texto4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Pix expirado1": {
+      "main": [
+        [
+          {
+            "node": "Baixar audio Carrinho abandonado2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Pix expirado3": {
+      "main": [
+        [
+          {
+            "node": "Baixar audio Compra aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Pix expirado5": {
+      "main": [
+        [
+          {
+            "node": "Baixar audio Carrinho abandonado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Pix expirado2": {
+      "main": [
+        [
+          {
+            "node": "Baixar audio Carrinho abandonado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RabbitMQ Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "texto": {
+      "main": [
+        [
+          {
+            "node": "Baixar audio pix expirado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Compra aprovada": {
+      "main": [
+        [
+          {
+            "node": "texto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Carrinho abandonado1": {
+      "main": [
+        [
+          {
+            "node": "texto3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Carrinho abandonado": {
+      "main": [
+        [
+          {
+            "node": "texto5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "texto4": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-21T16:08:49.256Z",
+  "id": "coeTmlohdXyanwaK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Recuperador de carrinho João Curry",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.evento }}",
+                    "rightValue": "PIX_EXPIRED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "69dbccf3-e01a-4007-a586-6891fb358a3c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "PIX_EXPIRED"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "abb9c17b-1537-45e4-a8e7-7fb94e7b1d4a",
+                    "leftValue": "={{ $json.evento }}",
+                    "rightValue": "=SALE_APPROVED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=SALE_APPROVED"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "50d411a9-893e-4470-aeda-4ed67ea3cea5",
+                    "leftValue": "={{ $json.evento }}",
+                    "rightValue": "=ABANDONED_CART",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ABANDONED_CART"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "318be1d0-f71c-4395-96a6-cc1635c6b7c5",
+                    "leftValue": "={{ $json.evento }}",
+                    "rightValue": "=SALE_REFUSED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Compra recusada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "14d57837-e6f7-4fc5-b4e6-4819d3066723",
+                    "leftValue": "={{ $json.evento }}",
+                    "rightValue": "SALE_REFUNDED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "reembolso"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        -60
+      ],
+      "id": "8949a57b-c67e-4672-8b5d-1048fa002a38",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a3f13223-0db5-4a77-9234-1bf5905a6be0",
+              "name": "evento",
+              "value": "={{ $('RabbitMQ Trigger').item.json.content.body.event }}",
+              "type": "string"
+            },
+            {
+              "id": "eef400fb-bfa7-4295-bb76-92c42a9cbb27",
+              "name": "nome",
+              "value": "={{ $json.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "b8d1f9e3-2907-4e87-89f4-66947de95399",
+              "name": "server_url",
+              "value": "https://wsapi.peak.botfai.com.br/",
+              "type": "string"
+            },
+            {
+              "id": "ee419491-e1db-40af-9585-17d26fccfe73",
+              "name": "apikey",
+              "value": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "baf4bb74-6028-4beb-8b02-b6a4e266c33c",
+              "name": "instance",
+              "value": "joaocurry_3424",
+              "type": "string"
+            },
+            {
+              "id": "eacac027-2d62-4949-b9d2-9c80dfe67149",
+              "name": "telefone",
+              "value": "={{ $('Code1').item.json.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "a32c704c-d20a-4041-89f1-521e24fc11a0",
+              "name": "checkout_url",
+              "value": "={{ $('RabbitMQ Trigger').item.json.content.body.checkout_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        -20
+      ],
+      "id": "a4bf232e-892c-442b-9c7a-4f808cfe0059",
+      "name": "Normalizacao"
+    },
+    {
+      "parameters": {
+        "jsCode": "const nomeCompleto = $('RabbitMQ Trigger').first().json.content.body.customer.name\nconst primeiroNome = nomeCompleto.split(\" \")[0];\n\nreturn [\n  {\n    json: {\n      firstName: primeiroNome\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        -20
+      ],
+      "id": "e12d4027-3457-4b1e-b946-2c730f3c378b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendWhatsAppAudio/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1660,
+        -540
+      ],
+      "id": "031d68c5-5638-43ba-b99b-4a1633677676",
+      "name": "Audio Pix expirado",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        -540
+      ],
+      "id": "dae5db12-ac16-4de7-8a51-0040ae171d16",
+      "name": "ConverteArquivo"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/joaocurry/pix_expirado.ogg"
+      },
+      "id": "cd966d1c-273f-4de4-8bf8-5541aebffaf6",
+      "name": "Baixar audio pix expirado",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -540
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "##  Pix expirado\n ",
+        "height": 260,
+        "width": 1780
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        740,
+        -620
+      ],
+      "typeVersion": 1,
+      "id": "ed7df3ff-221b-411c-a180-c67936222321",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Recuperador de carrinho\n\nNodes: \n1. Code arrumo e retorno apenas o primeiro nome da pessoa para utiliarmos depois.\n2. Normalizacao\n3. switch com as opções de cada webhook: Pix expirado, Compra aprovada, Carrinho abandonado, Compra recusda\n4. Baixo o arquivo da backblaze, converto em base64 e envio.",
+        "height": 360,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -360,
+        -740
+      ],
+      "typeVersion": 1,
+      "id": "3b9dc9cb-0e11-493e-866c-ac2bfdf8defc",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        -300
+      ],
+      "id": "071d9f9b-a361-431a-ac00-d3d415cf86a2",
+      "name": "ConverteArquivo1"
+    },
+    {
+      "parameters": {
+        "content": "## Compra aprovada\n\n ",
+        "height": 200,
+        "width": 1780
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        740,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "dffed38c-7a34-4c8c-a6e5-9ed7398477e0",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Gorila/Gorila - Explicando a consultoria.ogg"
+      },
+      "id": "2780dcf1-2435-49ee-a978-5a73a6ce1902",
+      "name": "Baixar audio Compra aprovada",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -300
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendWhatsAppAudio/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        -300
+      ],
+      "id": "2c9e3c2b-44b0-47ed-a020-d1cd7bb97cbf",
+      "name": "Audio Compra aprovada",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        0
+      ],
+      "id": "8bdd2e79-ef62-4463-899b-0edec1ad4c92",
+      "name": "ConverteArquivo2"
+    },
+    {
+      "parameters": {
+        "content": "## Carrinho abandonado\n\n\n ",
+        "height": 280,
+        "width": 1260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        780,
+        -60
+      ],
+      "typeVersion": 1,
+      "id": "7a2602d8-ea53-4dc6-b28b-01bf9dec8555",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/joaocurry/carrinho_abandonado.ogg"
+      },
+      "id": "20a316b0-d94c-4811-a1cf-89cec357f9ef",
+      "name": "Baixar audio Carrinho abandonado",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendWhatsAppAudio/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        0
+      ],
+      "id": "609d1734-e545-470e-93ef-f39b6359eb7d",
+      "name": "Audio Carrinho abandonado",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        360
+      ],
+      "id": "5dffbf85-967c-4317-be3e-b79991711ef9",
+      "name": "ConverteArquivo3"
+    },
+    {
+      "parameters": {
+        "content": "## Compra recusada\n\n\n\n ",
+        "height": 200,
+        "width": 1180
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "1c5dc070-e074-41dd-b4b6-79fb45078fea",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/joaocurry/cartao_recusado_curry.ogg"
+      },
+      "id": "00eb7169-a0d4-4638-9e44-63cb52f6e626",
+      "name": "Baixar audio Carrinho abandonado1",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        360
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendWhatsAppAudio/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        360
+      ],
+      "id": "3896c60c-170b-403e-80f5-5cd1f41d63f6",
+      "name": "Audio Carrinho abandonado1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "fromEmail": "joaocurry@gmail.com",
+        "toEmail": "moureirajuan@gmail.com",
+        "subject": "Você tá deixando coisa demais na mesa",
+        "emailFormat": "text",
+        "text": "Só pra te lembrar do que você tá deixando passar:\nNo Unlocked, você aprende como ser lembrado por quem pode mudar sua vida.\nSem implorar. Sem forçar. Do jeito certo.\nÉ acesso vitalício ao que me fez ser chamado pelos grandes.\nSe você não pega, outro pega.\nAinda dá tempo:\n👉 [Finalizar inscrição agora]\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2360,
+        -540
+      ],
+      "id": "c05195a7-704e-436f-8cf1-852f37d843a4",
+      "name": "Send Email",
+      "webhookId": "d9b1c830-eead-41ab-9c12-bdb49493875e",
+      "credentials": {
+        "smtp": {
+          "id": "x0OBLOqKSduJIAFb",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        600
+      ],
+      "id": "1f20e7fc-38d8-44e4-b5b8-c75e3bd71c2a",
+      "name": "ConverteArquivo4"
+    },
+    {
+      "parameters": {
+        "content": "## Reembolso\n\n\n\n ",
+        "height": 200,
+        "width": 1400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "d372d6fe-b5cb-4b6a-8c38-71fece533969",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/joaocurry/reembolso_curry.ogg"
+      },
+      "id": "38a76778-9794-4cde-8459-851eab2a4116",
+      "name": "Baixar audio Carrinho abandonado2",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        600
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendWhatsAppAudio/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        600
+      ],
+      "id": "760d9058-dfff-47d9-91d6-95ec4faa88ec",
+      "name": "Audio Carrinho abandonado2",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "=Opa, estou falando com {{ $json.nome }}?"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        600
+      ],
+      "id": "1782d374-4ad2-456f-bb68-067790963eaf",
+      "name": "Audio Pix expirado1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "fromEmail": "contato@curryjoao.com",
+        "toEmail": "enzovaccaro112@gmail.com",
+        "subject": "Você tá deixando coisa demais na mesa",
+        "emailFormat": "text",
+        "text": "Só pra te lembrar do que você tá deixando passar:\nNo Unlocked, você aprende como ser lembrado por quem pode mudar sua vida.\nSem implorar. Sem forçar. Do jeito certo.\nÉ acesso vitalício ao que me fez ser chamado pelos grandes.\nSe você não pega, outro pega.\nAinda dá tempo:\n👉 [Finalizar inscrição agora]\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2000,
+        600
+      ],
+      "id": "c482b9c8-b931-407b-b89f-99fd95dde486",
+      "name": "Send Email1",
+      "webhookId": "d9b1c830-eead-41ab-9c12-bdb49493875e",
+      "credentials": {
+        "smtp": {
+          "id": "x0OBLOqKSduJIAFb",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "=Opa, estou falando com {{ $json.nome }}?"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        360
+      ],
+      "id": "1113f6c4-c0d1-48cc-a6db-cc3d20390c3b",
+      "name": "Audio Pix expirado2",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "=Opa, estou falando com {{ $json.nome }}?"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 20000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        -300
+      ],
+      "id": "49c23255-754d-4728-8bb9-0604d7339424",
+      "name": "Audio Pix expirado3",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "=Opa, estou falando com {{ $json.nome }}?"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "3a239076-6e0b-4d6e-8e1c-f8b687645548",
+      "name": "Audio Pix expirado5",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const telefone = $input.first().json.content.body.customer.phone_number;\n\n// Remove espaços e símbolos (opcional, mas ajuda)\nconst telefoneLimpo = telefone.replace(/\\D/g, '');\n\n// Verifica se já começa com '55'\nconst comDDI = telefoneLimpo.startsWith('55') ? telefoneLimpo : '55' + telefoneLimpo;\n\nreturn [\n  {\n    json: {\n      phone_number: comDDI\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        -20
+      ],
+      "id": "3bb4d268-8102-4cb8-988c-2b38ebff3569",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "queue": "n8n.sales",
+        "options": {
+          "jsonParseBody": true,
+          "parallelMessages": -1
+        }
+      },
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        -20
+      ],
+      "id": "82ca0194-6828-435f-8b67-36964a5cf41e",
+      "name": "RabbitMQ Trigger",
+      "credentials": {
+        "rabbitmq": {
+          "id": "FUtNv1kFTrj08Qcr",
+          "name": "RabbitMQ peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "=Opa, estou falando com {{ $json.nome }}?"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        -540
+      ],
+      "id": "2c7ef4bb-1e53-4aee-9087-6bfd89d3144e",
+      "name": "texto",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Normalizacao').first().json.checkout_url }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1860,
+        -540
+      ],
+      "id": "40ae5e6e-2bbe-4e38-b093-167b192637ae",
+      "name": "texto1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Normalizacao').first().json.checkout_url }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        -300
+      ],
+      "id": "b2d1065c-050f-4f17-9f7c-22c9890a49b6",
+      "name": "texto2",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Normalizacao').first().json.checkout_url }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        360
+      ],
+      "id": "d083e4b3-af10-43ca-9b70-46aa5e4634e9",
+      "name": "texto3",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Normalizacao').first().json.checkout_url }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        600
+      ],
+      "id": "c1c7fe8c-6eab-4e30-ac50-84703040ff3d",
+      "name": "texto4",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Normalizacao').item.json.server_url }}message/sendText/{{ $('Normalizacao').item.json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Normalizacao').item.json.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Normalizacao').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Normalizacao').first().json.checkout_url }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 2000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        0
+      ],
+      "id": "6dabaa20-61dc-4486-b502-654796eaa401",
+      "name": "texto5",
+      "retryOnFail": true
+    }
+  ],
+  "pinData": {
+    "RabbitMQ Trigger": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-OQlwm3T9mz1FyEcV5mC05Q",
+            "deliveryTag": 22,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "n8n.sales"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "headers": {
+              "host": "webhook.peak.botfai.com.br",
+              "user-agent": "axios/1.10.0",
+              "content-length": "1215",
+              "accept": "application/json, text/plain, */*",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "baggage": "sentry-environment=production,sentry-public_key=b3df784e322d4114b0422ec4b46b6f59,sentry-trace_id=48b045aab7776d7931bb159c7b8a1bfa,sentry-org_id=4504850859163648",
+              "content-type": "application/json",
+              "sentry-trace": "48b045aab7776d7931bb159c7b8a1bfa-de89ce2b43504e9f",
+              "x-forwarded-for": "54.160.206.24",
+              "x-forwarded-host": "webhook.peak.botfai.com.br",
+              "x-forwarded-port": "443",
+              "x-forwarded-proto": "https",
+              "x-forwarded-server": "traefik_traefik.1",
+              "x-real-ip": "54.160.206.24"
+            },
+            "params": {},
+            "query": {},
+            "body": {
+              "event": "ABANDONED_CART",
+              "event_description": "Carrinho abandonado",
+              "checkout_id": "null",
+              "checkout_url": "https://pay.kirvano.com/977898d8-6b8f-4146-ad52-00e257bb754f",
+              "total_price": "R$ 197,01",
+              "type": "ONE_TIME",
+              "status": "ABANDONED_CART",
+              "created_at": "2025-06-26 05:34:14",
+              "customer": {
+                "name": "Alexei Trautvein ",
+                "document": "33476076865",
+                "email": "alexeitrautvein@outlook.com",
+                "phone_number": "5554996272598",
+                "address": {
+                  "street": null,
+                  "city": null,
+                  "complement": null,
+                  "neighborhood": null,
+                  "number": null,
+                  "state": null,
+                  "zipcode": null
+                }
+              },
+              "products": [
+                {
+                  "id": "77f824a1-8f92-49ba-86e5-a15f7d51c1b1",
+                  "name": "Unlock",
+                  "offer_id": "977898d8-6b8f-4146-ad52-00e257bb754f",
+                  "offer_name": "UNLOCK",
+                  "description": "Curso UNLOCK – Desbloqueie o que te trava e ative sua nova versão\nO UNLOCK é mais que um curso. É um processo de virada de chave. Criado por João, especialista em alta performance e transformação.",
+                  "price": "R$ 197,01",
+                  "photo": "https://s3.amazonaws.com/production.kirvano.com/products/77f824a1-8f92-49ba-86e5-a15f7d51c1b1/cover-1750438937987.webp",
+                  "is_order_bump": false
+                }
+              ],
+              "utm": {
+                "src": "",
+                "utm_source": "",
+                "utm_medium": "",
+                "utm_campaign": "",
+                "utm_term": "",
+                "utm_content": ""
+              },
+              "cookies": {},
+              "contactEmail": "curryjoao2@gmail.com"
+            },
+            "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/9529e8a2-da4f-45ef-ae0c-0babb4c99e2a",
+            "executionMode": "production"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-01T21:29:47.265Z",
+  "versionId": "353e4d5d-22d1-4dd9-a485-adf01d4ba2a3"
+}
