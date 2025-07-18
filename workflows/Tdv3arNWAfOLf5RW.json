@@ -1,0 +1,73 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "BlockTool4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BlockTool4": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-07T04:35:48.610Z",
+  "id": "Tdv3arNWAfOLf5RW",
+  "meta": null,
+  "name": "Stop",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('When Executed by Another Workflow').first().json.message.sessionId }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "7b336cb6-a5ad-4e4e-9b24-db7d885f00c9",
+      "name": "BlockTool4",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        460,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-08T19:46:23.071Z",
+  "versionId": "3107e26d-dbaa-470b-9db2-1e61fc0452f6"
+}
