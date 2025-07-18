@@ -1,0 +1,319 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T13:06:14.814Z",
+  "id": "ZeMHKKA88amgWNqU",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "_____6__ZEPHYR__1CT___Foco",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7141c407-e08c-4cd5-8211-b056f87e9e04",
+        "responseMode": "lastNode",
+        "responseData": "noData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -600,
+        -240
+      ],
+      "id": "1a10edff-1cd1-4cf4-9269-1e37498c3b25",
+      "name": "Webhook",
+      "webhookId": "7141c407-e08c-4cd5-8211-b056f87e9e04",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f7f791d-f8d6-4093-9f0a-93def6ab3678",
+              "name": "usuario.numero_contato",
+              "value": "={{ $json.numero_somente }}",
+              "type": "number"
+            },
+            {
+              "id": "b42505e4-073b-48af-864b-3e21d467f4cb",
+              "name": "usuario.foco",
+              "value": "={{ $json.query.focus }}",
+              "type": "string"
+            },
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        180,
+        0
+      ],
+      "id": "d6b945a4-5d91-463b-bb49-e43c8fc160c1",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $json.usuario.numero_contato }}",
+            "etapa_ia": "CTA - Tipo sanguinio",
+            "foco": "={{ $json.usuario.foco }}",
+            "ia_atendimento": "Zephyr IA"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        520,
+        0
+      ],
+      "id": "a8c884bd-24c4-4100-82cd-97826ce0aaf8",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "0a168d94-c004-4329-8633-78e68cfed2a0",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém todos os items de entrada\nconst items = $input.all();\n\n// Processa cada item para extrair só o número antes do \"@\"\nconst output = items.map(item => {\n  const sessionId = item.json.session_id;           // ex: \"5517992749450@s.whatsapp.net\"\n  const numero = sessionId.split('@')[0];           // pega tudo antes do \"@\"\n  \n  return {\n    json: {\n      ...item.json,\n      numero_somente: numero                        // adiciona o campo com o número puro\n    }\n  };\n});\n\n// Retorna o array de items com o novo campo \"numero_somente\"\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "9fbf46fc-75db-48e0-aec0-9d3e187ed345",
+      "name": "Code"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.botfai.com.br",
+            "user-agent": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
+            "content-length": "73",
+            "accept": "*/*",
+            "accept-encoding": "gzip,deflate",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "45272b4d5a84",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sessionId": "5517992749450@s.whatsapp.net",
+            "foco": "definição muscular"
+          },
+          "webhookUrl": "https://webhook.botfai.com.br/webhook/7141c407-e08c-4cd5-8211-b056f87e9e04",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": {
+            "focus": "pernas"
+          },
+          "session_id": "5517992749450@s.whatsapp.net"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-24T19:33:36.108Z",
+  "versionId": "c3264a03-38ba-4a90-af28-d3b030589454"
+}
