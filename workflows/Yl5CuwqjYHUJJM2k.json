@@ -1,0 +1,419 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "RD | GetUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | GetUser": {
+      "main": [
+        [
+          {
+            "node": "UserExist?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UserExist?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "RD | CreatUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | CreatUser": {
+      "main": [
+        [
+          {
+            "node": "RD | ListFunnels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD | ListFunnels": {
+      "main": [
+        [
+          {
+            "node": "AdjustFunnel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AdjustFunnel": {
+      "main": [
+        [
+          {
+            "node": "RD | CreatDeal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-27T02:36:33.431Z",
+  "id": "Yl5CuwqjYHUJJM2k",
+  "meta": null,
+  "name": "GerirUserRD",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        320,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "46122652-626f-40fc-a866-e43c4830075c",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "6a18c44c-0f25-4eb7-b125-d0572e79fc94",
+              "name": "influencer_account_id",
+              "value": "={{ $json.influencer_account_id }}",
+              "type": "number"
+            },
+            {
+              "id": "3ab7465f-ce3f-406b-b809-37afdc06f709",
+              "name": "sales_funnel_stage_id",
+              "value": "={{ $json.sales_funnel_stage_id }}",
+              "type": "number"
+            },
+            {
+              "id": "e9716cda-1596-41fe-9319-512bdcfdbdd4",
+              "name": "numero_telefone",
+              "value": "={{ $json.numero_telefone }}",
+              "type": "number"
+            },
+            {
+              "id": "8ba2ae01-bc9b-4558-a09e-616c834109d1",
+              "name": "ad_id",
+              "value": "={{ $json.ad_id }}",
+              "type": "string"
+            },
+            {
+              "id": "513f0b56-5fb1-4efb-8126-a52bff0d2ab2",
+              "name": "rd.api",
+              "value": "6855494397aa21001414450f",
+              "type": "string"
+            },
+            {
+              "id": "f85f46bc-0d4e-4dc4-8f4f-cded145de4e6",
+              "name": "nomeExpert",
+              "value": "={{ $json.nomeExpert }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        160
+      ],
+      "id": "e0e1d2fe-7fd1-4765-8f0f-46d9909b41fe",
+      "name": "normalizacao"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "44ffe130-53bb-44aa-99a9-c8cc2d8c03f4",
+              "leftValue": "={{ $json.contacts }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        460
+      ],
+      "id": "5f3f9f76-b758-4705-854f-62ea9be1d308",
+      "name": "UserExist?"
+    },
+    {
+      "parameters": {
+        "content": "### Buscar User por telefone \n\n- Telefone no RD não é UNIQUE",
+        "height": 440
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        620,
+        640
+      ],
+      "typeVersion": 1,
+      "id": "e32486fb-a342-4030-a2ac-06bf4bd4e59c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "url": "https://crm.rdstation.com/api/v1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.numero_telefone }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        460
+      ],
+      "id": "d0c2cdc7-b765-4bff-bf5a-0dcf03aa28c8",
+      "name": "RD | GetUser",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "l9zn6updNQrYwcbB",
+          "name": "Header Auth account"
+        },
+        "rdStationCrmApi": {
+          "id": "RcjTD7oVzTEDQrOw",
+          "name": "RD Station CRM account"
+        },
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://crm.rdstation.com/api/v1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact\": {\n    \"contact_custom_fields\": [\n      {\n        \"custom_field_id\": \"685e0bc9327b9a00145306f2\", \n        \"value\": \"{{ $('normalizacao').item.json.numero_telefone }}\"\n      }\n    ],\n    \"name\": \"{{ $('normalizacao').item.json.nome }}\",\n    \"phones\": [\n      {\n        \"type\": \"cellphone\",\n        \"phone\": \"{{ $('normalizacao').item.json.numero_telefone }}\"\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        600
+      ],
+      "id": "ff83fbfa-ccac-4c50-92e7-976499798679",
+      "name": "RD | CreatUser",
+      "alwaysOutputData": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "l9zn6updNQrYwcbB",
+          "name": "Header Auth account"
+        },
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://crm.rdstation.com/api/v1/deal_pipelines",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        600
+      ],
+      "id": "a0012445-99d1-48b9-acd0-b2e5da398869",
+      "name": "RD | ListFunnels",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Captura o valor de nomeExpert do primeiro item do node \"normalizacao\"\nconst nomeExpert = $('normalizacao').first().json.nomeExpert;\n\n// 2. Normaliza para minúsculas e remove acentuação (opcional)\nconst termo = nomeExpert\n  .normalize(\"NFD\")\n  .replace(/[\\u0300-\\u036f]/g, \"\")\n  .toLowerCase();\n\n// 3. Filtra todos os itens de entrada, mantendo só os que tiverem 'name' contendo o termo\nconst filteredItems = $input\n  .all()\n  .filter(item => {\n    if (typeof item.json.name !== \"string\") return false;\n    const nameField = item.json.name\n      .normalize(\"NFD\")\n      .replace(/[\\u0300-\\u036f]/g, \"\")\n      .toLowerCase();\n    return nameField.includes(termo);\n  });\n\n// 4. Retorna só os itens filtrados\nreturn filteredItems;\n$('normalizacao').first().json.nomeExpert"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        600
+      ],
+      "id": "57192a5a-e70b-44f8-821e-3907eb0dc15f",
+      "name": "AdjustFunnel",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://crm.rdstation.com/api/v1/deals",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"Lead - {{ $('normalizacao').item.json.nome }}\",\n  \"deal_pipeline_id\": \"{{ $json.id }}\",\n  \"deal_stage_id\": \"{{ $json.deal_stages[0].id }}\",\n  \"set_contacts\": [\n    {\n      \"id\": \"{{ $('RD | CreatUser').item.json.id }}\"\n    }\n  ],\n  \"campaign_id\": \"{{ $('normalizacao').item.json.ad_id }}\",\n  \"deal_source_id\": \"6841f78109d5c6001ba22953\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1700,
+        600
+      ],
+      "id": "aa20efc3-dc55-495c-aac3-675ee49cc8cb",
+      "name": "RD | CreatDeal",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "LiTSYPZxjvmLTQaX",
+          "name": "RD | Peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "contact_id": 1169,
+          "nome": "Gabriel A. Zavatini",
+          "idade": null,
+          "genero": null,
+          "foco": null,
+          "objetivo": null,
+          "musculos_desejados": null,
+          "fonte_contato": null,
+          "influencer_account_id": 5,
+          "sales_funnel_stage_id": 1,
+          "physical_condition_id": null,
+          "created_at": "2025-06-27T00:36:16.164",
+          "updated_at": "2025-06-27T03:36:16.215259",
+          "numero_telefone": 554799830536,
+          "sessionId": "554799830536@s.whatsapp.net@Giga_teste",
+          "ad_id": null,
+          "nomeExpert": "Brandão"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-27T04:37:56.774Z",
+  "versionId": "c4aa77ff-0abf-4b75-a2ee-83e2e680058a"
+}
