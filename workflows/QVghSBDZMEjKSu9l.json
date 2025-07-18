@@ -1,0 +1,192 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-27T21:06:10.218Z",
+  "id": "QVghSBDZMEjKSu9l",
+  "meta": null,
+  "name": "BLOQ NUEMEROS",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1zzmWN8yVRTy0bXYMiEjMBRLsuEBuVaJvYLBAAEhBdek",
+          "mode": "list",
+          "cachedResultName": "bloq numeros",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zzmWN8yVRTy0bXYMiEjMBRLsuEBuVaJvYLBAAEhBdek/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zzmWN8yVRTy0bXYMiEjMBRLsuEBuVaJvYLBAAEhBdek/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        320,
+        -80
+      ],
+      "id": "b4133ff7-38be-4299-9230-db042e4b3ffd",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DQmnZc7Y4yFtfH6k",
+          "name": "[suporte@botfai] google sheet"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -80
+      ],
+      "id": "23960c87-4275-4e0c-aa3f-627655d8b991",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "batchSize": 1000,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        520,
+        -80
+      ],
+      "id": "3b2325d8-9f9f-4cc8-a1d7-286ec5aae191",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        -60
+      ],
+      "id": "8ea9c8b4-b8ea-4d6d-b652-7eaa2aef8bac"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        -60
+      ],
+      "id": "b7ea7361-3036-4fa1-9926-1f5e2a8fdc32",
+      "name": "Wait",
+      "webhookId": "be859f16-e0e5-4d7f-8a94-d83b06324ec6"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $json.Numeros }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        760,
+        -60
+      ],
+      "id": "5303c2df-e33b-4617-b7eb-45073396a14a",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-13T12:41:22.668Z",
+  "versionId": "ef6d6102-9b85-4e23-abe3-541c794d768c"
+}
