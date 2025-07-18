@@ -1,0 +1,281 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CTA_aprovado": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "informacoes_gorila": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-21T14:58:44.857Z",
+  "id": "3kY3FyWrdV7T2v2q",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Morpho [A.I]",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "93a468bf-e8dd-41a1-a68e-ccb7228bdc75",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7a7bf82b-c71e-4246-a2f2-6ee812f16614",
+              "name": "telefone",
+              "value": "={{ $json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "96e41110-712e-4037-9172-f0c27d475431",
+              "name": "chat_input",
+              "value": "={{ $json.input }}",
+              "type": "string"
+            },
+            {
+              "id": "a9b41e23-621c-49cb-a9fa-b68e1af64868",
+              "name": "session_id",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "58ab87b9-3b81-47ef-aa6f-b640c70452b6",
+              "name": "etapa_ia",
+              "value": "={{ $json.etapa_ia }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        0
+      ],
+      "id": "e7f74535-ad92-41c7-87b8-896d9353a7dd",
+      "name": "normalizacao"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chat_input }}",
+        "options": {
+          "systemMessage": "<prompt>\n  <descricao>\n    Este prompt interpreta respostas do usuário, buscando por sinais de confirmação positiva. Se detectar uma resposta afirmativa, ativa automaticamente a ferramenta \"CTA_aprovado\" (sem mencionar a ativação). Caso contrário, responde de maneira empática e natural, mantendo o fluxo da conversa. Sempre finaliza com uma chamada para ação (CTA).\n  </descricao>\n\n  <comportamento>\n    <regras>\n      <regra>Jamais informe que uma ferramenta será ativada. A ativação deve ser automática e silenciosa.</regra>\n      <regra>Se a resposta for positiva (ex: \"sim\", \"claro\", \"com certeza\", etc.), acione automaticamente a tool \"CTA_aprovado\".</regra>\n      <regra>Se não for uma resposta afirmativa, responda de forma simpática e com tom natural.</regra>\n      <regra>Finalize sempre com uma chamada para ação (CTA), incentivando o próximo passo.</regra>\n    </regras>\n  </comportamento>\n\n  <detecção_de_confirmação>\n    <respostas_positivas>\n      sim, claro, com certeza, pode ser, vamos nessa, gostei, tá ótimo, aprovado, perfeito, isso mesmo, bora\n    </respostas_positivas>\n  </detecção_de_confirmação>\n\n  <ações>\n    <positiva>\n      <ação>Ativar tool: CTA_aprovado</ação>\n    </positiva>\n  </ações>\n</prompt>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        460,
+        0
+      ],
+      "id": "11248846-da0e-4348-bead-7a70a3c80731",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        340,
+        260
+      ],
+      "id": "2ee5ec38-b9c6-4c4e-b894-3062d039b078",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.session_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        500,
+        260
+      ],
+      "id": "45c86276-ed4f-4db4-9b51-9f02c68f5b70",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "CTA_aprovado",
+        "description": "Usada exclusivamente na Etapa 6 para finalizar com o usuario. Deve ser ativada imediatamente após a validação positiva da Etapa 5 e nunca fora desse contexto.",
+        "workflowId": {
+          "__rl": true,
+          "value": "ChjZL0jhQoF5FTvL",
+          "mode": "list",
+          "cachedResultName": "_____5__MORPHO_IA__cta_aprovado"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "session_id",
+              "stringValue": "={{ $json.session_id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"name\": \"enzo.\",\n  \"focus\": \"perna\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        700,
+        260
+      ],
+      "id": "981c27a1-b727-4e42-a83b-bdc5b2488fd1",
+      "name": "CTA_aprovado"
+    },
+    {
+      "parameters": {
+        "name": "informacoes_gorila",
+        "description": "útil quando o usuario fizer alguma pergunta sobre o gorila ou alguma pergunta técnica sobre algo",
+        "workflowId": {
+          "__rl": true,
+          "value": "pIPq7VaxlRLmtewv",
+          "mode": "list",
+          "cachedResultName": "Rag Gorila"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "chat_input",
+              "stringValue": "={{ $('When Executed by Another Workflow').item.json.input }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"name\": \"enzo\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        900,
+        260
+      ],
+      "id": "f1cddf2e-6aea-468d-8d98-0f1ab425c839",
+      "name": "informacoes_gorila"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "telefone": "554796036938",
+          "etapa_ia": "CTA",
+          "input": "<audio>\nPô, gorila, tô dentro, mas bora pra cima, quero ficar forte, melhorar isso aí.\n</audio>",
+          "session_id": "554796036938@s.whatsapp.net",
+          "tipo-de_fisico": ""
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 60
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-24T19:33:19.469Z",
+  "versionId": "73e5a2e2-2914-43a2-b9d5-a8ac6a46ddff"
+}
