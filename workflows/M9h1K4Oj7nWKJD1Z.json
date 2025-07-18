@@ -1,0 +1,341 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-26T17:28:12.370Z",
+  "id": "M9h1K4Oj7nWKJD1Z",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SALE APPROVED - Tenente",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5d0eea42-2d01-4b09-a97b-8fde4b7c4635",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        140,
+        40
+      ],
+      "id": "cea87158-7b73-480a-9861-4f374def7b65",
+      "name": "Webhook",
+      "webhookId": "5d0eea42-2d01-4b09-a97b-8fde4b7c4635"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "anuncio_tenentebreno",
+          "mode": "list",
+          "cachedResultName": "anuncio_tenentebreno"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "={{ $json.body.event }}",
+            "valor": "={{ parseFloat($json.body.total_price.replace('R, '').trim().replace('.', '').replace(',', '.')) }}",
+            "telefone": "={{ $json.body.customer.phone_number }}"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "id_anuncio",
+              "displayName": "id_anuncio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "plataform",
+              "displayName": "plataform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "dia",
+              "displayName": "dia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "expert",
+              "displayName": "expert",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "valor",
+              "displayName": "valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        600,
+        40
+      ],
+      "id": "4db9a6f5-7a5c-42cd-869f-5df326b5700e",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.products[0].name }}",
+                    "rightValue": "Breno",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "b1080981-2b53-455d-b9f1-e63ed1490ba8"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Breno"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        40
+      ],
+      "id": "62aed25a-1fb9-47cc-afcb-70507be66942",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "content": "# MELHORIAS \n\n1- Verificar se anuncio ja esta criado no bando de dados, se nao tiver, criar na tabela 'ads'\n\n2- Atribuir anuncio a lead, filtrar por numero de telefone dentro da tabela 'leads' \n\n",
+        "height": 380,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        140,
+        -400
+      ],
+      "typeVersion": 1,
+      "id": "a5580cf4-e3a0-42b7-90bf-617e33913efc",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.8.4",
+            "content-length": "1512",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "baggage": "sentry-environment=production,sentry-public_key=b3df784e322d4114b0422ec4b46b6f59,sentry-trace_id=bbfa5957246f5141a48e9276fe7124fd",
+            "content-type": "application/json",
+            "sentry-trace": "bbfa5957246f5141a48e9276fe7124fd-2f72d1cf3f5b7184",
+            "x-forwarded-for": "44.197.54.29",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "44.197.54.29"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "SALE_APPROVED",
+            "event_description": "Compra aprovada",
+            "checkout_id": "5NZ7D4EN",
+            "sale_id": "5NY9043K",
+            "payment_method": "CREDIT_CARD",
+            "automaticDiscount": 0,
+            "couponDiscount": 0,
+            "fee": 5490,
+            "commission": 104510,
+            "affiliateCommission": 0,
+            "coproductionCommission": 0,
+            "total_price": "R$ 1.100,00",
+            "type": "ONE_TIME",
+            "status": "APPROVED",
+            "created_at": "2025-06-01 17:38:09",
+            "customer": {
+              "name": "Vitor Siqueira Tejada",
+              "document": "51005269807",
+              "email": "vitor.tejada@outlook.com",
+              "phone_number": "5511999049179",
+              "address": {
+                "street": null,
+                "city": null,
+                "complement": null,
+                "neighborhood": null,
+                "number": null,
+                "state": null,
+                "zipcode": null
+              }
+            },
+            "payment": {
+              "method": "CREDIT_CARD",
+              "brand": "visa",
+              "installments": 5,
+              "finished_at": "2025-06-01 17:38:09"
+            },
+            "products": [
+              {
+                "id": "a24247ef-be95-4a59-9b6b-38e633be9750",
+                "name": "ESQUADRÃO ÁGUIA - TENENTE BRENO TEAM",
+                "offer_id": "d6c3a44e-e0dc-47b5-8a2c-65754cfc459f",
+                "offer_name": "QUADRIMESTRAL",
+                "description": "Esquadrão Águia Tenente Breno: \nEstá Preparado, Senhor?\n\nSoldado, é hora de elevar sua performance! \nNo Esquadrão Águia, comandado por mim, você será moldado nos treinos. Criei essa consultoria online para aqueles que querem resultados reais, combina",
+                "price": "R$ 1.100,00",
+                "photo": "https://s3.amazonaws.com/production.kirvano.com/products/a24247ef-be95-4a59-9b6b-38e633be9750/cover-1725304201983.webp",
+                "is_order_bump": false
+              }
+            ],
+            "utm": {
+              "src": "",
+              "utm_source": "",
+              "utm_medium": "",
+              "utm_campaign": "",
+              "utm_term": "",
+              "utm_content": ""
+            },
+            "cookies": {},
+            "contactEmail": "brenotenente1@gmail.com"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/5d0eea42-2d01-4b09-a97b-8fde4b7c4635",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:28.479Z",
+  "versionId": "08e3afb2-5264-44c6-9b04-43743091c6d2"
+}
