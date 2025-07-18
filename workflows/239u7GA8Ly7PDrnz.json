@@ -1,0 +1,163 @@
+{
+  "active": false,
+  "connections": {
+    "DesativarFluxo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AtivarFluxo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-23T20:49:30.723Z",
+  "id": "239u7GA8Ly7PDrnz",
+  "meta": null,
+  "name": "Ativar Fluxos - Horarios Cury",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.peak.botfai.com.br/api/v1/workflows/coeTmlohdXyanwaK/deactivate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQ5ZjMzMC01NTQ0LTRlNjQtODJkMy0wY2U1ODFkZTVjNmEiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ5NDQ0ODk1fQ.2UI_r5wGQPVSpwoq3upKewZqT40nMZjuYoUY0qFZTAg"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        80
+      ],
+      "id": "f9150c95-d2bc-4e07-ac18-0d1fe5a51561",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.peak.botfai.com.br/api/v1/workflows/coeTmlohdXyanwaK/activate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQ5ZjMzMC01NTQ0LTRlNjQtODJkMy0wY2U1ODFkZTVjNmEiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ5NDQ0ODk1fQ.2UI_r5wGQPVSpwoq3upKewZqT40nMZjuYoUY0qFZTAg"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        -120
+      ],
+      "id": "237a7aa7-db80-4ea6-8feb-cba42054effd",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        80
+      ],
+      "id": "bbea83dd-b016-4c4e-97a4-a126e71f2085",
+      "name": "DesativarFluxo"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                0,
+                2,
+                3,
+                4,
+                6,
+                5,
+                1
+              ],
+              "triggerAtHour": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        -120
+      ],
+      "id": "f4ac7039-39b9-4765-9a7e-0a13ee46c136",
+      "name": "AtivarFluxo"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:DesativarFluxo": {
+      "recurrenceRules": []
+    },
+    "node:AtivarFluxo": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-07-01T21:28:44.751Z",
+  "versionId": "34ba1741-447a-4f3e-b87d-e4c28454cfc0"
+}
