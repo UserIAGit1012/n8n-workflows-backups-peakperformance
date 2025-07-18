@@ -1,0 +1,313 @@
+{
+  "active": false,
+  "connections": {
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "inserir infos no bd",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "inserir infos no bd": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T13:03:39.949Z",
+  "id": "TfIfDELGIy6u8LTV",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "_____3__KAIROS__3CT___objetivo_usuario",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f7f791d-f8d6-4093-9f0a-93def6ab3678",
+              "name": "usuario.numero_contato",
+              "value": "={{ $json.numero_somente }}",
+              "type": "number"
+            },
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "630d1c93-9e26-41af-aa83-96f8286686c2",
+              "name": "usuario.objetivo",
+              "value": "={{ $json.query.objetivo }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -60,
+        20
+      ],
+      "id": "473f2c85-fcf5-43a5-8810-9d71e17b5f76",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $json.usuario.numero_contato }}",
+            "objetivo": "={{ $json.usuario.objetivo }}",
+            "etapa_ia": "3coleta_fotos"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        160,
+        20
+      ],
+      "id": "28e58446-be03-4494-8a55-ade23e1cb95e",
+      "name": "inserir infos no bd",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -560,
+        20
+      ],
+      "id": "f2a31055-b868-42e7-9b07-305d33f440bd",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78125821-c346-4c28-b485-e2d32b1afa08",
+              "name": "objetivo coletado, prossiga para a proxima etapa",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "accfdada-8a87-4f49-ae1d-70ff03c92c0d",
+              "name": "objetivo",
+              "value": "={{ $json.objetivo }}",
+              "type": "string"
+            },
+            {
+              "id": "e9362d9a-37b1-4aa7-96f7-47fed52910ae",
+              "name": "etapa",
+              "value": "={{ $json.etapa_ia }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        20
+      ],
+      "id": "05f0c01f-9277-4972-8a3b-db96026766a0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém todos os items de entrada\nconst items = $input.all();\n\n// Processa cada item para extrair só o número antes do \"@\"\nconst output = items.map(item => {\n  const sessionId = item.json.session_id;           // ex: \"5517992749450@s.whatsapp.net\"\n  const numero = sessionId.split('@')[0];           // pega tudo antes do \"@\"\n  \n  return {\n    json: {\n      ...item.json,\n      numero_somente: numero                        // adiciona o campo com o número puro\n    }\n  };\n});\n\n// Retorna o array de items com o novo campo \"numero_somente\"\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        20
+      ],
+      "id": "eb3861bf-21da-4f25-8832-6c72ea238671",
+      "name": "Code3"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": {
+            "objetivo": "ganhar massa"
+          },
+          "session_id": "5517992749450@s.whatsapp.net"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-24T19:33:56.436Z",
+  "versionId": "60b056b3-4759-4d64-b47a-47c53579047f"
+}
