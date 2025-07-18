@@ -1,0 +1,487 @@
+{
+  "active": false,
+  "connections": {
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "ajusta genero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot": {
+      "main": [
+        [
+          {
+            "node": "verifica genero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica genero": {
+      "main": [
+        [
+          {
+            "node": "ajusta infos contato - sem nome",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ajusta infos contato - nome pais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "contato criado - primeiro": {
+      "main": [
+        [
+          {
+            "node": "busca conversas ativas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca conversas ativas": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajusta genero": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajusta infos contato - nome pais": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-04-23T18:10:33.773Z",
+  "id": "1pFlD5BK39mSYgvV",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Novo contato -  Primeiro contato lead",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "041c011f-9e45-4a09-b977-2e9e3667e148",
+              "name": "chatwoot.contact_id",
+              "value": "={{ $('contato criado - primeiro').item.json.body.id }}",
+              "type": "string"
+            },
+            {
+              "id": "330a88be-1b90-4fb1-8679-a1bb5520928b",
+              "name": "chatwoot.inbox_id",
+              "value": "={{ $json.payload[0].inbox_id }}",
+              "type": "string"
+            },
+            {
+              "id": "8c6fbf5d-627b-4b54-bf1c-aa9381e052ef",
+              "name": "chatwoot.user_name",
+              "value": "={{ $('contato criado - primeiro').item.json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "9d8b478f-b05c-4e22-be5b-5fc7f6c2e531",
+              "name": "chatwoot.phone_number",
+              "value": "={{ $('contato criado - primeiro').item.json.body.phone_number }}",
+              "type": "string"
+            },
+            {
+              "id": "4e188c89-47df-4bca-aaf4-76e6116ea971",
+              "name": "chatwoot.source_id",
+              "value": "=",
+              "type": "string"
+            },
+            {
+              "id": "ab2a4fd9-3c59-429b-aaf3-7c073da08366",
+              "name": "chatwoot.account_id",
+              "value": "={{ $('contato criado - primeiro').item.json.body.account.id }}",
+              "type": "string"
+            },
+            {
+              "id": "60cc4c23-fa99-4962-af18-c0e39e45fcae",
+              "name": "chatwoot.account_name",
+              "value": "={{ $('contato criado - primeiro').item.json.body.account.name }}",
+              "type": "string"
+            },
+            {
+              "id": "503d933d-2c5d-4409-b8f1-fec4813b6f68",
+              "name": "chatwoot.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "0c746165-d594-4fbf-8680-a8e3b1e7822a",
+              "name": "chatwoot.api_token",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1",
+              "type": "string"
+            },
+            {
+              "id": "669ce204-071e-4e08-8c88-16acf172e644",
+              "name": "chatwoot.conversation_id",
+              "value": "={{ $json.payload[0].id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        -280
+      ],
+      "id": "2e7372d7-a7ef-4925-bbd5-933eb9924c39",
+      "name": "normalizacao"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Voce deve avaliar o nome da pessoa \n\nNome pessoa =  {{ $json.chatwoot.user_name }}\n\nDefinir qual genero é pelo nome \n\nMasculino \nFeminino \nIndefinido\n\nSua resposta deve ser unica e exlusivamente o genero da pessoa e o primeiro nome caso tenha.\n\nCaso na tenha nome, atribua como \nnome: Não identificado\n\nverificar o codigo do país pelo DDI do telefone  e definir o codigo o país conforme o codigo, nome do país sempre em Ingles.\nTelefone = {{ $json.chatwoot.phone_number }}\nPaís: [NOME PAÍS]\n\nUNICO OUTPUT ACEITADO É RESTRITIVO \n\n\n{\n\"genero\": \"[GENERO]\",\n\"nome\": \"[NOME]\",\n\"country\": \"[PAÍS]\"\n},",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        560,
+        -280
+      ],
+      "id": "cb57dd5f-b942-43e6-b07b-7379f2bb6394",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.chatwoot.url }}/api/v1/accounts/{{ $('normalizacao').item.json.chatwoot.account_id }}/conversations/{{ $('normalizacao').item.json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').item.json.chatwoot.api_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [\n \"lead-frio\"\n]\n}",
+        "options": {}
+      },
+      "id": "d35228a4-86cc-443a-aa71-0ed90d95204f",
+      "name": "ajustas tag chatwoot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "879ec2d9-6148-4ae0-9bc2-7301d80b95b4",
+              "leftValue": "={{ $('OpenAI').item.json.message.content.nome }}",
+              "rightValue": "Não identificado",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        -280
+      ],
+      "id": "5ee06aea-aa1f-4c26-9292-92a094a63073",
+      "name": "verifica genero"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('normalizacao').item.json.chatwoot.url }}/api/v1/accounts/{{ $('normalizacao').item.json.chatwoot.account_id }}/contacts/{{ $('normalizacao').item.json.chatwoot.contact_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').item.json.chatwoot.api_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "additional_attributes[country]",
+              "value": "={{ $('OpenAI').item.json.message.content.country }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $('OpenAI').item.json.message.content.nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        -380
+      ],
+      "id": "cdd28349-2ec4-4d6c-aa17-5b2f091b92d7",
+      "name": "ajusta infos contato - sem nome",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "4e738220-7980-47cc-b514-47723ce303e6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        -280
+      ],
+      "id": "c410ea7c-c368-4a5d-b75d-f6b7f7737848",
+      "name": "contato criado - primeiro",
+      "webhookId": "4e738220-7980-47cc-b514-47723ce303e6"
+    },
+    {
+      "parameters": {
+        "url": "=https://chat.peakperformance.app.br/api/v1/accounts/{{ $json.body.account.id }}/contacts/{{ $json.body.id }}/conversations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        160,
+        -280
+      ],
+      "id": "8c7adeb5-44ca-4133-ba76-411f78ffb396",
+      "name": "busca conversas ativas"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('normalizacao').item.json.chatwoot.url }}/api/v1/accounts/{{ $('normalizacao').item.json.chatwoot.account_id }}/contacts/{{ $('normalizacao').item.json.chatwoot.contact_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').item.json.chatwoot.api_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": {\n    \"genero\": \"{{ $json.message.content.genero }}\"\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        -280
+      ],
+      "id": "832ffcd6-bd4d-4000-955a-ff105e1a6675",
+      "name": "ajusta genero"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('normalizacao').item.json.chatwoot.url }}/api/v1/accounts/{{ $('normalizacao').item.json.chatwoot.account_id }}/contacts/{{ $('normalizacao').item.json.chatwoot.contact_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').item.json.chatwoot.api_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "additional_attributes[country]",
+              "value": "={{ $('OpenAI').item.json.message.content.country }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $('OpenAI').item.json.message.content.nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        -180
+      ],
+      "id": "64fb8d6b-1406-4c44-9725-730c1dcf492d",
+      "name": "ajusta infos contato - nome pais",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 380,
+        "width": 1820,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -120,
+        -400
+      ],
+      "typeVersion": 1,
+      "id": "a147aa09-6963-4212-a80a-3547f8d401ab",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "contato criado - primeiro": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
+            "content-length": "273",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "178.156.141.82",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "178.156.141.82"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 29,
+              "name": "conta_teste"
+            },
+            "additional_attributes": {},
+            "avatar": "",
+            "custom_attributes": {},
+            "email": null,
+            "id": 171136,
+            "identifier": "554799830536@s.whatsapp.net",
+            "name": ".",
+            "phone_number": "+554799830536",
+            "thumbnail": "",
+            "event": "contact_created"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/4e738220-7980-47cc-b514-47723ce303e6",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T19:14:53.948Z",
+  "versionId": "44698bdc-cad4-42ac-85e7-4365291a0504"
+}
