@@ -1,0 +1,260 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Agente Etapa 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Etapa 1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Etapa 1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente Etapa 1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-15T23:07:23.448Z",
+  "id": "GVWQGxRkgKlnyWbw",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "544eac3a-7018-4271-8741-79cc8e6cc3f4",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "04cfe31f-989a-487b-8140-6247160e4940",
+      "name": "Webhook",
+      "webhookId": "544eac3a-7018-4271-8741-79cc8e6cc3f4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2892b668-6aca-419d-87f1-a22102686674",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "23cc3ad1-51fe-4f73-bf46-b146328835dd",
+              "name": "body.user_id",
+              "value": "={{ $json.body.user_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        0
+      ],
+      "id": "43d9743f-d966-49f2-8188-631e8cd33559",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        300,
+        260
+      ],
+      "id": "65e77d63-c931-4bf7-b79b-f1e4b31527a0",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "key for ia"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "= {{ $json.body.message }}",
+        "options": {
+          "systemMessage": "=Você é Felipe Ret, rapper brasileiro conhecido pelo estilo autêntico e proximidade com o público. \nComo Felipe Ret, sua missão é:\n\n- Responder dúvidas de fãs sobre seus shows (curiosidades sobre repertório, cenografia, ingressos, etc.)  \n- Quando solicitado, montar roteiros de shows completamente fictícios, indicando data, cidade e nome do evento  \n- Usar um tom descontraído, próximo e cheio de energia, como em suas entrevistas  \n- Sempre que útil, perguntar ao fã que tipo de experiência ele espera (público pequeno, festival, turnê em clubes, show ao ar livre)  \n- Inserir detalhes criativos (nome de palco, horário de abertura, artista convidado) para tornar cada show imaginado mais real  \n- Manter a interação leve, trazendo referências a músicas e momentos marcantes da carreira  \n\nExemplo de uso:\n\nFã  Como vai ser o seu próximo show em São Paulo  \nFelipe Ret  Fala, meu parceiro! Vai rolar um show intimista no Espaço Vermelho dia 15 de novembro, abertura às 20h com meu irmão DJ Beat. A gente vai tocar faixa inédita e clássicos do álbum Vida Real. Quer saber como garantir seu ingresso VIP  \n\nPronto! Basta colar esse prompt como sistema ou instrução inicial no ChatGPT e as respostas seguirão o estilo do Felipe Ret.\n\nunico traveco q como é o enzo \n",
+          "returnIntermediateSteps": true,
+          "passthroughBinaryImages": true
+        }
+      },
+      "id": "8cf5f0d2-b19f-426e-99aa-19d59829404b",
+      "name": "Agente Etapa 1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        380,
+        0
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 100,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3329a516-7d03-44fb-904a-54b077e4c091",
+              "name": "resposta",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        0
+      ],
+      "id": "8cd6dc3d-e4df-4990-b543-6c2c41dc3233",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Edit Fields').item.json.body.user_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        480,
+        260
+      ],
+      "id": "a4e2b9f1-f618-477b-b518-2c5a2abac7d8",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 OPR/119.0.0.0",
+            "content-length": "135",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "content-type": "application/json",
+            "origin": "https://b99fdf86-b7d0-4c73-b9ca-064cd8fb3f30.lovableproject.com",
+            "priority": "u=1, i",
+            "referer": "https://b99fdf86-b7d0-4c73-b9ca-064cd8fb3f30.lovableproject.com/",
+            "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Opera GX\";v=\"119\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "177.192.22.122",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "177.192.22.122"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "message": "chupo cu",
+            "timestamp": "2025-07-15T23:14:15.316Z",
+            "user_id": "e71aafec-4b4c-4c07-b494-e1c1aa557f2a",
+            "character": "Felipe RET"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/544eac3a-7018-4271-8741-79cc8e6cc3f4",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-15T23:46:29.590Z",
+  "versionId": "f5ed644a-1780-4132-884b-3cfe73ceb945"
+}
