@@ -1,0 +1,253 @@
+{
+  "active": false,
+  "connections": {
+    "envia audio - chatwoot": {
+      "main": [
+        []
+      ]
+    },
+    "busca audio para concatenar": {
+      "main": [
+        [
+          {
+            "node": "envia audio - chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        []
+      ]
+    },
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "busca audio para concatenar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados e atualiza no bd": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "busca dados e atualiza no bd",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-15T07:49:10.760Z",
+  "id": "Lts4pRf2I0P7I7Cb",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "3.send_audio_table_photos",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').first().json.chat.url }}/api/v1/accounts/{{ $('normalizacao').first().json.dados.account_influencer_id }}/conversations/{{ $('normalizacao').first().json.dados.conversation_Id }}/messages ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('normalizacao').first().json.chat.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        0
+      ],
+      "id": "23cc6a53-31b5-4ef7-9ff2-bf5721f4846c",
+      "name": "envia audio - chatwoot",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Brandão/Brandao - Pedindo foto.ogg"
+      },
+      "id": "e4d008aa-7534-4c04-bed6-f7e99ac6f91e",
+      "name": "busca audio para concatenar",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        780,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        0
+      ],
+      "id": "8ca0df61-dc62-4481-8ae7-0e8703f2c8a4",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f2db491c-2831-4253-bedd-31cee0248185",
+              "name": "dados.session_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "cd8263d9-9816-4a7b-aac3-ff82a02beaa4",
+              "name": "dados.account_influencer_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "039c6aab-f06f-4e4c-8b23-2f1a7775ffff",
+              "name": "dados.conversation_Id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "509713a9-8802-4a68-a1e9-c704d526de30",
+              "name": "dados.contact_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.chatwoot.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "67b0689e-1657-4e7f-b3d8-fc1e330bfa27",
+              "name": "chat.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "19ac11e7-db5f-4c8d-9c55-fe2e5b76ccca",
+              "name": "chat.apikey",
+              "value": "ULkuNbNYpcctAj4LEcXLWUYq",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        600,
+        0
+      ],
+      "id": "fd692111-1877-488e-819c-812650bea7ad",
+      "name": "normalizacao"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH updated_lead AS (\n  UPDATE public.leads\n  SET    sales_funnel_stage_id = 3\n  WHERE  contact_id = {{ $json.chatwoot.contact_id }}\n  RETURNING *\n)\nSELECT\n  row_to_json(ul) AS lead\nFROM updated_lead ul;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        420,
+        0
+      ],
+      "id": "d86ffc4f-e4c3-4550-8bb5-8f24af624c2f",
+      "name": "busca dados e atualiza no bd",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "04e35514-c634-469c-813f-f71c1166262e",
+      "name": "Wait",
+      "webhookId": "8038960c-cf78-497c-ae7d-a21b13e853a8"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": "Solicitação para enviar áudio com instruções e tabela para preenchimento",
+          "session_id": "14dfe6f9-24b0-4272-9263-5100dd5bce8e",
+          "account_id": "29",
+          "conversation_id": "8476",
+          "chatwoot": {
+            "contact_id": "223295"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-19T03:10:03.396Z",
+  "versionId": "2ce6371e-c97e-4c13-b8f1-e2383abdab5d"
+}
