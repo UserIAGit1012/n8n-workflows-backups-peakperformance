@@ -1,0 +1,229 @@
+{
+  "active": true,
+  "connections": {
+    "EvoCloud": {
+      "main": [
+        [
+          {
+            "node": "EnviaConsumidor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnviaConsumidor": {
+      "main": [
+        [
+          {
+            "node": "NoOp.",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-09T05:00:49.914Z",
+  "id": "K3KgXdMYMr2yg02L",
+  "meta": null,
+  "name": "1️⃣ Send Queue Rabbit",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "Configurar nome da fila do Rabbit",
+        "height": 200,
+        "width": 181,
+        "color": 2
+      },
+      "id": "1e1e04ef-5af3-4109-86ce-ff2646b1bcc6",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1021214e-9f74-4799-a1d9-490804955a9c",
+      "name": "NoOp.",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        480,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5711be4b-146d-4618-8ec7-81d92f891d40",
+        "options": {}
+      },
+      "id": "23dc7aa0-7503-4cbf-8f69-d9b460345b47",
+      "name": "EvoCloud",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        60,
+        -180
+      ],
+      "webhookId": "5711be4b-146d-4618-8ec7-81d92f891d40"
+    },
+    {
+      "parameters": {
+        "content": "# 0",
+        "height": 200,
+        "width": 620,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        40,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "1f504241-b79a-4749-b196-6f909b0a82eb",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "queue": "teste",
+        "options": {}
+      },
+      "id": "77025a3d-25a6-4f46-bc73-464b8878d993",
+      "name": "EnviaConsumidor",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        -180
+      ],
+      "notesInFlow": true,
+      "credentials": {
+        "rabbitmq": {
+          "id": "FUtNv1kFTrj08Qcr",
+          "name": "RabbitMQ peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook-teste1212",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        -20
+      ],
+      "id": "c3aa1dc8-33cd-48fa-aac3-9426bced9e77",
+      "name": "Webhook",
+      "webhookId": "e1ac41b5-db0c-4ed1-84b2-256bd5858720",
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "EvoCloud": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.7.5",
+            "content-length": "4916",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "5.161.61.123",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "5.161.61.123"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "Tenente_8971",
+            "data": {
+              "key": {
+                "remoteJid": "553899522405@s.whatsapp.net",
+                "fromMe": false,
+                "id": "A42841F0D42CD4956405D397066F93D8"
+              },
+              "pushName": "Helen Gontijo",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "recipientKeyHash": "30NTs4FynhJB9Q==",
+                    "recipientTimestamp": "1748981475"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "aiYO2waO4Rx4hpp6qfuLDSt6v2RUM5XuLBwE+s1SAuQ="
+                },
+                "conversation": "Olá! Tenho interesse e queria mais informações, por favor."
+              },
+              "contextInfo": {
+                "conversionSource": "FB_Ads",
+                "conversionData": "QWZmaE14YkJpbnpwdkxCcm5CUUotNkFfT0lId2l2LU1mb1V6aWlPQnVFdGxmZldGelAzMFdaLTNUZ1F5aTJkd3RJSVluXzRoV0hrNTE0cjNHTDg1RVdYUkZvSXU0NVEtd1o0TTRMMTNRd2N6cGdodmRWTlYtS1NvbWk3V3h2ZGRrWmMtSXBMN04wWkhrRnJVZjhYYTg4aGh4aWh0OVp5RERxZnpkZzhQUXlJTFFmT25JTm85Qm5iOGRKY21CZ3RGai00cXlhX3NpWXo4cU44ZGphSkFZNjJTTFNCTE50VTRRZnh6VFlQNE9jaHVhbVptRXVxQmljQlFWdUR6bWtrVTQyTVRwdWxXa21seFRXMXBab3FpbjJibV9TNVU0VGUtVHFnS3JPWklVeVE2QzBnNnprNFdDMjZDY1ZDVkowMHBwSFF2NnczT3MzbHQ0anVJN1NnRzhRSUN1U0F4V0hSaGlmMEcxQm1wWWhKb2Jua21lMm92ZFBBMDZB",
+                "conversionDelaySeconds": 8,
+                "externalAdReply": {
+                  "title": "Converse conosco",
+                  "body": "Para você que está insatisfeito com seus resultados atuais e busca uma transformação completa: física e mental.\n\nMais que um aluno, você será um soldado em treinamento, comprometido com resultados reais.\n\nClick agora para saber mais",
+                  "mediaType": "VIDEO",
+                  "thumbnailUrl": "https://scontent.xx.fbcdn.net/v/t15.5256-10/500296197_1238797221253707_3514832732535466100_n.jpg?stp=dst-jpg_p180x540_tt6&_nc_cat=111&ccb=1-7&_nc_sid=40cf1a&_nc_ohc=rKlOn7d8UJUQ7kNvwH6_f7_&_nc_oc=AdloZiPAjRAec8iR6jyREP0WNNeNYKxzol61xLmykl7I--4a72LqUAXHXdQ26V72xyeypn3R-iD34tmxG2_5ZsRy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_gid=Pcuy_AXFJaAaPV6Sb5eIEQ&oh=00_AfJWVYtbE3L1-4rZjQ6UAjLjQdbpryEmEs762g8rzxq_8w&oe=68453B4B",
+                  "mediaUrl": "https://www.facebook.com/100054085996412/videos/1629389191104120/",
+                  "thumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCTUQwYTAwMGE4NDAxMDAwMGZkMDEwMDAwNmIwMjAwMDA5ZjAyMDAwMGI4MDIwMDAwMDkwMzAwMDAwMjA0MDAwMDIyMDQwMDAwNTkwNDAwMDA3ODA0MDAwMGQ2MDUwMDAwAP/bAIQABQYGCwgLCwsLCw0LCwsNDg4NDQ4ODw0ODg4NDxAQEBEREBAQEA8TEhMPEBETFBQTERMWFhYTFhUVFhkWGRYWEgEFBQUKBwoICQkICwgKCAsKCgkJCgoMCQoJCgkMDQsKCwsKCw0MCwsICwsMDAwNDQwMDQoLCg0MDQ0MExQTExOc/8IAEQgAWQAyAwEiAAIRAQMRAf/EAE8AAAEFAQEAAAAAAAAAAAAAAAEAAgMEBwUGEAABAwEFBgUCAwkAAAAAAAABABEhMQIQQVFhEiBxgZGhscHR4fAD8RMiQgQwMkBEYoKSov/aAAwDAQACAAMAAAABzjnXq7hYrzgiW2XOZW0LwHvyczoX60bm9Sj0CLBMDmx6FnOjA5ZKZAnThxFiu6mVDp+Z6Yx2YWI7idE7p8+K9GlSlou07JdaQzSMyoRSQzhx6vKa5j9HybWQcvmqpKwqySsxxhGXUMt1JD//2gAIAQEAAQUCtW1aLEXWbx9DaIIUIBAIplYVutm1Fm/aVprQtWVZs3AK3aZOjcLgVbX5UbLIbhK2yhFzp7pZAqwwQsOtpW0XF9un0Tae2VZthDYX4Yv2C4CFkL8wTFAsvxCtsrbW2VtOnQ3Rd//aAAgBAwABPwF9x0TeTuWLO1asglnIc5DNWv2P6Y/qB/rlzVuxs2iAdoAwc7nRLsiue7//2gAIAQIAAT8BZo3RvksEPqk/pQN4G/8A/9oACAEBAAY/Ao7I70ECMVi/BRuv53Nufw9woDNvfp3qOqWvnLfqVG7HqqC6eSP9vvvvgK3Yj/oeRVs2cmH+XHTVV7e+5j1VevxkRUFu38h//9oACAEBAAE/IRuHASXABgBTOqooVOCY2Kck6YBE8N1b0VKqFBh5SbiyFkkGMQwhEkMmow+6mZ/K5BMToJomh+ICFjlxUFEwPO4EU/MgAJFWr6unGfJDCD3GALcaL4v7qTAmNFBMBkKBa5J8WgL42T4oQIG4IooSOBZfdkJKTMgULh0RIEE5M80/yPqiMAS7IsY5YCMzCMbcpbEvgXP61T3FZAPJOIcHQovncWEIGUuCWJaAiGgdyhSxyC4EXFjkUwIoAMEuXTFMS8hNbzMclXN3CKGJDqggBwQZHoPznuUD1Szy1lcTuqyEAJrLogenRdxEq07M7rK9/9oADAMBAAIAAwAAABC4Icjyq6O0sQMmX6hIkEO72yH/2gAIAQMAAT8QlOelz3fAvGvBc3IIBaEM8glM7yP0JPO8VgNVABpABZhwME14pkGLlHibk3hd/9oACAECAAE/EOg/cGuNzsVTqdc+SdALM+GVxlMPv//aAAgBAQABPxAUjthCzKLK4vxRGLOAwTlkgITCB0aUDAwdiOqKHhi7yQH2ERnQjeBZIBKZwY4EsDkhsEcAg4uxemH+OSCFQniigQOKnQfgrVCausRIPGUSzU7R4k4NE5p5Qeui1HX3V4ICPDcE8xIIwDUrIXWRjg+CUEMEAj1NE8URRRgJ0x5pjBEUJ0ZeOJ5ogvSXVnk4PQ8XbQRLoAAjk7qeBfc6GCVzAx0oicUJEVBC6kpjDFwCJ+0PZSIAMIDtxqWwdGnPVINVoAc0zM4lgSZ2hTAMEDmh6HkgAmDXq6mdfBkDgtaOzaaJwkkiSmRiQcLu+LKuAjlTiqDko3IA1y5o4Lh8+ZHQJKU/HCyn4gKE13UgLwMVhO6FNcR8HRHIA1R2NJUlIJozGQkNFqHsRtFpqOTHHUOnCZzIfkjScWbjcyBokMMynQsrUBj1X3wrEvVG414/IryXf//Z",
+                  "sourceType": "ad",
+                  "sourceId": "120226167866620556",
+                  "sourceUrl": "https://www.instagram.com/p/DKNQY_IsTGo/",
+                  "containsAutoReply": false,
+                  "renderLargerThumbnail": true,
+                  "showAdAttribution": true,
+                  "ctwaClid": "Afc_HgrX6G8Q8tR4QBAamFgV2FOajfjqHX40I6QfEwENU6tLqyDVwkFajOcxhxWYuYEQwugfCQCDT_0dC6fueZhPqHrLDH47Yq0CVrZ5PRgr4oSxAhzMs2qh_IlbLfc3TLZUV5ZTEw"
+                },
+                "entryPointConversionSource": "ctwa_ad",
+                "entryPointConversionApp": "instagram",
+                "entryPointConversionDelaySeconds": 6,
+                "trustBannerAction": 4294967295
+              },
+              "messageType": "extendedTextMessage",
+              "messageTimestamp": 1748989877,
+              "instanceId": "17296f2a-0eb5-4738-a4ea-417bcfb2bf28",
+              "source": "android",
+              "chatwootMessageId": 4953432,
+              "chatwootInboxId": 105,
+              "chatwootConversationId": 41015
+            },
+            "destination": "https://webhook.peak.botfai.com.br/webhook/41174176-32fe-498a-8ee3-c54dba65069b1",
+            "date_time": "2025-06-03T19:31:22.927Z",
+            "sender": "5511933778971@s.whatsapp.net",
+            "server_url": "https://wsapi.peak.botfai.com.br",
+            "apikey": "01C1F0B0CE6B-4540-8574-94C9BA963DF2"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/41174176-32fe-498a-8ee3-c54dba65069b1",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-11T01:53:22.405Z",
+  "versionId": "7af6bab9-3398-42fa-bfe9-e313f08a18b6"
+}
