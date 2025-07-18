@@ -1,0 +1,1236 @@
+{
+  "active": false,
+  "connections": {
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "primeira normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "msg rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "adc +1 rmk": {
+      "main": [
+        [
+          {
+            "node": "expert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg rmkt": {
+      "main": [
+        [
+          {
+            "node": "verificar o fup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "proximo rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "proximo rmkt": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica chave de repeticao": {
+      "main": [
+        [
+          {
+            "node": "verfi. qtadade rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca tags no chatwoot": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "primeira normalizacao": {
+      "main": [
+        [
+          {
+            "node": "verifica chave de repeticao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (proposta negada|sem retorno|rmk-pausado)": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RMKT - propostas enviadas": {
+      "main": [
+        [
+          {
+            "node": "busca tags no chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ultimo contato +q 24h": {
+      "main": [
+        [
+          {
+            "node": "verifica 2o rmkt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica 2o rmkt": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca dados do usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "expert": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (#follow-up-1)": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificar o fup": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot (#follow-up-1)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ajustas tag chatwoot (#follow-up-2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ajustas tag chatwoot (#follow-up-2)": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca dados do usuario": {
+      "main": [
+        [
+          {
+            "node": "adc +1 rmk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verfi. qtadade rmkt": {
+      "main": [
+        [
+          {
+            "node": "ajustas tag chatwoot (proposta negada|sem retorno|rmk-pausado)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ultimo contato +q 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-21T04:57:57.914Z",
+  "id": "dgaCENKUYzQPQWny",
+  "meta": null,
+  "name": "❄️ RMKT | Lead frio",
+  "nodes": [
+    {
+      "parameters": {
+        "batchSize": 2,
+        "options": {}
+      },
+      "id": "94303747-2da9-4b96-a8a4-c1ab73d545f3",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        160,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## GATILHO\n### Data e hora",
+        "height": 240,
+        "width": 196
+      },
+      "id": "359520bb-ed65-42b8-ac79-4dc137962041",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é um assistente de marketing que cria mensagens de reengajamento personalizadas para usuários que entraram em contato mas não prosseguiram na conversa.\n\nEntrada:\n- Influencer: {{ $json.expert }}\n- Quantidade de remarketing: {{ $json.contador_rmkt }}\n- Nome do usuário: {{ $('busca dados do usuario').item.json.name }}\n- Gênero do usuário: {{ $('busca dados do usuario').item.json.custom_attributes.genero }}  (valores possíveis: \"M\" ou \"F\")\n\nRegras:\n1. Se `contador_rmkt == 1`, escolha **apenas uma** destas abordagens:\n   - **Tom amistoso/educado**:  \n     “Olá, [name], ainda não tive teu retorno aqui. Vamos conversar?”\n   - **Tom descontraído/divertido** (mencionando o influencer):  \n     “Poooxa, vai me deixar no vácuo mesmo, [name]?”\n\n2. Adapte pronomes e concordâncias ao gênero:\n   - **Masculino** (“M”): “teu”, “seu”\n   - **Feminino** (“F”): “tua”, “sua”\n\n3. Retorne **apenas** a mensagem final de reengajamento (sem elementos de formatação extra).\n\n\n",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2ce0b310-6275-4205-8810-96b42c192def",
+      "name": "OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1640,
+        940
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=rmkt:rmkt-frio:{{ $('primeira normalizacao').item.json.chatwoot.conversation_id }}",
+        "value": "={{ \n  (parseInt(\n     $('verifica chave de repeticao').item.json.rep || '0'\n     , 10\n  ) + 1).toString() \n}}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        940
+      ],
+      "id": "d44f371e-7eb6-4396-89ac-8ddabc0ddf2f",
+      "name": "adc +1 rmk",
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## CONFERE RMKT",
+        "height": 660,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        700,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "8b55c52c-fc57-46c2-81ed-e0184a5579e9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## TAG CHATWOOT",
+        "height": 240,
+        "width": 220,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "0703be70-fc2a-45e8-9aea-04b5f8407797",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao').item.json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao').item.json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao').item.json.chatwoot.conversation_id }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao').item.json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $json.message.content }}"
+            },
+            {
+              "name": "message_type",
+              "value": "outgoing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b25644ff-f9f4-4c02-8d79-6dfa783d055f",
+      "name": "msg rmkt",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1940,
+        940
+      ],
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2420,
+        960
+      ],
+      "id": "39310c49-66f9-49b4-9822-9a4e54613467",
+      "name": "Wait",
+      "webhookId": "f915a275-890d-4f9f-a9ed-ccf081d71a05"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        960
+      ],
+      "id": "e44f42b5-c88e-4a2e-8daa-c9264e56a73e",
+      "name": "proximo rmkt"
+    },
+    {
+      "parameters": {
+        "content": "## MSG & ENVIO",
+        "height": 260,
+        "width": 460,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1620,
+        880
+      ],
+      "typeVersion": 1,
+      "id": "1124bdc7-676f-4ebb-b19a-c5f2153808ab",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## FINALIZA",
+        "height": 260,
+        "width": 340,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2400,
+        880
+      ],
+      "typeVersion": 1,
+      "id": "b0f2b9a2-da7e-4492-beba-41fc6f321ec7",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## DADOS DB",
+        "height": 260,
+        "width": 220,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        880
+      ],
+      "typeVersion": 1,
+      "id": "5b294fb0-3e20-4c74-82e3-89636dc6c968",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=rep",
+        "key": "=rmkt:rmkt-frio:{{ $json.chatwoot.conversation_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        580,
+        560
+      ],
+      "id": "ccbbb32d-4885-4ee3-8f4e-07e9679a7f88",
+      "name": "verifica chave de repeticao",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM conversations\nWHERE cached_label_list LIKE '%lead-frio%'\n  AND cached_label_list LIKE '%iniciou-atendimento%'\n  AND cached_label_list NOT LIKE '%sem-resposta%';\n  AND cached_label_list NOT LIKE '%follow-up-2%';",
+        "options": {}
+      },
+      "id": "00c80a9e-da20-4aca-b624-7ef835e2e402",
+      "name": "busca tags no chatwoot",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -40,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "cicjfix16kiWOkLl",
+          "name": "db-chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "44fb55f7-f826-43e7-a852-e172b4424719",
+              "name": "chatwoot.conversation_id",
+              "value": "={{ $json.display_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7b780b0f-a284-4c98-8584-e8cf770a2119",
+              "name": "chatwoot.contact_id",
+              "value": "={{ $json.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7399a9cc-0c3e-4933-93de-d7b319bdbf7f",
+              "name": "chatwoot.tags",
+              "value": "={{ $json.cached_label_list }}",
+              "type": "string"
+            },
+            {
+              "id": "3874327b-7ef4-4a2a-bfe7-b1a85311d419",
+              "name": "chatwoot.url",
+              "value": "https://chat.peakperformance.app.br",
+              "type": "string"
+            },
+            {
+              "id": "e9db23b6-edec-4a32-b307-75e41cd656ab",
+              "name": "chatwoot.api",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1",
+              "type": "string"
+            },
+            {
+              "id": "da400608-12b0-4108-9ead-734f5ce9680d",
+              "name": "chatwoot.account_id",
+              "value": "={{ $json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a650336e-85f5-4691-ab6d-fc81ecdcb6ca",
+              "name": "dados.ultima_atividade",
+              "value": "={{ $json.last_activity_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a81b0a33-60e2-446a-9efe-967c876942a6",
+              "name": "chatwoot.labels",
+              "value": "={{ \n  $json.cached_label_list\n    .split(',')\n    .map(label => `\"${label.trim()}\"`)\n    .join(', ')\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        560
+      ],
+      "id": "a54435e1-70f1-46a9-aade-eccd1f43f080",
+      "name": "primeira normalizacao"
+    },
+    {
+      "parameters": {
+        "content": "## VERIFICA INFOS E RMKT  | LOOPPING ",
+        "height": 240,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -100,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "c7207d53-d609-4cae-bed3-97dbd8758ff4",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [\n \"lead-frio\",\n \"sem-resposta\",\n\"rmkt-pausado\"\n\n]\n} ",
+        "options": {}
+      },
+      "id": "036453f3-9c63-444c-b51c-caba8b3cc731",
+      "name": "ajustas tag chatwoot (proposta negada|sem retorno|rmk-pausado)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        560
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM conversations\nWHERE cached_label_list LIKE '%teste%'\nAND cached_label_list NOT LIKE '%rmkt-pausado%'\nLIMIT 3;\n",
+        "options": {}
+      },
+      "id": "2b132a96-3c1f-4add-ac3e-3de3cce6b017",
+      "name": "TESTES",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -300,
+        1320
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                2,
+                4,
+                3,
+                1,
+                5,
+                6
+              ],
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "fafbf169-3580-4748-8d55-3e1c21dfddff",
+      "name": "RMKT - propostas enviadas",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -260,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# TESTES\n",
+        "height": 260,
+        "width": 400,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -300,
+        1240
+      ],
+      "typeVersion": 1,
+      "id": "59bccb5d-df4f-4b0f-b644-039e0b86354e",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "rmkt:rmkt-frio:8454"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        1320
+      ],
+      "id": "47423044-a8c5-4966-8d87-e9b73c72c2f5",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "empresas_sc",
+          "mode": "list",
+          "cachedResultName": "empresas_sc"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "ddd_telefone_1",
+              "value": "554788084688"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        1320
+      ],
+      "id": "3280dd07-646e-4804-9ab1-2e489d8eb7d5",
+      "name": "Postgres",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "rmkt:rmkt-frio:8454",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        1320
+      ],
+      "id": "3dac9971-d9bf-4c98-8929-5f587aa3d859",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "02bb5ee8-1456-4ddc-9cf6-9cb3ed04924e",
+              "leftValue": "={{ \n  (Date.now() \n   - new Date($node[\"primeira normalizacao\"].json.dados.ultima_atividade).getTime()\n  ) > 24 * 60 * 60 * 1000 \n}}",
+              "rightValue": "={{ DateTime.now().setZone(\"America/Sao_Paulo\").toFormat(\"dd/MM/yyyy\") }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "add5d695-2ce4-428c-86ca-85368a54bf2e",
+      "name": "ultimo contato +q 24h",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "549e1167-b611-43c1-8f15-4a4d71c31ceb",
+              "leftValue": "={{    (     Date.now()      - new Date($node[\"primeira normalizacao\"].json.dados.ultima_atividade).getTime()   ) < 48 * 60 * 60 * 1000  }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "fdecafbd-0ddd-4319-b5f0-923d02204336",
+              "leftValue": "={{ $json.rep }}",
+              "rightValue": "2",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        920
+      ],
+      "id": "ca498732-a179-44c6-9a5c-93a26e160f73",
+      "name": "verifica 2o rmkt"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b3f93e7d-4750-451e-b7e3-41cae9571365",
+              "name": "expert",
+              "value": "={{    ({     29: 'conta_teste',     27: 'Vitor Porto',     26: 'Bianchi',     25: 'Karen',     24: 'Pantera',     23: 'Vitor Chaves',     22: 'Edvan',     21: 'Isa',     20: 'Basa',     19: 'Horse',     18: 'Lala',     17: 'Rafael Brandão',     16: 'Johann',     15: 'Zanca',     14: 'Jú Caceres',     13: 'Francielle Mattos',     12: 'Tenente Breno',     11: 'Lucas Pinheiro',     10: 'Pinduca',     9:  'Gorila',     8:  'Rude',     7:  'Gnomo',     6:  'Angela Borges',     5:  'Giga',     4:  'Jorlan',     3:  'Bruno Santos'   })[     $node[\"primeira normalizacao\"].json.chatwoot.account_id   ] || 'Unknown' }}",
+              "type": "string"
+            },
+            {
+              "id": "3442cdcf-7825-4266-b3de-94f0d5704953",
+              "name": "contador_rmkt",
+              "value": "={{ \n  (\n    parseInt(\n      $('verifica 2o rmkt').first().json.rep || '0', \n      10\n    ) + 1\n  ).toString() \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1400,
+        940
+      ],
+      "id": "b6a743d7-8314-40e1-bec0-25c6268e9786",
+      "name": "expert"
+    },
+    {
+      "parameters": {
+        "content": "## ADC RMKT | DADOS",
+        "height": 260,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1160,
+        880
+      ],
+      "typeVersion": 1,
+      "id": "84cf384c-0b47-4787-863c-0ace0761420e",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [{{ $('primeira normalizacao').first().json.chatwoot.labels }},\"rmkt-frio\",\"follow-up-1\"\n]\n} ",
+        "options": {}
+      },
+      "id": "0190a196-37ae-4bd0-b81f-94fbb9e1c657",
+      "name": "ajustas tag chatwoot (#follow-up-1)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('expert').first().json.contador_rmkt }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "21f6c463-967e-4872-a6ed-ecf2eadce7a9"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "primeiro "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8a21c02d-29c7-44a4-a3b3-774603cd4359",
+                    "leftValue": "={{ $('expert').first().json.contador_rmkt }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "segundo"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2200,
+        940
+      ],
+      "id": "e9860d3a-fbf1-458a-9af4-58015568ce8a",
+      "name": "verificar o fup"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('primeira normalizacao').first().json.chatwoot.url }}/api/v1/accounts/{{ $('primeira normalizacao').first().json.chatwoot.account_id }}/conversations/{{ $('primeira normalizacao').first().json.chatwoot.conversation_id }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "={{ $('primeira normalizacao').first().json.chatwoot.api }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"labels\": [{{ $('primeira normalizacao').first().json.chatwoot.labels }},\"rmkt-frio\",\"follow-up-2\"\n]\n} ",
+        "options": {}
+      },
+      "id": "0ba27e5e-af21-4292-8197-c178d4e1d258",
+      "name": "ajustas tag chatwoot (#follow-up-2)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "contacts",
+          "mode": "list",
+          "cachedResultName": "contacts"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $('primeira normalizacao').item.json.chatwoot.contact_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1000,
+        940
+      ],
+      "id": "677d100d-ab68-4832-b5fb-8e709643645d",
+      "name": "busca dados do usuario",
+      "credentials": {
+        "postgres": {
+          "id": "cicjfix16kiWOkLl",
+          "name": "db-chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a3de925b-f2cd-4dc0-8de3-0fe7a18ee4de",
+              "leftValue": "={{ ($json.rep ? $json.rep.toNumber() : 0) }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3541c7da-6ed3-47ca-b748-1986bca17c00",
+      "name": "verfi. qtadade rmkt",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## TAG CHATWOOOT",
+        "height": 620,
+        "width": 320,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2080,
+        520
+      ],
+      "typeVersion": 1,
+      "id": "64adc592-4ab5-4fe0-9274-bd92e75401aa",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 760,
+        "width": 3040,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -300,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "35910024-cad8-4f25-98db-6588b3a2a491",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {
+    "TESTES": [
+      {
+        "json": {
+          "id": 11610,
+          "account_id": 1,
+          "inbox_id": 19,
+          "status": 1,
+          "assignee_id": null,
+          "created_at": "2025-03-13T00:56:10.683Z",
+          "updated_at": "2025-03-10T21:19:49.077Z",
+          "contact_id": "11059",
+          "display_id": 11610,
+          "contact_last_seen_at": "2025-03-13T15:36:00.446Z",
+          "agent_last_seen_at": "2025-03-13T21:19:49.387Z",
+          "additional_attributes": {},
+          "contact_inbox_id": "18044",
+          "uuid": "5685117b-57d0-430a-8a45-9db5c2248814",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:49.073Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": null,
+          "first_reply_created_at": null,
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      },
+      {
+        "json": {
+          "id": 10911,
+          "account_id": 1,
+          "inbox_id": 64,
+          "status": 1,
+          "assignee_id": 2,
+          "created_at": "2025-03-10T22:35:26.226Z",
+          "updated_at": "2025-03-13T21:19:29.414Z",
+          "contact_id": "10100",
+          "display_id": 10911,
+          "contact_last_seen_at": "2025-03-13T17:08:31.042Z",
+          "agent_last_seen_at": "2025-03-10T21:19:29.730Z",
+          "additional_attributes": {
+            "mail_subject": "undefined"
+          },
+          "contact_inbox_id": "16714",
+          "uuid": "acd8d315-42da-4726-8d4f-353689d72103",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:29.409Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": "2025-03-13T17:10:48.394Z",
+          "first_reply_created_at": "2025-03-10T22:35:26.244Z",
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      },
+      {
+        "json": {
+          "id": 11622,
+          "account_id": 1,
+          "inbox_id": 14,
+          "status": 1,
+          "assignee_id": 1,
+          "created_at": "2025-03-13T16:58:01.792Z",
+          "updated_at": "2025-03-13T21:19:39.743Z",
+          "contact_id": "10410",
+          "display_id": 11622,
+          "contact_last_seen_at": null,
+          "agent_last_seen_at": "2025-03-13T21:19:40.232Z",
+          "additional_attributes": {
+            "mail_subject": ""
+          },
+          "contact_inbox_id": "18060",
+          "uuid": "bffe8259-0f48-4832-b511-d84dfad2bcbb",
+          "identifier": null,
+          "last_activity_at": "2025-03-10T21:19:39.734Z",
+          "team_id": null,
+          "campaign_id": null,
+          "snoozed_until": null,
+          "custom_attributes": {},
+          "assignee_last_seen_at": "2025-03-13T21:19:40.232Z",
+          "first_reply_created_at": "2025-03-13T16:58:01.803Z",
+          "priority": null,
+          "sla_policy_id": null,
+          "waiting_since": null,
+          "cached_label_list": "teste"
+        }
+      }
+    ],
+    "RMKT - propostas enviadas": [
+      {
+        "json": {
+          "timestamp": "2025-03-24T10:00:20.014-03:00",
+          "Readable date": "March 24th 2025, 10:00:20 am",
+          "Readable time": "10:00:20 am",
+          "Day of week": "Monday",
+          "Year": "2025",
+          "Month": "March",
+          "Day of month": "24",
+          "Hour": "10",
+          "Minute": "00",
+          "Second": "20",
+          "Timezone": "America/Sao_Paulo (UTC-03:00)"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-25T04:44:29.632Z",
+  "versionId": "7d00fe79-bcee-4ec8-94ec-b795d08d0dd8"
+}
