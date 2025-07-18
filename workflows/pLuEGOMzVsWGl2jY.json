@@ -1,0 +1,164 @@
+{
+  "active": true,
+  "connections": {
+    "DesativarFluxo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AtivarFluxo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-09T05:03:36.742Z",
+  "id": "pLuEGOMzVsWGl2jY",
+  "meta": null,
+  "name": "0️⃣ Ativar Fluxos - Horarios",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.peak.botfai.com.br/api/v1/workflows/HhGWcWYzcPIeVHNu/deactivate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQ5ZjMzMC01NTQ0LTRlNjQtODJkMy0wY2U1ODFkZTVjNmEiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ5NDQ0ODk1fQ.2UI_r5wGQPVSpwoq3upKewZqT40nMZjuYoUY0qFZTAg"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        80
+      ],
+      "id": "fd82db30-b042-4ff1-a33b-aa39e0412036",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.peak.botfai.com.br/api/v1/workflows/HhGWcWYzcPIeVHNu/activate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGQ5ZjMzMC01NTQ0LTRlNjQtODJkMy0wY2U1ODFkZTVjNmEiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ5NDQ0ODk1fQ.2UI_r5wGQPVSpwoq3upKewZqT40nMZjuYoUY0qFZTAg"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        -120
+      ],
+      "id": "28b73300-c784-466c-a3bc-17f8130beee0",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "triggerAtHour": 23
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        80
+      ],
+      "id": "aa845705-8387-4f8d-8c30-276fa9b7b734",
+      "name": "DesativarFluxo"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                0,
+                2,
+                3,
+                4,
+                6,
+                5,
+                1
+              ],
+              "triggerAtHour": 7,
+              "triggerAtMinute": 35
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        -120
+      ],
+      "id": "f40437ca-b024-48f5-a869-0f398cf66461",
+      "name": "AtivarFluxo"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:DesativarFluxo": {
+      "recurrenceRules": []
+    },
+    "node:AtivarFluxo": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-07-11T14:27:05.546Z",
+  "versionId": "5c3d6588-56f6-4d5f-a830-82d25a9f3b28"
+}
