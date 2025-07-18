@@ -1,0 +1,981 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "photo analyze | shape/part definition",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reaction msg | negative": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "photo analyze | shape/part definition": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check type photo": {
+      "main": [
+        [
+          {
+            "node": "register front url photo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "register side url photo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "register back url photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reaction msg | positive": {
+      "main": [
+        [
+          {
+            "node": "check type photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "valid photo?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "valid photo?": {
+      "main": [
+        [
+          {
+            "node": "reaction msg | positive",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "reaction msg | negative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "register side url photo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "register front url photo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "register back url photo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "menção na foto invalida - c msg": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-05-09T15:57:14.369Z",
+  "id": "tHK6SJWlEYCuKC68",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Tratamento de fotos enviadas",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1120,
+        -360
+      ],
+      "id": "bcef6cf2-d18b-4508-a7ab-22bdcb358ebc",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "content": "# 🆃🆁🅰🆃🅰🅼🅴🅽🆃🅾 Imagem\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+        "height": 660,
+        "width": 2680,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1160,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "120bbbf4-b7d2-4b36-9e7e-d5961de047eb",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('When Executed by Another Workflow').item.json.evolution.url }}/message/sendReaction/{{ $('When Executed by Another Workflow').item.json.evolution.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('When Executed by Another Workflow').item.json.evolution.api }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n\"key\": {\n      \"fromMe\": false,\n      \"id\": \"{{ $('When Executed by Another Workflow').item.json.message.wpp_message_id }}\",\n      \"remoteJid\": \"{{ $('When Executed by Another Workflow').item.json.meta.identifier }}\"\n    },\n    \"reaction\": \"👎🏼\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -100,
+        -140
+      ],
+      "id": "ee8a8a24-5eae-498c-97cf-8b0a77f8721f",
+      "name": "reaction msg | negative",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=<prompt>\n  <objective>\n    Avaliar se as fotos enviadas pelos usuários são válidas para análise de físico (frente, lado ou costas) e descrever apenas o que for claramente visível.\n  </objective>\n\n  <rules>\n    <rule>\n      Identificar em qual <mention>tag da seção</mention> a foto se enquadra:\n      <ul>\n        <li><photo_section>frente</photo_section> – áreas de barriga, peito e braços (pernas não obrigatórias, mas positivas se presentes).</li>\n        <li><photo_section>lado</photo_section> – perfil lateral do corpo.</li>\n        <li><photo_section>costas</photo_section> – parte das costas e ombros.</li>\n      </ul>\n    </rule>\n\n    <rule>\n      Classifique como <valid>foto válida</valid> apenas se:\n      <ul>\n        <li>O corpo em avaliação estiver claramente visível;</li>\n        <li>For apenas uma pessoa na imagem;</li>\n        <li>A resolução for suficiente para identificar contornos básicos;</li>\n        <li>Não houver obstruções ou borrões.</li>\n      </ul>\n    </rule>\n\n    <rule>\n      Classifique como <invalida>foto inválida</invalida> apenas se:\n      <ul>\n        <li>Baixa resolução que impeça a análise;</li>\n        <li>Mais de uma pessoa no quadro;</li>\n        <li>Obstruções (objetos, sombras, roupas que escondam o corpo);</li>\n        <li>Imagem borrada ou fora de foco;</li>\n        <li>Foto muito distante ou enquadramento inadequado.</li>\n      </ul>\n    </rule>\n\n    <rule>\n      Quando a foto for considerada válida, responda exatamente neste formato:\n      <example>\n        foto enviada = <photo_section>lado</photo_section><br>\n        foto válida = <valid>sim</valid><br>\n        observações = <!-- ex.: “braço esquerdo e abdômen definidos, sem obstruções” -->\n      </example>\n    </rule>\n\n    <rule>\n      Quando a foto for considerada inválida, responda **apenas** neste formato:\n      <example>\n        foto enviada = <photo_section>costas</photo_section><br>\n        foto válida = <invalida>sim</invalida><br>\n        motivo recusa = <reason><!-- ex.: “imagem borrada” ou “mais de uma pessoa” --></reason>\n      </example>\n    </rule>\n  </rules>\n</prompt>",
+        "imageUrls": "={{ $json.message.content_url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -880,
+        -360
+      ],
+      "id": "ab3040ab-66ce-4351-aeb4-8008a5041a5a",
+      "name": "photo analyze | shape/part definition",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('When Executed by Another Workflow').item.json.evolution.url }}/message/sendReaction/{{ $('When Executed by Another Workflow').item.json.evolution.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('When Executed by Another Workflow').item.json.evolution.api }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n\"key\": {\n      \"fromMe\": false,\n      \"id\": \"{{ $('When Executed by Another Workflow').item.json.message.wpp_message_id }}\",\n      \"remoteJid\": \"{{ $('When Executed by Another Workflow').item.json.meta.identifier }}\"\n    },\n    \"reaction\": \"💪🏼\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -60,
+        -440
+      ],
+      "id": "afb668d7-d1dd-4ec7-a2fb-5b9b1741a399",
+      "name": "reaction msg | positive",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Information Extractor').item.json.output.photo_section }}",
+                    "rightValue": "frente",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "cd4c9ba2-248c-4d8f-8040-da8b9cd0d0c7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "frente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0fffb1a4-97f8-41b4-9198-91487f8ac3ed",
+                    "leftValue": "={{ $('Information Extractor').item.json.output.photo_section }}",
+                    "rightValue": "lado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "lado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "524a5dd1-6050-430c-b43b-87ecc7d82425",
+                    "leftValue": "={{ $('Information Extractor').item.json.output.photo_section }}",
+                    "rightValue": "costas",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "costas"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        120,
+        -440
+      ],
+      "id": "9386e024-0184-4c9f-a2b6-75dcb6a4d8e1",
+      "name": "check type photo"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.content }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "observações",
+              "description": "observacoes das areas que estão visiveis "
+            },
+            {
+              "name": "foto_valida",
+              "type": "boolean",
+              "description": "A foto é valida? ",
+              "required": true
+            },
+            {
+              "name": "motivo_invalida",
+              "description": "Motivo pelo qual a foto é invalida "
+            },
+            {
+              "name": "photo_section",
+              "description": "tipo de foto enviada, de frente, de lado ou costa "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -360
+      ],
+      "id": "9b443770-2021-436d-9494-91dc9635b3c4",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -620,
+        -180
+      ],
+      "id": "7eb60b60-f32c-493c-addb-d9b08a09258e",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "44650c98-3813-4e95-bc57-a6a07bc849d5",
+              "leftValue": "={{ $json.output.foto_valida }}",
+              "rightValue": "invalida",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -280,
+        -360
+      ],
+      "id": "3c70a169-9451-4a26-9d70-ce323c2ae139",
+      "name": "valid photo?"
+    },
+    {
+      "parameters": {
+        "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ9_D8xhaF9DJdmw4-cy5pEFx6huFaW6ktaA&s",
+        "height": 80,
+        "width": 800
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1160,
+        40
+      ],
+      "typeVersion": 1,
+      "id": "245cfa9f-5402-4b7d-b4a2-dc2f784e2af8",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "https://chat.peakperformance.app.br/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMG1KQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b397cfe7d577c55cbe63e7f7d59d321f5a0e3ead/qv5jrk.jpeg",
+        "height": 80,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1160,
+        120
+      ],
+      "typeVersion": 1,
+      "id": "ed824148-e8de-4a90-a32a-bddad321643c",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "lead_photos",
+          "mode": "list",
+          "cachedResultName": "lead_photos"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lead_id": "={{ $('When Executed by Another Workflow').item.json.chatwoot.contact_id }}",
+            "front_foto_url": "={{ $('When Executed by Another Workflow').item.json.message.content_url }}"
+          },
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "lead_id",
+              "displayName": "lead_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "side_foto_url",
+              "displayName": "side_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "fotos_envidas",
+              "displayName": "fotos_envidas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "front_foto_url",
+              "displayName": "front_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "back_foto_url",
+              "displayName": "back_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        340,
+        -620
+      ],
+      "id": "d459c782-f351-4ee4-b53a-fc179fc22d97",
+      "name": "register front url photo",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "lead_photos",
+          "mode": "list",
+          "cachedResultName": "lead_photos"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "side_foto_url": "={{ $('When Executed by Another Workflow').item.json.message.content_url }}",
+            "lead_id": "={{ $('When Executed by Another Workflow').item.json.chatwoot.contact_id }}"
+          },
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "lead_id",
+              "displayName": "lead_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "side_foto_url",
+              "displayName": "side_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "fotos_envidas",
+              "displayName": "fotos_envidas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "front_foto_url",
+              "displayName": "front_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "back_foto_url",
+              "displayName": "back_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        340,
+        -460
+      ],
+      "id": "51a1b215-bf39-4858-bf1d-e87ddc32b0e6",
+      "name": "register side url photo",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "lead_photos",
+          "mode": "list",
+          "cachedResultName": "lead_photos"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "back_foto_url": "={{ $('When Executed by Another Workflow').item.json.message.content_url }}",
+            "lead_id": "={{ $('When Executed by Another Workflow').item.json.chatwoot.contact_id }}"
+          },
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "lead_id",
+              "displayName": "lead_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "side_foto_url",
+              "displayName": "side_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "fotos_envidas",
+              "displayName": "fotos_envidas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "front_foto_url",
+              "displayName": "front_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "back_foto_url",
+              "displayName": "back_foto_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        340,
+        -300
+      ],
+      "id": "af25a2b6-e441-49f4-a7b2-27fe04adfa1c",
+      "name": "register back url photo",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "01863510-ce1e-42e9-af25-9adff2f34f56",
+              "name": "content",
+              "value": "=<system> <valid>A foto enviada pelo usuario foi de {{ $('Information Extractor').item.json.output.photo_section }}, e é {{ $('Information Extractor').item.json.output.foto_valida ? 'valida' : 'invalida' }}</valid></system>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        620,
+        -460
+      ],
+      "id": "7cf4f9e6-7a5f-4a31-a6a8-151f1bb7373e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "01863510-ce1e-42e9-af25-9adff2f34f56",
+              "name": "content",
+              "value": "=<system> <invalid>A fotos envida é {{ $('Information Extractor').item.json.output.foto_valida ? 'valida' : 'invalida' }}, motivo pelo qual a foto é invalida é {{ $('Information Extractor').item.json.output.motivo_invalida }}<invalid> </system>",
+              "type": "string"
+            },
+            {
+              "id": "15deb5e2-a167-4ce1-86d0-8751cef9a010",
+              "name": "foto_valida",
+              "value": "={{ $('Information Extractor').item.json.output.foto_valida }}",
+              "type": "string"
+            },
+            {
+              "id": "c0bdbaae-5e9b-4881-bbc4-06fbcc8f0855",
+              "name": "output.photo_section",
+              "value": "={{ $('Information Extractor').item.json.output.photo_section }}",
+              "type": "string"
+            },
+            {
+              "id": "d14e041f-e629-4c00-8a2a-0ddd1876919b",
+              "name": "output.motivo_invalida",
+              "value": "={{ $('Information Extractor').item.json.output.motivo_invalida }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        120,
+        -140
+      ],
+      "id": "1b5cb62a-9a2c-440f-8ed0-18e7e9ed9356",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "content": "## POSSIVEIS MELHORIAS ",
+        "height": 260,
+        "width": 380,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        80
+      ],
+      "id": "c2df1ef2-3aa5-4af7-828c-16e9a6624c1e",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.peeak.botfai.com.br/message/sendText/12121",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "1212121"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -180,
+        160
+      ],
+      "id": "57078384-61ef-495f-b1c5-24881018e9d1",
+      "name": "menção na foto invalida - c msg"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "message": {
+            "timestamp": "2025-05-11T14:58:41.331-03:00",
+            "content_url": "https://chat.peakperformance.app.br/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN0NKQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--4991a2256ef8908e383164d5add958cbc4205ce3/uy0wq3.jpeg",
+            "wpp_message_id": "3EB0A7F8482A7DCC3848C4",
+            "chatwoot_message_id": "4626705"
+          },
+          "meta": {
+            "identifier": "554799830536@s.whatsapp.net"
+          },
+          "evolution": {
+            "url": "https://wsapi.peak.botfai.com.br",
+            "api": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+            "instance": "teste_01"
+          },
+          "chatwoot": {
+            "contact_id": "223295",
+            "conversation_id": 8476,
+            "account_id": 29
+          },
+          "sessionID": "1bebccac-80e3-4a68-879f-3d59ddf48174"
+        }
+      },
+      {
+        "json": {
+          "message": {
+            "timestamp": "2025-05-11T14:58:41.398-03:00",
+            "content_url": "https://chat.peakperformance.app.br/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN0dKQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c4dd3098f1d37e42e2f9e46251b4578fb64a2731/0qtmvv.jpeg",
+            "wpp_message_id": "3EB0DAEAE7760E9993923E",
+            "chatwoot_message_id": "4626706"
+          },
+          "meta": {
+            "identifier": "554799830536@s.whatsapp.net"
+          },
+          "evolution": {
+            "url": "https://wsapi.peak.botfai.com.br",
+            "api": "l6v7CBnNIRo041fLlwlvmAXCcPlc",
+            "instance": "teste_01"
+          },
+          "chatwoot": {
+            "contact_id": "223295",
+            "conversation_id": 8476,
+            "account_id": 29
+          },
+          "sessionID": "1bebccac-80e3-4a68-879f-3d59ddf48174"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-11T18:02:10.096Z",
+  "versionId": "325d9ba4-cd8e-4a7f-91ce-92bf14d1ebae"
+}
