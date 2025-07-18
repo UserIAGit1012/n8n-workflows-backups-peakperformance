@@ -1,0 +1,156 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-23T20:53:00.718Z",
+  "id": "1Ivu0foGNXofZ9js",
+  "meta": null,
+  "name": "Envia Rabbit - Webhook Sales",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9529e8a2-da4f-45ef-ae0c-0babb4c99e2a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0af153de-fc69-4a65-9c5c-f16aba8526ba",
+      "name": "Webhook",
+      "webhookId": "9529e8a2-da4f-45ef-ae0c-0babb4c99e2a"
+    },
+    {
+      "parameters": {
+        "queue": "n8n.sales",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "80edf8f2-26aa-4336-8ac7-480137aeaa74",
+      "name": "RabbitMQ",
+      "credentials": {
+        "rabbitmq": {
+          "id": "FUtNv1kFTrj08Qcr",
+          "name": "RabbitMQ peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.10.0",
+            "content-length": "1464",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "baggage": "sentry-environment=production,sentry-public_key=b3df784e322d4114b0422ec4b46b6f59,sentry-trace_id=731f5ab05383680f1934b04bdda0c32e,sentry-org_id=4504850859163648",
+            "content-type": "application/json",
+            "sentry-trace": "731f5ab05383680f1934b04bdda0c32e-821065b1a92bd2e0",
+            "x-forwarded-for": "44.197.54.29",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "44.197.54.29"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "SALE_REFUSED",
+            "event_description": "Compra recusada",
+            "checkout_id": "5DRLEMD2",
+            "checkout_url": "https://pay.kirvano.com/5dac0276-7e6e-40df-b7c0-865013ddf8d2",
+            "sale_id": "XJNPB69Y",
+            "payment_method": "CREDIT_CARD",
+            "automaticDiscount": 0,
+            "couponDiscount": 0,
+            "fee": 1165,
+            "commission": 11121,
+            "affiliateCommission": 0,
+            "coproductionCommission": 7414,
+            "total_price": "R$ 197,00",
+            "type": "ONE_TIME",
+            "status": "REFUSED",
+            "created_at": "2025-06-21 17:49:35",
+            "customer": {
+              "name": "Adriel Costa Lopes",
+              "document": "12609100752",
+              "email": "adrielshadai777@gmail.com",
+              "phone_number": "5521996544459",
+              "address": {
+                "street": null,
+                "city": null,
+                "complement": null,
+                "neighborhood": null,
+                "number": null,
+                "state": null,
+                "zipcode": null
+              }
+            },
+            "payment": {
+              "method": "CREDIT_CARD",
+              "brand": "visa",
+              "installments": 12
+            },
+            "products": [
+              {
+                "id": "77f824a1-8f92-49ba-86e5-a15f7d51c1b1",
+                "name": "Unlock",
+                "offer_id": "5dac0276-7e6e-40df-b7c0-865013ddf8d2",
+                "offer_name": "NETWORKING MILIONÁRIO",
+                "description": "Curso UNLOCK – Desbloqueie o que te trava e ative sua nova versão\nO UNLOCK é mais que um curso. É um processo de virada de chave. Criado por João, especialista em alta performance e transformação.",
+                "price": "R$ 197,00",
+                "photo": "https://s3.amazonaws.com/production.kirvano.com/products/77f824a1-8f92-49ba-86e5-a15f7d51c1b1/cover-1750438937987.webp",
+                "is_order_bump": false
+              }
+            ],
+            "utm": {
+              "src": "",
+              "utm_source": "",
+              "utm_medium": "",
+              "utm_campaign": "",
+              "utm_term": "",
+              "utm_content": ""
+            },
+            "cookies": {},
+            "contactEmail": "curryjoao2@gmail.com"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/9529e8a2-da4f-45ef-ae0c-0babb4c99e2a",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-24T01:03:47.745Z",
+  "versionId": "701a0b6b-4c64-4462-8f68-e5f085c3c50c"
+}
