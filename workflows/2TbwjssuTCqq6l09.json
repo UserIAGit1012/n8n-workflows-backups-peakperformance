@@ -1,0 +1,80 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Block AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-19T15:28:49.688Z",
+  "id": "2TbwjssuTCqq6l09",
+  "meta": null,
+  "name": "solicitacao_fotos_tenente",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "3558d1d7-268d-4e53-8796-5105dd18e633",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $json.remojid }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "e6810974-e2eb-4292-a4c1-14a91c9c2ba1",
+      "name": "Block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        480,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": "Solicitação de fotos de frente, costas e lado para avaliação do shape.",
+          "remojid": "554799830536@s.whatsapp.net",
+          "api": "880B9B1A7576-4A18-92BE-E37480559050",
+          "url": "https://wsapi.peak.botfai.com.br",
+          "instance": "teste_01"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-19T15:28:49.688Z",
+  "versionId": "f4eef551-90f4-4e52-840c-d3fc287787ef"
+}
