@@ -1,0 +1,288 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "contador para contas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Cria a tag no chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria a tag no chatwoot": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "contador para contas": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-14T12:38:23.413Z",
+  "id": "bupZbZ1uepUpsrsd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Criar tags Chatwoot 🔵",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -200
+      ],
+      "id": "1c2c02e1-ad0c-4794-9c17-2bd675adf49e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://chat.peakperformance.app.br/api/v1/accounts/{{ $('contador para contas').item.json.CONTAGEM }}/labels",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "LvhQmNGvsFaAPowvRQdszrZ1"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.nome }}"
+            },
+            {
+              "name": "description",
+              "value": "={{ $json['descreição'] }}"
+            },
+            {
+              "name": "color",
+              "value": "={{ $json.cor }}"
+            },
+            {
+              "name": "show_on_sidebar",
+              "value": "={{ $json.visto }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        -200
+      ],
+      "id": "9035d670-ebaf-4dd6-b4dc-c90024e1ca24",
+      "name": "Cria a tag no chatwoot"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "12AUu7wbaiXEuZ5ooGtLsEHobQ4Or9WvkasrUcYR2PEg",
+          "mode": "list",
+          "cachedResultName": "Tags - Funil Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/12AUu7wbaiXEuZ5ooGtLsEHobQ4Or9WvkasrUcYR2PEg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/12AUu7wbaiXEuZ5ooGtLsEHobQ4Or9WvkasrUcYR2PEg/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        580,
+        -200
+      ],
+      "id": "642dc969-9d34-469d-a2cd-57bb41f689d2",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DQmnZc7Y4yFtfH6k",
+          "name": "[suporte@botfai] google sheet"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU",
+          "mode": "list",
+          "cachedResultName": "CONTAGEM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "2",
+            "CONTAGEM": "={{ $('contador para contas').item.json[\"CONTAGEM\"] + 1 }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "CONTAGEM",
+              "displayName": "CONTAGEM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1200,
+        -200
+      ],
+      "id": "23569aa8-7e48-46a5-8bc2-0a35cca41f05",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DQmnZc7Y4yFtfH6k",
+          "name": "[suporte@botfai] google sheet"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        -200
+      ],
+      "id": "f56c5911-b85e-44e7-a155-1ed894ffbf7b",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU",
+          "mode": "list",
+          "cachedResultName": "CONTAGEM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tlbWSsYLjTqYfyEdvqrWJCuvb2NNfyx6Uz4JHN8OoVU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        380,
+        -200
+      ],
+      "id": "9c96cf82-f40b-4791-b660-e9bd6ffa65d3",
+      "name": "contador para contas",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DQmnZc7Y4yFtfH6k",
+          "name": "[suporte@botfai] google sheet"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-25T04:50:07.182Z",
+  "versionId": "77de8af0-4081-4625-9406-f1b8e87bcd88"
+}
