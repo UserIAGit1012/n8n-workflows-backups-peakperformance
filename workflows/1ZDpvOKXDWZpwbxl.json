@@ -1,0 +1,343 @@
+{
+  "active": false,
+  "connections": {
+    "normaliza dados recebidos": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "normaliza dados recebidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T13:01:30.440Z",
+  "id": "1ZDpvOKXDWZpwbxl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "_____1___KAIROS__1CT___Infos_usuario",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f7f791d-f8d6-4093-9f0a-93def6ab3678",
+              "name": "usuario.numero_contato",
+              "value": "={{ $json.numero_somente }}",
+              "type": "number"
+            },
+            {
+              "id": "b42505e4-073b-48af-864b-3e21d467f4cb",
+              "name": "usuario.idade",
+              "value": "={{ $json.query.age }}",
+              "type": "number"
+            },
+            {
+              "id": "86cd376e-8386-493a-9ac4-421f4f289382",
+              "name": "usuario.nome",
+              "value": "={{ $json.query.name }}",
+              "type": "string"
+            },
+            {
+              "id": "6f4e5fbb-e51c-458e-97a2-d148727e139e",
+              "name": "redis.sessionID",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        420,
+        0
+      ],
+      "id": "d847c909-53cf-4d2f-a5d7-f8a8b5be00f9",
+      "name": "normaliza dados recebidos"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "etapa_ia",
+          "mode": "list",
+          "cachedResultName": "etapa_ia"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $json.usuario.numero_contato }}",
+            "nome": "={{ $json.usuario.nome }}",
+            "idade": "={{ $json.usuario.idade }}",
+            "ia_atendimento": "Kairos IA",
+            "etapa_ia": "1coleta_infos"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        600,
+        0
+      ],
+      "id": "6d9744b1-5781-4ab4-941e-28b13483331a",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "z48vC1g73VYWAujH",
+          "name": "base_atendimento [peak]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        140
+      ],
+      "id": "72637df7-039b-459c-a8c3-2456d91f6d1f",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "afb76a61-9158-433f-84cd-2a7e85e87eda",
+              "name": "dados finais ",
+              "value": "Dados registrados com sucesso, continue pra proxima etapa \"audio_inicial\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        0
+      ],
+      "id": "b47efd10-f5b0-4fa3-b685-6f2d5e6e2179",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f4bf1d72-7452-46cb-b863-443e3e8b42c0",
+        "responseMode": "lastNode",
+        "responseData": "noData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        -20
+      ],
+      "id": "b3e89c6d-4b3f-40c8-ab73-f0b3204a536d",
+      "name": "Webhook",
+      "webhookId": "f4bf1d72-7452-46cb-b863-443e3e8b42c0"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém todos os items de entrada\nconst items = $input.all();\n\n// Processa cada item para extrair só o número antes do \"@\"\nconst output = items.map(item => {\n  const sessionId = item.json.session_id;           // ex: \"5517992749450@s.whatsapp.net\"\n  const numero = sessionId.split('@')[0];           // pega tudo antes do \"@\"\n  \n  return {\n    json: {\n      ...item.json,\n      numero_somente: numero                        // adiciona o campo com o número puro\n    }\n  };\n});\n\n// Retorna o array de items com o novo campo \"numero_somente\"\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        140
+      ],
+      "id": "9c703f9f-5260-47d7-8fc1-393bac1a57c5",
+      "name": "Code"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "query": {
+            "name": "enzo",
+            "age": "20"
+          },
+          "session_id": "5517992749450@s.whatsapp.net"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-24T19:33:29.419Z",
+  "versionId": "9a7b1564-f72f-434b-8b2a-032531b4b1cd"
+}
