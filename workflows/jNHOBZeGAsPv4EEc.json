@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-23T22:32:31.787Z",
+  "id": "jNHOBZeGAsPv4EEc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Foto invalida",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        640,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1420,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=system: gere uma mensagem com essas informacoes para mandar pro cliente {{ $json.chat_input }}\n\nme retorne somente a mensagem, sem mais nada ",
+        "options": {
+          "systemMessage": ""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        1040,
+        400
+      ],
+      "id": "c3a7d126-d9e5-4d04-a322-b946a79afa76",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a98138cd-a78d-4cba-ab9d-5db672bd1541",
+              "name": "chat_input",
+              "value": "={{ $json.analise_shape }}",
+              "type": "string"
+            },
+            {
+              "id": "2f910256-7ce7-474a-9f04-131a918d75bc",
+              "name": "session_id",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        400
+      ],
+      "id": "ea31c830-0e4f-4a39-b1c3-f4225937e727",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1000,
+        580
+      ],
+      "id": "85777522-ddc5-495f-a600-040a1a390075",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Edit Fields').item.json.session_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        1180,
+        580
+      ],
+      "id": "54990fc2-9dec-4b6c-bba2-b04a48e4c732",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "telefone": "5547996036938",
+          "tipo_de_fisico": "",
+          "session_id": "554796036938@s.whatsapp.net",
+          "analise_shape": "\"Não tem como avaliar shape com camisa, irmão. Preciso da visão total — peito, abdômen, costas, braço, tudo. Manda sem camisa ai.\""
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-27T21:13:50.952Z",
+  "versionId": "5450d31d-9c9b-4b38-b932-05c8194e4692"
+}
