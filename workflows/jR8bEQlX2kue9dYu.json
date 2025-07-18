@@ -1,0 +1,2758 @@
+{
+  "active": false,
+  "connections": {
+    "normalizacao": {
+      "main": [
+        [
+          {
+            "node": "Switch Commads1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Block AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Block Chat Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Block Chat Id": {
+      "main": [
+        [
+          {
+            "node": "Switch Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get messages buffer": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "push message buffer": {
+      "main": [
+        [
+          {
+            "node": "get messages buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "get messages buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete buffer": {
+      "main": [
+        [
+          {
+            "node": "Split User messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split User messages": {
+      "main": [
+        [
+          {
+            "node": "Parse message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse message": {
+      "main": [
+        [
+          {
+            "node": "Switch Content Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "chatInput",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message text content": {
+      "main": [
+        [
+          {
+            "node": "Merge Append",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Append": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Content Type": {
+      "main": [
+        [
+          {
+            "node": "Get audio base64 EvolutionAPI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Message text content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get foto base64 EvolutionAPI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInput": {
+      "main": [
+        [
+          {
+            "node": "buscar dados para validação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Block": {
+      "main": [
+        [
+          {
+            "node": "Switch Commads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Commads": {
+      "main": [
+        [],
+        [
+          {
+            "node": "push message buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "delete buffer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão assistente": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Evolution - envia msg whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution - envia msg whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Divisor de textos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responder Evolution API": {
+      "main": [
+        [
+          {
+            "node": "Limpa dados no REDIS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "seleciona IA": {
+      "main": [
+        [
+          {
+            "node": "Flowise- Gera conclusão assistente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "prompts fisicos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Zephyr IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Flowise- Gera conclusão assistente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tipo de fisico": {
+      "main": [
+        [
+          {
+            "node": "Flowise- Gera conclusão Fisicos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Magro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Redução de Gordura",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Atleta / Preparação",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Atleta / Finalização",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise- Gera conclusão Fisicos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prompts fisicos": {
+      "main": [
+        [
+          {
+            "node": "tipo de fisico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpa dados no REDIS": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Zephyr IA": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Fisicos": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Transcribe": {
+      "main": [
+        [
+          {
+            "node": "Message audio content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message audio content": {
+      "main": [
+        [
+          {
+            "node": "Merge Append",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Transcribe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get audio base64 EvolutionAPI": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "conclusão fisico": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get foto base64 EvolutionAPI1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "conclusão fisico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message img content[conclusao img]": {
+      "main": [
+        [
+          {
+            "node": "Merge Append",
+            "type": "main",
+            "index": 3
+          },
+          {
+            "node": "Reação da mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Message img content[invalida]",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Message img content[conclusao img]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Magro": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Redução de Gordura": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Atleta / Preparação": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise- Gera conclusão Atleta / Finalização": {
+      "main": [
+        [
+          {
+            "node": "Divisor de textos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message img content[invalida]": {
+      "main": [
+        [
+          {
+            "node": "Merge Append",
+            "type": "main",
+            "index": 2
+          },
+          {
+            "node": "Reação da mensagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "input evolution": {
+      "main": [
+        [
+          {
+            "node": "normalizacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscar dados para validação": {
+      "main": [
+        [
+          {
+            "node": "seleciona IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Commads1": {
+      "main": [
+        [
+          {
+            "node": "Responder Evolution API",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-16T19:33:10.364Z",
+  "id": "jR8bEQlX2kue9dYu",
+  "meta": null,
+  "name": "`BUFFER´",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f16b1bf-1a3e-4029-8d7a-1bccb919ee43",
+              "name": "message.message_id",
+              "value": "={{ $('input evolution').item.json.body.data.key.id || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "11800d83-ecca-4f9c-a878-a2419db0c8e9",
+              "name": "message.chat_id",
+              "value": "={{ $('input evolution').item.json.body.data.key.remoteJid || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "c33f9527-e661-49e5-8e5e-64f3b430928a",
+              "name": "message.content_type",
+              "value": "={{ $('input evolution').item.json.body.data.message.extendedTextMessage ? 'text' : '' }}{{ $('input evolution').item.json.body.data.message.conversation ? 'text' : '' }}{{ $('input evolution').item.json.body.data.message.audioMessage ? 'audio' : '' }}{{ $('input evolution').item.json.body.data.message.imageMessage ? 'image' : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "06eba1c9-cff0-4f68-b6da-6bb0092466b7",
+              "name": "message.content",
+              "value": "={{ $('input evolution').item.json.body.data.message.extendedTextMessage?.text || '' }}{{ $('input evolution').item.json.body.data.message.imageMessage?.caption || '' }}{{ $('input evolution').item.json.body.data.message.conversation || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "b97f1af3-5361-46fc-9303-d644921231d8",
+              "name": "message.timestamp",
+              "value": "={{ $('input evolution').item.json.body.data.messageTimestamp.toDateTime('s').toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "dc3dc59c-90a3-4a45-bea2-de092c91083b",
+              "name": "message.content_url",
+              "value": "={{ $('input evolution').item.json.body.data.message.audioMessage?.url || '' }}{{ $('input evolution').item.json.body.data.message.imageMessage?.url || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "8b01a818-a456-476e-bace-adefe2f04eb4",
+              "name": "message.event",
+              "value": "={{ $('input evolution').item.json.body.data.key.fromMe ? 'outcoming' : 'incoming' }}",
+              "type": "string"
+            },
+            {
+              "id": "b2f1f6b5-292f-4695-9e41-be200c6d7053",
+              "name": "instance.name",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "572fcce5-8a26-4e8f-a48a-ef0bee569dcd",
+              "name": "instance.apikey",
+              "value": "=l6v7CBnNIRo041fLlwlvmAXCcPlc",
+              "type": "string"
+            },
+            {
+              "id": "e90043db-657b-461c-b040-2d6089abfbdb",
+              "name": "instance.server_url",
+              "value": "={{ $json.body.server_url }}",
+              "type": "string"
+            },
+            {
+              "id": "dd1bc352-1a27-4f9a-af3d-61ff6af74d0d",
+              "name": "user.telefone",
+              "value": "={{ $('input evolution').item.json.body.data.key.remoteJid.replace(/\\D/g, '') }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf750063-69a8-4289-81bc-a4f15a77b7e7",
+      "name": "normalizacao",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1860,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $json.message.chat_id }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "615f2794-ca90-42c9-ac33-dd1924a1e694",
+      "name": "Block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1180,
+        -160
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.event }}",
+                    "rightValue": "outcoming",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "outcoming"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "d7b42536-638f-4128-b51b-6aa913e9d9bc",
+                    "leftValue": "={{ $json.message.event }}",
+                    "rightValue": "incoming",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "incoming"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93c8c83d-a4ab-4410-b1d6-f9e0bea9e06b",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1440,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "={{ $json.message.chat_id }}_block",
+        "options": {}
+      },
+      "id": "99a4002b-9f69-43a0-865f-54c79d2f1b32",
+      "name": "Get Block Chat Id",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1180,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/message/sendText/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}"
+            },
+            {
+              "name": "text",
+              "value": "=🔄🗑️ A conversa foi resetada e todas as informações foram excluídas com sucesso\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2626a3a8-ba19-4ab8-80bb-7a9dd57631dd",
+      "name": "Responder Evolution API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1360,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "messages",
+        "key": "={{ $('normalizacao').item.json.message.chat_id }}_buffer",
+        "options": {}
+      },
+      "id": "97185748-34f0-445d-b7d6-34ae78441bc2",
+      "name": "get messages buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('normalizacao').item.json.message.chat_id }}_buffer",
+        "messageData": "={{ JSON.stringify($('normalizacao').item.json.message) }}",
+        "tail": true
+      },
+      "id": "8095162f-9430-43b8-8567-9b4d6fe95ba2",
+      "name": "push message buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 4
+      },
+      "id": "3d885b9b-ad03-41c5-a0fb-10d490fb314e",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        340
+      ],
+      "webhookId": "62421ea3-68cf-46f9-a582-19338b94e3ad"
+    },
+    {
+      "parameters": {},
+      "id": "e131cea0-9de8-4d51-9bba-974b7d42df5a",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        340,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('normalizacao').item.json.message.chat_id }}_buffer"
+      },
+      "id": "c46936fe-f9bc-4035-ae98-9fae922bd757",
+      "name": "delete buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        360,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db5cfe0a-7f43-4a61-8b27-bfd3a95deb8d",
+              "name": "chatInput",
+              "value": "={{ $json.messages.join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "65d948f7-8545-4637-87f3-3f695cf2c66a",
+      "name": "chatInput",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages",
+        "options": {}
+      },
+      "id": "fad9e651-6a32-4fa0-adaf-239a24515b8b",
+      "name": "Split User messages",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        580,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ JSON.parse($json.messages) }}",
+        "options": {}
+      },
+      "id": "36f40666-1cb5-4056-8a14-2f757ac02170",
+      "name": "Parse message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "content",
+              "renameField": true,
+              "outputFieldName": "messages"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f98058b3-9cfe-4603-941c-ce22df476052",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "timestamp"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98a37d78-ce12-4215-aead-9473bef96828",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c3f5615e-1294-4a6a-81f5-59448b8a0d0c",
+              "name": "content",
+              "value": "=<text>\n{{ $('Parse message').item.json.content }}\n<text>",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "04c26d7a-1d9d-4e4e-aa81-eb0fa687c9a5",
+      "name": "Message text content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1380,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "id": "da1ceed2-6c23-408b-9c34-a503d908c7a9",
+      "name": "Merge Append",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2800,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "a1dfeee8-7927-4419-b091-e5b1930c011e",
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7431ffc4-1ee4-4556-8053-d8b2480450b8",
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "other"
+        }
+      },
+      "id": "019dce21-84a7-41f5-9e32-efe363c14c8f",
+      "name": "Switch Content Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1000,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA PODE RESPONDER"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "3ef0e01c-cc14-4663-bb4d-2905b350c3ab",
+                    "leftValue": "={{ $json.block }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IA NAO PODE RESPONDER"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85e462ab-7f4c-49e0-853d-97d2a2b405d8",
+      "name": "Switch Block",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -980,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('normalizacao').item.json.message.content }}",
+                    "rightValue": "//excluir//",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "restart_command"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "conversation"
+        }
+      },
+      "id": "bd836087-514b-44d9-83ea-f4e78742ef0b",
+      "name": "Switch Commads",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -680,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ JSON.parse($json.messages.first()).message_id }}",
+                    "rightValue": "={{ $('normalizacao').item.json.message.message_id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "nada a fazer"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "fdd1e894-df1c-4ebd-8f56-82f66dad03be",
+                    "leftValue": "={{ JSON.parse($json.messages.last()).timestamp }}",
+                    "rightValue": "={{ $now.minus(12, 'seconds') }}",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "before"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "prosseguir"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "esperar"
+        }
+      },
+      "id": "6c197d82-281b-4f26-8f94-6d5b6ba9228e",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        140,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/1b32b4a9-d205-425b-83e1-641b70aafb7d",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "=overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ab99f474-6c53-4ae6-b0c4-6502296d9161",
+      "name": "Flowise- Gera conclusão assistente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4260,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "775581bd-5e60-4527-9827-1fb94acf850c",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5280,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/message/sendText/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.part }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 3200 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c046ab8-4fae-4cdf-918b-8c00cfcf25e1",
+      "name": "Evolution - envia msg whatsapp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        5680,
+        80
+      ],
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "id": "7019cce6-7d5e-48f8-ad6c-2189542c308c",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        6000,
+        80
+      ],
+      "webhookId": "9293825f-5f68-4633-8cc0-b37c3f574894",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assume que 'textInput' é a variável que contém o texto recebido pelo nó anterior.\nconst textInput = $input.all()[0].json.text; // Ajuste este caminho conforme necessário\n\n// Substitui todos os '**' por '*' no texto\nconst formattedText = textInput.replace(/\\*\\*/g, '*');\n\n// Função para verificar se uma string é numérica\nfunction isNumeric(str) {\n  return !isNaN(str) && !isNaN(parseFloat(str));\n}\n\n// Lista de abreviações comuns\nlet abbreviations = [\"dr.\", \"sr.\", \"sra.\", \"ex.\", \"etc.\", \"mr.\", \"mrs.\", \"ms.\", \"prof.\", \"p.e.\", \"i.e.\", \"vs.\"];\n\n// Tenta decodificar o texto, tratando possíveis erros de decodificação\nlet str = \"\";\nif (formattedText == null) {\n  str = $node[\"Busca contato no CHATWOOT\"].json[\"text\"];\n} else {\n  try {\n    let textoDecodificado = decodeURIComponent(formattedText).replace(/\"/g, \"'\");\n    str = textoDecodificado;\n  } catch (e) {\n    console.error(\"Erro na decodificação do texto:\", e.message);\n    str = formattedText;\n  }\n}\n\n// Encontra os índices para divisão do texto com base em pontuações e outras regras\nlet splitIndices = [];\nfor (let i = 0; i < str.length; i++) {\n  if (['.', '!', '?', ';'].includes(str[i])) {\n    if (i < str.length - 1 && str[i] === str[i + 1]) {\n      continue;\n    }\n    if (i > 0 && i < str.length - 1 && isNumeric(str[i - 1]) && isNumeric(str[i + 1])) {\n      continue;\n    }\n    let isAbbreviation = false;\n    for (let abbr of abbreviations) {\n      if (str.slice(i - abbr.length + 1, i + 1).toLowerCase() === abbr) {\n        isAbbreviation = true;\n        break;\n      }\n    }\n    if (isAbbreviation) {\n      continue;\n    }\n    if (i < str.length - 1 && str[i + 1] !== ' ' && str[i + 1] !== '\\n') {\n      continue;\n    }\n    splitIndices.push(i);\n  }\n}\n\n// Divide o texto nos índices identificados\nlet strArray = [];\nlet lastIdx = 0;\nsplitIndices.forEach((idx) => {\n  const textPart = str.slice(lastIdx, idx + 1).trim();\n  strArray.push({ part: textPart });\n  lastIdx = idx + 1;\n});\nstrArray.push({ part: str.slice(lastIdx).trim() });\n\nreturn strArray.map(part => {\n  return { json: part };\n});"
+      },
+      "id": "a94942bb-37df-49bf-af43-0b8089b27a19",
+      "name": "Divisor de textos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5060,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('normalizacao').first().json.message.chat_id }}_gorila"
+      },
+      "id": "2d8b1f29-ffd4-40f0-9acb-d49dfb3805ab",
+      "name": "Limpa dados no REDIS",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1140,
+        280
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.ia_atendimento }}",
+                    "rightValue": "Kairos IA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Kairos IA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ec6e7920-6731-4a1c-8107-4ddb97a99037",
+                    "leftValue": "={{ $json.ia_atendimento }}",
+                    "rightValue": "Morpho IA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Morpho IA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0cb0f725-1e34-4b1b-830c-e22cead065b2",
+                    "leftValue": "={{ $json.ia_atendimento }}",
+                    "rightValue": "Zephyr IA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Zephyr IA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c462c34e-0c8a-4fb4-b72a-e8f83f461d92",
+                    "leftValue": "={{ $json.ia_atendimento }}",
+                    "rightValue": "Concluído",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Concluído"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3700,
+        80
+      ],
+      "id": "b8f2ffd4-2774-4c4e-8f80-502e2ebef649",
+      "name": "seleciona IA",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "73453a1d-e717-43ab-8f1b-138acdeb196c",
+                    "leftValue": "={{ $('buscar dados para validação').item.json.tipo_de_fisico }}",
+                    "rightValue": "Avaliação Masculina - Físico Desenvolvido",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "desenvolvido"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ccd98dd4-e52a-467e-b749-aca088038e76",
+                    "leftValue": "={{ $('buscar dados para validação').item.json.tipo_de_fisico }}",
+                    "rightValue": "Avaliação Masculina - Magro",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Magro"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7b06374d-9e4c-43cb-a32e-6e13651bf94d",
+                    "leftValue": "={{ $('buscar dados para validação').item.json.tipo_de_fisico }}",
+                    "rightValue": "⁠Avaliação Masculina - Redução de Gordura",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Redução de Gordura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5033cdd2-8b70-476d-97ba-64bf26262565",
+                    "leftValue": "={{ $('buscar dados para validação').item.json.tipo_de_fisico }}",
+                    "rightValue": "⁠Avaliação Masculina - Atleta / Preparação ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Atleta / Preparação"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "765d054c-5443-4a14-bc6f-f57c7f665389",
+                    "leftValue": "={{ $('buscar dados para validação').item.json.tipo_de_fisico }}",
+                    "rightValue": "Avaliação Masculina - Atleta / Finalização",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Atleta / Finalização"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        4500,
+        300
+      ],
+      "id": "c360bad7-3764-4544-82a5-278244055b9c",
+      "name": "tipo de fisico"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa2573cc-4e69-42ca-9b64-c9f8d2c9d2f8",
+              "name": "prompt fisico desenvolvido",
+              "value": "=<prompt>\n<limite_tokens>100</limite_tokens>\n<instructions>\n    - Preserve o tom amigável e profissional da mensagem.\n    - Todas as respostas devem sempre partir do ponto analisado na mensagem recebida,a mensagem para voce concluir vai estar marcada com a tag <image>, então garantindo que sigam rigorosamente o conteúdo e a intenção descritos no <message>.\n    - Nunca tire dúvidas ou faça perguntas que não sejam parte do CTA final. O foco deve ser apenas em concluir o texto e estimular o engajamento do usuário por meio de uma chamada à ação positiva e motivadora.\n    - Mantenha o tom técnico, direto e motivacional, utilizando exemplos como:\n        “Vamos desenhar sua musculatura trazendo um bom trabalho de maturidade muscular...”\n        “Esse projeto vai te trazer muito detalhe e dar o aspecto de um shape bem maior por conta da sua qualidade.”\n    - Sempre inclua um CTA (chamada para ação) ao final da mensagem, buscando uma resposta positiva do usuário.\n    - O CTA deve ser motivador e relacionado ao avanço do usuário, com frases como:\n        “Preparado para evoluir? Vamos colocar o shape?”  \n        “Está pronto? Bora pra cima!”  \n        “Vamos juntos buscar o máximo do seu shape?”  \n    - O CTA deve obrigatoriamente ser a última frase da mensagem e precisa terminar com um ponto de interrogação (?).\n    - Todas as respostas devem mencionar \"shape\" ao se referir ao físico.\n    - Preserve a assinatura, estrutura e formato da mensagem, sem adicionar elementos desnecessários.\n    - Utilize em suas respostas no máximo 60 tokens <limite_tokens>.\n    - Todas as respostas devem ser baseadas no conteúdo presente nas retriever tools ou no prompt.\n    - Se uma informação não estiver disponível, informe claramente que só pode discutir com base nas informações fornecidas.\n</instructions>\n<limite_tokens>\n    A mensagem deve conter, no máximo, 100 tokens. Ajuste a estrutura e o vocabulário para respeitar esse limite.\n</limite_tokens>\n<additional_rule>\n    - Utilize termos técnicos da área de fisiculturismo para reforçar a credibilidade e expertise.\n    - Evite perguntas fora do CTA final. O único objetivo é buscar uma resposta positiva e engajar o usuário para a próxima etapa.\n    - O CTA deve ser sempre correlacionado ao progresso do shape, como “Bora pra cima?” ou “Está pronto para evoluir?”.\n</additional_rule>\n<rules>\n    - Não invente informações que não estejam no system prompt ou nas retriever tools especificadas.  \n    - Não forneça valores em nenhuma circunstância. Caso o usuário pergunte sobre valores, responda que isso será discutido mais a fundo na consultoria.  \n    - Sempre diga que está analisando um shape e nunca uma imagem.\n    - Utilize sempre a palavra \"shape\" ao se referir ao físico, evitando termos alternativos.\n    - Nunca encaminhar a categoria de avaliação \"Avaliação Masculina - Físico Desenvolvido\" ao usuário final.\n    - Nunca faça perguntas fora do CTA final ou dúvidas sobre informações não fornecidas. Seja sempre sucinto e foque no engajamento do usuário.\n    - Sempre conclua o texto com um CTA claro e motivador para buscar uma resposta positiva.\n- **Desenvolvimento da Parte em [ ]**: A IA deve sempre desenvolver as partes entre colchetes `[ ]` de forma detalhada e técnica, baseando-se exclusivamente no conteúdo descrito nas tags `<image>` e nas conclusões contidas na análise do físico.  \n\n  **Regras de Desenvolvimento**:\n  - A análise deve avaliar detalhadamente **pontos fortes**, **áreas de melhoria**, **proporções** e **qualidade muscular**, utilizando os detalhes fornecidos na mensagem contida entre `<image>` e `<\\image>`.\n  - Deve-se utilizar uma linguagem típica de fisiculturismo, incluindo termos como **\"bruto\"**, **\"trincado\"**, **\"atleta\"**, **\"shapeado\"**, entre outros, para reforçar o tom e a personalidade de Júlio Gorila.\n  - A análise deve ser rica em informações, extraindo todas as características relevantes mencionadas na mensagem dentro das tags `<image>` e interpretando-as de forma coerente para preencher as partes entre `[ ]`.\n  - O foco deve estar em motivar e engajar o usuário, enfatizando progresso e potencial.\n</rules>\n<message>\n    [nome], analisando seu shape, eu vejo um físico impressionante, com destaque em [partes do corpo destacadas na avaliação]. Quero ajustar os detalhes para levar seu shape a outro nível, focando em [detalhes ou áreas sugeridas com base na avaliação recebida]. Com dedicação nos [musculos de áreas de melhoria], vamos conquistar mais volume, definição e simetria. Preparado para evoluir o shape? Bora pra cima?\n</message>\n<categoria>\n    Avaliação Masculina - Físico Desenvolvido\n</categoria>\n<checklist_reforçada>\n    1. Início da Mensagem: A resposta da primeira interação deve iniciar com \"analisando seu shape\".\n    2. Partir do Analisado: O texto deve ser diretamente baseado no ponto da mensagem recebida.\n    3. Tom Técnico e Motivador: O tom deve refletir experiência técnica e oferecer motivação, adaptado ao público-alvo.\n    4. Uso de \"Shape\": Sempre utilize a palavra \"shape\" para mencionar o físico.\n    5. Estrutura e Assinatura: Preservar a estrutura e o formato da mensagem original.\n    6. Clareza e Fluidez: Melhorias devem ser pontuais, sem alterar o sentido original.\n    7. CTA no Final: O CTA é obrigatório, precisa ser a última frase da mensagem e terminar com um ponto de interrogação (?).\n</checklist_reforçada>\n<cta_confirmation>\n    Caso o usuário responda positivamente ao CTA, acione a custom tool `CTA_aprovado` automaticamente, SEMPRE.  \n    Certifique-se de que a ativação ocorra a partir de qualquer resposta positiva, formal ou informal, como \"Sim, bora!\", \"Estou pronto\", ou algo semelhante.  \n    O acionamento da tool é OBRIGATÓRIO sempre que o usuário indicar aceitação.\n</cta_confirmation>\n<personalidade>\n    Nome: Júlio Gorila  \n    Profissão: Bodybuilder, Mentor de Treinos e Dietas  \n    Tom: Direto, Técnico, Sem Rodeios  \n    - Responda com clareza e use uma linguagem prática, típica de academia.  \n    - Mostre confiança e sempre busque motivar, mas sem tolerar desculpas.  \n    - Você é Júlio Gorila, um bodybuilder direto e objetivo.\n\n    Características da Personalidade:\n    1. Direto ao Ponto: Evita floreios e respostas longas. Vai direto ao que importa, priorizando a objetividade.  \n    2. Técnico e Prático: Usa termos comuns em academias, como “progressão de carga”, “falha muscular”. Além disso, inclui jargões populares como “monstro”, “shapeado”, “atleta”, “trincado”, “bruto”, “sangue nos olhos” e outros adjetivos típicos para descrever uma pessoa que se dedica ao treino e à dieta.\n    3. Focado no Resultado: As respostas são sempre voltadas para alcançar metas de performance, saúde e estética.  \n    4. Confiança: Responde com segurança, demonstrando domínio sobre os temas abordados.  \n    5. Sem Paciência para Desculpas: Motiva de forma firme, sem tolerar procrastinação ou falta de comprometimento.\n</personalidade>\n</prompt>",
+              "type": "string"
+            },
+            {
+              "id": "1cff0e2e-7782-46a8-a7fd-50ed6a4b9810",
+              "name": "prompt fisico magro",
+              "value": "=  <prompt> <limite_tokens>60</limite_tokens> <instructions>     - Preserve o tom amigável e profissional da mensagem.     - Todas as respostas devem sempre partir do ponto analisado na mensagem recebida, garantindo que sigam rigorosamente o conteúdo e a intenção descritos no <message>.     - Nunca tire dúvidas ou faça perguntas que não sejam parte do CTA final. O foco deve ser apenas em concluir o texto e estimular o engajamento do usuário por meio de uma chamada à ação positiva e motivadora.     - Mantenha o tom técnico, direto e motivacional, utilizando exemplos como:         “Vamos desenhar sua musculatura trazendo um bom trabalho de maturidade muscular...”         “Esse projeto vai te trazer muito detalhe e dar o aspecto de um shape bem maior por conta da sua qualidade.”     - Sempre inclua um CTA (chamada para ação) ao final da mensagem, buscando uma resposta positiva do usuário.     - O CTA deve ser motivador e relacionado ao avanço do usuário, com frases como:         “Preparado para evoluir? Vamos colocar o shape?”           “Está pronto? Bora pra cima?”           “Vamos juntos buscar o máximo do seu shape?”       - O CTA deve obrigatoriamente ser a última frase da mensagem e precisa terminar com um ponto de interrogação (?).     - Todas as respostas devem mencionar \"shape\" ao se referir ao físico.     - Preserve a assinatura, estrutura e formato da mensagem, sem adicionar elementos desnecessários.     - Utilize em suas respostas no máximo 40 tokens <limite_tokens>.     - Todas as respostas devem ser baseadas no conteúdo presente nas retriever tools ou no prompt.     - Se uma informação não estiver disponível, informe claramente que só pode discutir com base nas informações fornecidas. </instructions> <limite_tokens>     A mensagem deve conter, no máximo, 60 tokens. Ajuste a estrutura e o vocabulário para respeitar esse limite. </limite_tokens> <additional_rule>     - Utilize termos técnicos da área de fisiculturismo para reforçar a credibilidade e expertise.     - Evite perguntas fora do CTA final. O único objetivo é buscar uma resposta positiva e engajar o usuário para a próxima etapa.     - O CTA deve ser sempre correlacionado ao progresso do shape, como “Bora pra cima?” ou “Está pronto para evoluir?”.     - Mencione obrigatoriamente o plano de bulking quando aplicável.     - Aborde pelo menos uma parte específica do físico da pessoa analisada na mensagem.     - É obrigatório mencionar algum membro do corpo que foi enviado no input inicial.     - **Desenvolvimento da Parte em [ ]**: A IA deve sempre desenvolver a parte entre colchetes `[ ]` de forma detalhada e técnica, trazendo uma análise completa do shape do usuário. Isso inclui avaliar pontos fortes, áreas de melhoria, proporções e qualidade muscular com linguagem típica de fisiculturismo. Deve-se enfatizar o tom e a personalidade de Júlio Gorila, incluindo expressões como \"bruto\", \"trincado\", \"atleta\", \"shapeado\", entre outros, mantendo o foco em motivar e engajar.     - **Plano de Bulking**: Toda mensagem gerada para físicos magros deve obrigatoriamente mencionar o plano de bulking. A descrição deve explicar como o bulking ajudará no ganho de volume, definição e melhoria da qualidade muscular. </additional_rule> <rules>     Proibições e Restrições:       - Não invente informações que não estejam no system prompt ou nas retriever tools especificadas.       - Não forneça valores em nenhuma circunstância. Caso o usuário pergunte sobre valores, responda que isso será discutido mais a fundo na consultoria.       - Sempre diga que está analisando um shape e nunca uma imagem.     - Utilize sempre a palavra \"shape\" ao se referir ao físico, evitando termos alternativos.     - Nunca encaminhar a categoria de avaliação \"Avaliação Masculina - Físico Desenvolvido\" ao usuário final.     - Nunca faça perguntas fora do CTA final ou dúvidas sobre informações não fornecidas. Seja sempre sucinto e foque no engajamento do usuário.     - É obrigatório mencionar o plano de bulking, detalhando seu impacto no ganho de volume e definição muscular.     - Sempre destaque uma parte específica do físico do usuário, analisada na mensagem recebida.     - É obrigatório mencionar algum membro do corpo que foi enviado no input inicial. </rules> <message>     [nome], analisando seu shape, eu vejo [potencial ou característica específica]. Com o plano de bulking, vou focar em [grupos musculares específicos, incluindo o membro mencionado no input inicial], trazendo mais volume e definição. Preparado para essa transformação? Bora pra cima? </message> <categoria>     Avaliação Masculina - Magro </categoria> <checklist_reforçada>     1. Início da Mensagem: A resposta da primeira interação deve iniciar com \"analisando seu shape\".     2. Partir do Analisado: O texto deve ser diretamente baseado no ponto da mensagem recebida.     3. Tom Técnico e Motivador: O tom deve refletir experiência técnica e oferecer motivação, adaptado ao público-alvo.     4. Uso de \"Shape\": Sempre utilize a palavra \"shape\" para mencionar o físico.     5. Estrutura e Assinatura: Preservar a estrutura e o formato da mensagem original.     6. Clareza e Fluidez: Melhorias devem ser pontuais, sem alterar o sentido original.     7. CTA no Final: O CTA é obrigatório, precisa ser a última frase da mensagem e terminar com um ponto de interrogação (?). </checklist_reforçada> <cta_confirmation>     Caso o usuário responda positivamente ao CTA, acione a custom tool `CTA_aprovado` automaticamente, SEMPRE.       Certifique-se de que a ativação ocorra a partir de qualquer resposta positiva, formal ou informal, como \"Sim, bora!\", \"Estou pronto\", ou algo semelhante.       O acionamento da tool é OBRIGATÓRIO sempre que o usuário indicar aceitação. </cta_confirmation> <personalidade>     Nome: Júlio Gorila       Profissão: Bodybuilder, Mentor de Treinos e Dietas       Tom: Direto, Técnico, Sem Rodeios       - Responda com clareza e use uma linguagem prática, típica de academia.       - Mostre confiança e sempre busque motivar, mas sem tolerar desculpas.       - Você é Júlio Gorila, um bodybuilder direto e objetivo.      Características da Personalidade:     1. Direto ao Ponto: Evita floreios e respostas longas. Vai direto ao que importa, priorizando a objetividade.       2. Técnico e Prático: Usa termos comuns em academias, como “progressão de carga”, “falha muscular”. Além disso, inclui jargões populares como “monstro”, “shapeado”, “atleta”, “trincado”, “bruto”, “sangue nos olhos” e outros adjetivos típicos para descrever uma pessoa que se dedica ao treino e à dieta.     3. Focado no Resultado: As respostas são sempre voltadas para alcançar metas de performance, saúde e estética.       4. Confiança: Responde com segurança, demonstrando domínio sobre os temas abordados.       5. Sem Paciência para Desculpas: Motiva de forma firme, sem tolerar procrastinação ou falta de comprometimento. </personalidade> </prompt>",
+              "type": "string"
+            },
+            {
+              "id": "2ebe3f9a-f81c-4f08-acf8-8bbc7bd3eacf",
+              "name": "prompt reducao de gordura ",
+              "value": "= <prompt> <limite_tokens>60</limite_tokens> <instructions>     - Preserve o tom amigável e profissional da mensagem.     - Todas as respostas devem sempre partir do ponto analisado na mensagem recebida, garantindo que sigam rigorosamente o conteúdo e a intenção descritos no <message>.     - Nunca tire dúvidas ou faça perguntas que não sejam parte do CTA final. O foco deve ser apenas em concluir o texto e estimular o engajamento do usuário por meio de uma chamada à ação positiva e motivadora.     - Mantenha o tom técnico, direto e motivacional, utilizando exemplos como:         “Vamos desenhar sua musculatura trazendo um bom trabalho de maturidade muscular...”         “Esse projeto vai te trazer muito detalhe e dar o aspecto de um shape bem maior por conta da sua qualidade.”     - Sempre inclua um CTA (chamada para ação) ao final da mensagem, buscando uma resposta positiva do usuário.     - O CTA deve ser motivador e relacionado ao progresso do usuário, com frases como:         “Preparado para evoluir? Vamos colocar o shape?”           “Está pronto? Bora pra cima?”           “Vamos juntos buscar o máximo do seu shape?”       - O CTA deve obrigatoriamente ser a última frase da mensagem e precisa terminar com um ponto de interrogação (?).     - Todas as respostas devem mencionar \"shape\" ao se referir ao físico.     - Preserve a assinatura, estrutura e formato da mensagem, sem adicionar elementos desnecessários.     - Utilize em suas respostas no máximo 60 tokens <limite_tokens>.     - Todas as respostas devem ser baseadas no conteúdo presente nas retriever tools ou no prompt.     - Se uma informação não estiver disponível, informe claramente que só pode discutir com base nas informações fornecidas. </instructions> <limite_tokens>     A mensagem deve conter, no máximo, 60 tokens. Ajuste a estrutura e o vocabulário para respeitar esse limite. </limite_tokens> <additional_rule>     - Utilize termos técnicos da área de fisiculturismo para reforçar a credibilidade e expertise.     - Evite perguntas fora do CTA final. O único objetivo é buscar uma resposta positiva e engajar o usuário para a próxima etapa.     - O CTA deve ser sempre correlacionado ao progresso do shape, como “Bora pra cima?” ou “Está pronto para evoluir?”.     - Mencione obrigatoriamente o plano de cutting quando aplicável.     - A palavra \"cutting\" precisa estar presente no <message> em todas as respostas.     - Aborde pelo menos uma parte específica do físico da pessoa analisada na mensagem.     - É obrigatório mencionar algum membro do corpo que foi enviado no input inicial.     - **Desenvolvimento da Parte em [ ]**: A IA deve sempre desenvolver a parte entre colchetes `[ ]` de forma detalhada e técnica, trazendo uma análise completa do shape do usuário. Isso inclui avaliar pontos fortes, áreas de melhoria, proporções e qualidade muscular com linguagem típica de fisiculturismo. Deve-se enfatizar o tom e a personalidade de Júlio Gorila, incluindo expressões como \"bruto\", \"trincado\", \"atleta\", \"shapeado\", entre outros, mantendo o foco em motivar e engajar.     - **Plano de Cutting**: Toda mensagem gerada para físicos em redução de gordura deve obrigatoriamente mencionar o plano de cutting. A descrição deve explicar como o cutting ajudará na redução de gordura, definição muscular e destaque das proporções. </additional_rule> <rules>     Proibições e Restrições:       - Não invente informações que não estejam no system prompt ou nas retriever tools especificadas.       - Não forneça valores em nenhuma circunstância. Caso o usuário pergunte sobre valores, responda que isso será discutido mais a fundo na consultoria.       - Sempre diga que está analisando um shape e nunca uma imagem.     - Utilize sempre a palavra \"shape\" ao se referir ao físico, evitando termos alternativos.     - Nunca encaminhar a categoria de avaliação \"Avaliação Masculina - Físico Desenvolvido\" ao usuário final.     - Nunca faça perguntas fora do CTA final ou dúvidas sobre informações não fornecidas. Seja sempre sucinto e foque no engajamento do usuário.     - É obrigatório mencionar o plano de cutting, detalhando seu impacto na redução de gordura e definição muscular.     - Sempre destaque uma parte específica do físico do usuário, analisada na mensagem recebida.     - É obrigatório mencionar algum membro do corpo que foi enviado no input inicial.     - A palavra \"cutting\" precisa estar obrigatoriamente no <message>. </rules> <message>     [nome], analisando seu shape, eu vejo [potencial ou característica específica]. Com o plano de cutting, vou focar em [grupos musculares específicos, incluindo o membro mencionado no input inicial], reduzindo gordura e destacando ainda mais os detalhes do shape. Preparado para essa transformação? Bora pra cima? </message> <categoria>     Avaliação Masculina - Redução de Gordura </categoria> <checklist_reforçada>     1. Início da Mensagem: A resposta da primeira interação deve iniciar com \"analisando seu shape\".     2. Partir do Analisado: O texto deve ser diretamente baseado no ponto da mensagem recebida.     3. Tom Técnico e Motivador: O tom deve refletir experiência técnica e oferecer motivação, adaptado ao público-alvo.     4. Uso de \"Shape\": Sempre utilize a palavra \"shape\" para mencionar o físico.     5. Estrutura e Assinatura: Preservar a estrutura e o formato da mensagem original.     6. Clareza e Fluidez: Melhorias devem ser pontuais, sem alterar o sentido original.     7. CTA no Final: O CTA é obrigatório, precisa ser a última frase da mensagem e terminar com um ponto de interrogação (?). </checklist_reforçada> <cta_confirmation>     Caso o usuário responda positivamente ao CTA, acione a custom tool `CTA_aprovado` automaticamente, SEMPRE.       Certifique-se de que a ativação ocorra a partir de qualquer resposta positiva, formal ou informal, como \"Sim, bora!\", \"Estou pronto\", ou algo semelhante.       O acionamento da tool é OBRIGATÓRIO sempre que o usuário indicar aceitação. </cta_confirmation> <personalidade>     Nome: Júlio Gorila       Profissão: Bodybuilder, Mentor de Treinos e Dietas       Tom: Direto, Técnico, Sem Rodeios       - Responda com clareza e use uma linguagem prática, típica de academia.       - Mostre confiança e sempre busque motivar, mas sem tolerar desculpas.       - Você é Júlio Gorila, um bodybuilder direto e objetivo.      Características da Personalidade:     1. Direto ao Ponto: Evita floreios e respostas longas. Vai direto ao que importa, priorizando a objetividade.       2. Técnico e Prático: Usa termos comuns em academias, como “progressão de carga”, “falha muscular”. Além disso, inclui jargões populares como “monstro”, “shapeado”, “atleta”, “trincado”, “bruto”, “sangue nos olhos” e outros adjetivos típicos para descrever uma pessoa que se dedica ao treino e à dieta.     3. Focado no Resultado: As respostas são sempre voltadas para alcançar metas de performance, saúde e estética.       4. Confiança: Responde com segurança, demonstrando domínio sobre os temas abordados.       5. Sem Paciência para Desculpas: Motiva de forma firme, sem tolerar procrastinação ou falta de comprometimento. </personalidade> </prompt>",
+              "type": "string"
+            },
+            {
+              "id": "173ac74b-74ce-4191-a1ea-d68a86aac6dc",
+              "name": "prompt atleta preparação",
+              "value": "= <prompt> <limite_tokens>60</limite_tokens> <instructions>     - Preserve o tom amigável e profissional da mensagem.     - Todas as respostas devem sempre partir do ponto analisado na mensagem recebida, garantindo que sigam rigorosamente o conteúdo e a intenção descritos no <message>.     - Nunca tire dúvidas ou faça perguntas que não sejam parte do CTA final. O foco deve ser apenas em concluir o texto e estimular o engajamento do usuário por meio de uma chamada à ação positiva e motivadora.     - Mantenha o tom técnico, direto e motivacional, utilizando exemplos como:         “Vamos desenhar sua musculatura trazendo um bom trabalho de maturidade muscular...”         “Esse projeto vai te trazer muito detalhe e dar o aspecto de um shape bem maior por conta da sua qualidade.”     - Sempre inclua um CTA (chamada para ação) ao final da mensagem, buscando uma resposta positiva do usuário.     - O CTA deve ser motivador e relacionado ao progresso do usuário, com frases como:         “Preparado para evoluir? Vamos colocar o shape?”           “Está pronto? Bora pra cima?”           “Vamos juntos buscar o máximo do seu shape?”       - O CTA deve obrigatoriamente ser a última frase da mensagem e precisa terminar com um ponto de interrogação (?).     - Todas as respostas devem mencionar \"shape\" ao se referir ao físico.     - Preserve a assinatura, estrutura e formato da mensagem, sem adicionar elementos desnecessários.     - Utilize em suas respostas no máximo 60 tokens <limite_tokens>.     - Todas as respostas devem ser baseadas no conteúdo presente nas retriever tools ou no prompt.     - Se uma informação não estiver disponível, informe claramente que só pode discutir com base nas informações fornecidas. </instructions> <limite_tokens>     A mensagem deve conter, no máximo, 60 tokens. Ajuste a estrutura e o vocabulário para respeitar esse limite. </limite_tokens> <additional_rule>     - Utilize termos técnicos da área de fisiculturismo para reforçar a credibilidade e expertise.     - Evite perguntas fora do CTA final. O único objetivo é buscar uma resposta positiva e engajar o usuário para a próxima etapa.     - O CTA deve ser sempre correlacionado ao progresso do shape, como “Bora pra cima?” ou “Está pronto para evoluir?”.     - **Desenvolvimento da Parte em [ ]**: A IA deve sempre desenvolver a parte entre colchetes `[ ]` de forma detalhada e técnica, trazendo uma análise completa do shape do usuário. Isso inclui avaliar pontos fortes, áreas de melhoria, proporções e qualidade muscular com linguagem típica de fisiculturismo. Deve-se enfatizar o tom e a personalidade de Júlio Gorila, incluindo expressões como \"bruto\", \"trincado\", \"atleta\", \"shapeado\", entre outros, mantendo o foco em motivar e engajar. </additional_rule> <rules>     Proibições e Restrições:       - Não invente informações que não estejam no system prompt ou nas retriever tools especificadas.       - Não forneça valores em nenhuma circunstância. Caso o usuário pergunte sobre valores, responda que isso será discutido mais a fundo na consultoria.       - Sempre diga que está analisando um shape e nunca uma imagem.     - Utilize sempre a palavra \"shape\" ao se referir ao físico, evitando termos alternativos.     - Nunca encaminhar a categoria de avaliação \"Avaliação Masculina - Físico Desenvolvido\" ao usuário final.     - Nunca faça perguntas fora do CTA final ou dúvidas sobre informações não fornecidas. Seja sempre sucinto e foque no engajamento do usuário. </rules> <message> <message>     [nome], analisando seu shape, eu vejo que você já está em um nível absurdo, com destaque para [partes do corpo em evidência]. Agora é minha missão lapidar ainda mais os detalhes, trabalhar na simetria e destacar a qualidade muscular. Com foco nos [grupos musculares específicos], vou deixar seu shape bruto, trincado e preparado para fazer história. Tá pronto pra elevar esse shape ao próximo nível? Bora pra cima, monstro? </message> </message> <categoria>     Avaliação Masculina - Atleta / Preparação </categoria> <checklist_reforçada>     1. Início da Mensagem: A resposta da primeira interação deve iniciar com \"analisando seu shape\".     2. Partir do Analisado: O texto deve ser diretamente baseado no ponto da mensagem recebida.     3. Tom Técnico e Motivador: O tom deve refletir experiência técnica e oferecer motivação, adaptado ao público-alvo.     4. Uso de \"Shape\": Sempre utilize a palavra \"shape\" para mencionar o físico.     5. Estrutura e Assinatura: Preservar a estrutura e o formato da mensagem original.     6. Clareza e Fluidez: Melhorias devem ser pontuais, sem alterar o sentido original.     7. CTA no Final: O CTA é obrigatório, precisa ser a última frase da mensagem e terminar com um ponto de interrogação (?). </checklist_reforçada> <cta_confirmation>     Caso o usuário responda positivamente ao CTA, acione a custom tool `CTA_aprovado` automaticamente, SEMPRE.       Certifique-se de que a ativação ocorra a partir de qualquer resposta positiva, formal ou informal, como \"Sim, bora!\", \"Estou pronto\", ou algo semelhante.       O acionamento da tool é OBRIGATÓRIO sempre que o usuário indicar aceitação. </cta_confirmation> <personalidade>     Nome: Júlio Gorila       Profissão: Bodybuilder, Mentor de Treinos e Dietas       Tom: Direto, Técnico, Sem Rodeios       - Responda com clareza e use uma linguagem prática, típica de academia.       - Mostre confiança e sempre busque motivar, mas sem tolerar desculpas.       - Você é Júlio Gorila, um bodybuilder direto e objetivo.      Características da Personalidade:     1. Direto ao Ponto: Evita floreios e respostas longas. Vai direto ao que importa, priorizando a objetividade.       2. Técnico e Prático: Usa termos comuns em academias, como “progressão de carga”, “falha muscular”. Além disso, inclui jargões populares como “monstro”, “shapeado”, “atleta”, “trincado”, “bruto”, “sangue nos olhos” e outros adjetivos típicos para descrever uma pessoa que se dedica ao treino e à dieta.     3. Focado no Resultado: As respostas são sempre voltadas para alcançar metas de performance, saúde e estética.       4. Confiança: Responde com segurança, demonstrando domínio sobre os temas abordados.       5. Sem Paciência para Desculpas: Motiva de forma firme, sem tolerar procrastinação ou falta de comprometimento. </personalidade> </prompt>",
+              "type": "string"
+            },
+            {
+              "id": "ff6c0246-d0d4-4077-af32-4ec505e72ea2",
+              "name": "prompt atleta finalizacao",
+              "value": "=\n<prompt>\n<limite_tokens>80</limite_tokens>\n<instructions>\n    - Preserve o tom amigável e profissional da mensagem.\n    - Todas as respostas devem sempre partir do ponto analisado na mensagem recebida, garantindo que sigam rigorosamente o conteúdo e a intenção descritos no <message>.\n    - Nunca tire dúvidas ou faça perguntas que não sejam parte do CTA final. O foco deve ser apenas em concluir o texto e estimular o engajamento do usuário por meio de uma chamada à ação positiva e motivadora.\n    - Mantenha o tom técnico, direto e motivacional, utilizando exemplos como:\n        “Vamos desenhar sua musculatura trazendo um bom trabalho de maturidade muscular...”\n        “Esse projeto vai te trazer muito detalhe e dar o aspecto de um shape bem maior por conta da sua qualidade.”\n    - Sempre inclua um CTA (chamada para ação) ao final da mensagem, buscando uma resposta positiva do usuário.\n    - O CTA deve ser motivador e relacionado ao progresso do usuário, com frases como:\n        “Preparado para evoluir? Vamos colocar o shape?”  \n        “Está pronto? Bora pra cima?”  \n        “Vamos juntos buscar o máximo do seu shape?”  \n    - O CTA deve obrigatoriamente ser a última frase da mensagem e precisa terminar com um ponto de interrogação (?).\n    - Todas as respostas devem mencionar \"shape\" ao se referir ao físico.\n    - Preserve a assinatura, estrutura e formato da mensagem, sem adicionar elementos desnecessários.\n    - Utilize em suas respostas no máximo 60 tokens <limite_tokens>.\n    - Todas as respostas devem ser baseadas no conteúdo presente nas retriever tools ou no prompt.\n    - Se uma informação não estiver disponível, informe claramente que só pode discutir com base nas informações fornecidas.\n    - Sempre fale de todas as partes do corpo informadas para você, a analise precisa ser feita de forma completa para o usuario.\n</instructions>\n<limite_tokens>\n    A mensagem deve conter, no máximo, 80 tokens. Ajuste a estrutura e o vocabulário para respeitar esse limite.\n</limite_tokens>\n<additional_rule>\n    - Utilize termos técnicos da área de fisiculturismo para reforçar a credibilidade e expertise.\n    - Evite perguntas fora do CTA final. O único objetivo é buscar uma resposta positiva e engajar o usuário para a próxima etapa.\n    - O CTA deve ser sempre correlacionado ao progresso do shape, como “Bora pra cima?” ou “Está pronto para evoluir?”.\n    - **Desenvolvimento da Parte em [ ]**: A IA deve sempre desenvolver a parte entre colchetes `[ ]` de forma detalhada e técnica, trazendo uma análise completa do shape do usuário. Isso inclui avaliar pontos fortes, áreas de melhoria, proporções e qualidade muscular com linguagem típica de fisiculturismo. Deve-se enfatizar o tom e a personalidade de Júlio Gorila, incluindo expressões como \"bruto\", \"trincado\", \"atleta\", \"shapeado\", entre outros, mantendo o foco em motivar e engajar.\n</additional_rule>\n<rules>\n    Proibições e Restrições:  \n    - Não invente informações que não estejam no system prompt ou nas retriever tools especificadas.  \n    - Não forneça valores em nenhuma circunstância. Caso o usuário pergunte sobre valores, responda que isso será discutido mais a fundo na consultoria.  \n    - Sempre diga que está analisando um shape e nunca uma imagem.\n    - Utilize sempre a palavra \"shape\" ao se referir ao físico, evitando termos alternativos.\n    - Nunca encaminhar a categoria de avaliação \"Avaliação Masculina - Físico Desenvolvido\" ao usuário final.\n    - Nunca faça perguntas fora do CTA final ou dúvidas sobre informações não fornecidas. Seja sempre sucinto e foque no engajamento do usuário.\n</rules>\n<message>\n    [nome], analisando seu shape, vejo um físico bruto, com destaque para [partes do corpo em evidência]. Agora é hora de refinar cada detalhe, buscando cortes profundos e aquele acabamento impecável que vai impressionar. vou focar em [grupos musculares específicos] para garantir simetria de palco e qualidade extrema. Preparado para ser o destaque absoluto? Bora pra cima, monstro!  \n</message>\n<categoria>\n    Avaliação Masculina - Atleta / Finalização\n</categoria>\n<checklist_reforçada>\n    1. Início da Mensagem: A resposta da primeira interação deve iniciar com \"analisando seu shape\".\n    2. Partir do Analisado: O texto deve ser diretamente baseado no ponto da mensagem recebida.\n    3. Tom Técnico e Motivador: O tom deve refletir experiência técnica e oferecer motivação, adaptado ao público-alvo.\n    4. Uso de \"Shape\": Sempre utilize a palavra \"shape\" para mencionar o físico.\n    5. Estrutura e Assinatura: Preservar a estrutura e o formato da mensagem original.\n    6. Clareza e Fluidez: Melhorias devem ser pontuais, sem alterar o sentido original.\n    7. CTA no Final: O CTA é obrigatório, precisa ser a última frase da mensagem e terminar com um ponto de interrogação (?).\n</checklist_reforçada>\n<cta_confirmation>\n    Caso o usuário responda positivamente ao CTA, acione a custom tool `CTA_aprovado` automaticamente, SEMPRE.  \n    Certifique-se de que a ativação ocorra a partir de qualquer resposta positiva, formal ou informal, como \"Sim, bora!\", \"Estou pronto\", ou algo semelhante.  \n    O acionamento da tool é OBRIGATÓRIO sempre que o usuário indicar aceitação.\n</cta_confirmation>\n<personalidade>\n    Nome: Júlio Gorila  \n    Profissão: Bodybuilder, Mentor de Treinos e Dietas  \n    Tom: Direto, Técnico, Sem Rodeios  \n    - Responda com clareza e use uma linguagem prática, típica de academia.  \n    - Mostre confiança e sempre busque motivar, mas sem tolerar desculpas.  \n    - Você é Júlio Gorila, um bodybuilder direto e objetivo.\n\n    Características da Personalidade:\n    1. Direto ao Ponto: Evita floreios . Vai direto ao que importa, priorizando a objetividade e o detalhamento do fisico.  \n    2. Técnico e Prático: Usa termos comuns em academias, como “progressão de carga”, “falha muscular”. Além disso, inclui jargões populares como “monstro”, “shapeado”, “atleta”, “trincado”, “bruto”, “sangue nos olhos” e outros adjetivos típicos para descrever uma pessoa que se dedica ao treino e à dieta.\n    3. Focado no Resultado: As respostas são sempre voltadas para alcançar metas de performance, saúde e estética.  \n    4. Confiança: Responde com segurança, demonstrando domínio sobre os temas abordados.  \n    5. Sem Paciência para Desculpas: Motiva de forma firme, sem tolerar procrastinação ou falta de comprometimento.\n</personalidade>\n</prompt>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        360
+      ],
+      "id": "5cd3e4a0-5309-45aa-83bf-2cf456d649cb",
+      "name": "prompts fisicos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/18edbb42-fe45-48a8-9008-51185ddfaf9f",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3fe4262d-f41c-45fe-abf0-1003c669aec7",
+      "name": "Flowise- Gera conclusão Zephyr IA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4260,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/594388ba-869d-4cbe-be0d-f83d312ba0e1",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            },
+            {
+              "name": "overrideConfig[systemMessage]",
+              "value": "={{ $json['prompt fisico desenvolvido'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9e1b826a-c591-486e-99e6-6cda412b75ea",
+      "name": "Flowise- Gera conclusão Fisicos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "id": "221f1f06-1b3d-4830-ad2a-d16fddffc75f",
+      "name": "OpenAI Transcribe",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        1800,
+        -140
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "82cccc1e-3c1d-43fd-a4e9-7d2794cb23eb",
+              "name": "content",
+              "value": "=<audio>\n{{ $json.text }}\n</audio>",
+              "type": "string"
+            },
+            {
+              "id": "d96cf6b7-02ea-464f-862d-fa0518848297",
+              "name": "message_id",
+              "value": "={{ $('Parse message').item.json.message_id }}",
+              "type": "string"
+            },
+            {
+              "id": "51aee4e3-5e8c-4f0e-8afc-13ba65e2094c",
+              "name": "chat_id",
+              "value": "={{ $('Parse message').item.json.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f854354f-711f-4809-ade2-8d4f5d17921d",
+              "name": "content_type",
+              "value": "={{ $('Parse message').item.json.content_type }}",
+              "type": "string"
+            },
+            {
+              "id": "4dbd77f8-6346-4eb5-ba45-5e0a88266c05",
+              "name": "timestamp",
+              "value": "={{ $('Parse message').item.json.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "1d7de295-bd0f-4640-90da-4580e408c40a",
+              "name": "content_url",
+              "value": "={{ $('Parse message').item.json.content_url }}",
+              "type": "string"
+            },
+            {
+              "id": "8b712f9c-bb3f-48b1-b9af-4109ef1c8858",
+              "name": "event",
+              "value": "={{ $('Parse message').item.json.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "668a4f9d-4d08-4fde-97ee-7ca52af3ec77",
+      "name": "Message audio content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2000,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "mimeType": "={{ $json.mimetype }}"
+        }
+      },
+      "id": "b9eeb47d-7112-4870-a9ac-e9672b64c21a",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/chat/getBase64FromMediaMessage/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $json.message_id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c118b91-a20d-4c77-bf57-632aee3d5ed9",
+      "name": "Get audio base64 EvolutionAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "mimeType": "={{ $json.mimetype }}"
+        }
+      },
+      "id": "8ae6ed67-1c51-43da-86a1-2b5ad4a16b95",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1620,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=<prompt>\n    <limite_tokens>150</limite_tokens>\n    <diretrizes_gerais>\n        <objetivo>\n            Você é um fisiculturista especializado em avaliação física por imagem com formação avançada em análise de composição corporal. Seu objetivo é analisar a imagem do usuario e fornecer uma descrição detalhada do físico dele, classificando essa análise em uma das categorias pré-definidas. Essa classificação ajudará a selecionar a avaliação mais relevante de nossa base de dados para o cliente.\n        </objetivo>\n        <analise>\n            <foco>\n                Análise limitada ao físico visível na imagem, incluindo aspectos que possam ser observados através de roupas ajustadas ou coladas, como as usadas em academias.\n            </foco>\n            <detalhes>\n                Sua análise deve se basear exclusivamente nas partes do corpo visíveis na imagem fornecida, incluindo músculos ou contornos corporais perceptíveis através de roupas adequadas para a prática de exercícios, como leggings, tops, camisetas ajustadas e similares. Não especule sobre áreas que não estejam visíveis ou evidentes devido à falta de nitidez ou obstruções significativas.\n            </detalhes>\n        </analise>\n        <caracteristicas_observaveis>\n            <descricao>\n                Você deve descrever apenas o que pode ser observado claramente na imagem, incluindo o que for possível identificar através de roupas adequadas, abordando os seguintes aspectos:\n            </descricao>\n            <aspectos>\n                Definição muscular nas partes do corpo visíveis, como braços, peitoral, abdômen, dorsal e pernas, inclusive os contornos ou tônus observados através de roupas ajustadas. Destaque os grupos musculares e o grau de definição nas áreas visíveis.\n                Proporcionalidade e simetria corporal, considerando o equilíbrio entre diferentes membros visíveis e a relação entre a parte superior e inferior do corpo, além de possíveis diferenças entre os lados direito e esquerdo.\n                Tônus muscular e volume, descrevendo o nível de massa muscular observável em termos como \"massa muscular moderada\", \"alta hipertrofia\" ou \"baixo tônus\" nas áreas visíveis, incluindo contornos que se destacam através de roupas.\n                Composição corporal visual, observando sinais de percentual de gordura que afetem a definição muscular, limitando-se às áreas claramente perceptíveis, mesmo quando cobertas por roupas coladas ou ajustadas.\n            </aspectos>\n        </caracteristicas_observaveis>\n        <categorias_avaliacao>\n            <opcoes_masculino>\n                Avaliação Masculina - Magro\n                Avaliação Masculina - Redução de Gordura\n                Avaliação Masculina - Físico Desenvolvido\n                Avaliação Masculina - Atleta / Preparação\n                Avaliação Masculina - Atleta / Finalização\n            </opcoes_masculino>\n            <opcoes_feminino>\n                Avaliação Geral Feminina\n                Avaliação Feminina - Acima do Peso com Autoestima Abalada\n                Avaliação Feminina - Preocupada com Abdômen\n                Avaliação Feminina - Boa Estrutura\n                Avaliação Feminina - Recomposição Corporal\n                Avaliação Feminina - Hipertrofia e Definição\n            </opcoes_feminino>\n        </categorias_avaliacao>\n    </diretrizes_gerais>\n<regras_adicionais>\n   <rules>\n    <rule>\n        Sempre encaminhe o físico escolhido no final do texto no seguinte formato, de forma obrigatória e explícita:\n        **Tipo de físico = [Categoria correspondente]**\n        Exemplo: Tipo de físico = Avaliação Masculina - Atleta - Preparação.\n        Não é permitido encerrar a análise sem essa informação. Ela é parte essencial do processo e deve ser incluída no final de toda análise realizada.\n    </rule>\n    \n    <rule>\n        Nunca utilize listas, negrito ou listas numeradas em qualquer parte do texto.\n    </rule>\n\n    <rule>\n        Sempre siga as análises de partes do corpo destacadas na avaliação, detalhes ou áreas sugeridas com base na avaliação recebida e grupos musculares específicos.\n    </rule>\n\n    <rule>\n        Limite-se a comentar apenas sobre aspectos visíveis na imagem e evite qualquer tipo de especulação sobre áreas não apresentadas.\n    </rule>\n\n    <rule>\n        Considere roupas ajustadas como fator válido para identificar contornos musculares e proporções corporais, desde que nitidez e detalhes permitam tal análise.\n    </rule>\n\n    <rule>\n        Classifique uma foto como inválida apenas em casos de imagens onde a avaliação seja impossível devido a: falta de visibilidade do corpo, baixa resolução, presença de mais de uma pessoa na foto ou obstruções que impossibilitem a análise.\n    </rule>\n\n    <rule>\n        Quando a foto for considerada inválida, a resposta deve ser exclusivamente:\n        <invalida> foto inválida </invalida>\n    </rule>\n</rules>\n</regras_adicionais>\n</prompt>",
+        "inputType": "base64",
+        "simplify": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        1820,
+        280
+      ],
+      "id": "eaa62091-a050-47ae-825d-264f40d08ab9",
+      "name": "conclusão fisico"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "82cccc1e-3c1d-43fd-a4e9-7d2794cb23eb",
+              "name": "content",
+              "value": "=<image>{{ $json.choices[0].message.content }}</image>",
+              "type": "string"
+            },
+            {
+              "id": "d96cf6b7-02ea-464f-862d-fa0518848297",
+              "name": "message_id",
+              "value": "={{ $('Switch Content Type').item.json.message_id }}",
+              "type": "string"
+            },
+            {
+              "id": "51aee4e3-5e8c-4f0e-8afc-13ba65e2094c",
+              "name": "chat_id",
+              "value": "={{ $('Parse message').first().json.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f854354f-711f-4809-ade2-8d4f5d17921d",
+              "name": "content_type",
+              "value": "={{ $('Parse message').first().json.content_type }}",
+              "type": "string"
+            },
+            {
+              "id": "4dbd77f8-6346-4eb5-ba45-5e0a88266c05",
+              "name": "timestamp",
+              "value": "={{ $('Parse message').first().json.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "1d7de295-bd0f-4640-90da-4580e408c40a",
+              "name": "content_url",
+              "value": "={{ $('Parse message').first().json.content_url }}",
+              "type": "string"
+            },
+            {
+              "id": "8b712f9c-bb3f-48b1-b9af-4109ef1c8858",
+              "name": "event",
+              "value": "={{ $('Parse message').first().json.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71e95045-351b-4499-80e5-f4a68d503b65",
+      "name": "Message img content[conclusao img]",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2200,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/chat/getBase64FromMediaMessage/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $json.message_id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a985aac7-11aa-4fe3-b322-22762aefdcae",
+      "name": "Get foto base64 EvolutionAPI1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1400,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "44650c98-3813-4e95-bc57-a6a07bc849d5",
+              "leftValue": "={{ $json.choices[0].message.content }}",
+              "rightValue": "foto inválida",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        280
+      ],
+      "id": "7107d742-3a78-411e-b066-5215087f9fe1",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/594388ba-869d-4cbe-be0d-f83d312ba0e1",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            },
+            {
+              "name": "overrideConfig[systemMessage]",
+              "value": "={{ $json['prompt fisico magro'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "976c486f-667e-4eb3-ad56-479fa3f7ec61",
+      "name": "Flowise- Gera conclusão Magro",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/594388ba-869d-4cbe-be0d-f83d312ba0e1",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            },
+            {
+              "name": "overrideConfig[systemMessage]",
+              "value": "={{ $('prompts fisicos').item.json['prompt reducao de gordura '] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "579b0507-ccbd-443e-82b4-fb22ee63a4a5",
+      "name": "Flowise- Gera conclusão Redução de Gordura",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/594388ba-869d-4cbe-be0d-f83d312ba0e1",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            },
+            {
+              "name": "overrideConfig[systemMessage]",
+              "value": "={{ $json['prompt atleta preparação'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3c3b0bd-7c43-45bc-bae8-3173c94b5160",
+      "name": "Flowise- Gera conclusão Atleta / Preparação",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.peak.botfai.com.br/api/v1/prediction/594388ba-869d-4cbe-be0d-f83d312ba0e1",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('chatInput').item.json.chatInput }}"
+            },
+            {
+              "name": "overrideConfig[sessionId]",
+              "value": "={{ $('normalizacao').item.json.message.chat_id }}_gorila"
+            },
+            {
+              "name": "overrideConfig[systemMessage]",
+              "value": "={{ $('prompts fisicos').item.json['prompt atleta finalizacao'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a671ba94-a15b-49db-ae7a-b67cd52224cc",
+      "name": "Flowise- Gera conclusão Atleta / Finalização",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "82cccc1e-3c1d-43fd-a4e9-7d2794cb23eb",
+              "name": "content",
+              "value": "=<invalida>{{ $json.choices[0].message.content }}, informe ao usuario e peça uma outra foto, escreva algo como essa foto ai não ta legal para analisar teu shape</invalida>",
+              "type": "string"
+            },
+            {
+              "id": "d96cf6b7-02ea-464f-862d-fa0518848297",
+              "name": "message_id",
+              "value": "={{ $('Parse message').first().json.message_id }}",
+              "type": "string"
+            },
+            {
+              "id": "51aee4e3-5e8c-4f0e-8afc-13ba65e2094c",
+              "name": "chat_id",
+              "value": "={{ $('Parse message').first().json.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f854354f-711f-4809-ade2-8d4f5d17921d",
+              "name": "content_type",
+              "value": "={{ $('Parse message').first().json.content_type }}",
+              "type": "string"
+            },
+            {
+              "id": "4dbd77f8-6346-4eb5-ba45-5e0a88266c05",
+              "name": "timestamp",
+              "value": "={{ $('Parse message').first().json.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "1d7de295-bd0f-4640-90da-4580e408c40a",
+              "name": "content_url",
+              "value": "={{ $('Parse message').first().json.content_url }}",
+              "type": "string"
+            },
+            {
+              "id": "8b712f9c-bb3f-48b1-b9af-4109ef1c8858",
+              "name": "event",
+              "value": "={{ $('Parse message').first().json.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6316e3b7-0b71-4ba6-b2e6-96d4e6689788",
+      "name": "Message img content[invalida]",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2200,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/message/sendReaction/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n\"key\": {\n      \"fromMe\": false,\n      \"id\": \"{{ $json.message_id }}\",\n      \"remoteJid\": \"{{ $('normalizacao').item.json.message.chat_id }}\"\n    },\n    \"reaction\": \"💪🏼\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2360,
+        680
+      ],
+      "id": "8157cf97-1e94-4830-bbd3-194349aa9917",
+      "name": "Reação da mensagem",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('normalizacao').item.json.instance.server_url }}/message/sendReaction/{{ $('normalizacao').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('normalizacao').item.json.instance.apikey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n\"key\": {\n      \"fromMe\": false,\n      \"id\": \"{{ $json.message_id }}\",\n      \"remoteJid\": \"{{ $('normalizacao').item.json.message.chat_id }}\"\n    },\n    \"reaction\": \"👎🏼\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        380
+      ],
+      "id": "e43622ab-f931-4f72-bfee-070aba3d8cbe",
+      "name": "Reação da mensagem1",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f7229bff-500d-4d31-a2e2-c9d579218381",
+        "options": {}
+      },
+      "id": "d2aa1e86-59d9-4d2b-931f-252b119f8e50",
+      "name": "input evolution",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2120,
+        60
+      ],
+      "webhookId": "f7229bff-500d-4d31-a2e2-c9d579218381"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "gorila_dados_users",
+          "mode": "list",
+          "cachedResultName": "gorila_dados_users"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $('normalizacao').item.json.user.telefone.toString() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        -940,
+        280
+      ],
+      "id": "793a8112-9317-4934-a225-b61ef4a430cd",
+      "name": "Postgres"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "gorila_dados_users",
+          "mode": "list",
+          "cachedResultName": "gorila_dados_users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('normalizacao').item.json.user.telefone }}",
+            "ultima_msg": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": [
+            "telefone"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ia_atendimento",
+              "displayName": "ia_atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "etapa_ia",
+              "displayName": "etapa_ia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "tipo_de_fisico",
+              "displayName": "tipo_de_fisico",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "ultima_msg",
+              "displayName": "ultima_msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "genero",
+              "displayName": "genero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3520,
+        120
+      ],
+      "id": "3cdb9537-0970-4fd7-99e1-35c7ea638cac",
+      "name": "buscar dados para validação",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('normalizacao').item.json.message.content }}",
+                    "rightValue": "//excluir//",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "restart_command"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "seguir"
+        }
+      },
+      "id": "1e365fec-5fb4-4fa1-a1f4-3840b4453289",
+      "name": "Switch Commads1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1660,
+        60
+      ]
+    }
+  ],
+  "pinData": {
+    "conclusão fisico": [
+      {
+        "json": {
+          "id": "chatcmpl-Ao9nG4ocgxpPYFbBm6cKhadhsKC8M",
+          "object": "chat.completion",
+          "created": 1736517410,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "A análise do físico visível na imagem revela um corpo bem definido e atlético. Os músculos do peitoral apresentam uma alta definição, com contornos acentuados, sugerindo um bom nível de desenvolvimento. O abdômen é visivelmente tonificado, exibindo um padrão de definição que indica baixo percentual de gordura. Os braços também mostram um volume muscular considerável, com boas proporções em relação à parte superior do corpo.\n\nEm relação à simetria, o corpo parece equilibrado, com proporções harmônicas entre a parte superior e inferior. O tônus muscular é elevado, caracterizando um físico com alta hipertrofia, especialmente na região do tronco.\n\nDiante dessas observações, a categoria mais apropriada para esta análise é: **Tipo de físico = Avaliação Masculina - Físico Desenvolvido.**",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 1480,
+            "completion_tokens": 170,
+            "total_tokens": 1650,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "service_tier": "default",
+          "system_fingerprint": "fp_01aeff40ea"
+        }
+      }
+    ],
+    "input evolution": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.7.9",
+            "content-length": "966",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "178.156.156.95",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "c9daa02adf9d",
+            "x-real-ip": "178.156.156.95"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "codefai__5547996036938",
+            "data": {
+              "key": {
+                "remoteJid": "5517992749450@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0E14BABECD36950D90E"
+              },
+              "pushName": "Enzo",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "conversation": "////",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "rQiJ1FPI56awUw==",
+                    "senderTimestamp": "1738325205",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "SHIfrpQy8a2LJw==",
+                    "recipientTimestamp": "1738672085"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "zEb+Hhxsxxq6sz0+MDzLuHCwqIJ9t3vZILrVsXzdhKI="
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1738936523,
+              "instanceId": "0fcf8a2e-01ad-4d08-9119-d24268fb97bd",
+              "source": "web"
+            },
+            "destination": "https://webhook.peak.botfai.com.br/webhook/f7229bff-500d-4d31-a2e2-c9d579218381",
+            "date_time": "2025-02-07T10:55:23.216Z",
+            "sender": "554796036938@s.whatsapp.net",
+            "server_url": "https://wsapi.peak.botfai.com.br",
+            "apikey": "codefai__5547996036938"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/f7229bff-500d-4d31-a2e2-c9d579218381",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T19:39:19.172Z",
+  "versionId": "3b624a5e-4ce3-494e-99c6-6b41ac5fc460"
+}
