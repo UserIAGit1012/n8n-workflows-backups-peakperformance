@@ -1,0 +1,275 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-17T20:03:20.056Z",
+  "id": "9vDQ920AENeYPWvz",
+  "meta": null,
+  "name": "Solicitação_fotos",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        180,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        780,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "leads",
+          "mode": "list",
+          "cachedResultName": "leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sales_funnel_stage_id": 4,
+            "sessionId": "={{ $json.session_id }}",
+            "influencer_account_id": "={{ $json.account_id }}"
+          },
+          "matchingColumns": [
+            "sessionId"
+          ],
+          "schema": [
+            {
+              "id": "contact_id",
+              "displayName": "contact_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "idade",
+              "displayName": "idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "genero",
+              "displayName": "genero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "foco",
+              "displayName": "foco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "objetivo",
+              "displayName": "objetivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "musculos_desejados",
+              "displayName": "musculos_desejados",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "fonte_contato",
+              "displayName": "fonte_contato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "influencer_account_id",
+              "displayName": "influencer_account_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "sales_funnel_stage_id",
+              "displayName": "sales_funnel_stage_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "physical_condition_id",
+              "displayName": "physical_condition_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "numero_telefone",
+              "displayName": "numero_telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "conversationId",
+              "displayName": "conversationId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "sessionId",
+              "displayName": "sessionId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        480,
+        320
+      ],
+      "id": "fb6a645a-a687-4f17-95df-ac2f63999dc9",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "8ofCwrRA0lvWfODI",
+          "name": "Supabase|Peak"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-17T20:08:37.286Z",
+  "versionId": "79c07cd9-ccd8-4462-a62e-fbd32be3643b"
+}
