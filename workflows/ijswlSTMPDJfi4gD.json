@@ -1,0 +1,1162 @@
+{
+  "active": false,
+  "connections": {
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "EmpilhaMsg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatTrigger": {
+      "main": [
+        [
+          {
+            "node": "Normalização",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalização": {
+      "main": [
+        []
+      ]
+    },
+    "EmpilhaMsg": {
+      "main": [
+        [
+          {
+            "node": "PegaMsgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PegaMsgs": {
+      "main": [
+        [
+          {
+            "node": "AlternaBuffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda": {
+      "main": [
+        [
+          {
+            "node": "PegaMsgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AlternaBuffer": {
+      "main": [
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DelMsgBuffer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aguarda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DelMsgBuffer": {
+      "main": [
+        [
+          {
+            "node": "DivideMsgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DivideMsgs": {
+      "main": [
+        [
+          {
+            "node": "AjustaItens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AjustaItens": {
+      "main": [
+        [
+          {
+            "node": "TipoMsgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TipoMsgs": {
+      "main": [
+        [
+          {
+            "node": "PegarAudio Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ContudoTexto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ContudoImage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ContudoTexto": {
+      "main": [
+        [
+          {
+            "node": "AgregaDados",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "PegarAudio Base64": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TranscreveAudio": {
+      "main": [
+        [
+          {
+            "node": "ConteudoAudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConteudoAudio": {
+      "main": [
+        [
+          {
+            "node": "AgregaDados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgregaDados": {
+      "main": [
+        [
+          {
+            "node": "AjustaDadosTempo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AjustaDadosTempo": {
+      "main": [
+        [
+          {
+            "node": "JuntaItens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextoImput": {
+      "main": [
+        [
+          {
+            "node": "DadosAgragados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DadosAgragados": {
+      "main": [
+        [
+          {
+            "node": "EnviaIA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JuntaItens": {
+      "main": [
+        [
+          {
+            "node": "TextoImput",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DadosProcessos": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "TranscreveAudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ContudoImage": {
+      "main": [
+        [
+          {
+            "node": "AgregaDados",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-28T13:49:20.906Z",
+  "id": "ijswlSTMPDJfi4gD",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "3️⃣ buffer",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e42988c0-4e1c-41b5-b741-c09fae17f1be",
+      "name": "Dados",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4d720b90-e825-4848-b2c7-14ebaeec126d",
+      "name": "chatTrigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        2140
+      ],
+      "webhookId": "e1dee65f-e7b6-49e6-ab01-58e8f07a4954",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# 1",
+        "height": 539,
+        "width": 199,
+        "color": 5
+      },
+      "id": "a6895c52-7c0a-43a5-9d17-be1ec4851fcf",
+      "name": "Sticky Note25",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        1560
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=  {\n    \"app\": {\n      \"chatwoot\": {\n        \"url\": \"https://app.bitfy.ai\",\n        \"token\": \"\",\n        \"assistantName\": \"Automação | I.A. \",\n        \"accountId\": null,\n        \"accountName\": null\n      },\n      \"debouncerTime\": 3,\n      \"evo\": {\n        \"apikey\": \"306782A9CB93-4183-B80E-4A2444B10065\",\n        \"instance\": \"Aquecimento_2894\",\n        \"server\": \"https://evo.testes.voise.com.br\"\n      }\n    },\n    \"content\": {\n      \"type\": \"text\",\n      \"message\": \"{{ $('chatTrigger').item.json.chatInput }}\",\n      \"id\": null,\n      \"url\": null\n    },\n    \"meta\": {\n      \"channel\": null,\n      \"contactId\": \"554799830536@s.whatsapp.net\",\n      \"conversationId\": null,\n      \"pushName\": \"Gabriel A. Zavatini\",\n      \"senderType\": null,\n      \"identifier\": \"554788242894@s.whatsapp.net\",\n      \"phoneNumber\": null,\n      \"conversationStatus\": null\n    }\n  }\n",
+        "options": {}
+      },
+      "id": "86af6b4b-57a4-488d-b6cf-d0d21e8fe553",
+      "name": "Normalização",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2540,
+        2140
+      ],
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "554799830536@s.whatsapp.net@Aquecimento_9863"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        2140
+      ],
+      "id": "af500006-d22a-4632-b6a6-c2fb21580ef4",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 540,
+        "width": 3720,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2420,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "f8935aba-1f06-4d25-9e3d-c5684281f182",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Dados').item.json.dados.sessionId }}_buffer",
+        "messageData": "={{ JSON.stringify($('Dados').item.json.message) }}",
+        "tail": true
+      },
+      "id": "14c23673-1955-4a4d-8a06-6a4547fa042b",
+      "name": "EmpilhaMsg",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1740
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "messages",
+        "key": "={{ $('Dados').item.json.dados.sessionId }}_buffer",
+        "options": {}
+      },
+      "id": "2e5bbb79-7f9f-48e5-a1ba-175122706f7d",
+      "name": "PegaMsgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        1740
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "18a9d966-6c0c-40f8-8932-8fe6b48d4c16",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "70aa59bd-f216-4d70-8c0d-1de391dbe7bf",
+      "name": "Aguarda",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3560,
+        1920
+      ],
+      "webhookId": "87918940-7b2b-4497-a4c1-7526d381f0b4"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ \n  $json.messages?.length\n    ? JSON.parse($json.messages.first()).message_id\n    : null\n}}",
+                    "rightValue": "={{ $('Dados').item.json.message.message_id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    },
+                    "id": "66a5ab8b-f7ff-4a1d-9a95-966dd1c055e7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "nada a fazer"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "fdd1e894-df1c-4ebd-8f56-82f66dad03be",
+                    "leftValue": "={{\n  $json.messages?.length\n    ? JSON.parse($json.messages.last()).timestamp\n    : null\n}}",
+                    "rightValue": "={{ $now.minus(120, 'seconds') }}",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "before"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "prosseguir"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "esperar"
+        }
+      },
+      "id": "1464fb21-0c0f-46f6-9232-a0fdc2bd4f5d",
+      "name": "AlternaBuffer",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3320,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Dados').item.json.dados.sessionId }}_buffer"
+      },
+      "id": "b8e19b00-08b8-44d8-ae38-0c614f938d39",
+      "name": "DelMsgBuffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        1740
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages",
+        "options": {}
+      },
+      "id": "4478946b-6d43-4df5-b6ea-d484774e5778",
+      "name": "DivideMsgs",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3820,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ JSON.parse($json.messages) }}",
+        "options": {}
+      },
+      "id": "a9987bda-1a82-4891-b81b-ccb5457fdb12",
+      "name": "AjustaItens",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4000,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "a1dfeee8-7927-4419-b091-e5b1930c011e",
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7431ffc4-1ee4-4556-8053-d8b2480450b8",
+                    "leftValue": "={{ $json.content_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e43352e6-575c-4f4c-a581-08bc43145202",
+      "name": "TipoMsgs",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        4180,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c3f5615e-1294-4a6a-81f5-59448b8a0d0c",
+              "name": "content",
+              "value": "={{ $('AjustaItens').item.json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "b07a469c-89cc-4b27-b574-19f1e606264c",
+      "name": "ContudoTexto",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4640,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Dados').item.json.instance.server_url }}/chat/getBase64FromMediaMessage/{{ $('Dados').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Dados').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $json.message_id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98a2430d-5251-4f41-8459-0f3fad9bfe9b",
+      "name": "PegarAudio Base64",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4420,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "id": "b5b032ec-e3e9-4914-92ce-653d1dea0157",
+      "name": "TranscreveAudio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        4740,
+        1580
+      ],
+      "retryOnFail": false,
+      "credentials": {
+        "openAiApi": {
+          "id": "OqiZuzKjXxienn7V",
+          "name": "peak-key-gorila"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "82cccc1e-3c1d-43fd-a4e9-7d2794cb23eb",
+              "name": "content",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "d96cf6b7-02ea-464f-862d-fa0518848297",
+              "name": "message_id",
+              "value": "={{ $('AjustaItens').item.json.message_id }}",
+              "type": "string"
+            },
+            {
+              "id": "51aee4e3-5e8c-4f0e-8afc-13ba65e2094c",
+              "name": "chat_id",
+              "value": "={{ $('AjustaItens').item.json.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f854354f-711f-4809-ade2-8d4f5d17921d",
+              "name": "content_type",
+              "value": "={{ $('AjustaItens').item.json.content_type }}",
+              "type": "string"
+            },
+            {
+              "id": "4dbd77f8-6346-4eb5-ba45-5e0a88266c05",
+              "name": "timestamp",
+              "value": "={{ $('AjustaItens').item.json.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "1d7de295-bd0f-4640-90da-4580e408c40a",
+              "name": "content_url",
+              "value": "={{ $('AjustaItens').item.json.content_url }}",
+              "type": "string"
+            },
+            {
+              "id": "8b712f9c-bb3f-48b1-b9af-4109ef1c8858",
+              "name": "event",
+              "value": "={{ $('AjustaItens').item.json.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a058c08b-1c62-4a55-89d3-129427c2e011",
+      "name": "ConteudoAudio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4900,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "id": "a4bab4af-5d0f-40a2-9f03-adb6f1fe20d5",
+      "name": "AgregaDados",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        5080,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "timestamp"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe7e9291-6d00-474e-97c9-9acd952999d8",
+      "name": "AjustaDadosTempo",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        5240,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db5cfe0a-7f43-4a61-8b27-bfd3a95deb8d",
+              "name": "chatInput",
+              "value": "={{ $('JuntaItens').item.json.messages.join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0b9d375d-a71a-4607-b091-00d274202250",
+      "name": "TextoImput",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5620,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "uadYilvakOot2mYN",
+          "mode": "list",
+          "cachedResultName": "I.A."
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6000,
+        1780
+      ],
+      "id": "f9b2e6c2-bcab-4624-8869-6c864e253bac",
+      "name": "EnviaIA"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Captura o JSON gerado pelo nó \"Normalizacao\"\nconst dadosDados = $node[\"Dados\"].json;\n\n// Captura o JSON que entrou neste nó (ou seja, o input original)\nconst dadosEntrada = $input.item.json;\n\n// Mescla os dois objetos (se houver chaves iguais, os valores de dadosNormalizacao sobrescrevem)\n// Assim, \"todosDados\" vai conter TUDO do input original + tudo que vier de \"Normalizacao\"\nconst todosDados = {\n  ...dadosEntrada,\n  ...dadosDados,\n};\n\n// Retorna um item cujo JSON é esse objeto mesclado\nreturn { json: todosDados };\n"
+      },
+      "id": "2fc9c34d-e6a5-4328-8a84-3ac02c52ee73",
+      "name": "DadosAgragados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5840,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 4",
+        "height": 540,
+        "width": 170,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4160,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "4ee71bab-218e-4a15-a389-82ff6d6f7fc3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# 5",
+        "height": 540,
+        "width": 720,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4340,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "ddbba4e9-f7bc-4fbd-98f5-239a4a4a6283",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# 2",
+        "height": 540,
+        "width": 800
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2940,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "0061909d-2fc3-457a-bb83-cea04469cfc8",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# 3\n",
+        "height": 540,
+        "width": 320,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3800,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "0f663a14-fb45-4618-bd40-13cc4e2b5f3d",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "# 6",
+        "height": 540,
+        "width": 170,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5200,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "bc229519-f7fc-4f2b-b9d1-001e0c2eff27",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "content",
+              "renameField": true,
+              "outputFieldName": "messages"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "33348a59-9201-490b-af9d-536f0504e3cd",
+      "name": "JuntaItens",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        5420,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 6",
+        "height": 540,
+        "width": 170,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5380,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "6c31046d-018b-42cd-aed1-9b2d19789a05",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "# 6",
+        "height": 540,
+        "width": 170,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5800,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "529dd021-1e37-4343-8769-dcc28d23622c",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "# Documentação detalhada dos Nodes do n8n\n\n## 1. Recepção dos Dados\n\nEste node recebe dados já ajustados provenientes do Flow Process. Esses dados chegam organizados e estruturados, prontos para serem utilizados nas etapas subsequentes do fluxo.\n\n## 2. Buffer de Mensagens\n\nEste node gerencia as mensagens temporariamente usando Redis, facilitando um controle eficiente do processamento.\n\n* **EmpilhaMsg:**\n\n  * Envia mensagens ao Redis utilizando uma chave única, composta pelo número de telefone, nome da instância e o identificador `_buffer`.\n  * A identificação `_buffer` caracteriza especificamente o conjunto de mensagens armazenadas temporariamente.\n\n* **PegaMsgs:**\n\n  * Recupera a quantidade total de mensagens armazenadas no Redis para processamento posterior.\n\n* **AlternaBuffer:**\n\n  * Atua como um switch dinâmico que determina o comportamento do buffer com base nas seguintes condições:\n\n  * **Nada a fazer:**\n\n    * Quando há uma mensagem em processamento com um ID diferente, indicando que mensagens subsequentes precisam aguardar para serem inseridas no buffer.\n\n  * **Prosseguir:**\n\n    * Indica que o tempo de espera para novas mensagens expirou, permitindo o avanço no fluxo e finalização do conjunto atual de mensagens armazenadas.\n\n  * **Esperar:**\n\n    * O sistema permanece aguardando o recebimento de novas mensagens enquanto o período para entrada ainda é válido.\n\n## 3. Ajuste das Mensagens do Buffer\n\nNeste passo, as mensagens coletadas durante o período de buffer são divididas em itens individuais. Cada mensagem é isolada para que possa ser tratada separadamente nas etapas subsequentes, garantindo processamento claro e eficiente.\n\n## 4. Identificação do Tipo de Mensagens\n\nUm node de switch que analisa cada mensagem separadamente para identificar seu tipo específico. Este processo garante que cada item receba o tratamento adequado conforme seu formato.\n\n## 5. Tratamento das Mensagens\n\nNesta etapa, as mensagens identificadas são processadas conforme seu tipo específico:\n\n* **Áudio**\n* **Texto**\n* **Imagem (up)**\n* **Sticker (up)**\n* **Vídeo (up)**\n\nTodos esses tipos de mensagem são transcritos ou convertidos para texto, permitindo sua utilização posterior como input para a inteligência artificial (IA).\n\n## 6. Ajuste Cronológico das Mensagens\n\nEste node reorganiza as mensagens recebidas em ordem cronológica, garantindo a lógica e coerência das conversas para a etapa seguinte. Por exemplo, mensagens fragmentadas em diferentes formatos são concatenadas em uma sequência lógica, como:\n\n```\nTexto: \"Oi,\"\nÁudio: \"como você está?\"\n```\n\nResultado após ajuste:\n\n```\n\"Oi, como você está?\"\n```\n\n## 7. Concatenação Final\n\nEste node finaliza o processo ao concatenar todas as mensagens transcritas e ajustadas em um único item, facilitando o processamento integrado das informações coletadas.\n",
+        "height": 2080,
+        "width": 800,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1520,
+        840
+      ],
+      "typeVersion": 1,
+      "id": "5e707f0f-c4f4-48df-a054-3479f3849f2f",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {},
+      "id": "23dec571-b622-4c43-9d0e-35c60e2d2f0d",
+      "name": "DadosProcessos",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "mimeType": "={{ $json.mimetype }}"
+        }
+      },
+      "id": "297c7bda-b645-4520-84dd-0f905aefbf9e",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        4580,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c3f5615e-1294-4a6a-81f5-59448b8a0d0c",
+              "name": "instrucaoi",
+              "value": "=verifique a etapa etual e volte ao contexto da etapa com uma pergunta. ",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "ff289961-bcff-42f7-80b8-ff148c0d7a3d",
+      "name": "ContudoImage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4640,
+        1900
+      ]
+    }
+  ],
+  "pinData": {
+    "DadosProcessos": [
+      {
+        "json": {
+          "contact_id": 1139,
+          "nome": "Gabriel A. Zavatini",
+          "idade": null,
+          "genero": null,
+          "foco": null,
+          "objetivo": null,
+          "musculos_desejados": null,
+          "fonte_contato": null,
+          "influencer_account_id": 5,
+          "sales_funnel_stage_id": 1,
+          "physical_condition_id": null,
+          "created_at": "2025-06-19T23:52:36.525",
+          "updated_at": "2025-06-20T02:52:36.584032",
+          "numero_telefone": 554799830536,
+          "sessionId": "554799830536@s.whatsapp.net@Giga_teste",
+          "ad_id": null,
+          "message": {
+            "message_id": "3EB0DB40BF7D8CD2EDE0AE",
+            "chat_id": "554799830536@s.whatsapp.net",
+            "content_type": "text",
+            "content": "Fala irmao\n",
+            "timestamp": "2025-06-19T23:53:11.000-03:00",
+            "content_url": "",
+            "event": "incoming"
+          },
+          "instance": {
+            "name": "Giga_teste",
+            "apikey": "6BD92F00B3E2-4BA5-B2BE-DB79174258ED",
+            "server_url": "https://wsapi.peak.botfai.com.br"
+          },
+          "ads": {
+            "anuncio_id": null,
+            "origem": null,
+            "tipo_arquivo": null,
+            "url_anuncio": null,
+            "fonte": null
+          },
+          "dados": {
+            "telefone_usuario": "554799830536",
+            "nome": "Gabriel A. Zavatini",
+            "sessionId": "554799830536@s.whatsapp.net@Giga_teste",
+            "influencer": "Giga"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-07T21:41:04.443Z",
+  "versionId": "b0a2472e-e8b0-47af-9e29-1236a5fd911d"
+}
