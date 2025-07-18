@@ -1,0 +1,488 @@
+{
+  "active": false,
+  "connections": {
+    "AudioTenente": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioBrandão": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AudioB.Santos": {
+      "main": [
+        [
+          {
+            "node": "ConverteArquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AlternaExpert": {
+      "main": [
+        [
+          {
+            "node": "AudioTenente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioBrandão",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AudioB.Santos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "ConverteArquivo": {
+      "main": [
+        [
+          {
+            "node": "EnviaAudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnviaAudio": {
+      "main": [
+        []
+      ]
+    },
+    "AtualizaDados": {
+      "main": [
+        [
+          {
+            "node": "Concluir",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BlockTool3": {
+      "main": [
+        [
+          {
+            "node": "AtualizaDados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InputTool3": {
+      "main": [
+        [
+          {
+            "node": "BlockTool3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-04T11:21:54.528Z",
+  "id": "bAkl2wPm2Kd9gN0U",
+  "meta": null,
+  "name": "photosReceived",
+  "nodes": [
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Tenente Breno/Tenente Breno - Rebendo as fotos.mp3"
+      },
+      "id": "9c070e5a-07b6-4248-8780-7863691f2cc7",
+      "name": "AudioTenente",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        500,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Tenente Breno/Tenente Breno - Rebendo as fotos.mp3"
+      },
+      "id": "00e6bbec-0de6-4a37-b734-760106eb4e98",
+      "name": "AudioBrandão",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        620,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "bucketName": "peak-experts",
+        "fileKey": "Audios/Tenente Breno/Tenente Breno - Rebendo as fotos.mp3"
+      },
+      "id": "e543a4ee-bc95-4414-84b8-5baac076ea72",
+      "name": "AudioB.Santos",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        740,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "s3": {
+          "id": "upcT0o8NFktNCSiE",
+          "name": "S3 account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('InputTool3').item.json.account_id }}",
+                    "rightValue": 12,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "c0256ac9-c50f-4cd3-91f0-da505aec56c7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tenente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "71c1859e-edda-48df-854b-30cfc9376d5a",
+                    "leftValue": "={{ $('InputTool3').item.json.account_id }}",
+                    "rightValue": 17,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Brandão"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "93c3a5a3-681a-46f9-b664-d291a54b50c3",
+                    "leftValue": "={{ $('InputTool3').item.json.account_id }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "B. Santos"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        300,
+        -20
+      ],
+      "id": "0df7329d-4452-4532-90a1-488122ae19fc",
+      "name": "AlternaExpert",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        900,
+        0
+      ],
+      "id": "26b13889-aa34-4aba-a808-fcf9d6180ecb",
+      "name": "ConverteArquivo",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0d45799e-e7fc-42c4-91b6-a437ca9515be",
+              "name": "photosReceived_completion",
+              "value": "A foto enviada pelo usuario foi registrada com sucesso, concluir com a frase  <mensagemFinal_etapa3>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        280
+      ],
+      "id": "6cda8c0f-7770-4757-96e7-16282c329347",
+      "name": "Concluir"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('InputTool3').item.json.instance.server_url }}/message/sendWhatsAppAudio/{{ $('InputTool3').item.json.instance.name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('InputTool3').item.json.instance.apikey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('InputTool3').item.json.message.chat_id }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ 5000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        0
+      ],
+      "id": "fa57e675-add6-4ae3-b6e4-c41c57f2f2db",
+      "name": "EnviaAudio",
+      "retryOnFail": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "contact_id",
+              "condition": "eq",
+              "keyValue": "={{ $('InputTool3').item.json.user.contact_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "sales_funnel_stage_id",
+              "fieldValue": "4"
+            },
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now.toISO() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        640,
+        280
+      ],
+      "id": "21fa610b-a28c-4d2d-b11d-f302377cf89d",
+      "name": "AtualizaDados",
+      "credentials": {
+        "supabaseApi": {
+          "id": "pOjjHe9STqiT8PDd",
+          "name": "peak-relacional"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('InputTool3').first().json.message.sessionId }}_block",
+        "value": "true",
+        "keyType": "string"
+      },
+      "id": "9d7476ea-a127-4dc6-927f-d7810d310db3",
+      "name": "BlockTool3",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        460,
+        280
+      ],
+      "credentials": {
+        "redis": {
+          "id": "CnAYUverQDl88vKP",
+          "name": "redis-peak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        280
+      ],
+      "id": "3f1a8a1c-0952-45e1-8e51-8d120ee6f9a4",
+      "name": "InputTool3"
+    },
+    {
+      "parameters": {
+        "content": "## ATUALIZAÕES E MELHORIAS \n\nENVIAR AUDIOS APÓS RECEBIMENTOS DE FOTOS",
+        "height": 360,
+        "width": 940,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        280,
+        -140
+      ],
+      "typeVersion": 1,
+      "id": "5ce31181-4310-4adb-937c-deb86c277729",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "InputTool3": [
+      {
+        "json": {
+          "message": {
+            "chat_id": "556681253010@s.whatsapp.net",
+            "sessionId": "556681253010@s.whatsapp.net@pantera_9247"
+          },
+          "instance": {
+            "name": "pantera_9247",
+            "apikey": "AE8F03C47F85-45DD-8FF6-1E1A5B7D4461",
+            "server_url": "https://wsapi.peak.botfai.com.br"
+          },
+          "user": {
+            "nome": "Juliano Henrique",
+            "contact_id": "249"
+          },
+          "account_id": 24
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-15T17:53:41.060Z",
+  "versionId": "e9b4c120-a5ca-409e-8033-a265a5beed4c"
+}
