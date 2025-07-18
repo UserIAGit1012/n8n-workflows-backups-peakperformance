@@ -1,0 +1,40 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2025-07-15T18:24:13.321Z",
+  "id": "4QzAnTEo4Q7f0Xaf",
+  "meta": null,
+  "name": "Dashboard Peak - ebooks",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "1cba02cc-a96b-4c9f-bcb2-95d5204a2d59",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "545c7e86-b66a-46e9-8b43-638d8b5c0cfe",
+      "name": "Webhook",
+      "webhookId": "1cba02cc-a96b-4c9f-bcb2-95d5204a2d59"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-18T09:05:31.471Z",
+  "versionId": "71ed8426-0fb1-4b21-ad28-9867e6fdb2b7"
+}
