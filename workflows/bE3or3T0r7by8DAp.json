@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "input chatwoot": {
+      "main": [
+        [
+          {
+            "node": "verifica se é reecbida ou enviada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RabbitMQ": {
+      "main": [
+        [
+          {
+            "node": "NoOp.",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica se é reecbida ou enviada": {
+      "main": [
+        [
+          {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-30T12:20:16.803Z",
+  "id": "bE3or3T0r7by8DAp",
+  "meta": null,
+  "name": "⏳ Rabbit | Buffer",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f6d7f152-4ea5-4403-9a85-acb197d0d2a6",
+        "options": {}
+      },
+      "id": "0a8f73ba-90b8-487e-87c0-dc293121a9e3",
+      "name": "input chatwoot",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        420,
+        400
+      ],
+      "webhookId": "f6d7f152-4ea5-4403-9a85-acb197d0d2a6"
+    },
+    {
+      "parameters": {
+        "queue": "n8n.default",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        400
+      ],
+      "id": "b8a84005-abe3-4507-87a2-a9e502f983aa",
+      "name": "RabbitMQ",
+      "credentials": {
+        "rabbitmq": {
+          "id": "FUtNv1kFTrj08Qcr",
+          "name": "RabbitMQ peak"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "89cfa912-1086-4a21-b4a2-d14c47cb1d45",
+      "name": "NoOp.",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 🆁🅰🅱🅱🅸🆃 \n\n",
+        "height": 300,
+        "width": 1000,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        320,
+        300
+      ],
+      "typeVersion": 1,
+      "id": "1bbca1f7-6363-4ecc-b2a2-e2a8a829c6ac",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "30d54cd5-a226-4613-9ed8-52f312b8b03f",
+              "leftValue": "={{ $json.body.message_type }}",
+              "rightValue": "incoming",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        620,
+        400
+      ],
+      "id": "50886bb5-1a67-4341-9cd6-2a2658b7540e",
+      "name": "verifica se é reecbida ou enviada"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-11T14:40:27.242Z",
+  "versionId": "0e8fb011-3a92-4b08-a657-9ac93dabe790"
+}
