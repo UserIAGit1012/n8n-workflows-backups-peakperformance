@@ -1,0 +1,117 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-03T22:38:27.625Z",
+  "id": "QcXDZePW82uZWRbP",
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "a195dae5-797c-4c9d-8eea-0d50167da97c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        0
+      ],
+      "id": "84450052-fa1e-4d9d-bba1-79d34e15878e",
+      "name": "Webhook",
+      "webhookId": "a195dae5-797c-4c9d-8eea-0d50167da97c"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "body.data.contextInfo.conversionData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        0
+      ],
+      "id": "63cfe58c-0221-4fe5-957c-8d2af3ad72cf",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.peak.botfai.com.br",
+            "user-agent": "axios/1.7.5",
+            "content-length": "1347",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "5.161.61.123",
+            "x-forwarded-host": "webhook.peak.botfai.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik_traefik.1",
+            "x-real-ip": "5.161.61.123"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "Tenente_8971",
+            "data": {
+              "key": {
+                "remoteJid": "5511976986281@s.whatsapp.net",
+                "fromMe": true,
+                "id": "3EB07376DC66C1C08925EA"
+              },
+              "pushName": "Tenente Consultoria",
+              "message": {
+                "conversation": "Seja bem vindo ao Esquadrão Águia. Me fala seu nome e idade por favor.\n"
+              },
+              "contextInfo": {
+                "conversionSource": "FB_Ads",
+                "conversionData": "QWZkM0xCaktjRU04d1Q5WVdHUzhmaGpEQ1YwS3ktVnotZ2FYcVJZZXhIUEFCc19SLVdnb1BMX2xWZjJ5YTBiRkpIMG5zeHR2bFBxYWV3Mm40NlI0TTZmdVBRaFliTU1QRjg5aHpseTlnMDJwRkU2NEJaMkpMUkV1YlV5TFRJWmdMNmljSjlZeXNFWEN5dlBwX00ybG5rd2dEWTNzQ3FTR3J5Y3JHWE82U2dQMDlubzFqTnNfaWNrM3k4OUk4ZEREcXo0Ykt3Y1U5NEZ6NHdzUlNNanQ2UndwV3JvWmFqSmRCcC1Md0paZmYwWDUyaW8zQnVxX2k5S01PMHJ2OU5BS0F2S0R4dzl5cFY5ZUtSYzhlaHNnaGx1VnR4VlY3WUVtZUpFNFU5czRtTUp2Y3lMZkxsUXB6S1VFajRaeXd5VzQ1SElTeUF5dFJkS0E2NHNUQ1hFLXBqV1VOcFJxeThicjMtVHJ1bHY3NWhaVUxKbVZ5YnlmcmlZUkhR"
+              },
+              "messageType": "extendedTextMessage",
+              "messageTimestamp": 1748989195,
+              "instanceId": "17296f2a-0eb5-4738-a4ea-417bcfb2bf28",
+              "source": "web",
+              "chatwootMessageId": 4953281,
+              "chatwootInboxId": 105,
+              "chatwootConversationId": 41000
+            },
+            "destination": "https://webhook.peak.botfai.com.br/webhook/41174176-32fe-498a-8ee3-c54dba65069b1",
+            "date_time": "2025-06-03T19:19:56.090Z",
+            "sender": "5511933778971@s.whatsapp.net",
+            "server_url": "https://wsapi.peak.botfai.com.br",
+            "apikey": "01C1F0B0CE6B-4540-8574-94C9BA963DF2"
+          },
+          "webhookUrl": "https://webhook.peak.botfai.com.br/webhook/41174176-32fe-498a-8ee3-c54dba65069b1",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-03T22:38:27.625Z",
+  "versionId": "d588df00-c70d-4b3a-8859-9c7ce1e5b6eb"
+}
